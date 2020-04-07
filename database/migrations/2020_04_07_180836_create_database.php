@@ -89,7 +89,7 @@ class CreateDatabase extends Migration
             $table->integer("prise_en_charge_debut")->nullable(false);
             $table->integer("prise_en_charge_arrive")->nullable(false);
             $table->integer("kilometrage_auto_depart")->nullable(false);
-            $table->integer("kilometrege_auto_airrive")->nullable(false);
+            $table->integer("kilometrage_auto_airrive")->nullable(false);
             $table->float("depense_gaz", 7, 2)->nullable(true);
             $table->float("depense_credit", 7, 2)->nullable(true);
             $table->float("depense_divers", 7, 2)->nullable(true);
