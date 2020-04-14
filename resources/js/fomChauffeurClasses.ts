@@ -1,13 +1,17 @@
 namespace src{export namespace form{
 
-    class Difference<T> {
+    interface Field {
+    }
+
+    class DifferenceField<T>
+        implements Field {
 
         private __start: T;
         private __end: T;
 
 
         public constructor(start?: T, end?: T) {
-            this.setBoth(start,end);
+            this.setBoth(start, end);
         }
 
 
@@ -70,17 +74,86 @@ namespace src{export namespace form{
 
     }
 
+    class CalculatedField<T>
+        implements Field {
+
+        private ___isCalculated: boolean;
+        private readonly __procedureToExecute:()=>T;
+        private __field: T;
+
+
+        public constructor(procedureToExecute: () => T, field?: T) {
+            this.__procedureToExecute = procedureToExecute;
+            this.setField(field);
+        }
+
+
+        public isCalculated() {
+            return this.__isCalculated;
+        }
+
+        private get __isCalculated(): boolean {
+            return this.___isCalculated;
+        }
+
+        public setCalculated(isCalculated: boolean): void {
+            this.__isCalculated = isCalculated;
+        }
+
+        public setIsNotCalculated(): void {
+            this.setCalculated(false);
+        }
+
+        public setIsCalculated(): void {
+            this.setCalculated(true);
+        }
+
+        private set __isCalculated(isCalculated: boolean) {
+            this.___isCalculated = isCalculated;
+        }
+
+
+        private get procedureToExecute(): () => T {
+            return this.__procedureToExecute;
+        }
+
+        public getField(): T {
+            return this.field;
+        }
+
+        private get field(): T {
+            return this.__field;
+        }
+
+        public setField(field: T): void {
+            this.field = field;
+        }
+
+        public fSetField(field: T): this {
+            this.setField(field);
+            return this;
+        }
+
+        private set field(field: T) {
+            if (this.isCalculated()) this.fSetField(this.procedureToExecute()).setIsCalculated();
+            this.__field = field;
+        }
+
+
+    }
+
+
     export class General {
 
         private readonly __driverNo: number;
         private __taxiNo: number;
-        private __dateTime: Difference<Date>;
-        private __recette: Difference<number>;
+        private readonly __dateTime: DifferenceField<Date>;
+        private readonly __recette: DifferenceField<number>;
         private __totalFixPrice: number;
 
-        private __recetteReelCalcule = false;
-        private __recetteReel: number;
-
+        private readonly __recetteReel: CalculatedField<number> = new CalculatedField<number>(() => {
+            return this.recette.getEnd() - this.recette.getStart() + this.totalFixPrice;
+        });
 
         public constructor(driverNo: number) {
             this.__driverNo = driverNo;
@@ -114,11 +187,11 @@ namespace src{export namespace form{
         }
 
 
-        public getDateAndTime(): Difference<Date> {
+        public getDateAndTime(): DifferenceField<Date> {
             return this.dateAndTime;
         }
 
-        private get dateAndTime(): Difference<Date> {
+        private get dateAndTime(): DifferenceField<Date> {
             return this.__dateTime;
         }
 
@@ -129,15 +202,11 @@ namespace src{export namespace form{
             return this;
         }
 
-        private set dateAndTime(dateAndTime: Difference<Date>) {
-            this.__dateTime = dateAndTime;
-        }
 
-
-        public getRecette():Difference<number>{
+        public getRecette():DifferenceField<number>{
             return this.recette;
         }
-        private get recette(): Difference<number> {
+        private get recette(): DifferenceField<number> {
             return this.__recette;
         }
 
@@ -145,10 +214,8 @@ namespace src{export namespace form{
         public setRecette(startingRecette: number, endingRecette: number): this;
         public setRecette(recette1: number, recette2?: number): this {
             this.recette.setBoth(recette1, recette2);
+            this.getRecetteReelField().setIsNotCalculated();
             return this;
-        }
-        private set recette(recette: Difference<number>) {
-            this.__recette = recette;
         }
 
 
@@ -167,36 +234,22 @@ namespace src{export namespace form{
 
         private set totalFixPrice(totalFixPrice: number) {
             this.__totalFixPrice = totalFixPrice;
-        }
-
-
-        private get recetteReelCalcule(): boolean {
-            return this.__recetteReelCalcule;
-        }
-
-        private set recetteReelCalcule(recetteReelCalcule: boolean) {
-            this.__recetteReelCalcule = recetteReelCalcule;
+            this.getRecetteReelField().setIsNotCalculated();
         }
 
 
         public getRecetteReel(): number {
+            return this.getRecetteReelField().getField();
+        }
+
+        private getRecetteReelField(): CalculatedField<number> {
             return this.recetteReel;
         }
 
-        private get recetteReel(): number {
-            if (!this.recetteReelCalcule)
-                this.__calculerRecetteReel();
+        public get recetteReel(): CalculatedField<number> {
             return this.__recetteReel;
         }
 
-        private set recetteReel(recetteReel: number) {
-            this.__recetteReel = recetteReel;
-        }
-
-        private __calculerRecetteReel() {
-            this.recetteReel = this.recette.getEnd() - this.recette.getStart() + this.totalFixPrice;
-            this.recetteReelCalcule = true;
-        }
 
 
     }
