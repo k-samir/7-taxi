@@ -5,6 +5,8 @@
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/app" isTestSource="false" packagePrefix="App\" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/!temp" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/asm89/stack-cors" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/brick/math" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/caouecs/laravel-lang" />
@@ -104,5 +106,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="jquery-3.1.1.slim" level="application" />
+    <orderEntry type="library" name="tether" level="application" />
   </component>
 </module>
