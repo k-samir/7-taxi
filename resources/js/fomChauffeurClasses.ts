@@ -150,7 +150,6 @@ namespace src{export namespace form{
         private readonly __dateTime: DifferenceField<Date>;
         private readonly __recette: DifferenceField<number>;
         private __totalFixPrice: number;
-
         private readonly __recetteReel: CalculatedField<number> = new CalculatedField<number>(() => {
             return this.recette.getEnd() - this.recette.getStart() + this.totalFixPrice;
         });
@@ -163,7 +162,6 @@ namespace src{export namespace form{
         public getDriverNo(): number {
             return this.driverNo;
         }
-
         private get driverNo(): number {
             return this.__driverNo;
         }
@@ -172,7 +170,6 @@ namespace src{export namespace form{
         public getTaxiNo(): number {
             return this.taxiNo;
         }
-
         private get taxiNo(): number {
             return this.__taxiNo;
         }
@@ -181,7 +178,6 @@ namespace src{export namespace form{
             this.taxiNo = taxiNo;
             return this;
         }
-
         private set taxiNo(taxiNo: number) {
             this.__taxiNo = taxiNo;
         }
@@ -190,7 +186,6 @@ namespace src{export namespace form{
         public getDateAndTime(): DifferenceField<Date> {
             return this.dateAndTime;
         }
-
         private get dateAndTime(): DifferenceField<Date> {
             return this.__dateTime;
         }
@@ -222,7 +217,6 @@ namespace src{export namespace form{
         public getTotalFixPrice(): number {
             return this.totalFixPrice;
         }
-
         private get totalFixPrice(): number {
             return this.__totalFixPrice;
         }
@@ -231,7 +225,6 @@ namespace src{export namespace form{
             this.totalFixPrice = totalFixPrice;
             return this;
         }
-
         private set totalFixPrice(totalFixPrice: number) {
             this.__totalFixPrice = totalFixPrice;
             this.getRecetteReelField().setIsNotCalculated();
@@ -241,15 +234,95 @@ namespace src{export namespace form{
         public getRecetteReel(): number {
             return this.getRecetteReelField().getField();
         }
-
         private getRecetteReelField(): CalculatedField<number> {
             return this.recetteReel;
         }
-
         public get recetteReel(): CalculatedField<number> {
             return this.__recetteReel;
         }
 
+    }
+
+    export class Depense{
+
+        private readonly __salary:number;
+        private _gaz: number;
+        private _credit: number;
+        private _various: number;
+        private readonly __totalDepense: CalculatedField<number> = new CalculatedField<number>(() => {
+            return this.getGaz() + this.getCredit() + this.getVarious();
+        });
+
+        constructor(salary: number) {
+            this.__salary = salary;
+        }
+
+
+        public getSalary(): number {
+            return this.salary;
+        }
+        private get salary(): number {
+            return this.__salary;
+        }
+
+
+        public getGaz(): number {
+            return this.gaz;
+        }
+        private get gaz(): number {
+            return this._gaz;
+        }
+        public setGaz(gaz: number): this {
+            this.gaz = gaz;
+            return this;
+        }
+        private set gaz(gaz: number) {
+            this._gaz = gaz;
+            this.getTotalDepenseField().setIsNotCalculated();
+        }
+
+
+        public getCredit(): number {
+            return this.credit;
+        }
+        private get credit(): number {
+            return this._credit;
+        }
+        public setCredit(credit: number): this {
+            this.credit = credit;
+            return this;
+        }
+        private set credit(credit: number) {
+            this._credit = credit;
+            this.getTotalDepenseField().setIsNotCalculated();
+        }
+
+
+        public getVarious(): number {
+            return this.various;
+        }
+        private get various(): number {
+            return this._various;
+        }
+        public setVarious(various: number): this {
+            this.various = various;
+            return this;
+        }
+        private set various(various: number) {
+            this._various = various;
+            this.getTotalDepenseField().setIsNotCalculated();
+        }
+
+
+        public getTotalDepense(): number {
+            return this.getTotalDepenseField().getField();
+        }
+        private getTotalDepenseField(): CalculatedField<number> {
+            return this.totalDepense;
+        }
+        private get totalDepense(): CalculatedField<number> {
+            return this.__totalDepense;
+        }
 
 
     }
