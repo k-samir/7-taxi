@@ -1,329 +1,355 @@
-namespace src{export namespace form{
+import {scr} from "./formContainers";
 
-    interface Field {
-    }
+export namespace src{export namespace form{
 
-    class DifferenceField<T>
-        implements Field {
-
-        private __start: T;
-        private __end: T;
-
-
-        public constructor(start?: T, end?: T) {
-            this.setBoth(start, end);
-        }
-
-
-        public getStart(): T {
-            return this.start;
-        }
-
-        private get start(): T {
-            return this.__start;
-        }
-
-        public setStart(start: T): void {
-            this.start = start;
-        }
-
-        private set start(start: T) {
-            this.__start = start;
-        }
-
-        public fSetStart(start: T): this {
-            this.setStart(start);
-            return this;
-        }
-
-
-        public getEnd(): T {
-            return this.end;
-        }
-
-        private get end(): T {
-            return this.__end;
-        }
-
-        public setEnd(end: T): void {
-            this.end = end;
-        }
-
-        private set end(end: T) {
-            this.__end = end;
-        }
-
-        public fSetEnd(end: T): this {
-            this.setEnd(end);
-            return this;
-        }
-
-
-        public setBoth(allValues: T): void;
-        public setBoth(startValue: T, endValue: T): void;
-        public setBoth(value1: T, value2?: T): void {
-            this.fSetStart(value1).fSetEnd((value2 == null) ? value1 : value2);
-        }
-
-        public fSetBoth(allValues: T): this;
-        public fSetBoth(startValue: T, endValue: T): this;
-        public fSetBoth(value1: T, value2?: T): this {
-            this.setBoth(value1, value2);
-            return this;
-        }
-
-    }
-
-    class CalculatedField<T>
-        implements Field {
-
-        private ___isCalculated: boolean;
-        private readonly __procedureToExecute:()=>T;
-        private __field: T;
-
-
-        public constructor(procedureToExecute: () => T, field?: T) {
-            this.__procedureToExecute = procedureToExecute;
-            this.setField(field);
-        }
-
-
-        public isCalculated() {
-            return this.__isCalculated;
-        }
-
-        private get __isCalculated(): boolean {
-            return this.___isCalculated;
-        }
-
-        public setCalculated(isCalculated: boolean): void {
-            this.__isCalculated = isCalculated;
-        }
-
-        public setIsNotCalculated(): void {
-            this.setCalculated(false);
-        }
-
-        public setIsCalculated(): void {
-            this.setCalculated(true);
-        }
-
-        private set __isCalculated(isCalculated: boolean) {
-            this.___isCalculated = isCalculated;
-        }
-
-
-        private get procedureToExecute(): () => T {
-            return this.__procedureToExecute;
-        }
-
-        public getField(): T {
-            return this.field;
-        }
-
-        private get field(): T {
-            return this.__field;
-        }
-
-        public setField(field: T): void {
-            this.field = field;
-        }
-
-        public fSetField(field: T): this {
-            this.setField(field);
-            return this;
-        }
-
-        private set field(field: T) {
-            if (this.isCalculated()) this.fSetField(this.procedureToExecute()).setIsCalculated();
-            this.__field = field;
-        }
-
-
-    }
-
+    import AccessibleField = scr.form.containers.AccessibleField;
+    import CalculatedField = scr.form.containers.CalculatedField;
+    import DependantField = scr.form.containers.DependantField;
+    import DifferenceField = scr.form.containers.DifferenceField;
+    import FinalizeField = scr.form.containers.FinalizeField;
+    import ModifiableField = scr.form.containers.ModifiableField;
 
     export class General {
 
-        private readonly __driverNo: number;
-        private __taxiNo: number;
-        private readonly __dateTime: DifferenceField<Date>;
-        private readonly __recette: DifferenceField<number>;
-        private __totalFixPrice: number;
-        private readonly __recetteReel: CalculatedField<number> = new CalculatedField<number>(() => {
-            return this.recette.getEnd() - this.recette.getStart() + this.totalFixPrice;
+        private readonly __callbackToReinitializeRealRecipe: () => void = () => {
+            this.__realRecipe.setToNotCalculated();
+        };
+
+        private readonly __driverNo: FinalizeField<number>;
+        private readonly __taxiNo: ModifiableField<number> = new ModifiableField<number>();
+        private readonly __dateAndTime: DifferenceField<Date> = new DifferenceField<Date>();
+        private readonly __recipe: DifferenceField<number> = new DifferenceField<number>(new DependantField<number>(this.__callbackToReinitializeRealRecipe), new DependantField<number>(this.__callbackToReinitializeRealRecipe));
+        private readonly __totalFixPrice: DependantField<number> = new DependantField<number>(this.__callbackToReinitializeRealRecipe);
+        private readonly __realRecipe: CalculatedField<number> = new CalculatedField<number>(() => {
+            return this.getEndingRecipe() - this.getStartingRecipe() + this.getTotalFixPrice();
         });
 
+
         public constructor(driverNo: number) {
-            this.__driverNo = driverNo;
+            this.__driverNo = new FinalizeField<number>(driverNo);
         }
 
 
         public getDriverNo(): number {
-            return this.driverNo;
-        }
-        private get driverNo(): number {
-            return this.__driverNo;
+            return this.__driverNo.getField();
         }
 
 
         public getTaxiNo(): number {
-            return this.taxiNo;
-        }
-        private get taxiNo(): number {
-            return this.__taxiNo;
+            return this.__taxiNo.getField();
         }
 
-        public setTaxiNo(taxiNo: number): this {
-            this.taxiNo = taxiNo;
-            return this;
-        }
-        private set taxiNo(taxiNo: number) {
-            this.__taxiNo = taxiNo;
+        public setTaxiNo(taxiNo: number | AccessibleField<number>) {
+            this.__taxiNo.setField(taxiNo);
         }
 
 
-        public getDateAndTime(): DifferenceField<Date> {
-            return this.dateAndTime;
-        }
-        private get dateAndTime(): DifferenceField<Date> {
-            return this.__dateTime;
+        public getStartingDate(): Date {
+            return this.getAllDateAndTime().getStart();
         }
 
-        public setDateAndTime(allDates: Date): this;
-        public setDateAndTime(startingDate: Date, endingDate: Date): this;
-        public setDateAndTime(date1: Date, date2?: Date): this {
-            this.dateAndTime.setBoth(date1, date2);
+        public getEndingDate(): Date {
+            return this.getAllDateAndTime().getEnd();
+        }
+
+        public getAllDateAndTime(): DifferenceField<Date> {
+            return this.__dateAndTime;
+        }
+
+        public setStartingDate(startingDate: Date | AccessibleField<Date>): this {
+            this.getAllDateAndTime().setStart(startingDate);
             return this;
         }
 
-
-        public getRecette():DifferenceField<number>{
-            return this.recette;
-        }
-        private get recette(): DifferenceField<number> {
-            return this.__recette;
-        }
-
-        public setRecette(allRecettes: number): this;
-        public setRecette(startingRecette: number, endingRecette: number): this;
-        public setRecette(recette1: number, recette2?: number): this {
-            this.recette.setBoth(recette1, recette2);
-            this.getRecetteReelField().setIsNotCalculated();
+        public setEndingDate(endingDate: Date | AccessibleField<Date>): this {
+            this.getAllDateAndTime().setEnd(endingDate);
             return this;
+        }
+
+        public setBothDateAndTime(allDates: Date | AccessibleField<Date>): this;
+        public setBothDateAndTime(startingDate: Date | AccessibleField<Date>, endingDate: Date | AccessibleField<Date>): this;
+        public setBothDateAndTime(date1: Date | AccessibleField<Date>, date2?: Date | AccessibleField<Date>): this {
+            this.getAllDateAndTime().setBothFields(date1, date2);
+            return this;
+        }
+
+
+        public getStartingRecipe(): number {
+            return this.getAllRecipes().getStart();
+        }
+
+        public getEndingRecipe(): number {
+            return this.getAllRecipes().getEnd();
+        }
+
+        public getAllRecipes(): DifferenceField<number> {
+            return this.__recipe;
+        }
+
+        public setStartingRecipe(startingRecipe: number | AccessibleField<number>): this {
+            this.getAllRecipes().setStart(startingRecipe);
+            return this;
+        }
+
+        public setEndingRecipe(endingRecipe: number | AccessibleField<number>): this {
+            this.getAllRecipes().setEnd(endingRecipe);
+            return this;
+        }
+
+        public setBothRecipe(allRecipes: number | AccessibleField<number>): this;
+        public setBothRecipe(startingRecipe: number | AccessibleField<number>, endingRecipe: number | AccessibleField<number>): this;
+        public setBothRecipe(recipe1: number | AccessibleField<number>, recipe2?: number | AccessibleField<number>): this {
+            return this.setStartingRecipe(recipe1).setEndingRecipe((recipe2 == undefined) ? recipe1 : recipe2);
         }
 
 
         public getTotalFixPrice(): number {
-            return this.totalFixPrice;
-        }
-        private get totalFixPrice(): number {
-            return this.__totalFixPrice;
+            return this.__totalFixPrice.getField();
         }
 
-        public setTotalFixPrice(totalFixPrice: number): this {
-            this.totalFixPrice = totalFixPrice;
+        public setTotalFixPrice(totalFixPrice: number | AccessibleField<number>): this {
+            this.__totalFixPrice.setField(totalFixPrice);
             return this;
         }
-        private set totalFixPrice(totalFixPrice: number) {
-            this.__totalFixPrice = totalFixPrice;
-            this.getRecetteReelField().setIsNotCalculated();
-        }
 
 
-        public getRecetteReel(): number {
-            return this.getRecetteReelField().getField();
-        }
-        private getRecetteReelField(): CalculatedField<number> {
-            return this.recetteReel;
-        }
-        public get recetteReel(): CalculatedField<number> {
-            return this.__recetteReel;
+        public getRealRecipe(): number {
+            return this.__realRecipe.getField();
         }
 
     }
 
-    export class Depense{
+    export class Distance {
 
-        private readonly __salary:number;
-        private _gaz: number;
-        private _credit: number;
-        private _various: number;
-        private readonly __totalDepense: CalculatedField<number> = new CalculatedField<number>(() => {
+        private readonly __callbackToReinitializeMileageDifference: () => void = () => {
+            this.__mileageDifference.setToNotCalculated();
+        };
+        private readonly __callbackToReinitializeMileageLadenDifference: () => void = () => {
+            this.__mileageLadenDifference.setToNotCalculated();
+        };
+        private readonly __callbackToReinitializeAmountOfPassengersDifference: () => void = () => {
+            this.__amountOfPassengersDifference.setToNotCalculated();
+        };
+        private readonly __callbackToReinitializeMileageInVehicleDifference: () => void = () => {
+            this.__mileageInVehicleDifference.setToNotCalculated();
+        };
+
+        private readonly __mileage: DifferenceField<number> = new DifferenceField<number>(new DependantField<number>(this.__callbackToReinitializeMileageDifference), new DependantField<number>(this.__callbackToReinitializeMileageDifference));
+        private readonly __mileageDifference: CalculatedField<number> = new CalculatedField<number>(() => {
+            return this.getStartingMileage() - this.getEndingMileage()
+        });
+
+        private readonly __mileageLaden: DifferenceField<number> = new DifferenceField<number>(new DependantField<number>(this.__callbackToReinitializeMileageLadenDifference), new DependantField<number>(this.__callbackToReinitializeMileageLadenDifference));
+        private readonly __mileageLadenDifference: CalculatedField<number> = new CalculatedField<number>(() => {
+            return this.getEndingMileageLaden() - this.getStartingMileageLaden();
+        });
+
+        private readonly __amountOfPassengers: DifferenceField<number> = new DifferenceField<number>(new DependantField<number>(this.__callbackToReinitializeAmountOfPassengersDifference), new DependantField<number>(this.__callbackToReinitializeAmountOfPassengersDifference));
+        private readonly __amountOfPassengersDifference: CalculatedField<number> = new CalculatedField<number>(() => {
+            return this.getEndingAmountOfPassengers() - this.getStartingAmountOfPassengers();
+        });
+
+        private readonly __mileageInVehicle: DifferenceField<number> = new DifferenceField<number>(new DependantField<number>(this.__callbackToReinitializeMileageInVehicleDifference), new DependantField<number>(this.__callbackToReinitializeMileageInVehicleDifference));
+        private readonly __mileageInVehicleDifference: CalculatedField<number> = new CalculatedField<number>(() => {
+            return this.getEndingMileageInVehicle() - this.getStartingMileageInVehicle();
+        });
+
+
+        public constructor() {
+        }
+
+
+        public getStartingMileage(): number {
+            return this.getAllMileages().getStart();
+        }
+
+        public getEndingMileage(): number {
+            return this.getAllMileages().getEnd();
+        }
+
+        public getAllMileages(): DifferenceField<number> {
+            return this.__mileage;
+        }
+
+        public setStartingMileage(startingMileage: number | AccessibleField<number>): this {
+            this.getAllMileages().setStart(startingMileage);
+            return this;
+        }
+
+        public setEndingMileage(endingMileage: number | AccessibleField<number>): this {
+            this.getAllMileages().setEnd(endingMileage);
+            return this;
+        }
+
+        public setBothMileage(allMileages: number | AccessibleField<number>): this;
+        public setBothMileage(startingMileage: number | AccessibleField<number>, endingMileage: number | AccessibleField<number>): this;
+        public setBothMileage(mileage1: number | AccessibleField<number>, mileage2?: number | AccessibleField<number>): this {
+            return this.setStartingMileage(mileage1).setEndingMileage((mileage2 == undefined) ? mileage1 : mileage2);
+        }
+
+        public getMileageDifference(): number {
+            return this.__mileageDifference.getField();
+        }
+
+
+        public getStartingMileageLaden(): number {
+            return this.getAllMileageLaden().getStart();
+        }
+
+        public getEndingMileageLaden(): number {
+            return this.getAllMileageLaden().getEnd();
+        }
+
+        public getAllMileageLaden(): DifferenceField<number> {
+            return this.__mileageLaden;
+        }
+
+        public setStartingMileageLaden(startingMileageLaden: number | AccessibleField<number>): this {
+            this.getAllMileageLaden().setStart(startingMileageLaden);
+            return this;
+        }
+
+        public setEndingMileagesLaden(endingMileageLaden: number | AccessibleField<number>): this {
+            this.getAllMileageLaden().setEnd(endingMileageLaden);
+            return this;
+        }
+
+        public setBothMileageLaden(allMileageLaden: number | AccessibleField<number>): this;
+        public setBothMileageLaden(startingMileageLaden: number | AccessibleField<number>, endingMileageLaden: number | AccessibleField<number>): this;
+        public setBothMileageLaden(mileageLaden1: number | AccessibleField<number>, mileageLaden2?: number | AccessibleField<number>): this {
+            return this.setStartingMileageLaden(mileageLaden1).setEndingMileagesLaden((mileageLaden2 == undefined) ? mileageLaden1 : mileageLaden2);
+        }
+
+        public getMileageLaden(): number {
+            return this.__mileageLadenDifference.getField();
+        }
+
+
+        public getStartingAmountOfPassengers(): number {
+            return this.getAllAmountsOfPassengers().getStart();
+        }
+
+        public getEndingAmountOfPassengers(): number {
+            return this.getAllAmountsOfPassengers().getEnd();
+        }
+
+        public getAllAmountsOfPassengers(): DifferenceField<number> {
+            return this.__amountOfPassengers;
+        }
+
+        public setStartingAmountOfPassengers(startingAmountOfPassengers: number | AccessibleField<number>): this {
+            this.getAllAmountsOfPassengers().setStart(startingAmountOfPassengers);
+            return this;
+        }
+
+        public setEndingAmountOfPassengers(endingAmountOfPassengers: number | AccessibleField<number>): this {
+            this.getAllAmountsOfPassengers().setEnd(endingAmountOfPassengers);
+            return this;
+        }
+
+        public setBothAmountOfPassengers(allAmountsOfPassengers: number | AccessibleField<number>): this;
+        public setBothAmountOfPassengers(startingAmountOfPassengers: number | AccessibleField<number>, endingAmountOfPassengers: number | AccessibleField<number>): this;
+        public setBothAmountOfPassengers(amountOfPassengers1: number | AccessibleField<number>, amountOfPassengers2?: number | AccessibleField<number>): this {
+            return this.setStartingAmountOfPassengers(amountOfPassengers1).setEndingAmountOfPassengers((amountOfPassengers2 == undefined) ? amountOfPassengers1 : amountOfPassengers2);
+        }
+
+        public getAmountOfPassengersDifference(): number {
+            return this.__amountOfPassengersDifference.getField();
+        }
+
+
+        public getStartingMileageInVehicle(): number {
+            return this.getAllMileagesInVehicles().getStart();
+        }
+
+        public getEndingMileageInVehicle(): number {
+            return this.getAllMileagesInVehicles().getEnd();
+        }
+
+        public getAllMileagesInVehicles(): DifferenceField<number> {
+            return this.__mileageInVehicle;
+        }
+
+        public setStartingMileageInVehicle(startingMileageInVehicle: number | AccessibleField<number>): this {
+            this.getAllMileagesInVehicles().setStart(startingMileageInVehicle);
+            return this;
+        }
+
+        public setEndingMileageInVehicle(endingMileageInVehicle: number | AccessibleField<number>): this {
+            this.getAllMileagesInVehicles().setEnd(endingMileageInVehicle);
+            return this;
+        }
+
+        public setBothMileageInVehicle(allMileagesInVehicles: number | AccessibleField<number>): this;
+        public setBothMileageInVehicle(startingMileageInVehicle: number | AccessibleField<number>, endingMileageInVehicle: number | AccessibleField<number>): this;
+        public setBothMileageInVehicle(mileageInVehicle1: number | AccessibleField<number>, mileageInVehicle2?: number | AccessibleField<number>): this {
+            return this.setStartingMileageInVehicle(mileageInVehicle1).setEndingMileageInVehicle((mileageInVehicle2 == undefined) ? mileageInVehicle1 : mileageInVehicle2);
+        }
+
+        public getMileageInVehicleDifference(): number {
+            return this.__mileageInVehicleDifference.getField();
+        }
+
+
+    }
+
+    export class Expense {
+
+        private readonly __callbackToReinitializeTotalExpenses: () => void = () => {
+            this.__totalExpenses.setToNotCalculated();
+        };
+
+        private readonly __salary: FinalizeField<number>;
+        private readonly __gaz: DependantField<number> = new DependantField<number>(this.__callbackToReinitializeTotalExpenses);
+        private readonly __credit: DependantField<number> = new DependantField<number>(this.__callbackToReinitializeTotalExpenses);
+        private readonly __various: DependantField<number> = new DependantField<number>(this.__callbackToReinitializeTotalExpenses);
+        private readonly __totalExpenses: CalculatedField<number> = new CalculatedField(() => {
             return this.getGaz() + this.getCredit() + this.getVarious();
         });
 
-        constructor(salary: number) {
-            this.__salary = salary;
+        public constructor(salary: number) {
+            this.__salary = new FinalizeField<number>(salary);
         }
 
 
         public getSalary(): number {
-            return this.salary;
-        }
-        private get salary(): number {
-            return this.__salary;
+            return this.__salary.getField();
         }
 
 
         public getGaz(): number {
-            return this.gaz;
+            return this.__gaz.getField();
         }
-        private get gaz(): number {
-            return this._gaz;
-        }
-        public setGaz(gaz: number): this {
-            this.gaz = gaz;
+
+        public setGaz(gaz: number | AccessibleField<number>): this {
+            this.__gaz.setField(gaz);
             return this;
-        }
-        private set gaz(gaz: number) {
-            this._gaz = gaz;
-            this.getTotalDepenseField().setIsNotCalculated();
         }
 
 
         public getCredit(): number {
-            return this.credit;
+            return this.__credit.getField();
         }
-        private get credit(): number {
-            return this._credit;
-        }
-        public setCredit(credit: number): this {
-            this.credit = credit;
+
+        public setCredit(credit: number | AccessibleField<number>): this {
+            this.__credit.setField(credit);
             return this;
-        }
-        private set credit(credit: number) {
-            this._credit = credit;
-            this.getTotalDepenseField().setIsNotCalculated();
         }
 
 
         public getVarious(): number {
-            return this.various;
+            return this.__various.getField();
         }
-        private get various(): number {
-            return this._various;
-        }
-        public setVarious(various: number): this {
-            this.various = various;
+
+        public setVarious(various: number | AccessibleField<number>): this {
+            this.__various.setField(various);
             return this;
         }
-        private set various(various: number) {
-            this._various = various;
-            this.getTotalDepenseField().setIsNotCalculated();
-        }
 
 
-        public getTotalDepense(): number {
-            return this.getTotalDepenseField().getField();
+        public getTotalExpenses(): number {
+            return this.__totalExpenses.getField();
         }
-        private getTotalDepenseField(): CalculatedField<number> {
-            return this.totalDepense;
-        }
-        private get totalDepense(): CalculatedField<number> {
-            return this.__totalDepense;
-        }
-
 
     }
 
