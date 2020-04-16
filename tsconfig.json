@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es2019",
+        "lib": [
+            "es2019",
+            "dom"
+        ],
+        "charset": "UTF-8",
+        "inlineSourceMap": true,
+        "noEmitOnError": true,
+        "removeComments": true,
+        "noImplicitAny": false,
+        "noImplicitThis": false,
+        "noImplicitReturns": false
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
