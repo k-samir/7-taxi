@@ -399,10 +399,6 @@ var scr;
     var containers;
 
     (function (containers) {
-      /**
-       * A field on which it contain a single value.<br>
-       * It require a final/readonly value on the constructor.
-       */
       var FinalizeField = /*#__PURE__*/function () {
         function FinalizeField(field) {
           _classCallCheck(this, FinalizeField);
@@ -422,10 +418,6 @@ var scr;
       }();
 
       containers.FinalizeField = FinalizeField;
-      /**
-       * A field on which it contain a single value.<br>
-       * It does not require a value on the constructor and can receive a field or the generic type as an argument
-       */
 
       var ModifiableField = /*#__PURE__*/function () {
         function ModifiableField(field) {
@@ -442,10 +434,7 @@ var scr;
         }, {
           key: "setField",
           value: function setField(field) {
-            if (field != null) {
-              if ('getField' in field) this.__field = field.getField();else this.__field = field;
-            }
-
+            if (field != null) this.__field = 'getField' in field ? field.getField() : field;
             return this;
           }
         }]);
@@ -454,11 +443,6 @@ var scr;
       }();
 
       containers.ModifiableField = ModifiableField;
-      /**
-       * A field container with a dependency on another field.<br>
-       * It will trigger the {@link #getCallbackOnModification} when a modification is reached for the field.<br>
-       * Don't forget, it's only a container, no trigger will be placed on the field received via the constructor.
-       */
 
       var DependantField = /*#__PURE__*/function () {
         function DependantField(value1, value2) {
@@ -468,15 +452,12 @@ var scr;
           this.value2 = value2;
 
           if (value2 == undefined) {
-            //only no field and callback (1st) can be received by the constructor.
             this.__field = new ModifiableField();
             this.__callbackOnModification = value1;
           } else if ('getField' in value2) {
-            //only a field (1st) and a callback (2nd) can be received by the constructor.
             this.__field = value2;
             this.__callbackOnModification = value1;
           } else {
-            //only a field (2nd) and a callback (1st) can be received by the constructor.
             this.__field = value1;
             this.__callbackOnModification = value2;
           }
@@ -506,11 +487,6 @@ var scr;
       }();
 
       containers.DependantField = DependantField;
-      /**
-       * A field container with a calculated field.<br>
-       * The callback will only be executed when getting the value if and only if the field has been calculated.<br>
-       * Call {@link #setToNotCalculated} when wanting to call again the callback inside on the next {@link #getField} call.
-       */
 
       var CalculatedField = /*#__PURE__*/function () {
         function CalculatedField(callbackOnModification) {
@@ -559,10 +535,6 @@ var scr;
       }();
 
       containers.CalculatedField = CalculatedField;
-      /**
-       * A dual field container from 2 {@link MutableField}<br>
-       * The fields can be received via the constructor or initialize (by default) to a new {@link ModifiableField}.
-       */
 
       var DifferenceField = /*#__PURE__*/function () {
         function DifferenceField(startField, endField) {

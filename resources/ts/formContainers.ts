@@ -70,12 +70,8 @@ export namespace scr{export namespace form{export namespace containers{
         }
 
         public setField(field: T | AccessibleField<T>): this {
-            if (field != null) {
-                if ('getField' in field)
-                    this.__field = field.getField();
-                else
-                    this.__field = field;
-            }
+            if (field != null)
+                this.__field = ('getField' in field) ? field.getField() : field;
             return this;
         }
 
@@ -229,8 +225,7 @@ export namespace scr{export namespace form{export namespace containers{
         public setBothFields(allValues: T | AccessibleField<T>): this;
         public setBothFields(startValue: T | AccessibleField<T>, endValue: T | AccessibleField<T>): this;
         public setBothFields(value1: T | AccessibleField<T>, value2?: T | AccessibleField<T>): this {
-            return this.setStart(value1)
-                .setEnd((value2 == undefined) ? value1 : value2);
+            return this.setStart(value1).setEnd((value2 == undefined) ? value1 : value2);
         }
 
     }
