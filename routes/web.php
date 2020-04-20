@@ -22,4 +22,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/form/driver', 'FormDriverController@addRequest')->name('formDriver')->middleware('auth');
+Route::get('/form/driver', 'MainController@newDriverRequest')->name('formDriver')->middleware('auth');
+
+Route::get('/form/driver/add', 'FormDriverController@addRequest')->name('formDriverAdd')->middleware('auth');
