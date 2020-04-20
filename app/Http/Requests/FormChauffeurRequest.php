@@ -25,25 +25,25 @@ class FormChauffeurRequest extends FormRequest
     public function rules()
     {
         return [
-            'driverNo' => ['integer', 'required',],
-            'taxiNo' => ['integer',],
+            'driverNo' => ['integer', 'min:1', 'required',],
+            'taxiNo' => ['integer', 'min:1',],
             'dateStart' => ['date', 'after_or_equal:today',],
-            'dateEnd' => ['date', 'after_or_equal:today',],
-            'recipe' => ['numeric',],
+            'dateEnd' => ['date', 'after_or_equal:dateStart',],
+            'recipe' => ['numeric', 'min:0',],
 
-            'mileageStart' => ['integer',],
-            'mileageEnd' => ['integer',],
-            'mileageLadenStart' => ['integer',],
-            'mileageLadenEnd' => ['integer',],
-            'amountOfPassengersStart' => ['integer',],
-            'amountOfPassengersEnd' => ['integer',],
-            'mileageInVehicleStart' => ['integer',],
-            'mileageInVehicleEnd' => ['integer',],
+            'mileageStart' => ['integer', 'min:0',],
+            'mileageEnd' => ['integer', 'min:mileageStart',],
+            'mileageLadenStart' => ['integer', 'min:0',],
+            'mileageLadenEnd' => ['integer', 'min:mileageLadenStart',],
+            'amountOfPassengersStart' => ['integer', 'min:0',],
+            'amountOfPassengersEnd' => ['integer', 'min:amountOfPassengersStart',],
+            'mileageInVehicleStart' => ['integer', 'min:0',],
+            'mileageInVehicleEnd' => ['integer', 'min:mileageInVehicleStart',],
 
             'salary' => ['numeric', 'required',],
-            'gaz' => ['numeric',],
-            'credit' => ['numeric',],
-            'various' => ['numeric',],
+            'gaz' => ['numeric', 'min:0',],
+            'credit' => ['numeric', 'min:0',],
+            'various' => ['numeric', 'min:0',],
         ];
     }
 }
