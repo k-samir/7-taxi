@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class FormChauffeurRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class FormChauffeurRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -24,7 +25,27 @@ class FormChauffeurRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'driverNo' => ['integer', 'required',],
+            'taxiNo' => ['integer',],
+            'dateStart' => ['date', 'after_or_equal:today',],
+            'timeStart' => ['time',],
+            'dateEnd' => ['date', 'after_or_equal:today',],
+            'timeEnd' => ['time',],
+            'recipe' => ['numeric',],
+
+            'mileageStart' => ['integer',],
+            'mileageEnd' => ['integer',],
+            'mileageLadenStart' => ['integer',],
+            'mileageLadenEnd' => ['integer',],
+            'amountOfPassengersStart' => ['integer',],
+            'amountOfPassengersEnd' => ['integer',],
+            'mileageInVehicleStart' => ['integer',],
+            'mileageInVehicleEnd' => ['integer',],
+
+            'salary' => ['numeric', 'required',],
+            'gaz' => ['numeric',],
+            'credit' => ['numeric',],
+            'various' => ['numeric',],
         ];
     }
 }
