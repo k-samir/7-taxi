@@ -28,9 +28,7 @@ class FormChauffeurRequest extends FormRequest
             'driverNo' => ['integer', 'required',],
             'taxiNo' => ['integer',],
             'dateStart' => ['date', 'after_or_equal:today',],
-            'timeStart' => ['time',],
             'dateEnd' => ['date', 'after_or_equal:today',],
-            'timeEnd' => ['time',],
             'recipe' => ['numeric',],
 
             'mileageStart' => ['integer',],
