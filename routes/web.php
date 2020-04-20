@@ -21,3 +21,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/form/driver', 'FormDriverController@addRequest')->name('formDriver')->middleware('auth');
