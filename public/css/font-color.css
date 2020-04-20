@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+.font-turquoise, .font-green, .font-yellow, .font-orange, .font-orangered, .font-pink, .font-gold, .font-silver {
+    transition: 5s;
+}
+
+.font-turquoise {
+    background-color: #78dbcc;
+}
+
+.font-green {
+    background-color: #c7f386;
+}
+
+.font-yellow {
+    background-color: #efef92;
+}
+
+.font-orange {
+    background-color: #fdcb90;
+}
+
+.font-orangered {
+    background-color: #fa936f;
+}
+
+.font-pink {
+    background-color: #ffc0cb;
+}
+
+.font-gold {
+    background-color: #ecc540;
+}
+
+.font-silver {
+    background-color: #c0c0c0;
+}

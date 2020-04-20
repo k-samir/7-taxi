@@ -514,7 +514,7 @@ var scr;
           key: "getField",
           value: function getField() {
             if (!this.__isFieldCalculated) {
-              this.__callbackOnModification();
+              this.__field.setField(this.__callbackOnModification());
 
               this.setToCalculated();
             }
