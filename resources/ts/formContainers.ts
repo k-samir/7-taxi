@@ -117,7 +117,7 @@ export namespace scr{export namespace form{export namespace containers{
             return this.__field.getField();
         }
 
-        public setField(field: AccessibleField<T> | T): this {
+        public setField(field: T | AccessibleField<T>): this {
             this.__field.setField(field);
             this.getCallbackOnModification()();
             return this;
@@ -155,7 +155,7 @@ export namespace scr{export namespace form{export namespace containers{
 
         public getField(): T {
             if (!this.__isFieldCalculated) {
-                this.__callbackOnModification();
+                this.__field.setField(this.__callbackOnModification());
                 this.setToCalculated();
             }
             return this.__field.getField();

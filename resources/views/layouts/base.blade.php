@@ -40,7 +40,9 @@
         <script>
             (() => {
                 let index = 0;
-                let possibilities = ["font-green", "font-turquoise", "font-yellow", "font-orange", "font-orangered", "font-pink", "font-gold", "font-silver"];
+                let possibilities = ["font-green", "font-turquoise",
+                    "font-yellow", "font-orange", "font-orangered",
+                    "font-pink", "font-gold", "font-silver"];
                 let element = document.getElementById("body");
                 element.classList.add(possibilities[0]);
 
