@@ -24,8 +24,9 @@
 </head>
 
 <body>
-<h1>@yield('title')</h1>
-@yield('body-content')
+    @section('body-content')
+        <h1>@yield('title')</h1>
+    @show
 
 
 <scripts>
