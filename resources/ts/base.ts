@@ -1,7 +1,30 @@
 export namespace src{export namespace base{
 
+    function getBodyClassList(): DOMTokenList {
+        return document.getElementById("base-body").classList;
+    }
+
+    function getNavigationBarClassList(): DOMTokenList {
+        return document.getElementById("navigation-bar").classList;
+    }
+
+    function getNavigationsTabClassList(): DOMTokenList[] {
+        let returnedElement = [];
+        let menus = document.getElementsByClassName("dropdown-menu");
+        for (let i = 0; i < menus.length; i++)
+            returnedElement[i] = menus.item(i).classList;
+        return returnedElement;
+    }
+
+    function getNavigationsTextClassList(): DOMTokenList[] {
+        let returnedElement = [];
+        let menus = document.getElementsByClassName("dropdown-item");
+        for (let i = 0; i < menus.length; i++)
+            returnedElement[i] = menus.item(i).classList;
+        return returnedElement;
+    }
+
     export class BaseTask {
-        private static readonly BODY_ID: string = "base-body";
         private static readonly DELAY_TIME: number = 10000;
 
 
@@ -26,34 +49,37 @@ export namespace src{export namespace base{
             return this.__isDarkModeEnable;
         }
 
-        public enableDarkMode(): this {
-            return this.setDarkMode(true);
-        }
-
-        public disableDarkMode(): this {
-            return this.setDarkMode(false);
-        }
-
         public setDarkMode(isEnable: boolean): this {
-            this.__isDarkModeEnable = isEnable;
+            if (isEnable !== this.__isDarkModeEnable) {
+                this.__isDarkModeEnable = isEnable;
+
+                if (isEnable) {
+                    getNavigationBarClassList().remove("navbar-light", "bg-light");
+                    getNavigationsTabClassList().forEach((navTab) => navTab.remove("bg-light"));
+                    getNavigationsTextClassList().forEach((navText) => navText.remove("text-dark"));
+                } else {
+                    getNavigationBarClassList().remove("navbar-dark", "bg-dark");
+                    getNavigationsTabClassList().forEach((navTab) => navTab.remove("bg-dark"));
+                    getNavigationsTextClassList().forEach((navText) => navText.remove("text-light"));
+                }
+
+                getNavigationBarClassList().add("navbar-" + this.getActiveDarkMode(), "bg-" + this.getActiveDarkMode());
+                getNavigationsTabClassList().forEach((navTab) => navTab.add("bg-" + this.getActiveDarkMode()));
+                getNavigationsTextClassList().forEach((navText) => navText.add("text-" + this.getReverseActiveDarkMode()));
+            }
             return this;
         }
 
-        public getActiveDarkMode():string{
+        public getActiveDarkMode(): string {
             return this.isDarkModeEnable() ? "dark" : "light";
+        }
+        public getReverseActiveDarkMode(): string {
+            return this.isDarkModeEnable() ? "light":"dark";
         }
 
 
         public isChangingColorAutomatically(): boolean {
             return this.__isChangingColorAutomatically;
-        }
-
-        public enableChangeColorAutomatically() {
-            this.setChangeColorAutomatically(true);
-        }
-
-        public disableChangeColorAutomatically() {
-            this.setChangeColorAutomatically(false);
         }
 
         public setChangeColorAutomatically(isChangingColorAutomatically: boolean): this {
@@ -94,25 +120,19 @@ export namespace src{export namespace base{
             return this.__currentPossibility;
         }
 
-
-        private getBodyClassList(): DOMTokenList {
-            return document.getElementById(BaseTask.BODY_ID).classList;
-        }
-
-
         public execute(): void {
             if (!this.__isInitializationOnExecuteSet) {
-                this.getBodyClassList().add(this.__currentPossibility);
+                getBodyClassList().add(this.__currentPossibility);
                 this.__isInitializationOnExecuteSet = true;
             }
             setTimeout(() => this.__execute(), BaseTask.DELAY_TIME);
         }
 
         private __execute(): void {
-            this.getBodyClassList().remove(this.getCurrentPossibility());
+            getBodyClassList().remove(this.getCurrentPossibility());
             this.__currentIndex = (this.__currentIndex == this.lastIndexOfPossibilities) ? 0 : this.__currentIndex + 1;
 
-            this.getBodyClassList().add(this.setCurrentPossibility(this.__currentIndex).getCurrentPossibility());
+            getBodyClassList().add(this.setCurrentPossibility(this.__currentIndex).getCurrentPossibility());
 
 
             if (this.isChangingColorAutomatically())//Re-execute itself after
@@ -121,7 +141,8 @@ export namespace src{export namespace base{
 
     }
 
-}}
+}
+}
 
 import BaseTask = src.base.BaseTask;
 
@@ -129,8 +150,8 @@ let baseTask: BaseTask;
 (() => {
     baseTask = new BaseTask();
     baseTask.execute();
-})();
 
-export function changeDarkOrLightMode() {
-    baseTask.execute();
-}
+    window["baseTask"] = baseTask;
+    window["changeDarkOrLightMode"] = () => baseTask.setDarkMode(!baseTask.isDarkModeEnable());
+    window["changeAutomaticColor"] = () => baseTask.setChangeColorAutomatically(!baseTask.isChangingColorAutomatically());
+})();

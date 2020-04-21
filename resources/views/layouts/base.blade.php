@@ -22,50 +22,45 @@
     @yield('styles')
 </head>
 
-<body id="body">
-    <div class="container-fluid mb-auto border-bottom">
-        <div class="col"><h2 class="m-0 font-weight-bolder">Projet - Taxi</h2></div>
-        <div class="container">
-            <div class="row">
-                <ul class="navbar-nav col-10">
-                    <li class="nav-item"><a class="nav-link border-left font-weight-bold" href="{{url('/')}}">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link font-weight-bold" href="{{url('/chauffeur')}}">Formulaire shift</a></li>
-                    <li class="nav-item"><a class="nav-link font-weight-bold" href="{{url('/ajoutChauffeur')}}">Ajout chauffeur</a></li>
-                </ul>
-                <div class="col-2">
-                    <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="changeDarkOrLightMode()">Mode obscur</button>
-                </div>
-            </div>
+<body id="base-body">
+<div class="container-fluid mb-auto border-bottom">
+    <nav id="navigation-bar" class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="navbar-brand"><h2 class="m-0 font-weight-bolder">Projet - Taxi</h2></div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item font-weight-bold"><a class="nav-link" href="{{url('/')}}">Accueil</a></li>
+                <li class="nav-item dropdown font-weight-bold">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulaires de chauffeur</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{url('/chauffeur')}}">Formulaire shift</a>
+                        <a class="dropdown-item" href="{{url('/chauffeur')}}">Ajout chauffeur</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown font-weight-bold">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <button type="button" class="navigation-text dropdown-item" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="changeDarkOrLightMode()">Mode obscur</button>
+                        <button type="button" class="navigation-text dropdown-item" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="changeAutomaticColor()">Couleurs automatique</button>
+                    </div>
+                </li>
+            </ul>
         </div>
-    </div>
-    @section('body-content')
-        <h1>@yield('title')</h1>
-    @show
+    </nav>
+</div>
+@section('body-content')
+    <h1>@yield('title')</h1>
+@show
 
-    <scripts>
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-        @yield('afterScripts')
-
-        <script>
-            (() => {
-                let index = 0;
-                let possibilities = ["font-green", "font-turquoise",
-                    "font-yellow", "font-orange", "font-orangered",
-                    "font-pink", "font-gold", "font-silver"];
-                let element = document.getElementById("body");
-                element.classList.add(possibilities[0]);
-
-                let callback = () => {
-                    element.classList.remove(possibilities[index]);
-                    index = (index === possibilities.length - 1) ? 0 : index + 1;
-                    element.classList.add(possibilities[index]);
-                    setTimeout(callback, 10000);
-                };
-                setTimeout(callback, 10000);
-            })();
-        </script>
-    </scripts>
+<scripts>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/base.js') }}" defer></script>
+    @yield('afterScripts')
+</scripts>
 </body>
 </html>
