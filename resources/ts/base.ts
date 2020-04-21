@@ -66,6 +66,8 @@ export namespace src{export namespace base{
                 getNavigationBarClassList().add("navbar-" + this.getActiveDarkMode(), "bg-" + this.getActiveDarkMode());
                 getNavigationsTabClassList().forEach((navTab) => navTab.add("bg-" + this.getActiveDarkMode()));
                 getNavigationsTextClassList().forEach((navText) => navText.add("text-" + this.getReverseActiveDarkMode()));
+
+                document.getElementById("btn-obscur-light").textContent = "Mode " + (isEnable ? "clair" : "obscur");
             }
             return this;
         }
