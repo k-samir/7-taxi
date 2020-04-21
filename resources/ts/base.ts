@@ -14,19 +14,11 @@ export namespace src{export namespace base{
         private readonly possibilities: string[] = ["font-green", "font-turquoise", "font-yellow", "font-orange", "font-orangered", "font-pink", "font-gold", "font-silver"];
         private readonly lastIndexOfPossibilities = this.possibilities.length - 1;
 
-        private __bodyElement: HTMLElement;
-
-
         constructor(isDarkModeEnable?: boolean) {
-            this.__initElement().setCurrentPossibility(0);
+            this.setCurrentPossibility(0);
             if (isDarkModeEnable !== undefined)
                 this.setDarkMode(isDarkModeEnable);
 
-        }
-
-        private __initElement(): this {
-            this.__bodyElement = document.getElementById(BaseTask.BODY_ID);
-            return this;
         }
 
 
@@ -100,7 +92,7 @@ export namespace src{export namespace base{
 
 
         private getBodyClassList(): DOMTokenList {
-            return this.__bodyElement.classList;
+            return document.getElementById(BaseTask.BODY_ID).classList;
         }
 
 
