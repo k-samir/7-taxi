@@ -14,8 +14,8 @@ export namespace src{export namespace base{
         private readonly possibilities: string[] = ["font-green", "font-turquoise", "font-yellow", "font-orange", "font-orangered", "font-pink", "font-gold", "font-silver"];
         private readonly lastIndexOfPossibilities = this.possibilities.length - 1;
 
-        private bodyElement: HTMLElement;
-        private bodyElementClasses: DOMTokenList;
+        private __bodyElement: HTMLElement;
+        private __bodyElementClasses: DOMTokenList;
 
 
         constructor(isDarkModeEnable?: boolean) {
@@ -25,11 +25,11 @@ export namespace src{export namespace base{
 
         }
 
-        private readonly __initElement: () => this = () => {
-            this.bodyElement = document.getElementById(BaseTask.BODY_ID);
-            this.bodyElementClasses = this.bodyElement.classList;
+        private __initElement(): this {
+            this.__bodyElement = document.getElementById(BaseTask.BODY_ID);
+            this.__bodyElementClasses = this.__bodyElement.classList;
             return this;
-        };
+        }
 
 
         public isDarkModeEnable(): boolean {
@@ -67,6 +67,7 @@ export namespace src{export namespace base{
             return this;
         }
 
+
         /**
          * Set the new possibility from an index and the call
          * {@link setCurrentPossibility} with the {@link isDarkModeEnable} possibility.
@@ -100,28 +101,35 @@ export namespace src{export namespace base{
         }
 
 
+        public removeClassFromBodyElement(classElement: string) {
+            this.__bodyElementClasses.remove(classElement);
+            return this;
+        }
+
+
         public execute(): void {
             if (!this.__isInitializationOnExecuteSet) {
-                this.bodyElementClasses.add(this.__currentPossibility);
+                this.__bodyElementClasses.add(this.__currentPossibility);
                 this.__isInitializationOnExecuteSet = true;
             }
-            setTimeout(this.__execute, BaseTask.DELAY_TIME);
+            setTimeout(()=>this.__execute(), BaseTask.DELAY_TIME);
         }
 
         private __execute(): void {
-            this.bodyElementClasses.remove(this.getCurrentPossibility());
+            this.removeClassFromBodyElement(this.getCurrentPossibility());
             this.__currentIndex = (this.__currentIndex == this.lastIndexOfPossibilities) ? 0 : this.__currentIndex + 1;
 
-            this.bodyElementClasses.add(this.setCurrentPossibility(this.__currentIndex).getCurrentPossibility());
+            this.__bodyElementClasses.add(this.setCurrentPossibility(this.__currentIndex).getCurrentPossibility());
 
 
             if (this.isChangingColorAutomatically())//Re-execute itself after
-                setTimeout(this.__execute, BaseTask.DELAY_TIME);
+                setTimeout(()=>this.__execute(), BaseTask.DELAY_TIME);
         }
 
     }
 
-}}
+}
+}
 
 import BaseTask = src.base.BaseTask;
 
