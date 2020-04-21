@@ -7,7 +7,7 @@ export namespace src{export namespace base{
 
         private __isInitializationOnExecuteSet: boolean = false;
         private __isDarkModeEnable: boolean = false;
-        private __isChangingColorAutomatically: boolean = false;
+        private __isChangingColorAutomatically: boolean = true;
 
         private __currentIndex: number = 0;
         private __currentPossibility: string;
