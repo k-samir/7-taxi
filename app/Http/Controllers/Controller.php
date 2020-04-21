@@ -12,4 +12,9 @@ class Controller extends BaseController
    function affichageChauffeur(Request $request){
        return view("FormulaireChauffeur");
    }
+
+   function ajouterChauffeur(Request $request){
+    return view("FormulaireAjoutChauffeur");
+}
+   
 }

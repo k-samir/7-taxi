@@ -22,13 +22,15 @@
     @yield('styles')
 </head>
 
-<body id="base-body">
+<body id="body">
     <div class="container-fluid mb-auto border-bottom">
         <div class="col"><h2 class="m-0 font-weight-bolder">Projet - Taxi</h2></div>
         <div class="container">
             <div class="row">
                 <ul class="navbar-nav col-10">
                     <li class="nav-item"><a class="nav-link border-left font-weight-bold" href="{{url('/')}}">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link font-weight-bold" href="{{url('/chauffeur')}}">Formulaire shift</a></li>
+                    <li class="nav-item"><a class="nav-link font-weight-bold" href="{{url('/ajoutChauffeur')}}">Ajout chauffeur</a></li>
                 </ul>
                 <div class="col-2">
                     <button type="button" class="btn btn-secondary" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="changeDarkOrLightMode()">Mode obscur</button>
@@ -46,7 +48,24 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         @yield('afterScripts')
 
-        <script src="{{ asset('js/base.js')}}" defer></script>
+        <script>
+            (() => {
+                let index = 0;
+                let possibilities = ["font-green", "font-turquoise",
+                    "font-yellow", "font-orange", "font-orangered",
+                    "font-pink", "font-gold", "font-silver"];
+                let element = document.getElementById("body");
+                element.classList.add(possibilities[0]);
+
+                let callback = () => {
+                    element.classList.remove(possibilities[index]);
+                    index = (index === possibilities.length - 1) ? 0 : index + 1;
+                    element.classList.add(possibilities[index]);
+                    setTimeout(callback, 10000);
+                };
+                setTimeout(callback, 10000);
+            })();
+        </script>
     </scripts>
 </body>
 </html>

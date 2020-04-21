@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 Route::get('/','HomeController@index');
 Route::get('/chauffeur','Controller@affichageChauffeur');
+Route::get('/ajoutChauffeur','Controller@ajouterChauffeur');
 Route::get('/home', 'HomeController@index')->name('home');
 
 
