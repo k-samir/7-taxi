@@ -39,6 +39,10 @@ export namespace src{export namespace base{
             return this;
         }
 
+        public getActiveDarkMode():string{
+            return this.isDarkModeEnable() ? "dark" : "light";
+        }
+
 
         public isChangingColorAutomatically(): boolean {
             return this.__isChangingColorAutomatically;
@@ -60,7 +64,7 @@ export namespace src{export namespace base{
 
         /**
          * Set the new possibility from an index and the call
-         * {@link setCurrentPossibility} with the {@link isDarkModeEnable} possibility.
+         * {@link setCurrentPossibility} concatenated with the {@link getActiveDarkMode}.
          * @param newIndex - the new possible index
          * @throws RangeError if the index is exceeding the last value of {@link lastIndexOfPossibilities}.
          * @throws ReferenceError - if the value received is null or undefined
@@ -79,7 +83,7 @@ export namespace src{export namespace base{
             if (typeof arg1 == "number") {
                 if (arg1 > this.lastIndexOfPossibilities)
                     throw new RangeError("The index \"" + arg1 + "\" is out of the limit received : \"" + this.lastIndexOfPossibilities + "\".");
-                this.setCurrentPossibility(this.possibilities[arg1] + "-" + this.isDarkModeEnable() ? "dark" : "light");
+                this.setCurrentPossibility(this.possibilities[arg1] + "-" + this.getActiveDarkMode());
             } else
                 this.__currentPossibility = arg1;
 
