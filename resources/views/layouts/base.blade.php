@@ -25,9 +25,17 @@
 <body id="body">
     <div class="container-fluid mb-auto border-bottom">
         <div class="col"><h2 class="m-0 font-weight-bolder">Projet - Taxi</h2></div>
-        <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link border-left font-weight-bold" href="{{url('/')}}">Accueil</a></li>
-        </ul>
+        
+
+        <ul class="nav">
+        <li class="nav-item"><a class="nav-link border-left font-weight-bold" href="{{url('/')}}">Accueil</a></li>
+            
+            <li class="nav-item"><a class="nav-link font-weight-bold" href="{{url('/chauffeur')}}">Formulaire shift</a></li>
+            <li class="nav-item"><a class="nav-link font-weight-bold" href="{{url('/ajoutChauffeur')}}">Ajout chauffeur</a></li>
+</ul>
+
+
+
     </div>
     @section('body-content')
         <h1>@yield('title')</h1>
