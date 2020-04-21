@@ -12,7 +12,8 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css')
-    .ts('resources/ts/formContainers.ts','public/ts')
-    .ts('resources/ts/formChauffeurClasses.ts','public/ts')
+    .sass('resources/sass/app.scss', 'public/css')
+    .ts('resources/ts/base.ts', 'public/ts')
+    .ts('resources/ts/formContainers.ts', 'public/ts')
+    .ts('resources/ts/formChauffeurClasses.ts', 'public/ts')
 ;
