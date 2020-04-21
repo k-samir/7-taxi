@@ -11,7 +11,7 @@
     @yield('headContent')
 
 
-    @yield('beforeScripts')
+    @yield('before-scripts')
 
     <style>
         body {
@@ -36,8 +36,10 @@
             </div>
         </div>
     </div>
-    <h1>@yield('title')</h1>
-    @yield('bodyContent')
+    @section('body-content')
+        <h1>@yield('title')</h1>
+    @show
+
     <scripts>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
