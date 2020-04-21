@@ -15,7 +15,6 @@ export namespace src{export namespace base{
         private readonly lastIndexOfPossibilities = this.possibilities.length - 1;
 
         private __bodyElement: HTMLElement;
-        private __bodyElementClasses: DOMTokenList;
 
 
         constructor(isDarkModeEnable?: boolean) {
@@ -27,7 +26,6 @@ export namespace src{export namespace base{
 
         private __initElement(): this {
             this.__bodyElement = document.getElementById(BaseTask.BODY_ID);
-            this.__bodyElementClasses = this.__bodyElement.classList;
             return this;
         }
 
@@ -101,35 +99,33 @@ export namespace src{export namespace base{
         }
 
 
-        public removeClassFromBodyElement(classElement: string) {
-            this.__bodyElementClasses.remove(classElement);
-            return this;
+        private getBodyClassList(): DOMTokenList {
+            return this.__bodyElement.classList;
         }
 
 
         public execute(): void {
             if (!this.__isInitializationOnExecuteSet) {
-                this.__bodyElementClasses.add(this.__currentPossibility);
+                this.getBodyClassList().add(this.__currentPossibility);
                 this.__isInitializationOnExecuteSet = true;
             }
-            setTimeout(()=>this.__execute(), BaseTask.DELAY_TIME);
+            setTimeout(() => this.__execute(), BaseTask.DELAY_TIME);
         }
 
         private __execute(): void {
-            this.removeClassFromBodyElement(this.getCurrentPossibility());
+            this.getBodyClassList().remove(this.getCurrentPossibility());
             this.__currentIndex = (this.__currentIndex == this.lastIndexOfPossibilities) ? 0 : this.__currentIndex + 1;
 
-            this.__bodyElementClasses.add(this.setCurrentPossibility(this.__currentIndex).getCurrentPossibility());
+            this.getBodyClassList().add(this.setCurrentPossibility(this.__currentIndex).getCurrentPossibility());
 
 
             if (this.isChangingColorAutomatically())//Re-execute itself after
-                setTimeout(()=>this.__execute(), BaseTask.DELAY_TIME);
+                setTimeout(() => this.__execute(), BaseTask.DELAY_TIME);
         }
 
     }
 
-}
-}
+}}
 
 import BaseTask = src.base.BaseTask;
 
