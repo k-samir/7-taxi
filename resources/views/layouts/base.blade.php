@@ -52,9 +52,7 @@
     </nav>
 </div>
 @section('body-content')
-    <h1 style="
-    text-align: center;
-">@yield('title')</h1>
+    <h1 class="align-content-center">@yield('title')</h1>
 @show
 
 <scripts>
