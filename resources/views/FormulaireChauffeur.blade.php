@@ -62,11 +62,8 @@
                         <input type="number" name="recetteReel" id="recetteReel" class="form-control" readonly>
                     </div>
                 </div>
-        </div>
-        <div style="margin-top:2rem;text-align:center">
-        <button type="button" class="btn btn-success mt-3" style="width:170px" >Envoyer</button>
-        </div>
-    </form>
+            </div>
+            <button type="button" class="btn btn-success mt-xl-3 align-self-center">Envoyer</button>
+        </form>
     </div>
-    @endsection
-    
+@endsection
