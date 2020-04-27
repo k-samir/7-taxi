@@ -64,7 +64,9 @@
                     </div>
                 </div>
         </div>
-        <button type="button" class="btn btn-success mt-3" >Envoyer</button>
+        <div style="margin-top:2rem;text-align:center">
+        <button type="button" class="btn btn-success mt-3" style="width:170px" >Envoyer</button>
+        </div>
     </form>
     </div>
     @endsection
