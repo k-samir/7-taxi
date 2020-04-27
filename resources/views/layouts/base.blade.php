@@ -17,6 +17,8 @@
         body {
             background-color: #cbca89;
         }
+        
+
     </style>
     <link rel="stylesheet" type="text/css" href="css/font-color.css">
     @yield('styles')
