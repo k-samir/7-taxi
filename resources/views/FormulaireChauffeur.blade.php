@@ -3,6 +3,11 @@
 
 @section('before-scripts')
     <script>
+
+        /**
+         * Update the value of the element by id 'salaire'
+         * to the value 'recetteReel' multiplied by the commision receive.
+         */
         function salaire() {
             let commision = 0.36;
             document.getElementById('salaire').value = document.getElementById('recetteReel').value * commision;
@@ -15,18 +20,18 @@
         }
 
         /**
-         * Fonction qui permet de calculer la recette réel
+         * Method to calculate the real recipe from the difference of initial recipe and final recipe plu the fix price.<br>
+         * If the realRecipe is greater than 0, then, the method {@link salaire} will be called.
          */
-        function updateRecetteReel() {
+        function updateRealRecipe() {
             let startingRecipe = parseInt(document.getElementById('recetteInit').value);
             let endingRecipe = parseInt(document.getElementById('recetteFinal').value);
             let fixPrice = parseInt(document.getElementById('prixFixe').value);
 
-            var reel = (endingRecipe - startingRecipe) + fixPrice;
-            document.getElementById('recetteReel').value = reel;
-            if (reel > 0) {
-                salaire();
-            }
+            let realRecipe = endingRecipe - startingRecipe + fixPrice;
+            document.getElementById('recetteReel').value = realRecipe;
+            if (realRecipe > 0) salaire();
+
         }
     </script>
 @endsection
@@ -65,19 +70,19 @@
                 <div class="col">
                     <div class="group-control">
                         <label for="numTaxi">Recette initial</label>
-                        <input type="number" name="recetteInit" id="recetteInit" class="form-control" onchange="updateRecetteReel()">
+                        <input type="number" name="recetteInit" id="recetteInit" class="form-control" onchange="updateRealRecipe()">
                     </div>
                 </div>
                 <div class="col">
                     <div class="group-control">
                         <label for="numTaxi">Recette final</label>
-                        <input type="number" name="recetteFinal" id="recetteFinal" class="form-control" onchange="updateRecetteReel()">
+                        <input type="number" name="recetteFinal" id="recetteFinal" class="form-control" onchange="updateRealRecipe()">
                     </div>
                 </div>
                 <div class="col">
                     <div class="group-control">
                         <label for="diff">Prix fixe</label>
-                        <input type="number" name="prixFixe" id="prixFixe" class="form-control" onchange="updateRecetteReel()">
+                        <input type="number" name="prixFixe" id="prixFixe" class="form-control" onchange="updateRealRecipe()">
                     </div>
                 </div>
                 <div class="col">

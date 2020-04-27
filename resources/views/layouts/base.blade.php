@@ -23,16 +23,21 @@
 </head>
 
 <body id="base-body">
+<<<<<<< HEAD
 <div class="container-fluid mb-auto">
     <nav id="navigation-bar" class="navbar navbar-expand-lg navbar-light bg-light container">
         <div class="navbar-brand"><h2 class="m-0 font-weight-bolder">Projet - Taxi</h2></div>
+=======
+<div id="navigation-bar" class="container-fluid mb-auto navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="{{url('/')}}"><h2 class="m-0 font-weight-bolder">Projet - Taxi</h2></a>
+>>>>>>> c15eea7e70b229a8f0e95f6fb3902610bfe73aee
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item font-weight-bold"><a class="nav-link" href="{{url('/')}}">Accueil</a></li>
                 <li class="nav-item dropdown font-weight-bold">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulaires de chauffeur</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -58,9 +63,7 @@
     </nav>
 </div>
 @section('body-content')
-    <h1 style="
-    text-align: center;
-">@yield('title')</h1>
+    <h1 class="align-content-center">@yield('title')</h1>
 @show
 
 <scripts>
