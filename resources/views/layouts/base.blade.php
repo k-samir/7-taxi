@@ -23,8 +23,8 @@
 </head>
 
 <body id="base-body">
-<div class="container-fluid mb-auto border-bottom">
-    <nav id="navigation-bar" class="navbar navbar-expand-lg navbar-light bg-light">
+<div class="container-fluid mb-auto">
+    <nav id="navigation-bar" class="navbar navbar-expand-lg navbar-light bg-light container">
         <div class="navbar-brand"><h2 class="m-0 font-weight-bolder">Projet - Taxi</h2></div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -48,10 +48,10 @@
                     </div>
                 </li>
                 @guest
-                    <li class="nav-item font-weight-bold" style="margin-left:400px;"><a class="nav-link" href="{{url('/')}}">Connexion</a></li>
+                    <li class="nav-item font-weight-bold" style="margin-left:310px;"><a class="nav-link" href="{{url('/')}}">Connexion</a></li>
                     <li class="nav-item font-weight-bold"><a class="nav-link" href="{{url('/')}}">Inscription</a></li>
                 @else    
-                    <li class="nav-item font-weight-bold mr-3"><a href="nav-link" href="">Déconexion</a></li>
+                    <li class="nav-item font-weight-bold"><a href="nav-link" href="">Déconexion</a></li>
                 @endguest
             </ul>
         </div>
