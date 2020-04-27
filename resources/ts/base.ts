@@ -6,6 +6,7 @@ export namespace src{export namespace base{
         private constructor() {
         }
 
+
         public static getBodyClassList(): DOMTokenList {
             return ListGetter.getID("base-body");
         }
@@ -14,16 +15,13 @@ export namespace src{export namespace base{
             return ListGetter.getID("navigation-bar");
         }
 
-
         public static getNavigationsTabClassList(): DOMTokenList[] {
             return ListGetter.getClass("dropdown-menu");
         }
 
-
         public static getNavigationsTextClassList(): DOMTokenList[] {
             return ListGetter.getClass("dropdown-item");
         }
-
 
         public static getFormControlList(): DOMTokenList[] {
             return ListGetter.getClass("form-control");
@@ -78,15 +76,18 @@ export namespace src{export namespace base{
                     ListGetter.getNavigationBarClassList().remove("navbar-light", "bg-light");
                     ListGetter.getNavigationsTabClassList().forEach((navTab) => navTab.remove("bg-light"));
                     ListGetter.getNavigationsTextClassList().forEach((navText) => navText.remove("text-dark"));
+                    ListGetter.getFormControlList().forEach((form) => form.remove("text-dark", "bg-light"));
                 } else {
                     ListGetter.getNavigationBarClassList().remove("navbar-dark", "bg-dark");
                     ListGetter.getNavigationsTabClassList().forEach((navTab) => navTab.remove("bg-dark"));
                     ListGetter.getNavigationsTextClassList().forEach((navText) => navText.remove("text-light"));
+                    ListGetter.getFormControlList().forEach((form) => form.remove("text-light", "bg-dark"));
                 }
 
                 ListGetter.getNavigationBarClassList().add("navbar-" + this.getActiveDarkMode(), "bg-" + this.getActiveDarkMode());
                 ListGetter.getNavigationsTabClassList().forEach((navTab) => navTab.add("bg-" + this.getActiveDarkMode()));
                 ListGetter.getNavigationsTextClassList().forEach((navText) => navText.add("text-" + this.getReverseActiveDarkMode()));
+                ListGetter.getFormControlList().forEach((form) => form.add("text-" + this.getReverseActiveDarkMode(), "bg-" + this.getActiveDarkMode()));
 
                 document.getElementById("btn-obscur-light").textContent = "Mode " + (isEnable ? "clair" : "obscur");
             }
@@ -165,7 +166,8 @@ export namespace src{export namespace base{
 
     }
 
-}}
+}
+}
 
 import BaseTask = src.base.BaseTask;
 
