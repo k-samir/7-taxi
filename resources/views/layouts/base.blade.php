@@ -49,6 +49,12 @@
                         <button type="button" class="navigation-text dropdown-item" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="changeAutomaticColor()">Couleurs automatique</button>
                     </div>
                 </li>
+                @guest
+                    <li class="nav-item font-weight-bold" style="margin-left:400px;"><a class="nav-link" href="{{url('/')}}">Connexion</a></li>
+                    <li class="nav-item font-weight-bold"><a class="nav-link" href="{{url('/')}}">Inscription</a></li>
+                @else    
+                    <li class="nav-item font-weight-bold mr-3"><a href="nav-link" href="">Déconexion</a></li>
+                @endguest
             </ul>
         </div>
     </nav>
