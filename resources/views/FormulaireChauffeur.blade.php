@@ -3,26 +3,30 @@
 
 @section('before-scripts')
     <script>
-        function salaire(){
-            var commision = 0.36;
+        function salaire() {
+            let commision = 0.36;
             document.getElementById('salaire').value = document.getElementById('recetteReel').value * commision;
         }
-        function difference(depart,arrive,diff){
-            var depart = depart !=0 ? depart : 0;
-            var arrive = arrive !=0 ? arrive : 0;
-            diff.value = arrive - depart
+
+        function difference(depart, arrive, diff) {
+            var departTemp = depart != 0 ? depart : 0;
+            var arriveTemp = arrive != 0 ? arrive : 0;
+            diff.value = arriveTemp - departTemp;
         }
-        function updateRecetteReel(){
-            /* fonction qui permet de calculer la recette réel */
-           var recetteInit = document.getElementById('recetteInit').value != '' ? parseInt(document.getElementById('recetteInit').value) :0 ;
-           var recetteFinal = document.getElementById('recetteFinal').value != '' ?parseInt(document.getElementById('recetteFinal').value) :0 ;
-           var prixFixe = document.getElementById('prixFixe').value != '' ? parseInt(document.getElementById('prixFixe').value) :0;
-           console.table(recetteInit,recetteFinal,prixFixe);
-           var reel = (recetteFinal - recetteInit) + prixFixe;
-           document.getElementById('recetteReel').value = reel;
-           if(reel>0){
-               salaire();
-           }
+
+        /**
+         * Fonction qui permet de calculer la recette réel
+         */
+        function updateRecetteReel() {
+            let startingRecipe = parseInt(document.getElementById('recetteInit').value);
+            let endingRecipe = parseInt(document.getElementById('recetteFinal').value);
+            let fixPrice = parseInt(document.getElementById('prixFixe').value);
+
+            var reel = (endingRecipe - startingRecipe) + fixPrice;
+            document.getElementById('recetteReel').value = reel;
+            if (reel > 0) {
+                salaire();
+            }
         }
     </script>
 @endsection
@@ -51,7 +55,7 @@
                 <div class="col">
                     <div class="group-control">
                         <label for="numTaxi">Date</label>
-                        <input type="datetime-local" name="numTaxi" class="form-control" >
+                        <input type="datetime-local" name="numTaxi" class="form-control">
                     </div>
                 </div>
             </div>
@@ -61,7 +65,7 @@
                 <div class="col">
                     <div class="group-control">
                         <label for="numTaxi">Recette initial</label>
-                        <input type="number" name="recetteInit" id="recetteInit"class="form-control" onchange="updateRecetteReel()">
+                        <input type="number" name="recetteInit" id="recetteInit" class="form-control" onchange="updateRecetteReel()">
                     </div>
                 </div>
                 <div class="col">
@@ -198,10 +202,8 @@
                 </div>
             </div>
 
-        <!--button submit-->
-            <div class="col">
-                <button type="button" class="btn btn-success mt-3" >Envoyer</button>
-            </div>
+            <!--button submit-->
+            <button type="button" class="btn btn-success mt-xl-3 align-self-center">Envoyer</button>
         </form>
     </div>
 @endsection
