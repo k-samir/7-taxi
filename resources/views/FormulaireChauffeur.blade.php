@@ -3,7 +3,7 @@
 
 @section('before-scripts')
     <script>
-        function updateRecetteReel() {
+        function updateRealRecipe() {
             let startingRecipe = parseInt(document.getElementById('recetteInit').value);
             let endingRecipe = parseInt(document.getElementById('recetteFinal').value);
             let fixPrice = parseInt(document.getElementById('prixFixe').value);
@@ -41,19 +41,19 @@
                 <div class="col">
                     <div class="group-control">
                         <label for="numTaxi">Recette initial</label>
-                        <input type="number" name="recetteInit" id="recetteInit" class="form-control"onchange="updateRecetteReel()">
+                        <input type="number" name="recetteInit" id="recetteInit" class="form-control" onchange="updateRecetteReel()">
                     </div>
                 </div>
                 <div class="col">
                     <div class="group-control">
                         <label for="numTaxi">Recette final</label>
-                        <input type="number" name="recetteFinal" id="recetteFinal" class="form-control"onchange="updateRecetteReel()">
+                        <input type="number" name="recetteFinal" id="recetteFinal" class="form-control" onchange="updateRecetteReel()">
                     </div>
                 </div>
                 <div class="col">
                     <div class="group-control">
                         <label for="diff">Prix fixe</label>
-                        <input type="number" name="prixFixe" id="prixFixe" class="form-control"onchange="updateRecetteReel()">
+                        <input type="number" name="prixFixe" id="prixFixe" class="form-control" onchange="updateRecetteReel()">
                     </div>
                 </div>
                 <div class="col">
