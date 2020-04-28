@@ -24,13 +24,13 @@
 
 <body id="base-body">
 <div id="navigation-bar" class="container-fluid mb-auto navbar-light bg-light">
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-md">
         <a class="navbar-brand" href="{{url('/')}}"><h2 class="m-0 font-weight-bolder">Projet - Taxi</h2></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div id="navbarSupportedContent" class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item dropdown font-weight-bold">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulaires de chauffeur</a>
@@ -46,11 +46,13 @@
                         <button type="button" class="navigation-text dropdown-item" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="changeAutomaticColor()">Couleurs automatique</button>
                     </div>
                 </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
                 @guest
-                    <li class="nav-item font-weight-bold" style="margin-left:310px;"><a class="nav-link" href="{{url('/')}}">Connexion</a></li>
-                    <li class="nav-item font-weight-bold"><a class="nav-link" href="{{url('/')}}">Inscription</a></li>
+                    <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{url('/')}}">Connexion</a></li>
+                    <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{url('/')}}">Inscription</a></li>
                 @else
-                    <li class="nav-item font-weight-bold"><a href="nav-link" href="">Déconexion</a></li>
+                    <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{url('/')}}">Déconnexion</a></li>
                 @endguest
             </ul>
         </div>
@@ -64,7 +66,7 @@
 
 <scripts>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"   crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="{{ asset('js/base.js') }}" defer></script>
     @yield('afterScripts')
