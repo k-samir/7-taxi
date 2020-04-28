@@ -47,7 +47,7 @@
                     <label class="input-group-text" for="numTaxi">Numéro du taxi</label>
                     <input id="numTaxi" class="form-control" type="text" name="numTaxi">
                 </div>
-                <div class="col input-group">
+                <div class="col-5 input-group">
                     <label class="input-group-text" for="date_date">Date</label>
                     <input id="date_date" class="form-control" type="date" name="date_date">
                     <input id="date_time" class="form-control" type="time" name="date">
@@ -73,7 +73,7 @@
                 </div>
                 <div class="w-100"></div>
 
-                <h4 class="mx-auto">Nombre de kilomètre dans le taximètre</h4>
+                <h4 class="mx-auto pt-3">Nombre de kilomètre dans le taximètre</h4>
                 <div class="w-100"></div>
                 <div class="col-4 input-group">
                     <label class="input-group-text" for="startingMillage">Début</label>
@@ -89,7 +89,7 @@
                 </div>
                 <div class="w-100"></div>
 
-                <h4 class="mx-auto">Nombre de kilomètre effectué professionellement (dans la journée)</h4>
+                <h4 class="mx-auto pt-3">Nombre de kilomètre effectué professionellement (dans la journée)</h4>
                 <div class="w-100"></div>
                 <div class="col input-group">
                     <label class="input-group-text" for="startingMileageLaden">Début</label>
@@ -105,7 +105,7 @@
                 </div>
                 <div class="w-100"></div>
 
-                <h4 class="mx-auto">Nombre de clients (dans la journée)</h4>
+                <h4 class="mx-auto pt-3">Nombre de clients (dans la journée)</h4>
                 <div class="w-100"></div>
                 <div class="col input-group">
                     <label class="input-group-text" for="startingAmountOfPassengers">Début</label>
@@ -122,7 +122,7 @@
                 <div class="w-100"></div>
 
 
-                <h4 class="mx-auto">Nombre de kilomètre de la voiture</h4>
+                <h4 class="mx-auto pt-3">Nombre de kilomètre de la voiture</h4>
                 <div class="w-100"></div>
                 <div class="col input-group">
                     <label class="input-group-text" for="startingMileageInVehicle">Début</label>
