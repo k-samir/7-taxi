@@ -10,11 +10,11 @@
          */
         function updateSalary() {
             let commision = 0.36;
-            document.getElementById('salary').textContent = document.getElementById('realRecipe').value * commision;
+            document.getElementById('salary').value = document.getElementById('realRecipe').value * commision;
         }
 
         function setDifference(startingValue, endingValue, elementToSetTheValue) {
-            elementToSetTheValue.textContent = startingValue - endingValue;
+            elementToSetTheValue.value = startingValue - endingValue;
         }
 
         /**
@@ -27,7 +27,7 @@
             let fixPrice = parseInt(document.getElementById('fixPrice').value);
 
             let realRecipe = endingRecipe - startingRecipe + fixPrice;
-            document.getElementById('realRecipe').textContent = realRecipe;
+            document.getElementById('realRecipe').value = realRecipe;
             if (realRecipe > 0) updateSalary();
 
         }
