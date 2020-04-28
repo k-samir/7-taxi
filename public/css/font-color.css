@@ -6,10 +6,6 @@
     transition: 5s;
 }
 
-.text-light:hover{
-    background-color: rgba(206, 206, 206, 0.83);
-}
-
 .font-turquoise-light {
     background-color: #78dbcc;
 }
