@@ -2,21 +2,36 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
 
-
-    function addConductorShift(Request $request)
+    /**
+     * @return Renderable
+     */
+    function addConductorShift()
     {
         return view("formulaireChauffeur");
     }
 
-    function addConductor(Request $request)
+    /**
+     * @return Renderable
+     */
+    function addConductor()
     {
         return view("formulaireAjoutChauffeur");
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return Renderable
+     */
+    public function index()
+    {
+        return view('home');
     }
 
 }
