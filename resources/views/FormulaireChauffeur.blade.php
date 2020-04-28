@@ -40,174 +40,144 @@
     @parent
     <div class="container">
         <form action="" method="post">
-            <!--géneral-->
             <div class="row">
-                <!--usager-->
-                <div class="col">
-                    <div class="group-control">
-                        <label for="numTaxi">Usager</label>
-                        <input type="text" name="numTaxi" class="form-control" readonly>
-                    </div>
+                <div class="col input-group">
+                    <label class="input-group-text" for="user">Usager</label>
+                    <input id="user" class="form-control" type="text" name="user" readonly>
                 </div>
-                <!--numTaxi-->
-                <div class="col">
-                    <div class="group-control">
-                        <label for="numTaxi">Numéro du taxi</label>
-                        <input type="text" name="numTaxi" id="numTaxi" class="form-control">
-                    </div>
+                <div class="col input-group">
+                    <label class="input-group-text" for="numTaxi">Numéro du taxi</label>
+                    <input id="numTaxi" class="form-control" type="text" name="numTaxi">
                 </div>
-                <!--date-->
-                <div class="col">
-                    <div class="group-control">
-                        <label for="numTaxi">Date</label>
-                        <input type="datetime-local" name="numTaxi" class="form-control">
-                    </div>
+                <div class="col input-group">
+                    <label class="input-group-text" for="date_date">Date</label>
+                    <input id="date_date" class="form-control" type="date" name="date_date">
+                    <input id="date_time" class="form-control" type="time" name="date">
+                    <label class="input-group-text" for="date_time" hidden></label>
                 </div>
             </div>
 
-            <!--recette-->
             <div class="row">
-                <div class="col">
-                    <div class="group-control">
-                        <label for="numTaxi">Recette initial</label>
-                        <input type="number" name="recetteInit" id="recetteInit" class="form-control" onchange="updateRealRecipe()">
-                    </div>
+                <div class="col input-group">
+                    <label class="input-group-text" for="startRecipe">Recette initial</label>
+                    <input id="startRecipe" class="form-control" type="number" name="recetteInit" onchange="updateRealRecipe()">
                 </div>
-                <div class="col">
-                    <div class="group-control">
-                        <label for="numTaxi">Recette final</label>
-                        <input type="number" name="recetteFinal" id="recetteFinal" class="form-control" onchange="updateRealRecipe()">
-                    </div>
+                <div class="col input-group">
+                    <label class="input-group-text" for="finalRecipe">Recette final</label>
+                    <input id="finalRecipe" class="form-control" type="number" name="finalRecipe" onchange="updateRealRecipe()">
                 </div>
-                <div class="col">
-                    <div class="group-control">
-                        <label for="diff">Prix fixe</label>
-                        <input type="number" name="prixFixe" id="prixFixe" class="form-control" onchange="updateRealRecipe()">
-                    </div>
+                <div class="col input-group">
+                    <label class="input-group-text" for="fixPrice">Prix fixe</label>
+                    <input id="fixPrice" class="form-control" type="number" name="fixPrice" onchange="updateRealRecipe()">
                 </div>
-                <div class="col">
-                    <div class="group-control">
-                        <label for="diff">Recette réel</label>
-                        <input type="number" name="recetteReel" id="recetteReel" class="form-control" readonly onchange="salaire()">
-                    </div>
+                <div class="col input-group">
+                    <label class="input-group-text" for="realRecipe">Recette réel</label>
+                    <input id="realRecipe" class="form-control" type="number" name="realRecipe" readonly onchange="salaire()">
                 </div>
             </div>
 
-        <!--millage-->
-            <!--millage professionnel -->
             <div class="row">
-                <div class="col-4">
-            <label for="KilométrageAutoDepart">Kilométrage taximetre debut</label>
-            <input type="number" name="millageDepart" id="millageDepart"class="form-control" onchange="difference(this.value,document.getElementById('millageArrive').value,document.getElementById('millageFinal'))">
-    </div>
-                <div class="col-4">
-            <label for="kilometrageAutoArrive">Kilométrage taximetre Arrivée</label>
-            <input type="number" name="millageArrive" id="millageArrive" class="form-control" onchange="difference(document.getElementById('millageDepart').value,this.value,document.getElementById('millageFinal'))">
-    </div>
-                <div class="col-4">
-            <label for="millageEffecture">Nombre de kilometre effectué</label>
-            <input type="number" name="millageFinal" id="millageFinal" readonly class="form-control"  onchange="difference()">
-    </div>
-            </div>
-
-            <!--millage pris en charge -->
-            <div class="row">
-                <div class="col-4">
-                    <label for="millageEnCharge">Nombre de kilometrage effectuer professionellement en debut de journée</label>
-                    <input type="number" name="millageEnChargeDebut" id="millageEnChargeDebut" class="form-control" onchange="difference(this.value,document.getElementById('millageEnChargeFin').value,document.getElementById('millageEnChargeFinal'))">
+                <div class="col-4 input-group">
+                    <label class="input-group-text" for="startingMillage">Kilométrage taximètre (début)</label>
+                    <input type="number" name="startingMillage" id="startingMillage" class="form-control" onchange="difference(this.value,document.getElementById('millageArrive').value,document.getElementById('millageFinal'))">
                 </div>
-                <div class="col-4">
-            <label for="millageEnCharge">Nombre de kilometrage effectuer professionellement fin de journée</label>
-            <input type="number" name="millageEnChargeFin" id="millageEnChargeFin" class="form-control" onchange="difference(document.getElementById('millageEnChargeDebut').value,this.value,document.getElementById('millageEnChargeFinal'))">
-    </div>
-                <div class="col-4">
-                    <label for="millageEnChargeDiff">Nombre de kilometrage dans la journée</label>
-                    <input type="number" name="millageEnChargeDiff" id="millageEnChargeFinal" class="form-control" readonly>
+                <div class="col-4 input-group">
+                    <label class="input-group-text" for="endingMillage">Kilométrage taximètre (arrivée)</label>
+                    <input type="number" name="endingMillage" id="endingMillage" class="form-control" onchange="difference(document.getElementById('millageDepart').value,this.value,document.getElementById('millageFinal'))">
+                </div>
+                <div class="col-4 input-group">
+                    <label class="input-group-text" for="totalMillage">Kilométrage taximètre (total)</label>
+                    <input type="number" name="totalMillage" id="totalMillage" readonly class="form-control" onchange="difference()">
                 </div>
             </div>
 
-            <!--prise en charge-->
             <div class="row">
-            <div class="col-4">
-            <label for="priseEnCharge">Nombre de clients début de journée</label>
-            <input type="number" name="PriseEnChargeDebut" id="PriseEnChargeDebut" class="form-control" onchange="difference(this.value,document.getElementById('PriseEnChargeFin').value,document.getElementById('nbPriseEnCharge'))">
-    </div>
-            <div class="col-4">
-            <label for="millageEnCharge">Nombre de clients fin de journée</label>
-            <input type="number" name="PriseEnChargeFin" id="PriseEnChargeFin" class="form-control" onchange="difference(document.getElementById('PriseEnChargeDebut').value,this.value,document.getElementById('nbPriseEnCharge'))">
-    </div>
-            <div class="col-4">
-            <label for="millageEnChargeDiff">Nombre de clients dans la journée</label>
-            <input type="number" name="millageEnChargeDiff" id="nbPriseEnCharge" class="form-control" readonly>
-    </div>
-    </div>
-
-            <!--millage auto-->
-            <div class="row">
-            <div class="col-4">
-            <label for="priseEnCharge">Kilometre de la voiture debut</label>
-            <input type="number" name="millageAutoDebut" id="millageAutoDebut" class="form-control" onchange="difference(this.value,document.getElementById('millageAutoFin').value,document.getElementById('millageAuto'))">
-    </div>
-            <div class="col-4">
-            <label for="millageEnCharge">kilometre de la voiture fin</label>
-            <input type="number" name="millageAutoFin" id="millageAutoFin" class="form-control" onchange="difference(document.getElementById('millageAutoDebut').value,this.value,document.getElementById('millageAuto'))">
-    </div>
-            <div class="col-4">
-            <label for="millageEnChargeDiff">Nombre de kilometre de la voiture</label>
-            <input type="number" name="millageAutoDiff" id="millageAuto" class="form-control" readonly>
-    </div>
-    </div>
-
-        <!--depense-->
-            <!--salaire-->
-            <div class="row">
-                <div class="col-3">
-                    <label for="salaire">Salaire</label>
-                    <input type="number" name="salaire" id="salaire" class="form-control" readonly>
+                <div class="col-4 input-group">
+                    <label class="input-group-text" for="startingMileageLaden">Nombre de kilomètre effectué professionellement (début de journée)</label>
+                    <input id="startingMileageLaden" class="form-control"type="number" name="startingMileageLaden" onchange="difference(this.value,document.getElementById('millageEnChargeFin').value,document.getElementById('millageEnChargeFinal'))">
+                </div>
+                <div class="col-4 input-group">
+                    <label class="input-group-text" for="endingMileageLaden">Nombre de kilomètre effectué professionellement (fin de journée)</label>
+                    <input  id="endingMileageLaden" class="form-control"type="number" name="endingMileageLaden" onchange="difference(document.getElementById('millageEnChargeDebut').value,this.value,document.getElementById('millageEnChargeFinal'))">
+                </div>
+                <div class="col-4 input-group">
+                    <label class="input-group-text" for="mileageLadenTotal">Nombre de kilomètre effectué professionellement (toute la journée)</label>
+                    <input id="mileageLadenTotal" class="form-control" type="number" name="mileageLadenTotal" readonly>
                 </div>
             </div>
 
-            <!--gaz-->
             <div class="row">
-                <div class="col-3">
-                    <label for="gaz">Gaz</label>
-                    <input type="number" name="gaz" id="gaz" class="form-control">
+                <div class="col-4 input-group">
+                    <label class="input-group-text" for="startingAmountOfPassengers">Nombre de clients (début de journée)</label>
+                    <input id="startingAmountOfPassengers" class="form-control" type="number" name="startingAmountOfPassengers" onchange="difference(this.value,document.getElementById('PriseEnChargeFin').value,document.getElementById('nbPriseEnCharge'))">
+                </div>
+                <div class="col-4 input-group">
+                    <label class="input-group-text" for="endingAmountOrPassengers">Nombre de clients (fin de journée)</label>
+                    <input id="endingAmountOrPassengers" class="form-control" type="number" name="endingAmountOrPassengers" onchange="difference(document.getElementById('PriseEnChargeDebut').value,this.value,document.getElementById('nbPriseEnCharge'))">
+                </div>
+                <div class="col-4 input-group">
+                    <label class="input-group-text" for="totalAmountOfPassengers">Nombre de clients (toute la journée)</label>
+                    <input id="totalAmountOfPassengers" class="form-control" type="number" name="totalAmountOfPassengers" readonly>
                 </div>
             </div>
 
-            <!--credit-->
             <div class="row">
-                <div class="col-3">
-                    <label for="credit">Crédit</label>
-                    <input type="number" name="credit" id="credit" class="form-control">
+                <div class="col-4 input-group">
+                    <label class="input-group-text" for="startingMileageInVehicle">Nombre de kilomètre de la voiture (début)</label>
+                    <input id="startingMileageInVehicle" class="form-control" type="number" name="startingMileageInVehicle" onchange="difference(this.value,document.getElementById('millageAutoFin').value,document.getElementById('millageAuto'))">
+                </div>
+                <div class="col-4 input-group">
+                    <label class="input-group-text" for="endingMileageInVehicle">Nombre de kilomètre de la voiture (fin)</label>
+                    <input id="endingMileageInVehicle" class="form-control" type="number" name="endingMileageInVehicle" onchange="difference(document.getElementById('millageAutoDebut').value,this.value,document.getElementById('millageAuto'))">
+                </div>
+                <div class="col-4 input-group">
+                    <label class="input-group-text" for="totalMileageInVehicle">Nombre de kilomètre de la voiture (total)</label>
+                    <input id="totalMileageInVehicle" class="form-control" type="number" name="totalMileageInVehicle" readonly>
                 </div>
             </div>
 
-            <!--divers-->
             <div class="row">
-                <div class="col-3">
-                    <label for="divers">Divers</label>
-                    <input type="number" name="divers" id="divers" class="form-control">
+                <div class="col-3 input-group">
+                    <label class="input-group-text" for="salary">Salaire</label>
+                    <input id="salary" class="form-control" type="number" name="salary" readonly>
                 </div>
             </div>
 
-            <!--total depense-->
             <div class="row">
-                <div class="col-3">
-                    <label for="totalDepense">Total des depense</label>
-                    <input type="number" name="totalDepense" id="totalDepense" class="form-control" readonly>
+                <div class="col-3 input-group">
+                    <label class="input-group-text" for="gaz">Gaz</label>
+                    <input id="gaz" class="form-control" type="number" name="gaz">
                 </div>
             </div>
 
-        <!--total net-->
             <div class="row">
-                <div class="col-3">
-                    <label for="TotalNet">Total Net</label>
-                    <input type="number" name="totalNet" id="totalNet" class="form-control" readonly>
+                <div class="col-3 input-group">
+                    <label class="input-group-text" for="credit">Crédit</label>
+                    <input id="credit" class="form-control" type="number" name="credit">
                 </div>
             </div>
 
-            <!--button submit-->
+            <div class="row">
+                <div class="col-3 input-group">
+                    <label class="input-group-text" for="various">Divers</label>
+                    <input id="various" class="form-control" type="number" name="various">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3 input-group">
+                    <label class="input-group-text" for="totalExpenses">Total des depense</label>
+                    <input id="totalExpenses" class="form-control" type="number" name="totalExpenses" readonly>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3 input-group">
+                    <label class="input-group-text" for="totalNet">Total Net</label>
+                    <input id="totalNet" class="form-control" type="number" name="totalNet" readonly>
+                </div>
+            </div>
+
             <button type="button" class="btn btn-success mt-xl-3 align-self-center">Envoyer</button>
         </form>
     </div>
