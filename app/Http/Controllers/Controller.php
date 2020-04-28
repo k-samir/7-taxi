@@ -11,7 +11,7 @@ class Controller extends BaseController
     /**
      * @return Renderable
      */
-    function addConductorShift()
+    public function addConductorShift()
     {
         return view("formulaireChauffeur");
     }
@@ -19,7 +19,7 @@ class Controller extends BaseController
     /**
      * @return Renderable
      */
-    function addConductor()
+    public function addConductor()
     {
         return view("formulaireAjoutChauffeur");
     }
