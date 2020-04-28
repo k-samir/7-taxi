@@ -1,30 +1,9 @@
 export namespace src{export namespace base{
 
 
-    abstract class ListGetter {
+    abstract class BaseList {
 
         private constructor() {
-        }
-
-
-        public static getBodyClassList(): DOMTokenList {
-            return ListGetter.getID("base-body");
-        }
-
-        public static getNavigationBarClassList(): DOMTokenList {
-            return ListGetter.getID("navigation-bar");
-        }
-
-        public static getNavigationsTabClassList(): DOMTokenList[] {
-            return ListGetter.getClass("dropdown-menu");
-        }
-
-        public static getNavigationsTextClassList(): DOMTokenList[] {
-            return ListGetter.getClass("dropdown-item");
-        }
-
-        public static getFormControlList(): DOMTokenList[] {
-            return ListGetter.getClass("form-control");
         }
 
 
@@ -40,6 +19,28 @@ export namespace src{export namespace base{
                 returnedElement[i] = objectByClass.item(i).classList;
             return returnedElement;
         }
+
+
+        public static getBodyClassList(): DOMTokenList {
+            return BaseList.getID("base-body");
+        }
+
+        public static getNavigationBarClassList(): DOMTokenList {
+            return BaseList.getID("navigation-bar");
+        }
+
+        public static getNavigationsTabClassList(): DOMTokenList[] {
+            return BaseList.getClass("dropdown-menu");
+        }
+
+        public static getNavigationsTextClassList(): DOMTokenList[] {
+            return BaseList.getClass("dropdown-item");
+        }
+
+        public static getFormControlList(): DOMTokenList[] {
+            return BaseList.getClass("form-control");
+        }
+
 
     }
 
@@ -73,21 +74,21 @@ export namespace src{export namespace base{
                 this.__isDarkModeEnable = isEnable;
 
                 if (isEnable) {
-                    ListGetter.getNavigationBarClassList().remove("navbar-light", "bg-light");
-                    ListGetter.getNavigationsTabClassList().forEach((navTab) => navTab.remove("bg-light"));
-                    ListGetter.getNavigationsTextClassList().forEach((navText) => navText.remove("text-dark"));
-                    ListGetter.getFormControlList().forEach((form) => form.remove("text-dark", "bg-light"));
+                    BaseList.getNavigationBarClassList().remove("navbar-light", "bg-light");
+                    BaseList.getNavigationsTabClassList().forEach((navTab) => navTab.remove("bg-light"));
+                    BaseList.getNavigationsTextClassList().forEach((navText) => navText.remove("text-dark"));
+                    BaseList.getFormControlList().forEach((form) => form.remove("text-dark", "bg-light"));
                 } else {
-                    ListGetter.getNavigationBarClassList().remove("navbar-dark", "bg-dark");
-                    ListGetter.getNavigationsTabClassList().forEach((navTab) => navTab.remove("bg-dark"));
-                    ListGetter.getNavigationsTextClassList().forEach((navText) => navText.remove("text-light"));
-                    ListGetter.getFormControlList().forEach((form) => form.remove("text-light", "bg-dark"));
+                    BaseList.getNavigationBarClassList().remove("navbar-dark", "bg-dark");
+                    BaseList.getNavigationsTabClassList().forEach((navTab) => navTab.remove("bg-dark"));
+                    BaseList.getNavigationsTextClassList().forEach((navText) => navText.remove("text-light"));
+                    BaseList.getFormControlList().forEach((form) => form.remove("text-light", "bg-dark"));
                 }
 
-                ListGetter.getNavigationBarClassList().add("navbar-" + this.getActiveDarkMode(), "bg-" + this.getActiveDarkMode());
-                ListGetter.getNavigationsTabClassList().forEach((navTab) => navTab.add("bg-" + this.getActiveDarkMode()));
-                ListGetter.getNavigationsTextClassList().forEach((navText) => navText.add("text-" + this.getReverseActiveDarkMode()));
-                ListGetter.getFormControlList().forEach((form) => form.add("text-" + this.getReverseActiveDarkMode(), "bg-" + this.getActiveDarkMode()));
+                BaseList.getNavigationBarClassList().add("navbar-" + this.getActiveDarkMode(), "bg-" + this.getActiveDarkMode());
+                BaseList.getNavigationsTabClassList().forEach((navTab) => navTab.add("bg-" + this.getActiveDarkMode()));
+                BaseList.getNavigationsTextClassList().forEach((navText) => navText.add("text-" + this.getReverseActiveDarkMode()));
+                BaseList.getFormControlList().forEach((form) => form.add("text-" + this.getReverseActiveDarkMode(), "bg-" + this.getActiveDarkMode()));
 
                 document.getElementById("btn-obscur-light").textContent = "Mode " + (isEnable ? "clair" : "obscur");
             }
@@ -147,17 +148,17 @@ export namespace src{export namespace base{
 
         public execute(): void {
             if (!this.__isInitializationOnExecuteSet) {
-                ListGetter.getBodyClassList().add(this.__currentPossibility);
+                BaseList.getBodyClassList().add(this.__currentPossibility);
                 this.__isInitializationOnExecuteSet = true;
             }
             setTimeout(() => this.__execute(), BaseTask.DELAY_TIME);
         }
 
         private __execute(): void {
-            ListGetter.getBodyClassList().remove(this.getCurrentPossibility());
+            BaseList.getBodyClassList().remove(this.getCurrentPossibility());
             this.__currentIndex = (this.__currentIndex == this.lastIndexOfPossibilities) ? 0 : this.__currentIndex + 1;
 
-            ListGetter.getBodyClassList().add(this.setCurrentPossibility(this.__currentIndex).getCurrentPossibility());
+            BaseList.getBodyClassList().add(this.setCurrentPossibility(this.__currentIndex).getCurrentPossibility());
 
 
             if (this.isChangingColorAutomatically())//Re-execute itself after
