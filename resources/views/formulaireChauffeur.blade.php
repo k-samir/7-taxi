@@ -169,7 +169,10 @@
 
             </div>
 
-            <button type="button" class="btn btn-success mt-xl-3 align-self-center">Envoyer</button>
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col"><button type="button" class="btn btn-success w-25">Envoyer</button></div>
+            </div>
         </form>
     </div>
 @endsection
