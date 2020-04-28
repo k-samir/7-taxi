@@ -2,90 +2,73 @@
 @section('title',"Formulaire d'ajout de chauffeur")
 
 @section('before-scripts')
-  
+
 @endsection
 
 @section('body-content')
     @parent
     <div class="container">
-    <form action="" method="post">
+        <form action="" method="post">
             <div class="row">
-                <div class="col">
-                    <div class="group-control">
-                        <label for="numTaxi">Nom</label>
-                        <input type="text" name="nomChauffeur" id="nomChauffeur" class="form-control" >
-                    </div>
+                <div class="col-4 input-group">
+                    <label class="input-group-text" for="lastName">Nom</label>
+                    <input id="lastName" class="form-control" type="text" name="lastName">
                 </div>
-                <div class="col">
-                    <div class="group-control">
-                        <label for="numTaxi">Prénom</label>
-                        <input type="text" name="prenomChauffeur" class="form-control">
-                    </div>
+                <div class="col-4 input-group">
+                    <label class="input-group-text" for="firstName">Prénom</label>
+                    <input id="firstName" class="form-control" type="text" name="firstName">
                 </div>
-                <div class="col">
-              
+                <div class="w-100"></div>
+
+                <div class="col input-group">
+                    <label class="input-group-text" for="phoneNumber">Numéro de téléphone</label>
+                    <input id="phoneNumber" class="form-control" type="tel" name="phoneNumber">
+                </div>
+                <div class="col input-group">
+                    <label class="input-group-text" for="streetNumber">Numéro de rue</label>
+                    <input id="streetNumber" class="form-control" type="number" name="streetNumber">
+                </div>
+                <div class="col input-group">
+                    <label class="input-group-text" for="streetName">Rue</label>
+                    <input id="streetName" class="form-control" type="text" name="streetName">
+                </div>
+                <div class="w-100"></div>
+
+                <div class="col input-group">
+                    <label class="input-group-text" for="cityName">Ville</label>
+                    <input id="cityName" class="form-control" type="text" name="cityName">
+                </div>
+                <div class="col input-group">
+                    <label class="input-group-text" for="postalCode">Code Postal</label>
+                    <input id="postalCode" class="form-control" type="text" name="postalCode">
+                </div>
+                <div class="w-100"></div>
+
+                <div class="col input-group">
+                    <label class="input-group-text" for="licenceNumber">Numéro de permis</label>
+                    <input id="licenceNumber" class="form-control" type="text" name="licenceNumber">
+                </div>
+                <div class="col input-group">
+                    <label class="input-group-text" for="licenceNumber">Date d'expiration du permis</label>
+                    <input id="licenceNumber" class="form-control" type="date" name="licenceNumber">
+                </div>
+                <div class="w-100"></div>
+
+                <div class="col input-group">
+                    <label class="input-group-text" for="commission">Commission</label>
+                    <input id="commission" class="form-control" type="number" name="commission">
+                </div>
+                <div class="col input-group">
+                    <label class="input-group-text" for="balance">Solde</label>
+                    <input id="balance" class="form-control" type="number" name="balance">
                 </div>
             </div>
+
             <div class="row">
-                <div class="col">
-                    <div class="group-control">
-                        <label for="numTaxi">Numéro de téléphone</label>
-                        <input type="text" name="phoneChauffeur" id="phoneChauffeur"class="form-control" >
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="group-control">
-                        <label for="numTaxi">Numéro de rue</label>
-                        <input type="number" name="numeroRue" id="numeroRue" class="form-control">
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="group-control">
-                        <label for="diff">Rue</label>
-                        <input type="text" name="rueChauffeur" id="rueChauffeur" class="form-control">
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="group-control">
-                        <label for="diff">Ville</label>
-                        <input type="text" name="ville" id="ville" class="form-control">
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="group-control">
-                        <label for="diff">Code Postale</label>
-                        <input type="text" name="codePostale" id="codePostale" class="form-control">
-                    </div>
-                </div>
-        </div>
-        <div class="row">
-                <div class="col">
-                    <div class="group-control">
-                        <label for="numTaxi">Numéro de permis</label>
-                        <input type="text" name="numPermis" id="numPermis" class="form-control" >
-                    </div>
-                </div>
-                <div class="col">
-                <div class="group-control">
-                        <label for="numTaxi">Date d'expiration du permis</label>
-                        <input type="datetime-local" name="datePermisExpiration" class="form-control" >
-                    </div>
-                </div>
-                <div class="col">
-                <div class="group-control">
-                        <label for="numTaxi">Commission</label>
-                        <input type="number" name="commission" class="form-control">
-                    </div>
-                    <div class="group-control">
-                        <label for="numTaxi">Solde</label>
-                        <input type="number" name="solde" class="form-control">
-                    </div>
-                </div>
+                <div class="col-4"></div>
+                <div class="col"><button type="button" class="btn btn-success w-25">Envoyer</button></div>
             </div>
-            <div style="margin-top:2rem;text-align:center">
-        <button type="button" class="btn btn-success mt-3" style="width:170px" >Envoyer</button>
-        </div>
-    </form>
+
+        </form>
     </div>
-    @endsection
-    
+@endsection
