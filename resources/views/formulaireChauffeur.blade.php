@@ -40,8 +40,8 @@
         <form action="" method="post">
             <div class="row">
                 <div class="col input-group">
-                    <label class="input-group-text bg-transparent border-0" for="user">Numéro d'utilisateur</label>
-                    <input id="user" class="form-control bg-transparent border-0" type="text" name="user" readonly>
+                    <label class="input-group-text font-weight-bold bg-transparent border-0" for="user">Numéro d'utilisateur</label>
+                    <input id="user" class="form-control font-weight-bold bg-transparent border-0" type="text" name="user" readonly disabled>
                 </div>
                 <div class="col input-group">
                     <label class="input-group-text" for="numTaxi">Numéro du taxi</label>
@@ -68,8 +68,8 @@
                     <input id="fixPrice" class="form-control" type="number" name="fixPrice" onchange="updateRealRecipe()">
                 </div>
                 <div class="col input-group">
-                    <label class="input-group-text bg-transparent border-0" for="realRecipe">Recette réel</label>
-                    <input id="realRecipe" class="form-control bg-transparent border-0" type="number" name="realRecipe" readonly onchange="updateSalary()">
+                    <label class="input-group-text font-weight-bold bg-transparent border-0" for="realRecipe">Recette réel</label>
+                    <input id="realRecipe" class="form-control font-weight-bold bg-transparent border-0" type="number" name="realRecipe" readonly disabled onchange="updateSalary()">
                 </div>
                 <div class="w-100"></div>
 
@@ -84,8 +84,8 @@
                     <input id="endingMillage" class="form-control" type="number" name="endingMillage" onchange="setDifference(document.getElementById('startingMillage').value,this.value,document.getElementById('totalMillage'))">
                 </div>
                 <div class="col-4 input-group">
-                    <label class="input-group-text bg-transparent border-0" for="totalMillage">Total</label>
-                    <input id="totalMillage" class="form-control bg-transparent border-0" type="number" name="totalMillage" readonly onchange="setDifference()">
+                    <label class="input-group-text font-weight-bold bg-transparent border-0" for="totalMillage">Total</label>
+                    <input id="totalMillage" class="form-control font-weight-bold bg-transparent border-0" type="number" name="totalMillage" readonly disabled onchange="setDifference()">
                 </div>
                 <div class="w-100"></div>
 
@@ -100,8 +100,8 @@
                     <input  id="endingMileageLaden" class="form-control" type="number" name="endingMileageLaden" onchange="setDifference(document.getElementById('startingMileageLaden').value,this.value,document.getElementById('mileageLadenTotal'))">
                 </div>
                 <div class="col-3 input-group">
-                    <label class="input-group-text bg-transparent border-0" for="mileageLadenTotal">Total</label>
-                    <input id="mileageLadenTotal" class="form-control bg-transparent border-0" type="number" name="mileageLadenTotal" readonly>
+                    <label class="input-group-text font-weight-bold bg-transparent border-0" for="mileageLadenTotal">Total</label>
+                    <input id="mileageLadenTotal" class="form-control font-weight-bold bg-transparent border-0" type="number" name="mileageLadenTotal" readonly disabled>
                 </div>
                 <div class="w-100"></div>
 
@@ -116,8 +116,8 @@
                     <input id="endingAmountOrPassengers" class="form-control" type="number" name="endingAmountOrPassengers" onchange="setDifference(document.getElementById('startingAmountOfPassengers').value,this.value,document.getElementById('totalAmountOfPassengers'))">
                 </div>
                 <div class="col-3 input-group">
-                    <label class="input-group-text bg-transparent border-0" for="totalAmountOfPassengers">Total</label>
-                    <input id="totalAmountOfPassengers" class="form-control bg-transparent border-0" type="number" name="totalAmountOfPassengers" readonly>
+                    <label class="input-group-text font-weight-bold bg-transparent border-0" for="totalAmountOfPassengers">Total</label>
+                    <input id="totalAmountOfPassengers" class="form-control font-weight-bold bg-transparent border-0" type="number" name="totalAmountOfPassengers" readonly disabled>
                 </div>
                 <div class="w-100"></div>
 
@@ -133,14 +133,14 @@
                     <input id="endingMileageInVehicle" class="form-control" type="number" name="endingMileageInVehicle" onchange="setDifference(document.getElementById('startingMileageInVehicle').value,this.value,document.getElementById('totalMileageInVehicle'))">
                 </div>
                 <div class="col-3 input-group">
-                    <label class="input-group-text bg-transparent border-0" for="totalMileageInVehicle">Total</label>
-                    <input id="totalMileageInVehicle" class="form-control bg-transparent border-0" type="number" name="totalMileageInVehicle" readonly>
+                    <label class="input-group-text font-weight-bold bg-transparent border-0" for="totalMileageInVehicle">Total</label>
+                    <input id="totalMileageInVehicle" class="form-control font-weight-bold bg-transparent border-0" type="number" name="totalMileageInVehicle" readonly disabled>
                 </div>
                 <div class="w-100"></div>
 
                 <div class="col input-group">
-                    <label class="input-group-text bg-transparent border-0" for="salary">Salaire</label>
-                    <input id="salary" class="form-control bg-transparent border-0" type="number" name="salary" readonly>
+                    <label class="input-group-text font-weight-bold bg-transparent border-0" for="salary">Salaire</label>
+                    <input id="salary" class="form-control font-weight-bold bg-transparent border-0" type="number" name="salary" readonly disabled>
                 </div>
                 <div class="w-100"></div>
 
@@ -159,12 +159,12 @@
                 <div class="w-100"></div>
 
                 <div class="col input-group">
-                    <label class="input-group-text bg-transparent border-0" for="totalExpenses">Total des dépense</label>
-                    <input id="totalExpenses" class="form-control bg-transparent border-0" type="number" name="totalExpenses" readonly>
+                    <label class="input-group-text font-weight-bold bg-transparent border-0" for="totalExpenses">Total des dépense</label>
+                    <input id="totalExpenses" class="form-control font-weight-bold bg-transparent border-0" type="number" name="totalExpenses" readonly disabled>
                 </div>
                 <div class="col input-group">
-                    <label class="input-group-text bg-transparent border-0" for="totalNet">Total Net</label>
-                    <input id="totalNet" class="form-control bg-transparent border-0" type="number" name="totalNet" readonly>
+                    <label class="input-group-text font-weight-bold bg-transparent border-0" for="totalNet">Total Net</label>
+                    <input id="totalNet" class="form-control font-weight-bold bg-transparent border-0" type="number" name="totalNet" readonly disabled>
                 </div>
 
             </div>
