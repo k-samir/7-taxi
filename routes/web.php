@@ -16,12 +16,14 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('home');
 });
+Route::get('/home', 'BaseController@index')->name('home');
 
-Route::get('/form/driver', 'MainController@newDriverRequest')->name('formDriver')->middleware('auth');
+Route::get('/form/driver/addShift', 'BaseController@addConductorShift')->name('addConductorShift')->middleware('auth');
+Route::get('/form/driver/newConductor', 'BaseController@addConductor')->name('addConductor')->middleware('auth');
 
-Route::get('/form/driver/add', 'FormDriverController@addRequest')->name('formDriverAdd')->middleware('auth');
+
+
+

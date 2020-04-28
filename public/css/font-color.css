@@ -1,37 +1,78 @@
 @charset "UTF-8";
 
-.font-turquoise, .font-green, .font-yellow, .font-orange, .font-orangered, .font-pink, .font-gold, .font-silver {
+.bg-turquoise-light, .bg-green-light, .bg-yellow-light, .bg-orange-light, .bg-orangered-light, .bg-pink-light, .bg-gold-light, .bg-silver-light,
+.bg-turquoise-dark, .bg-green-dark, .bg-yellow-dark, .bg-orange-dark, .bg-orangered-dark, .bg-pink-dark, .bg-gold-dark, .bg-silver-dark
+{
     transition: 5s;
 }
 
-.font-turquoise {
+.bg-turquoise-light {
     background-color: #78dbcc;
 }
 
-.font-green {
+.bg-turquoise-dark {
+    background-color: #4a9087;
+}
+
+
+.bg-green-light {
     background-color: #c7f386;
 }
 
-.font-yellow {
+.bg-green-dark {
+    background-color: #97b36e;
+}
+
+
+.bg-yellow-light {
     background-color: #efef92;
 }
 
-.font-orange {
+.bg-yellow-dark {
+    background-color: #999954;
+}
+
+
+.bg-orange-light {
     background-color: #fdcb90;
 }
 
-.font-orangered {
+.bg-orange-dark {
+    background-color: #a1825b;
+}
+
+
+.bg-orangered-light {
     background-color: #fa936f;
 }
 
-.font-pink {
+.bg-orangered-dark {
+    background-color: #b36448;
+}
+
+
+.bg-pink-light {
     background-color: #ffc0cb;
 }
 
-.font-gold {
+.bg-pink-dark {
+    background-color: #ea3755;
+}
+
+
+.bg-gold-light {
     background-color: #ecc540;
 }
 
-.font-silver {
+.bg-gold-dark {
+    background-color: #b69531;
+}
+
+
+.bg-silver-light {
     background-color: #c0c0c0;
+}
+
+.bg-silver-dark {
+    background-color: #727272;
 }

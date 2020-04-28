@@ -3,58 +3,73 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title')</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     @yield('headContent')
 
+    @yield('before-scripts')
 
-    @yield('beforeScripts')
-
-    <style>
-        body {
-            background-color: #cbca89;
-        }
-    </style>
-    <link rel="stylesheet" type="text/css" href="css/font-color.css">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/font-color.css')}}">
     @yield('styles')
 </head>
 
-<body id="body">
-    <div class="container-fluid mb-auto border-bottom">
-        <div class="col"><h2 class="m-0 font-weight-bolder">Projet - Taxi</h2></div>
-        <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link border-left font-weight-bold" href="{{url('/')}}">Accueil</a></li>
-        </ul>
+<body id="base-body">
+<div id="navigation-bar" class="container-fluid mb-3 navbar-light bg-light">
+    <nav class="navbar navbar-expand-md">
+        <a class="navbar-brand" href="{{route('home')}}"><h2 class="m-0 font-weight-bolder">Projet - Taxi</h2></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="navbarSupportedContent" class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown font-weight-bold">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulaires de chauffeur</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{route('addConductorShift')}}">Ajout de shift</a>
+                        <a class="dropdown-item" href="{{route('addConductor')}}">Ajout de chauffeur</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown font-weight-bold">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <button type="button" id="btn-obscur-light" class="navigation-text dropdown-item" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="changeDarkOrLightMode()">Mode obscur</button>
+                        <button type="button" class="navigation-text dropdown-item" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="changeAutomaticColor()">Couleurs automatique</button>
+                    </div>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                @guest
+                    <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('login')}}">Connexion</a></li>
+                    @if (Route::has('register'))
+                        <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('register')}}">Inscription</a></li>
+                    @endif
+                @else
+                    <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Déconnexion</a></li>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
+                @endguest
+            </ul>
+        </div>
+    </nav>
+</div>
+@section('body-content')
+    <div class="row pb-3">
+        <h1 class="mx-auto"><u>@yield('title')</u></h1>
     </div>
-    <h1>@yield('title')</h1>
-    @yield('bodyContent')
-    <scripts>
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-        @yield('afterScripts')
+@show
 
-        <script>
-            (() => {
-                let index = 0;
-                let possibilities = ["font-green", "font-turquoise",
-                    "font-yellow", "font-orange", "font-orangered",
-                    "font-pink", "font-gold", "font-silver"];
-                let element = document.getElementById("body");
-                element.classList.add(possibilities[0]);
-
-                let callback = () => {
-                    element.classList.remove(possibilities[index]);
-                    index = (index === possibilities.length - 1) ? 0 : index + 1;
-                    element.classList.add(possibilities[index]);
-                    setTimeout(callback, 10000);
-                };
-                setTimeout(callback, 10000);
-            })();
-        </script>
-    </scripts>
+<scripts>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="{{asset('js/base.js')}}" defer></script>
+    @yield('afterScripts')
+</scripts>
 </body>
 </html>
