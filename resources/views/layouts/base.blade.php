@@ -23,9 +23,15 @@
 </head>
 
 <body id="base-body">
+<<<<<<< HEAD
+<div class="container-fluid mb-auto">
+    <nav id="navigation-bar" class="navbar navbar-expand-lg navbar-light bg-light container">
+        <div class="navbar-brand"><h2 class="m-0 font-weight-bolder">Projet - Taxi</h2></div>
+=======
 <div id="navigation-bar" class="container-fluid mb-auto navbar-light bg-light">
     <nav class="navbar navbar-expand-lg">
         <a class="navbar-brand" href="{{url('/')}}"><h2 class="m-0 font-weight-bolder">Projet - Taxi</h2></a>
+>>>>>>> c15eea7e70b229a8f0e95f6fb3902610bfe73aee
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -46,6 +52,12 @@
                         <button type="button" class="navigation-text dropdown-item" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="changeAutomaticColor()">Couleurs automatique</button>
                     </div>
                 </li>
+                @guest
+                    <li class="nav-item font-weight-bold" style="margin-left:310px;"><a class="nav-link" href="{{url('/')}}">Connexion</a></li>
+                    <li class="nav-item font-weight-bold"><a class="nav-link" href="{{url('/')}}">Inscription</a></li>
+                @else    
+                    <li class="nav-item font-weight-bold"><a href="nav-link" href="">Déconexion</a></li>
+                @endguest
             </ul>
         </div>
     </nav>
