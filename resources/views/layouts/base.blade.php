@@ -57,7 +57,9 @@
     </nav>
 </div>
 @section('body-content')
-    <h1 class="align-content-center">@yield('title')</h1>
+    <div class="row pt-2 pb-3">
+        <h1 class="mx-auto"><u>@yield('title')</u></h1>
+    </div>
 @show
 
 <scripts>
