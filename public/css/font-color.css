@@ -1,78 +1,78 @@
 @charset "UTF-8";
 
-.font-turquoise-light, .font-green-light, .font-yellow-light, .font-orange-light, .font-orangered-light, .font-pink-light, .font-gold-light, .font-silver-light,
-.font-turquoise-dark, .font-green-dark, .font-yellow-dark, .font-orange-dark, .font-orangered-dark, .font-pink-dark, .font-gold-dark, .font-silver-dark
+.bg-turquoise-light, .bg-green-light, .bg-yellow-light, .bg-orange-light, .bg-orangered-light, .bg-pink-light, .bg-gold-light, .bg-silver-light,
+.bg-turquoise-dark, .bg-green-dark, .bg-yellow-dark, .bg-orange-dark, .bg-orangered-dark, .bg-pink-dark, .bg-gold-dark, .bg-silver-dark
 {
     transition: 5s;
 }
 
-.font-turquoise-light {
+.bg-turquoise-light {
     background-color: #78dbcc;
 }
 
-.font-turquoise-dark {
+.bg-turquoise-dark {
     background-color: #4a9087;
 }
 
 
-.font-green-light {
+.bg-green-light {
     background-color: #c7f386;
 }
 
-.font-green-dark {
+.bg-green-dark {
     background-color: #97b36e;
 }
 
 
-.font-yellow-light {
+.bg-yellow-light {
     background-color: #efef92;
 }
 
-.font-yellow-dark {
+.bg-yellow-dark {
     background-color: #999954;
 }
 
 
-.font-orange-light {
+.bg-orange-light {
     background-color: #fdcb90;
 }
 
-.font-orange-dark {
+.bg-orange-dark {
     background-color: #a1825b;
 }
 
 
-.font-orangered-light {
+.bg-orangered-light {
     background-color: #fa936f;
 }
 
-.font-orangered-dark {
+.bg-orangered-dark {
     background-color: #b36448;
 }
 
 
-.font-pink-light {
+.bg-pink-light {
     background-color: #ffc0cb;
 }
 
-.font-pink-dark {
+.bg-pink-dark {
     background-color: #ea3755;
 }
 
 
-.font-gold-light {
+.bg-gold-light {
     background-color: #ecc540;
 }
 
-.font-gold-dark {
+.bg-gold-dark {
     background-color: #b69531;
 }
 
 
-.font-silver-light {
+.bg-silver-light {
     background-color: #c0c0c0;
 }
 
-.font-silver-dark {
+.bg-silver-dark {
     background-color: #727272;
 }
