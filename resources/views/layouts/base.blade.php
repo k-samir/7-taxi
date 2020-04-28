@@ -14,18 +14,13 @@
 
     @yield('before-scripts')
 
-    <style>
-        body {
-            background-color: #cbca89;
-        }
-    </style>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('css/font-color.css')}}">
     @yield('styles')
 </head>
 
 <body id="base-body">
-<div id="navigation-bar" class="container-fluid mb-auto navbar-light bg-light">
+<div id="navigation-bar" class="container-fluid mb-auto navbar-light bg-light mb-3">
     <nav class="navbar navbar-expand-md">
         <a class="navbar-brand" href="{{url('/')}}"><h2 class="m-0 font-weight-bolder">Projet - Taxi</h2></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,7 +59,7 @@
     </nav>
 </div>
 @section('body-content')
-    <div class="row pt-2 pb-3">
+    <div class="row pb-3">
         <h1 class="mx-auto"><u>@yield('title')</u></h1>
     </div>
 @show
