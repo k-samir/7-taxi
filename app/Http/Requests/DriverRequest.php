@@ -26,10 +26,13 @@ class DriverRequest extends FormRequest
     {
         return [
             'driverNo' => ['integer', 'min:1', 'required',],
-            'taxiNo' => ['integer', 'min:1',],
+            'taxiNo' => ['min:1',],
             'dateStart' => ['date', 'after_or_equal:today',],
             'dateEnd' => ['date', 'after_or_equal:dateStart',],
-            'recipe' => ['numeric', 'min:0',],
+
+            'startRecipe' => ['numeric', 'min:0',],
+            'finalRecipe' => ['numeric', 'min:0',],
+            'fixPrice' => ['numeric', 'min:0'],
 
             'mileageStart' => ['integer', 'min:0',],
             'mileageEnd' => ['integer', 'min:mileageStart',],

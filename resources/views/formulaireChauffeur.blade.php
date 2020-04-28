@@ -40,29 +40,35 @@
         <form action="" method="post">
             <div class="row">
                 <div class="col input-group">
-                    <label class="input-group-text font-weight-bold bg-transparent border-0" for="user">Numéro d'utilisateur</label>
-                    <input id="user" class="form-control font-weight-bold bg-transparent border-0" type="text" name="user" readonly disabled>
+                    <label class="input-group-text font-weight-bold bg-transparent border-0" for="driverNo">Numéro de conducteur</label>
+                    <input id="driverNo" class="form-control font-weight-bold bg-transparent border-0" type="text" name="driverNo" minlength="1" readonly disabled>
                 </div>
                 <div class="col input-group">
-                    <label class="input-group-text" for="numTaxi">Numéro du taxi</label>
-                    <input id="numTaxi" class="form-control" type="text" name="numTaxi">
+                    <label class="input-group-text" for="taxiNo">Numéro du taxi</label>
+                    <input id="taxiNo" class="form-control" type="text" name="taxiNo" minlength="1">
                 </div>
-                <div class="col-5 input-group">
-                    <label class="input-group-text" for="date_date">Date</label>
-                    <input id="date_date" class="form-control" type="date" name="date_date">
-                    <input id="date_time" class="form-control" type="time" name="date">
-                    <label class="input-group-text" for="date_time" hidden></label>
+                <div class="w-100"></div>
+
+                <div class="col input-group">
+                    <label class="input-group-text" for="dateStart">Date (Début)</label>
+                    <input id="dateStart" class="form-control" type="datetime-local" name="dateStart">
+                </div>
+                <div class="col input-group">
+                    <label class="input-group-text" for="dateEnd">Date (Fin)</label>
+                    <input id="dateEnd" class="form-control" type="datetime-local" name="dateEnd">
                 </div>
                 <div class="w-100"></div>
 
                 <div class="col input-group">
                     <label class="input-group-text" for="startRecipe">Recette initial</label>
-                    <input id="startRecipe" class="form-control" type="number" name="recetteInit" onchange="updateRealRecipe()">
+                    <input id="startRecipe" class="form-control" type="number" name="recetteInit" minlength="0" onchange="updateRealRecipe()">
                 </div>
                 <div class="col input-group">
                     <label class="input-group-text" for="finalRecipe">Recette final</label>
-                    <input id="finalRecipe" class="form-control" type="number" name="finalRecipe" onchange="updateRealRecipe()">
+                    <input id="finalRecipe" class="form-control" type="number" name="finalRecipe" minlength="0" onchange="updateRealRecipe()">
                 </div>
+                <div class="w-100"></div>
+
                 <div class="col input-group">
                     <label class="input-group-text" for="fixPrice">Prix fixe</label>
                     <input id="fixPrice" class="form-control" type="number" name="fixPrice" onchange="updateRealRecipe()">
