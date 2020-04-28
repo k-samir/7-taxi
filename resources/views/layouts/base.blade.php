@@ -35,8 +35,8 @@
                 <li class="nav-item dropdown font-weight-bold">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulaires de chauffeur</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{url('/showConductor')}}">Formulaire shift</a>
-                        <a class="dropdown-item" href="{{url('/addConductor')}}">Ajout chauffeur</a>
+                        <a class="dropdown-item" href="{{route('addConductorShift')}}">Ajout de shift</a>
+                        <a class="dropdown-item" href="{{route('addConductor')}}">Ajout de chauffeur</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown font-weight-bold">
@@ -49,10 +49,13 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 @guest
-                    <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{url('/')}}">Connexion</a></li>
-                    <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{url('/')}}">Inscription</a></li>
+                    <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('login')}}">Connexion</a></li>
+                    @if (Route::has('register'))
+                        <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('register')}}">Inscription</a></li>
+                    @endif
                 @else
-                    <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{url('/')}}">Déconnexion</a></li>
+                    <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Déconnexion</a></li>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
                 @endguest
             </ul>
         </div>
