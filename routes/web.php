@@ -22,6 +22,7 @@ Route::get('/', function () {
 Route::get('/home', 'BaseController@index')->name('home');
 
 Route::get('/form/driver/addShift', 'BaseController@addConductorShift')->name('addConductorShift')->middleware('auth');
+Route::post('/form/driver/addShift', 'FormDriverController@addRequest')->middleware('auth');
 Route::get('/form/driver/newConductor', 'BaseController@addConductor')->name('addConductor')->middleware('auth');
 
 
