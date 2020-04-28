@@ -189,12 +189,10 @@ export namespace src{export namespace base{
 
 import BaseTask = src.base.BaseTask;
 
-let baseTask: BaseTask;
-
 (() => {
     //Export global methods and variable
 
-    baseTask = new BaseTask();
+    let baseTask = new BaseTask();
     baseTask.execute();
 
     window["baseTask"] = baseTask;
