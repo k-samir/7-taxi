@@ -22,7 +22,7 @@
 <body id="base-body">
 <div id="navigation-bar" class="container-fluid mb-3 navbar-light bg-light">
     <nav class="navbar navbar-expand-md">
-        <a class="navbar-brand" href="{{url('/')}}"><h2 class="m-0 font-weight-bolder">Projet - Taxi</h2></a>
+        <a class="navbar-brand" href="{{route('home')}}"><h2 class="m-0 font-weight-bolder">Projet - Taxi</h2></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
