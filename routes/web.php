@@ -15,9 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-Route::get('/','HomeController@index');
-Route::get('/conductor/addShift','Controller@addConductorShift')->name('addConductorShift');
-Route::get('/conductor/newConductor','Controller@addConductor')->name('addConductor');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', function () {
+    return redirect('home');
+});
+Route::get('/conductor/addShift', 'Controller@addConductorShift')->name('addConductorShift');
+Route::get('/conductor/newConductor', 'Controller@addConductor')->name('addConductor');
+Route::get('/home', 'Controller@index')->name('home');
 
 
