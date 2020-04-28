@@ -1,6 +1,5 @@
 export namespace src{export namespace base{
 
-
     abstract class BaseList {
 
         private constructor() {
@@ -89,6 +88,10 @@ export namespace src{export namespace base{
             if (isEnable !== this.__isDarkModeEnable) {
                 this.__isDarkModeEnable = isEnable;
 
+                BaseList.getBodyClassList().replace(
+                    this.getCurrentPossibility(),
+                    this.setCurrentPossibility(this.getCurrentPossibility().replace(this.getReverseActiveDarkMode(), this.getActiveDarkMode())).getCurrentPossibility()
+                );
                 if (isEnable) {
                     BaseList.getNavigationBarClassList().add("navbar-dark", "bg-dark");
                     BaseList.getNavigationsTabClassList().forEach((navTab) => navTab.add("bg-dark"));
@@ -165,7 +168,7 @@ export namespace src{export namespace base{
 
         public execute(): void {
             if (!this.__isInitializationOnExecuteSet) {
-                BaseList.getBodyClassList().add(this.__currentPossibility);
+                BaseList.getBodyClassList().add(this.getCurrentPossibility());
                 this.__isInitializationOnExecuteSet = true;
             }
             setTimeout(() => this.__execute(), BaseTask.DELAY_TIME);
@@ -184,8 +187,7 @@ export namespace src{export namespace base{
 
     }
 
-}
-}
+}}
 
 import BaseTask = src.base.BaseTask;
 
