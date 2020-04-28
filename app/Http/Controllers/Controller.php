@@ -9,14 +9,14 @@ class Controller extends BaseController
 {
 
 
-    function showConductor(Request $request)
+    function addConductorShift(Request $request)
     {
-        return view("FormulaireChauffeur");
+        return view("formulaireChauffeur");
     }
 
     function addConductor(Request $request)
     {
-        return view("FormulaireAjoutChauffeur");
+        return view("formulaireAjoutChauffeur");
     }
 
 }
