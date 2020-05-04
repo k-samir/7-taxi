@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@section('title','Formulaire pour les chauffeurs')
+@section('title', "Formulaire pour les chauffeurs")
 
 @section('before-scripts')
     <script>
@@ -38,7 +38,7 @@
     @parent
     <div class="container">
         <form action="" method="post">
-            <div class="row">
+            <div class="row mb-4 justify-content-center">
                 <div class="col input-group">
                     <label class="input-group-text font-weight-bold bg-transparent border-0" for="user">Numéro d'utilisateur</label>
                     <input id="user" class="form-control font-weight-bold bg-transparent border-0" type="text" name="user" readonly disabled>
@@ -53,7 +53,7 @@
                     <input id="date_time" class="form-control" type="time" name="date">
                     <label class="input-group-text" for="date_time" hidden></label>
                 </div>
-                <div class="w-100"></div>
+                <div class="w-100 pb-4"></div>
 
                 <div class="col input-group">
                     <label class="input-group-text" for="startRecipe">Recette initial</label>
@@ -71,7 +71,7 @@
                     <label class="input-group-text font-weight-bold bg-transparent border-0" for="realRecipe">Recette réel</label>
                     <input id="realRecipe" class="form-control font-weight-bold bg-transparent border-0" type="number" name="realRecipe" readonly disabled onchange="updateSalary()">
                 </div>
-                <div class="w-100"></div>
+                <div class="w-100 pb-4"></div>
 
                 <h4 class="mx-auto pt-3">Nombre de kilomètre dans le taximètre</h4>
                 <div class="w-100"></div>
@@ -87,7 +87,7 @@
                     <label class="input-group-text font-weight-bold bg-transparent border-0" for="totalMillage">Total</label>
                     <input id="totalMillage" class="form-control font-weight-bold bg-transparent border-0" type="number" name="totalMillage" readonly disabled onchange="setDifference()">
                 </div>
-                <div class="w-100"></div>
+                <div class="w-100 pb-4"></div>
 
                 <h4 class="mx-auto pt-3">Nombre de kilomètre effectué professionellement (dans la journée)</h4>
                 <div class="w-100"></div>
@@ -103,7 +103,7 @@
                     <label class="input-group-text font-weight-bold bg-transparent border-0" for="mileageLadenTotal">Total</label>
                     <input id="mileageLadenTotal" class="form-control font-weight-bold bg-transparent border-0" type="number" name="mileageLadenTotal" readonly disabled>
                 </div>
-                <div class="w-100"></div>
+                <div class="w-100 pb-4"></div>
 
                 <h4 class="mx-auto pt-3">Nombre de clients (dans la journée)</h4>
                 <div class="w-100"></div>
@@ -119,7 +119,7 @@
                     <label class="input-group-text font-weight-bold bg-transparent border-0" for="totalAmountOfPassengers">Total</label>
                     <input id="totalAmountOfPassengers" class="form-control font-weight-bold bg-transparent border-0" type="number" name="totalAmountOfPassengers" readonly disabled>
                 </div>
-                <div class="w-100"></div>
+                <div class="w-100 pb-4"></div>
 
 
                 <h4 class="mx-auto pt-3">Nombre de kilomètre de la voiture</h4>
@@ -136,13 +136,13 @@
                     <label class="input-group-text font-weight-bold bg-transparent border-0" for="totalMileageInVehicle">Total</label>
                     <input id="totalMileageInVehicle" class="form-control font-weight-bold bg-transparent border-0" type="number" name="totalMileageInVehicle" readonly disabled>
                 </div>
-                <div class="w-100"></div>
+                <div class="w-100 pb-4"></div>
 
                 <div class="col input-group">
                     <label class="input-group-text font-weight-bold bg-transparent border-0" for="salary">Salaire</label>
                     <input id="salary" class="form-control font-weight-bold bg-transparent border-0" type="number" name="salary" readonly disabled>
                 </div>
-                <div class="w-100"></div>
+                <div class="w-100 pb-4"></div>
 
                 <div class="col input-group">
                     <label class="input-group-text" for="gaz">Gaz</label>
@@ -156,7 +156,7 @@
                     <label class="input-group-text" for="various">Divers</label>
                     <input id="various" class="form-control" type="number" name="various">
                 </div>
-                <div class="w-100"></div>
+                <div class="w-100 pb-4"></div>
 
                 <div class="col input-group">
                     <label class="input-group-text font-weight-bold bg-transparent border-0" for="totalExpenses">Total des dépense</label>
@@ -171,7 +171,7 @@
 
             <div class="row">
                 <div class="col-4"></div>
-                <div class="col"><button type="button" class="btn btn-success w-25">Envoyer</button></div>
+                <div class="col"><button type="button" class="btn btn-lg btn-success">Envoyer</button></div>
             </div>
         </form>
     </div>

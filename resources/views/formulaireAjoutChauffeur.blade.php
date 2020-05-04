@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@section('title',"Formulaire d'ajout de chauffeur")
+@section('title', "Formulaire d'ajout de chauffeur")
 
 @section('before-scripts')
 
@@ -9,7 +9,7 @@
     @parent
     <div class="container">
         <form action="" method="post">
-            <div class="row">
+            <div class="row mb-4">
                 <div class="col-4 input-group">
                     <label class="input-group-text" for="lastName">Nom</label>
                     <input id="lastName" class="form-control" type="text" name="lastName">
@@ -18,7 +18,7 @@
                     <label class="input-group-text" for="firstName">Prénom</label>
                     <input id="firstName" class="form-control" type="text" name="firstName">
                 </div>
-                <div class="w-100"></div>
+                <div class="w-100 pb-4"></div>
 
                 <div class="col input-group">
                     <label class="input-group-text" for="phoneNumber">Numéro de téléphone</label>
@@ -32,7 +32,7 @@
                     <label class="input-group-text" for="streetName">Rue</label>
                     <input id="streetName" class="form-control" type="text" name="streetName">
                 </div>
-                <div class="w-100"></div>
+                <div class="w-100 pb-4"></div>
 
                 <div class="col input-group">
                     <label class="input-group-text" for="cityName">Ville</label>
@@ -42,7 +42,7 @@
                     <label class="input-group-text" for="postalCode">Code Postal</label>
                     <input id="postalCode" class="form-control" type="text" name="postalCode">
                 </div>
-                <div class="w-100"></div>
+                <div class="w-100 pb-4"></div>
 
                 <div class="col input-group">
                     <label class="input-group-text" for="licenceNumber">Numéro de permis</label>
@@ -52,7 +52,7 @@
                     <label class="input-group-text" for="licenceNumber">Date d'expiration du permis</label>
                     <input id="licenceNumber" class="form-control" type="date" name="licenceNumber">
                 </div>
-                <div class="w-100"></div>
+                <div class="w-100 pb-4"></div>
 
                 <div class="col input-group">
                     <label class="input-group-text" for="commission">Commission</label>
@@ -66,7 +66,7 @@
 
             <div class="row">
                 <div class="col-4"></div>
-                <div class="col"><button type="button" class="btn btn-success w-25">Envoyer</button></div>
+                <div class="col"><button type="button" class="btn btn-lg btn-success w-25">Envoyer</button></div>
             </div>
 
         </form>
