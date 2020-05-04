@@ -25,7 +25,7 @@ class DriverRequest extends FormRequest
     public function rules()
     {
         return [
-            'driverNo' => ['integer', 'min:1', 'required',],
+            'driverNo' => ['min:1', 'required',],
             'taxiNo' => ['min:1',],
             'dateStart' => ['date', 'after_or_equal:today',],
             'dateEnd' => ['date', 'after_or_equal:dateStart',],

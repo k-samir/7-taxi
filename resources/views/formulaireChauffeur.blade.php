@@ -22,7 +22,7 @@
                     <label class="input-group-text" for="dateStart_time" hidden></label>
                 </div>
                 <div class="col-5 input-group">
-                    <label class="input-group-text" for="dateEnd_date">Date (Début)</label>
+                    <label class="input-group-text" for="dateEnd_date">Date (Fin)</label>
                     <input id="dateEnd_date" class="form-control" type="date" name="dateEnd_date" placeholder="jj/mm/aaaa">
                     <input id="dateEnd_time" class="form-control" type="time" name="dateEnd_time" placeholder="hh:mm">
                     <label class="input-group-text" for="dateEnd_time" hidden></label>
@@ -31,15 +31,14 @@
 
                 <div class="col-8 input-group">
                     <label class="input-group-text" for="startRecipe">Recette</label>
-                    <input id="startRecipe" class="form-control" type="number" name="recetteInit" placeholder="Initiale" onchange="updateRealRecipe()">
+                    <input id="startRecipe" class="form-control" type="number" name="recetteInit" min="0" placeholder="Initiale" onchange="updateRealRecipe()">
                     <label class="input-group-text" for="finalRecipe" hidden></label>
-                    <input id="finalRecipe" class="form-control" type="number" name="finalRecipe" placeholder="Finale" onchange="updateRealRecipe()">
-                </div>
+                    <input id="finalRecipe" class="form-control" type="number" name="finalRecipe" min="0" placeholder="Finale" onchange="updateRealRecipe()">
                 <div class="col"></div>
                 <div class="w-100 pb-2"></div>
                 <div class="col input-group">
                     <label class="input-group-text" for="fixPrice">Prix fixe</label>
-                    <input id="fixPrice" class="form-control" type="number" name="fixPrice" onchange="updateRealRecipe()">
+                    <input id="fixPrice" class="form-control" type="number" name="fixPrice" min="0" onchange="updateRealRecipe()">
                 </div>
                 <div class="col input-group">
                     <label class="input-group-text font-weight-bold bg-transparent border-0" for="realRecipe">Recette réel</label>
@@ -108,27 +107,27 @@
                 </div>
                 <div class="col-3 input-group">
                     <label class="input-group-text font-weight-bold bg-transparent border-0" for="totalMileageInVehicle">Total</label>
-                    <input id="totalMileageInVehicle" class="form-control font-weight-bold bg-transparent border-0" type="number" name="totalMileageInVehicle" readonly disabled>
+                    <input id="totalMileageInVehicle" class="form-control font-weight-bold bg-transparent border-0" type="number" name="totalMileageInVehicle" min="0" readonly disabled>
                 </div>
                 <div class="w-100 pb-4"></div>
 
                 <div class="col input-group">
                     <label class="input-group-text font-weight-bold bg-transparent border-0" for="salary">Salaire</label>
-                    <input id="salary" class="form-control font-weight-bold bg-transparent border-0" type="number" name="salary" readonly disabled>
+                    <input id="salary" class="form-control font-weight-bold bg-transparent border-0" type="number" name="salary" min="0" readonly disabled>
                 </div>
                 <div class="w-100 pb-4"></div>
 
                 <div class="col input-group">
                     <label class="input-group-text" for="gaz">Gaz</label>
-                    <input id="gaz" class="form-control" type="number" name="gaz">
+                    <input id="gaz" class="form-control" type="number" name="gaz" min="0">
                 </div>
                 <div class="col input-group">
                     <label class="input-group-text" for="credit">Crédit</label>
-                    <input id="credit" class="form-control" type="number" name="credit">
+                    <input id="credit" class="form-control" type="number" name="credit" min="0">
                 </div>
                 <div class="col input-group">
                     <label class="input-group-text" for="various">Divers</label>
-                    <input id="various" class="form-control" type="number" name="various">
+                    <input id="various" class="form-control" type="number" name="various" min="0">
                 </div>
                 <div class="w-100 pb-4"></div>
 
