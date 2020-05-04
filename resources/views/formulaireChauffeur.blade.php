@@ -50,19 +50,19 @@
                 <div class="col-5 input-group">
                     <label class="input-group-text" for="date_date">Date</label>
                     <input id="date_date" class="form-control" type="date" name="date_date">
-                    <input id="date_time" class="form-control" type="time" name="date">
+                    <input id="date_time" class="form-control" type="time" name="date_time">
                     <label class="input-group-text" for="date_time" hidden></label>
                 </div>
                 <div class="w-100 pb-4"></div>
 
-                <div class="col input-group">
-                    <label class="input-group-text" for="startRecipe">Recette initial</label>
-                    <input id="startRecipe" class="form-control" type="number" name="recetteInit" onchange="updateRealRecipe()">
+                <div class="col-8 input-group">
+                    <label class="input-group-text" for="startRecipe">Recette</label>
+                    <input id="startRecipe" class="form-control" type="number" name="recetteInit" placeholder="Initiale" onchange="updateRealRecipe()">
+                    <label class="input-group-text" for="finalRecipe" hidden></label>
+                    <input id="finalRecipe" class="form-control" type="number" name="finalRecipe" placeholder="Finale" onchange="updateRealRecipe()">
                 </div>
-                <div class="col input-group">
-                    <label class="input-group-text" for="finalRecipe">Recette final</label>
-                    <input id="finalRecipe" class="form-control" type="number" name="finalRecipe" onchange="updateRealRecipe()">
-                </div>
+                <div class="col"></div>
+                <div class="w-100 pb-2"></div>
                 <div class="col input-group">
                     <label class="input-group-text" for="fixPrice">Prix fixe</label>
                     <input id="fixPrice" class="form-control" type="number" name="fixPrice" onchange="updateRealRecipe()">
