@@ -19,11 +19,12 @@ Auth::routes();
 Route::get('/', function () {
     return redirect('home');
 });
-Route::get('/home', 'BaseController@index')->name('home');
+Route::get('/home', 'GetController@index')->name('home');
 
-Route::get('/form/driver/addShift', 'BaseController@addConductorShift')->name('addConductorShift')->middleware('auth');
+Route::get('/conductor/addShift', 'GetController@addConductorShift')->name('addConductorShift')->middleware('auth');
 Route::post('/form/driver/addShift', 'FormDriverController@addRequest')->middleware('auth');
-Route::get('/form/driver/newConductor', 'BaseController@addConductor')->name('addConductor')->middleware('auth');
+
+Route::get('/conductor/newConductor', 'GetController@addConductor')->name('addConductor')->middleware('auth');
 
 
 

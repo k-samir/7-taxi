@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 
-class BaseController extends Controller
+/**
+ * A class that only send views from a get.
+ * @package App\Http\Controllers
+ */
+class GetController extends Controller
 {
     /**
      * Show the application dashboard.
