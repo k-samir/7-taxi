@@ -6,7 +6,7 @@
 @endsection
 
 @section('body-content')
-    <div class="container">
+    <div class="container mb-5">
         @parent
         <form action="" method="post">
             <div class="row mb-4">

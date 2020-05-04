@@ -2,7 +2,7 @@
 @section('title', "Connexion")
 
 @section('body-content')
-    <div class="container">
+    <div class="container mb-5">
         @parent
         <form method="POST" action="{{ route('login') }}">
             <div class="row mb3 justify-content-center">
