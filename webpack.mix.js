@@ -18,4 +18,5 @@ mix
     .sass('resources/sass/app.scss', 'public/css')
 
     .ts('resources/ts/base.ts', 'public/js')
+    .ts('resources/ts/formDriver.ts', 'public/js')
 ;

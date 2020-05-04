@@ -1,39 +1,6 @@
 @extends('layouts.base')
 @section('title', "Formulaire pour les chauffeurs")
 
-@section('before-scripts')
-    <script>
-
-        /**
-         * Update the value of the element by id 'salary'
-         * to the value 'realRecipe' multiplied by the commision receive.
-         */
-        function updateSalary() {
-            let commision = 0.36;
-            document.getElementById('salary').value = document.getElementById('realRecipe').value * commision;
-        }
-
-        function setDifference(startingValue, endingValue, elementToSetTheValue) {
-            elementToSetTheValue.value = startingValue - endingValue;
-        }
-
-        /**
-         * Method to calculate the real recipe from the difference of initial recipe and final recipe plu the fix price.<br>
-         * If the realRecipe is greater than 0, then, the method {@link updateSalary} will be called.
-         */
-        function updateRealRecipe() {
-            let startingRecipe = parseInt(document.getElementById('startRecipe').value);
-            let endingRecipe = parseInt(document.getElementById('finalRecipe').value);
-            let fixPrice = parseInt(document.getElementById('fixPrice').value);
-
-            let realRecipe = endingRecipe - startingRecipe + fixPrice;
-            document.getElementById('realRecipe').value = realRecipe;
-            if (realRecipe > 0) updateSalary();
-
-        }
-    </script>
-@endsection
-
 @section('body-content')
     <div class="container">
         @parent
@@ -49,8 +16,8 @@
                 </div>
                 <div class="col-5 input-group">
                     <label class="input-group-text" for="date_date">Date</label>
-                    <input id="date_date" class="form-control" type="date" name="date_date">
-                    <input id="date_time" class="form-control" type="time" name="date_time">
+                    <input id="date_date" class="form-control" type="date" name="date_date" placeholder="jj/mm/aaaa">
+                    <input id="date_time" class="form-control" type="time" name="date_time" placeholder="hh:mm">
                     <label class="input-group-text" for="date_time" hidden></label>
                 </div>
                 <div class="w-100 pb-4"></div>
@@ -77,15 +44,15 @@
                 <div class="w-100"></div>
                 <div class="col-4 input-group">
                     <label class="input-group-text" for="startingMillage">Début</label>
-                    <input id="startingMillage" class="form-control" type="number" name="startingMillage" onchange="setDifference(this.value,document.getElementById('endingMillage').value,document.getElementById('totalMillage'))">
+                    <input id="startingMillage" class="form-control" type="number" name="startingMillage" onchange="setDifferenceOnMillage()">
                 </div>
                 <div class="col-4 input-group">
                     <label class="input-group-text" for="endingMillage">Arrivée</label>
-                    <input id="endingMillage" class="form-control" type="number" name="endingMillage" onchange="setDifference(document.getElementById('startingMillage').value,this.value,document.getElementById('totalMillage'))">
+                    <input id="endingMillage" class="form-control" type="number" name="endingMillage" onchange="setDifferenceOnMillage()">
                 </div>
                 <div class="col-4 input-group">
                     <label class="input-group-text font-weight-bold bg-transparent border-0" for="totalMillage">Total</label>
-                    <input id="totalMillage" class="form-control font-weight-bold bg-transparent border-0" type="number" name="totalMillage" readonly disabled onchange="setDifference()">
+                    <input id="totalMillage" class="form-control font-weight-bold bg-transparent border-0" type="number" name="totalMillage" readonly disabled>
                 </div>
                 <div class="w-100 pb-4"></div>
 
@@ -93,15 +60,15 @@
                 <div class="w-100"></div>
                 <div class="col input-group">
                     <label class="input-group-text" for="startingMileageLaden">Début</label>
-                    <input id="startingMileageLaden" class="form-control" type="number" name="startingMileageLaden" onchange="setDifference(this.value,document.getElementById('endingMileageLaden').value,document.getElementById('mileageLadenTotal'))">
+                    <input id="startingMileageLaden" class="form-control" type="number" name="startingMileageLaden" onchange="setDifferenceOnMillageLaden()">
                 </div>
                 <div class="col input-group">
                     <label class="input-group-text" for="endingMileageLaden">Fin</label>
-                    <input  id="endingMileageLaden" class="form-control" type="number" name="endingMileageLaden" onchange="setDifference(document.getElementById('startingMileageLaden').value,this.value,document.getElementById('mileageLadenTotal'))">
+                    <input  id="endingMileageLaden" class="form-control" type="number" name="endingMileageLaden" onchange="setDifferenceOnMillageLaden()">
                 </div>
                 <div class="col-3 input-group">
-                    <label class="input-group-text font-weight-bold bg-transparent border-0" for="mileageLadenTotal">Total</label>
-                    <input id="mileageLadenTotal" class="form-control font-weight-bold bg-transparent border-0" type="number" name="mileageLadenTotal" readonly disabled>
+                    <label class="input-group-text font-weight-bold bg-transparent border-0" for="totalMileageLaden">Total</label>
+                    <input id="totalMileageLaden" class="form-control font-weight-bold bg-transparent border-0" type="number" name="totalMileageLaden" readonly disabled>
                 </div>
                 <div class="w-100 pb-4"></div>
 
@@ -109,11 +76,11 @@
                 <div class="w-100"></div>
                 <div class="col input-group">
                     <label class="input-group-text" for="startingAmountOfPassengers">Début</label>
-                    <input id="startingAmountOfPassengers" class="form-control" type="number" name="startingAmountOfPassengers" onchange="setDifference(this.value,document.getElementById('endingAmountOrPassengers').value,document.getElementById('totalAmountOfPassengers'))">
+                    <input id="startingAmountOfPassengers" class="form-control" type="number" name="startingAmountOfPassengers" onchange="setDifferenceOnAmountOfPassengers()">
                 </div>
                 <div class="col input-group">
                     <label class="input-group-text" for="endingAmountOrPassengers">Fin</label>
-                    <input id="endingAmountOrPassengers" class="form-control" type="number" name="endingAmountOrPassengers" onchange="setDifference(document.getElementById('startingAmountOfPassengers').value,this.value,document.getElementById('totalAmountOfPassengers'))">
+                    <input id="endingAmountOrPassengers" class="form-control" type="number" name="endingAmountOrPassengers" onchange="setDifferenceOnAmountOfPassengers()">
                 </div>
                 <div class="col-3 input-group">
                     <label class="input-group-text font-weight-bold bg-transparent border-0" for="totalAmountOfPassengers">Total</label>
@@ -126,11 +93,11 @@
                 <div class="w-100"></div>
                 <div class="col input-group">
                     <label class="input-group-text" for="startingMileageInVehicle">Début</label>
-                    <input id="startingMileageInVehicle" class="form-control" type="number" name="startingMileageInVehicle" onchange="setDifference(this.value,document.getElementById('endingMileageInVehicle').value,document.getElementById('totalMileageInVehicle'))">
+                    <input id="startingMileageInVehicle" class="form-control" type="number" name="startingMileageInVehicle" onchange="setDifferenceOnMillage()">
                 </div>
                 <div class="col input-group">
                     <label class="input-group-text" for="endingMileageInVehicle">Fin</label>
-                    <input id="endingMileageInVehicle" class="form-control" type="number" name="endingMileageInVehicle" onchange="setDifference(document.getElementById('startingMileageInVehicle').value,this.value,document.getElementById('totalMileageInVehicle'))">
+                    <input id="endingMileageInVehicle" class="form-control" type="number" name="endingMileageInVehicle" onchange="setDifferenceOnMillage()">
                 </div>
                 <div class="col-3 input-group">
                     <label class="input-group-text font-weight-bold bg-transparent border-0" for="totalMileageInVehicle">Total</label>
@@ -175,4 +142,9 @@
             </div>
         </form>
     </div>
+@endsection
+
+@section('after-scripts')
+    <script>var commission = {{$commission??0.36}}</script>
+    <script src="{{asset('js/formDriver.js')}}" defer></script>
 @endsection
