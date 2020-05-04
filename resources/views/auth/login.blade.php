@@ -10,7 +10,7 @@
 
                 <div class="col-6 input-group">
                     <label class="input-group-text" for="email">Adresse Courriel</label>
-                    <input id="email" class="form-control" type="email" value="{{old('email')}}" placeholder="email@template.com" autofocus>
+                    <input id="email" class="form-control" type="email" name="email" value="{{old('email')}}" placeholder="email@template.com" autofocus>
                 </div>
                 <div class="w-100"></div>
                 <div class="col-6" hidden>
@@ -20,7 +20,7 @@
 
                 <div class="col-6 input-group">
                     <label class="input-group-text" for="password">Mot de passe</label>
-                    <input id="password" class="form-control" type="password">
+                    <input id="password" class="form-control" name="password" type="password">
                 </div>
                 <div class="w-100 pb-4"></div>
 
