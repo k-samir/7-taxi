@@ -19,10 +19,10 @@ Auth::routes();
 Route::get('/', function () {
     return redirect('home');
 });
-Route::get('/home', 'BaseController@index')->name('home');
+Route::get('/home', 'GetController@index')->name('home');
 
-Route::get('/conductor/addShift', 'BaseController@addConductorShift')->name('addConductorShift');
-Route::get('/conductor/newConductor', 'BaseController@addConductor')->name('addConductor');
+Route::get('/conductor/addShift', 'GetController@addConductorShift')->name('addConductorShift');
+Route::get('/conductor/newConductor', 'GetController@addConductor')->name('addConductor');
 
 
 
