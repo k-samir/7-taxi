@@ -18,6 +18,4 @@ mix
     .sass('resources/sass/app.scss', 'public/css')
 
     .ts('resources/ts/base.ts', 'public/js')
-    .ts('resources/ts/formContainers.ts', 'public/js')
-    .ts('resources/ts/formChauffeurClasses.ts', 'public/js')
 ;
