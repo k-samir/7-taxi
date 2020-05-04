@@ -35,8 +35,8 @@
 @endsection
 
 @section('body-content')
-    @parent
     <div class="container">
+        @parent
         <form action="" method="post">
             <div class="row mb-4 justify-content-center">
                 <div class="col input-group">
