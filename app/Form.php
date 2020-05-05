@@ -3,7 +3,6 @@
 namespace App;
 
 use App\Http\Requests\FormRequest;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
@@ -16,8 +15,8 @@ class Form extends Model
         DB::table("formulaire")->insert([
             "id_chauffeur" => $driverNo,
             "id_taxi" => $request['taxiNo'],
-            "date_debut" => $this->createDateFromRequest($request['dateStart_date'], $request['dateStart_time']),
-            "date_fin" => $this->createDateFromRequest($request['dateEnd_date'], $request['dateEnd_time']),
+            "date_debut" => $request['dateStart'],
+            "date_fin" => $request['dateEnd'],
 
             "recette_depart" => $request['startRecipe'],
             "recette_arrivee" => $request['finalRecipe'],
@@ -37,13 +36,6 @@ class Form extends Model
             "depense_credit" => $request['credit'],
             "depense_divers" => $request['various'],
         ]);
-    }
-
-    private function createDateFromRequest(string $requestDate, string $requestTime): string
-    {
-        $tempRequestDate = explode($requestDate, "-");
-        $tempRequestTime = explode($requestTime, ":");
-        return Carbon::create($tempRequestDate[0], $tempRequestDate[1], $tempRequestDate[2], $tempRequestTime[0], $tempRequestTime[1])->toDateTimeString("minute");
     }
 
 }

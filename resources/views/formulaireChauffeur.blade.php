@@ -32,7 +32,7 @@
 
                 <div class="col-8 input-group">
                     <label class="input-group-text" for="startRecipe">Recette</label>
-                    <input id="startRecipe" class="form-control" value="{{old('startRecipe')}}" type="number" name="recetteInit" min="0" placeholder="Initiale" required>
+                    <input id="startRecipe" class="form-control" value="{{old('startRecipe')}}" type="number" name="startRecipe" min="0" placeholder="Initiale" required>
                     <label class="input-group-text" for="finalRecipe" hidden></label>
                     <input id="finalRecipe" class="form-control" value="{{old('finalRecipe')}}" type="number" name="finalRecipe" min="0" placeholder="Finale" required>
                 </div>
