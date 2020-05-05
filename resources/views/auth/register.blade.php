@@ -14,7 +14,7 @@
                 </div>
                 <div class="w-100"></div>
                 <div class="col-6" hidden>
-                    <span class="invalid-feedback">@error('name'){{$message}}@enderror</span>
+                    <span class="text-danger text-sm-right">@error('name'){{$message}}@enderror</span>
                 </div>
                 <div class="w-100 pb-4"></div>
 
@@ -24,7 +24,7 @@
                 </div>
                 <div class="w-100"></div>
                 <div class="col-6" hidden>
-                    <span class="invalid-feedback">@error('email'){{$message}}@enderror</span>
+                    <span class="text-danger text-sm-right">@error('email'){{$message}}@enderror</span>
                 </div>
                 <div class="w-100 pb-4"></div>
 
@@ -34,7 +34,7 @@
                 </div>
                 <div class="w-100"></div>
                 <div class="col-6" hidden>
-                    <span class="invalid-feedback">@error('password'){{$message}}@enderror</span>
+                    <span class="text-danger text-sm-right">@error('password'){{$message}}@enderror</span>
                 </div>
                 <div class="w-100 pb-4"></div>
 
@@ -44,7 +44,7 @@
                 </div>
                 <div class="w-100"></div>
                 <div class="col-6" hidden>
-                    <span class="invalid-feedback">@error('password-confirm'){{$message}}@enderror</span>
+                    <span class="text-danger text-sm-right">@error('password-confirm'){{$message}}@enderror</span>
                 </div>
                 <div class="w-100 pb-4"></div>
 
