@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Foundation\Http\FormRequest as Request;
 use Illuminate\Support\Facades\Auth;
 
-class DriverRequest extends FormRequest
+class FormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
