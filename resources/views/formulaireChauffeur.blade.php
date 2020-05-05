@@ -7,42 +7,43 @@
         <form action="" method="post">
             <div class="row mb-4 justify-content-center">
                 <div class="col input-group">
-                    <label class="input-group-text font-weight-bold bg-transparent border-0" for="driverNo">Numéro de conducteur</label>
-                    <input id="driverNo" class="form-control font-weight-bold bg-transparent border-0" type="text" name="driverNo" minlength="1" readonly disabled>
+                    <label class="input-group-text font-weight-bold bg-transparent border-0">Numéro de conducteur</label>
+                    <input id="driverNo" class="form-control font-weight-bold bg-transparent border-0" type="text" readonly disabled>
                 </div>
                 <div class="col input-group">
                     <label class="input-group-text" for="taxiNo">Numéro du taxi</label>
-                    <input id="taxiNo" class="form-control" type="text" name="taxiNo" minlength="1">
+                    <input id="taxiNo" class="form-control" value="{{old('taxiNo')}}" type="text" name="taxiNo" minlength="1" required>
                 </div>
                 <div class="w-100 pb-4"></div>
                 <div class="col-5 input-group">
                     <label class="input-group-text" for="dateStart_date">Date (Début)</label>
-                    <input id="dateStart_date" class="form-control" type="date" name="dateStart_date" placeholder="jj/mm/aaaa">
-                    <input id="dateStart_time" class="form-control" type="time" name="dateStart_time" placeholder="hh:mm">
+                    <input id="dateStart_date" class="form-control" value="{{old('dateStart_date', \Carbon\Carbon::now()->toDateString())}}" type="date" name="dateStart_date" placeholder="jj/mm/aaaa" required>
+                    <input id="dateStart_time" class="form-control" value="{{old('dateStart_time', \Carbon\Carbon::now()->toTimeString("minute"))}}" type="time" name="dateStart_time" placeholder="hh:mm" required>
                     <label class="input-group-text" for="dateStart_time" hidden></label>
                 </div>
                 <div class="col-5 input-group">
                     <label class="input-group-text" for="dateEnd_date">Date (Fin)</label>
-                    <input id="dateEnd_date" class="form-control" type="date" name="dateEnd_date" placeholder="jj/mm/aaaa">
-                    <input id="dateEnd_time" class="form-control" type="time" name="dateEnd_time" placeholder="hh:mm">
+                    <input id="dateEnd_date" class="form-control" value="{{old('dateEnd_date', \Carbon\Carbon::now()->toDateString())}}" type="date" name="dateEnd_date" placeholder="jj/mm/aaaa" required>
+                    <input id="dateEnd_time" class="form-control" value="{{old('dateEnd_time', \Carbon\Carbon::now()->toTimeString("minute"))}}" type="time" name="dateEnd_time" placeholder="hh:mm" required>
                     <label class="input-group-text" for="dateEnd_time" hidden></label>
                 </div>
                 <div class="w-100 pb-4"></div>
 
                 <div class="col-8 input-group">
                     <label class="input-group-text" for="startRecipe">Recette</label>
-                    <input id="startRecipe" class="form-control" type="number" name="recetteInit" min="0" placeholder="Initiale" onchange="updateRealRecipe()">
+                    <input id="startRecipe" class="form-control" value="{{old('startRecipe', 0)}}" type="number" name="recetteInit" min="0" placeholder="Initiale" required>
                     <label class="input-group-text" for="finalRecipe" hidden></label>
-                    <input id="finalRecipe" class="form-control" type="number" name="finalRecipe" min="0" placeholder="Finale" onchange="updateRealRecipe()">
+                    <input id="finalRecipe" class="form-control" value="{{old('finalRecipe', 0)}}" type="number" name="finalRecipe" min="0" placeholder="Finale" required>
+                </div>
                 <div class="col"></div>
                 <div class="w-100 pb-2"></div>
                 <div class="col input-group">
                     <label class="input-group-text" for="fixPrice">Prix fixe</label>
-                    <input id="fixPrice" class="form-control" type="number" name="fixPrice" min="0" onchange="updateRealRecipe()">
+                    <input id="fixPrice" class="form-control" value="{{old('fixPrice', 0)}}" type="number" name="fixPrice" min="0" required>
                 </div>
                 <div class="col input-group">
-                    <label class="input-group-text font-weight-bold bg-transparent border-0" for="realRecipe">Recette réel</label>
-                    <input id="realRecipe" class="form-control font-weight-bold bg-transparent border-0" type="number" name="realRecipe" readonly disabled onchange="updateSalary()">
+                    <label class="input-group-text font-weight-bold bg-transparent border-0">Recette réel</label>
+                    <input id="realRecipe" class="form-control font-weight-bold bg-transparent border-0" type="number" readonly disabled>
                 </div>
                 <div class="w-100 pb-4"></div>
 
@@ -50,15 +51,15 @@
                 <div class="w-100"></div>
                 <div class="col-4 input-group">
                     <label class="input-group-text" for="startingMillage">Début</label>
-                    <input id="startingMillage" class="form-control" type="number" name="startingMillage" onchange="setDifferenceOnMillage()">
+                    <input id="startingMillage" class="form-control" value="{{old('startingMillage', 0)}}" type="number" name="startingMillage" required>
                 </div>
                 <div class="col-4 input-group">
                     <label class="input-group-text" for="endingMillage">Arrivée</label>
-                    <input id="endingMillage" class="form-control" type="number" name="endingMillage" onchange="setDifferenceOnMillage()">
+                    <input id="endingMillage" class="form-control" value="{{old('endingMillage', 0)}}" type="number" name="endingMillage" required>
                 </div>
                 <div class="col-4 input-group">
-                    <label class="input-group-text font-weight-bold bg-transparent border-0" for="totalMillage">Total</label>
-                    <input id="totalMillage" class="form-control font-weight-bold bg-transparent border-0" type="number" name="totalMillage" readonly disabled>
+                    <label class="input-group-text font-weight-bold bg-transparent border-0">Total</label>
+                    <input id="totalMillage" class="form-control font-weight-bold bg-transparent border-0" type="number" readonly disabled>
                 </div>
                 <div class="w-100 pb-4"></div>
 
@@ -66,15 +67,15 @@
                 <div class="w-100"></div>
                 <div class="col input-group">
                     <label class="input-group-text" for="startingMileageLaden">Début</label>
-                    <input id="startingMileageLaden" class="form-control" type="number" name="startingMileageLaden" onchange="setDifferenceOnMillageLaden()">
+                    <input id="startingMileageLaden" class="form-control" value="{{old('startingMileageLaden', 0)}}" type="number" name="startingMileageLaden" required>
                 </div>
                 <div class="col input-group">
                     <label class="input-group-text" for="endingMileageLaden">Fin</label>
-                    <input  id="endingMileageLaden" class="form-control" type="number" name="endingMileageLaden" onchange="setDifferenceOnMillageLaden()">
+                    <input  id="endingMileageLaden" class="form-control" value="{{old('endingMileageLaden', 0)}}" type="number" name="endingMileageLaden" required>
                 </div>
                 <div class="col-3 input-group">
-                    <label class="input-group-text font-weight-bold bg-transparent border-0" for="totalMileageLaden">Total</label>
-                    <input id="totalMileageLaden" class="form-control font-weight-bold bg-transparent border-0" type="number" name="totalMileageLaden" readonly disabled>
+                    <label class="input-group-text font-weight-bold bg-transparent border-0">Total</label>
+                    <input id="totalMileageLaden" class="form-control font-weight-bold bg-transparent border-0" type="number" readonly disabled>
                 </div>
                 <div class="w-100 pb-4"></div>
 
@@ -82,15 +83,15 @@
                 <div class="w-100"></div>
                 <div class="col input-group">
                     <label class="input-group-text" for="startingAmountOfPassengers">Début</label>
-                    <input id="startingAmountOfPassengers" class="form-control" type="number" name="startingAmountOfPassengers" onchange="setDifferenceOnAmountOfPassengers()">
+                    <input id="startingAmountOfPassengers" class="form-control" value="{{old('startingAmountOfPassengers', 0)}}" type="number" name="startingAmountOfPassengers" required>
                 </div>
                 <div class="col input-group">
                     <label class="input-group-text" for="endingAmountOrPassengers">Fin</label>
-                    <input id="endingAmountOrPassengers" class="form-control" type="number" name="endingAmountOrPassengers" onchange="setDifferenceOnAmountOfPassengers()">
+                    <input id="endingAmountOrPassengers" class="form-control" value="{{old('endingAmountOrPassengers', 0)}}" type="number" name="endingAmountOrPassengers" required>
                 </div>
                 <div class="col-3 input-group">
-                    <label class="input-group-text font-weight-bold bg-transparent border-0" for="totalAmountOfPassengers">Total</label>
-                    <input id="totalAmountOfPassengers" class="form-control font-weight-bold bg-transparent border-0" type="number" name="totalAmountOfPassengers" readonly disabled>
+                    <label class="input-group-text font-weight-bold bg-transparent border-0">Total</label>
+                    <input id="totalAmountOfPassengers" class="form-control font-weight-bold bg-transparent border-0" type="number" readonly disabled>
                 </div>
                 <div class="w-100 pb-4"></div>
 
@@ -99,21 +100,21 @@
                 <div class="w-100"></div>
                 <div class="col input-group">
                     <label class="input-group-text" for="startingMileageInVehicle">Début</label>
-                    <input id="startingMileageInVehicle" class="form-control" type="number" name="startingMileageInVehicle" onchange="setDifferenceOnMillage()">
+                    <input id="startingMileageInVehicle" class="form-control" value="{{old('startingMileageInVehicle', 0)}}" type="number" name="startingMileageInVehicle" required onchange="setDifferenceOnMillage()">
                 </div>
                 <div class="col input-group">
                     <label class="input-group-text" for="endingMileageInVehicle">Fin</label>
-                    <input id="endingMileageInVehicle" class="form-control" type="number" name="endingMileageInVehicle" onchange="setDifferenceOnMillage()">
+                    <input id="endingMileageInVehicle" class="form-control" value="{{old('endingMileageInVehicle', 0)}}" type="number" name="endingMileageInVehicle" required onchange="setDifferenceOnMillage()">
                 </div>
                 <div class="col-3 input-group">
-                    <label class="input-group-text font-weight-bold bg-transparent border-0" for="totalMileageInVehicle">Total</label>
-                    <input id="totalMileageInVehicle" class="form-control font-weight-bold bg-transparent border-0" type="number" name="totalMileageInVehicle" min="0" readonly disabled>
+                    <label class="input-group-text font-weight-bold bg-transparent border-0">Total</label>
+                    <input id="totalMileageInVehicle" class="form-control font-weight-bold bg-transparent border-0" type="number" readonly disabled>
                 </div>
                 <div class="w-100 pb-4"></div>
 
                 <div class="col input-group">
-                    <label class="input-group-text font-weight-bold bg-transparent border-0" for="salary">Salaire</label>
-                    <input id="salary" class="form-control font-weight-bold bg-transparent border-0" type="number" name="salary" min="0" readonly disabled>
+                    <label class="input-group-text font-weight-bold bg-transparent border-0">Salaire</label>
+                    <input id="salary" class="form-control font-weight-bold bg-transparent border-0" type="number" readonly disabled>
                 </div>
                 <div class="w-100 pb-4"></div>
 
@@ -132,12 +133,12 @@
                 <div class="w-100 pb-4"></div>
 
                 <div class="col input-group">
-                    <label class="input-group-text font-weight-bold bg-transparent border-0" for="totalExpenses">Total des dépense</label>
-                    <input id="totalExpenses" class="form-control font-weight-bold bg-transparent border-0" type="number" name="totalExpenses" readonly disabled>
+                    <label class="input-group-text font-weight-bold bg-transparent border-0">Total des dépense</label>
+                    <input id="totalExpenses" class="form-control font-weight-bold bg-transparent border-0" type="number" readonly disabled>
                 </div>
                 <div class="col input-group">
-                    <label class="input-group-text font-weight-bold bg-transparent border-0" for="totalNet">Total Net</label>
-                    <input id="totalNet" class="form-control font-weight-bold bg-transparent border-0" type="number" name="totalNet" readonly disabled>
+                    <label class="input-group-text font-weight-bold bg-transparent border-0">Total Net</label>
+                    <input id="totalNet" class="form-control font-weight-bold bg-transparent border-0" type="number" readonly disabled>
                 </div>
 
             </div>
