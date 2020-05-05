@@ -25,7 +25,6 @@ class DriverRequest extends FormRequest
     public function rules()
     {
         return [
-            'driverNo' => ['min:1', 'required',],
             'taxiNo' => ['min:1',],
             'dateStart' => ['date', 'after_or_equal:today',],
             'dateEnd' => ['date', 'after_or_equal:dateStart',],
@@ -43,7 +42,6 @@ class DriverRequest extends FormRequest
             'mileageInVehicleStart' => ['integer', 'min:0',],
             'mileageInVehicleEnd' => ['integer', 'min:mileageInVehicleStart',],
 
-            'salary' => ['numeric', 'required',],
             'gaz' => ['numeric', 'min:0',],
             'credit' => ['numeric', 'min:0',],
             'various' => ['numeric', 'min:0',],
