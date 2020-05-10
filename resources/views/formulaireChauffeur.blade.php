@@ -49,7 +49,7 @@
                 <h4 class="mx-auto pt-3">Nombre de kilomètre dans le taximètre</h4>
                 <div class="w-100"></div>
                 <div class="col-4 input-group">
-                    <label class="input-group-text" for="startingMillage">Début</label>
+                    <label class="input-group-text" for="startingMillage">Départ</label>
                     <input id="startingMillage" class="form-control" type="number" name="startingMillage" onchange="setDifferenceOnMillage()">
                 </div>
                 <div class="col-4 input-group">
@@ -65,11 +65,11 @@
                 <h4 class="mx-auto pt-3">Nombre de kilomètre effectué professionellement (dans la journée)</h4>
                 <div class="w-100"></div>
                 <div class="col input-group">
-                    <label class="input-group-text" for="startingMileageLaden">Début</label>
+                    <label class="input-group-text" for="startingMileageLaden">Départ</label>
                     <input id="startingMileageLaden" class="form-control" type="number" name="startingMileageLaden" onchange="setDifferenceOnMillageLaden()">
                 </div>
                 <div class="col input-group">
-                    <label class="input-group-text" for="endingMileageLaden">Fin</label>
+                    <label class="input-group-text" for="endingMileageLaden">Arrivée</label>
                     <input  id="endingMileageLaden" class="form-control" type="number" name="endingMileageLaden" onchange="setDifferenceOnMillageLaden()">
                 </div>
                 <div class="col-3 input-group">
@@ -81,11 +81,11 @@
                 <h4 class="mx-auto pt-3">Nombre de clients (dans la journée)</h4>
                 <div class="w-100"></div>
                 <div class="col input-group">
-                    <label class="input-group-text" for="startingAmountOfPassengers">Début</label>
+                    <label class="input-group-text" for="startingAmountOfPassengers">Départ</label>
                     <input id="startingAmountOfPassengers" class="form-control" type="number" name="startingAmountOfPassengers" onchange="setDifferenceOnAmountOfPassengers()">
                 </div>
                 <div class="col input-group">
-                    <label class="input-group-text" for="endingAmountOrPassengers">Fin</label>
+                    <label class="input-group-text" for="endingAmountOrPassengers">Arrivée</label>
                     <input id="endingAmountOrPassengers" class="form-control" type="number" name="endingAmountOrPassengers" onchange="setDifferenceOnAmountOfPassengers()">
                 </div>
                 <div class="col-3 input-group">
@@ -98,12 +98,12 @@
                 <h4 class="mx-auto pt-3">Nombre de kilomètre de la voiture</h4>
                 <div class="w-100"></div>
                 <div class="col input-group">
-                    <label class="input-group-text" for="startingMileageInVehicle">Début</label>
-                    <input id="startingMileageInVehicle" class="form-control" type="number" name="startingMileageInVehicle" onchange="setDifferenceOnMillage()">
+                    <label class="input-group-text" for="startingMileageInVehicle">Départ</label>
+                    <input id="startingMileageInVehicle" class="form-control" type="number" name="startingMileageInVehicle" onchange="setDifferenceOnMileageInVehicle()">
                 </div>
                 <div class="col input-group">
-                    <label class="input-group-text" for="endingMileageInVehicle">Fin</label>
-                    <input id="endingMileageInVehicle" class="form-control" type="number" name="endingMileageInVehicle" onchange="setDifferenceOnMillage()">
+                    <label class="input-group-text" for="endingMileageInVehicle">Arrivée</label>
+                    <input id="endingMileageInVehicle" class="form-control" type="number" name="endingMileageInVehicle" onchange="setDifferenceOnMileageInVehicle()">
                 </div>
                 <div class="col-3 input-group">
                     <label class="input-group-text font-weight-bold bg-transparent border-0" for="totalMileageInVehicle">Total</label>

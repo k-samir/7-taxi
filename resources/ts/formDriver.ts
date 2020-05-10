@@ -4,9 +4,6 @@ export namespace src{export namespace form {
             return (<HTMLInputElement>document.getElementById(id));
         }
 
-        function setDifference(startingValue: number, endingValue: number, elementToSetTheValue: HTMLInputElement): void {
-            elementToSetTheValue.value = String(startingValue - endingValue);
-        }
 
         function convertToFloat(htmlElement: HTMLInputElement): number
         function convertToFloat(value: string): number
@@ -29,16 +26,10 @@ export namespace src{export namespace form {
                 getID("salary").value = String(convertToFloat(getID("realRecipe")) * this.commission);
             }
 
-            public setDifference(startingID: string, endingValue: number, elementIDToSetTheValue: string): void
-            public setDifference(startingValue: number, endingID: string, elementIDToSetTheValue: string): void
-            public setDifference(startingID: string, endingID: string, elementIDToSetTheValue: string): void
-            public setDifference(startingValue: number, endingValue: number, elementIDToSetTheValue: string): void
-            public setDifference(startingValue: number, endingValue: number, elementToSetTheValue: HTMLInputElement): void
-            public setDifference(starting: number | string, ending: number | string, elementToSet: HTMLInputElement | string): void {
-                setDifference(
-                    typeof starting === "string" ? convertToFloat(getID(starting)) : starting,
-                    typeof ending === "string" ? convertToFloat(getID(ending)) : ending,
-                    typeof elementToSet === "string" ? getID(elementToSet) : elementToSet);
+            public setDifference(start: string,end:string, diff:string): void{
+                const depart = getID(start).value != "" ? parseFloat(getID(start).value) :0;
+                const arrive = getID(end).value != "" ? parseFloat(getID(end).value) :0;
+                getID(diff).value = (arrive - depart).toString();
             }
 
 
