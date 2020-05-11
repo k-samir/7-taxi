@@ -28,7 +28,7 @@ export namespace src{export namespace form {
         }
 
         public setDifference(elementToSetID: string, startingID: string, endingID: string): void {
-            getID(elementToSetID).value = String(convertToFloat(getID(startingID)) - convertToFloat(getID(endingID)));
+            getID(elementToSetID).value = String(convertToFloat(startingID) - convertToFloat(endingID));
         }
 
         /**
@@ -63,7 +63,7 @@ export namespace src{export namespace form {
         public setSum(elementIDToSet: string, ...elementIdsToRetrieveTheSum: string[]): void {
             let tempElementToRetrieveTheSum: number[] = [];
             for (let i = 0; i < elementIdsToRetrieveTheSum.length; i++)
-                tempElementToRetrieveTheSum[i] = convertToFloat(getID(<string>elementIdsToRetrieveTheSum[i]))[i];
+                tempElementToRetrieveTheSum[i] = convertToFloat(elementIdsToRetrieveTheSum[i])[i];
 
             setSum(typeof elementIDToSet === "string" ? getID(elementIDToSet) : elementIDToSet, tempElementToRetrieveTheSum);
         }

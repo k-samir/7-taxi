@@ -26,7 +26,7 @@
                 </div>
                 <div class="col-5 input-group">
                     <label class="input-group-text" for="dateEnd">Date (Fin)</label>
-                    <input id="dateEnd" class="form-control" value="{{old('dateEnd', $todayDate}}" type="datetime-local" name="dateEnd" placeholder="jj/mm/aaaa hh:mm" required>
+                    <input id="dateEnd" class="form-control" value="{{old('dateEnd', $todayDate)}}" type="datetime-local" name="dateEnd" placeholder="jj/mm/aaaa hh:mm" required>
                 </div>
                 <div class="w-100"></div>
                 <div class="col-5"><span class="text-danger text-sm-right">@error('dateStart'){{$message}}@enderror</span></div>
