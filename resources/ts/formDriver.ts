@@ -4,13 +4,8 @@ export namespace src{export namespace form {
         return (<HTMLInputElement>document.getElementById(id));
     }
 
-
-    function convertToFloat(htmlElement: HTMLInputElement): number
-    function convertToFloat(value: string): number
-    function convertToFloat(var1: string | HTMLInputElement): number {
-        return typeof var1 === "string" ?
-            var1 == "" ? 0 : parseFloat(var1) :
-            convertToFloat(var1.value);
+    function FloatConversion(id: string): number{
+        return getID(id).value != "" ? parseFloat(getID(id).value) :0;
     }
 
     export class FormDriver {
@@ -23,26 +18,27 @@ export namespace src{export namespace form {
          * to the value 'realRecipe' multiplied by the commission receive.
          */
         public updateSalary(): void {
-            getID("salary").value = String(convertToFloat(getID("realRecipe")) * this.commission);
+            let realRecipe = FloatConversion("realRecipe");
+            getID("salary").value = (realRecipe * this.commission).toString();
         }
 
         public setDifference(start: string,end:string, diff:string): void{
-            const depart = getID(start).value != "" ? parseFloat(getID(start).value) :0;
-            const arrive = getID(end).value != "" ? parseFloat(getID(end).value) :0;
+            const depart = FloatConversion(start);
+            const arrive = FloatConversion(end);
             getID(diff).value = (arrive - depart).toString();
         }
 
 
         /**
-         * Method to calculate the real recipe from the difference of initial recipe and final recipe plu the fix price.<br>
+         * Method to calculate the real recipe from the difference of initial recipe and final recipe plus the fix price.<br>
          * If the realRecipe is greater than 0, then, the method {@link updateSalary} will be called.
          */
         public updateRealRecipe(): void {
-            let startingRecipe = convertToFloat(getID('startRecipe'));
-            let endingRecipe = convertToFloat(getID('finalRecipe'));
-            let fixPrice = convertToFloat(getID('fixPrice'));
+            let startingRecipe = FloatConversion("startRecipe");
+            let endingRecipe = FloatConversion("finalRecipe");
+            let fixingPrice = FloatConversion("fixPrice");
 
-            let realRecipe = endingRecipe - startingRecipe + fixPrice;
+            let realRecipe = endingRecipe - startingRecipe + fixingPrice;
             getID('realRecipe').value = String(realRecipe);
             if (realRecipe > 0) this.updateSalary();
         }
