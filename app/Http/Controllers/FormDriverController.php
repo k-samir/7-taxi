@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Form;
 use App\Http\Requests\FormRequest;
-use Illuminate\Support\Facades\Auth;
 
 class FormDriverController extends Controller
 {
