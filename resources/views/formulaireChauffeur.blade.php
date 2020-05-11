@@ -39,18 +39,14 @@
                     <label class="input-group-text" for="finalRecipe" hidden></label>
                     <input id="finalRecipe" class="form-control" value="{{old('finalRecipe')}}" type="number" name="finalRecipe" min="0" placeholder="Finale" required>
                 </div>
-                <div class="col"></div>
-                <div class="w-100"></div>
-                <div class="col"><span class="text-danger text-sm-right">@error('startRecipe'){{$message}}@enderror</span></div>
-                <div class="col"><span class="text-danger text-sm-right">@error('finalRecipe'){{$message}}@enderror</span></div>
-                <div class="col-3"></div>
-                <div class="w-100 pb-2"></div>
                 <div class="col input-group">
                     <label class="input-group-text" for="fixPrice">Prix fixe</label>
                     <input id="fixPrice" class="form-control" value="{{old('fixPrice')}}" type="number" name="fixPrice" min="0" required>
                 </div>
                 <div class="w-100"></div>
-                <div class="col"><span class="text-danger text-sm-right">@error('fixPrice'){{$message}}@enderror</span></div>
+                <div class="col"><span class="text-danger text-sm-right">@error('startRecipe'){{$message}}@enderror</span></div>
+                <div class="col"><span class="text-danger text-sm-right">@error('finalRecipe'){{$message}}@enderror</span></div>
+                <div class="col-3"><span class="text-danger text-sm-right">@error('fixPrice'){{$message}}@enderror</span></div>
             </div>
             <!--Recette réelle-->
             <div class="row mb-4 justify-content-center">
