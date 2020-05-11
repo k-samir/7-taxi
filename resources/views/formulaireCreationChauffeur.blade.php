@@ -58,7 +58,7 @@
 
             <div class="row">
                 <div class="col-4"></div>
-                <div class="col"><button type="button" class="btn btn-lg btn-success w-25">Envoyer</button></div>
+                <div class="col"><button type="button" class="btn btn-lg btn-success w-25">Créer</button></div>
             </div>
 
         </form>
