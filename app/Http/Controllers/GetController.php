@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,7 +30,10 @@ class GetController extends Controller
      */
     public function addConductorShift(Request $request)
     {
-        return view("formulaireChauffeur",['driverNo'=>Auth::id()]);
+        return view("formulaireChauffeur",[
+            'driverNo'=>Auth::id(),
+            'todayDate'=> Carbon::now()->toDateString()."T". Carbon::now()->toTimeString("minute"),
+        ]);
     }
 
     /**
