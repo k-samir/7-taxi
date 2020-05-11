@@ -75,7 +75,6 @@ export namespace src{export namespace form{
                 typeof ending === "string" ? convertToFloat(getID(ending)) : ending);
         }
 
-
         public setSum(elementIDToSet: string, ...elementIDsToRetrieveTheSum: string[]): void
         public setSum(htmlElementToSet: HTMLInputElement | string, ...elementIDsToRetrieveTheSum: string[]): void
         public setSum(elementIDToSet: string, ...elementValuesToRetrieveTheSum: number[]): void
