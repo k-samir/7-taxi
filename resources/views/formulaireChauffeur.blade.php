@@ -10,7 +10,7 @@
             <div class="row mb-4 justify-content-center">
                 <div class="col input-group">
                     <label class="input-group-text font-weight-bold bg-transparent border-0" for="driverNo">Numéro de conducteur</label>
-                    <input id="driverNo" class="form-control font-weight-bold bg-transparent border-0" value="{{$driverNo??0}}" type="text" name="driverNo" minlength="1" readonly disabled>
+                    <input id="driverNo" class="form-control font-weight-bold bg-transparent border-0" value="{{\Illuminate\Support\Facades\Auth::id()}}" type="text" name="driverNo" minlength="1" readonly disabled>
                 </div>
                 <div class="col input-group">
                     <label class="input-group-text" for="taxiNo">Numéro du taxi</label>

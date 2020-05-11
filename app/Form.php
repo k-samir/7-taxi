@@ -4,6 +4,7 @@ namespace App;
 
 use App\Http\Requests\FormRequest;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class Form extends Model
@@ -13,7 +14,7 @@ class Form extends Model
     public function addForm(FormRequest $request)
     {
         DB::table("formulaire")->insert([
-            "id_chauffeur" => $request['driverNo'],
+            "id_chauffeur" => Auth::id(),
             "id_taxi" => $request['taxiNo'],
             "date_debut" => $request['dateStart'],
             "date_fin" => $request['dateEnd'],
@@ -36,5 +37,6 @@ class Form extends Model
             "depense_divers" => $request['various'],
         ]);
     }
+
 
 }

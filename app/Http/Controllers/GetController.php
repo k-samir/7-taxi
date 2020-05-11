@@ -31,7 +31,6 @@ class GetController extends Controller
     public function addConductorShift(Request $request)
     {
         return view("formulaireChauffeur",[
-            'driverNo'=>Auth::id(),
             'todayDate'=> Carbon::now()->toDateString()."T". Carbon::now()->toTimeString("minute"),
         ]);
     }
