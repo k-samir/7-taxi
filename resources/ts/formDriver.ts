@@ -47,7 +47,7 @@ export namespace src{export namespace form{
             let realRecipe = endingRecipe - startingRecipe + fixPrice;
             getID('realRecipe').value = String(realRecipe);
             this.updateSalary();
-            this.__updateTotalexpenses();
+            this.__updateTotalExpenses();
             this.updateTotalNet();
         }
 
@@ -55,12 +55,12 @@ export namespace src{export namespace form{
             this.setDifference("totalNet", "totalExpenses", "realRecipe");
         }
 
-        private __updateTotalexpenses(): void {
+        private __updateTotalExpenses(): void {
             this.setSum("totalExpenses", "salary", "gaz", "credit", "various");
         }
 
         public updateTotalExpenses(): void {
-            this.__updateTotalexpenses();
+            this.__updateTotalExpenses();
             this.updateTotalNet();
         }
 
