@@ -4,12 +4,8 @@ export namespace src{export namespace form {
         return (<HTMLInputElement>document.getElementById(id));
     }
 
-    function convertToFloat(htmlElement: HTMLInputElement): number
-    function convertToFloat(value: string): number
-    function convertToFloat(var1: string | HTMLInputElement): number {
-        return typeof var1 === "string" ?
-            var1 == "" ? 0 : parseFloat(var1) :
-            convertToFloat(var1.value);
+    function convertToFloat(elementID: string): number {
+        return elementID == "" ? 0 :convertToFloat(getID(elementID).value);
     }
 
     function setSum(elementToSet: HTMLInputElement, elementToSum: number[]): void {
@@ -28,7 +24,7 @@ export namespace src{export namespace form {
          * to the value 'realRecipe' multiplied by the commission receive.
          */
         public updateSalary(): void {
-            getID("salary").value = String(convertToFloat(getID("realRecipe")) * this.commission);
+            getID("salary").value = String(convertToFloat("realRecipe") * this.commission);
         }
 
         public setDifference(elementToSetID: string, startingID: string, endingID: string): void {
@@ -36,13 +32,13 @@ export namespace src{export namespace form {
         }
 
         /**
-         * Method to calculate the real recipe from the difference of initial recipe and final recipe plu the fix price.<br>
+         * Method to calculate the real recipe from the difference of initial recipe and final recipe plus the fix price.<br>
          * Afterward, the method {@link updateSalary} will be called.
          */
         public updateRealRecipe(): void {
-            let startingRecipe = convertToFloat(getID('startRecipe'));
-            let endingRecipe = convertToFloat(getID('finalRecipe'));
-            let fixPrice = convertToFloat(getID('fixPrice'));
+            let startingRecipe = convertToFloat('startRecipe');
+            let endingRecipe = convertToFloat('finalRecipe');
+            let fixPrice = convertToFloat('fixPrice');
 
             let realRecipe = endingRecipe - startingRecipe + fixPrice;
             getID('realRecipe').value = String(realRecipe);
