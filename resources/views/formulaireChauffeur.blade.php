@@ -6,7 +6,7 @@
         @parent
         <form method="POST" action="{{route("addConductorShiftPost")}}">
             @csrf
-
+            <!-- chauffeur & taxi-->
             <div class="row mb-4 justify-content-center">
                 <div class="col input-group">
                     <label class="input-group-text font-weight-bold bg-transparent border-0" for="driverNo">Numéro de conducteur</label>
@@ -45,16 +45,13 @@
                 <div class="w-100 pb-2"></div>
                 <div class="col input-group">
                     <label class="input-group-text" for="fixPrice">Prix fixe</label>
-                    <input id="fixPrice" class="form-control" value="{{old('fixPrice')}}" type="number" name="fixPrice"min="0" required>
+                    <input id="fixPrice" class="form-control" value="{{old('fixPrice')}}" type="number" name="fixPrice" min="0" required>
                 </div>
                 <!--Recette réelle-->
                 <div class="col input-group">
                     <label class="input-group-text font-weight-bold bg-transparent border-0">Recette réelle</label>
                     <input id="realRecipe" class="form-control font-weight-bold bg-transparent border-0" type="number" readonly disabled>
                 </div>
-                <div class="w-100"></div>
-                <div class="col"><span class="text-danger text-sm-right">@error('fixPrice'){{$message}}@enderror</span></div>
-                <div class="col"><span class="text-danger text-sm-right">@error('realRecipe'){{$message}}@enderror</span></div>
                 <div class="w-100 pb-4"></div>
             </div>
             <!--Taximètre-->
