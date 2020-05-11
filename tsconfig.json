@@ -12,7 +12,9 @@
         "removeComments": true,
         "noImplicitAny": false,
         "noImplicitThis": false,
-        "noImplicitReturns": false
+        "noImplicitReturns": false,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true
     },
     "exclude": [
         "node_modules"
