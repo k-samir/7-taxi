@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,16 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', function () {
+    return redirect('home');
+});
+Route::get('/home', 'GetController@index')->name('home');
+
+Route::get('/conductor/addShift', 'GetController@addConductorShift')->name('addConductorShift')->middleware('auth');
+Route::post('/form/driver/addShift', 'FormDriverController@addRequest')->name("addConductorShiftPost")->middleware('auth');
+
+Route::get('/conductor/newConductor', 'GetController@addConductor')->name('addConductor')->middleware('auth');
+
+
+
+
