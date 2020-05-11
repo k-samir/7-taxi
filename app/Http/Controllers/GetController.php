@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * A class that only send views from a get.
@@ -28,7 +29,7 @@ class GetController extends Controller
      */
     public function addConductorShift(Request $request)
     {
-        return view("formulaireChauffeur");
+        return view("formulaireChauffeur",['driverNo'=>Auth::id()]);
     }
 
     /**

@@ -24,7 +24,7 @@ class Form extends Model
 
             "kilometrage_depart" => $request['startingMillage'],
             "kilometrage_arrivee" => $request['endingMillage'],
-            "somme_tarif_fixe" => null,
+            "somme_tarif_fixe" => $request['sumFixTarif'],
             "kilometrage_pris_en_charge_depart" => $request['startingMileageLaden'],
             "kilometrage_pris_en_charge_arrivee" => $request['endingMileageLaden'],
             "prise_en_charge_debut" => $request['startingAmountOfPassengers'],
