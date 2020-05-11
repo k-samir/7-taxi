@@ -83,7 +83,6 @@ class CreateDatabase extends Migration
             $table->float("prix_fixes", 7, 2)->nullable(false);
             $table->integer("kilometrage_depart")->nullable(false);
             $table->integer("kilometrage_arrivee")->nullable(false);
-            $table->integer("somme_tarif_fixe")->nullable(false);
             $table->integer("kilometrage_pris_en_charge_depart")->nullable(false);
             $table->integer("kilometrage_pris_en_charge_arrivee")->nullable(false);
             $table->integer("prise_en_charge_debut")->nullable(false);

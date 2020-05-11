@@ -16,10 +16,9 @@
                     <label class="input-group-text" for="taxiNo">Numéro du taxi</label>
                     <input id="taxiNo" class="form-control" value="{{old('taxiNo')}}" type="text" name="taxiNo" minlength="1" required>
                 </div>
-                <div class="w-100 pb-4"></div>
             </div>
             <!--Date-->
-            <div class="row justify-content-center">
+            <div class="row mb-4 justify-content-center">
                 <div class="col-5 input-group">
                     <label class="input-group-text" for="dateStart">Date (Début)</label>
                     <input id="dateStart" class="form-control" value="{{old('dateStart', $todayDate)}}" type="datetime-local" name="dateStart" placeholder="jj/mm/aaaa hh:mm" required>
@@ -31,10 +30,9 @@
                 <div class="w-100"></div>
                 <div class="col-5"><span class="text-danger text-sm-right">@error('dateStart'){{$message}}@enderror</span></div>
                 <div class="col-5"><span class="text-danger text-sm-right">@error('dateEnd'){{$message}}@enderror</span></div>
-                <div class="w-100 pb-4"></div>
             </div>
             <!--Recette-->
-            <div class="row justify-content-center">
+            <div class="row mb-4 justify-content-center">
                 <div class="col-9 input-group">
                     <label class="input-group-text" for="startRecipe">Recette</label>
                     <input id="startRecipe" class="form-control" value="{{old('startRecipe')}}" type="number" name="startRecipe" min="0" placeholder="Initiale" required>
@@ -53,10 +51,9 @@
                 </div>
                 <div class="w-100"></div>
                 <div class="col"><span class="text-danger text-sm-right">@error('fixPrice'){{$message}}@enderror</span></div>
-                <div class="w-100 pb-4"></div>
             </div>
             <!--Recette réelle-->
-            <div class="row justify-content-center">
+            <div class="row mb-4 justify-content-center">
                 <div class="col-3"></div>
                 <div class="col-6 input-group">
                     <label class="input-group-text font-weight-bold bg-transparent border-0" for="realRecipe">Recette réelle</label>
@@ -65,10 +62,9 @@
                 <div class="w-100"></div>
                 <div class="col-3"></div>
                 <div class="col-6"><span class="text-danger text-sm-right">@error('realRecipe'){{$message}}@enderror</span></div>
-                <div class="w-100 pb-4"></div>
             </div>
             <!--Taximètre-->
-            <div class="row justify-content-center">
+            <div class="row mb-4 justify-content-center">
                 <h4 class="mx-auto pt-3">Nombre de kilomètre dans le taximètre</h4>
                 <div class="w-100"></div>
                 <div class="col input-group">
@@ -87,11 +83,10 @@
                 <div class="col"><span class="text-danger text-sm-right">@error('startingMillage'){{$message}}@enderror</span></div>
                 <div class="col"><span class="text-danger text-sm-right">@error('endingMillage'){{$message}}@enderror</span></div>
                 <div class="col-3"></div>
-                <div class="w-100 pb-4"></div>
-                @php//TODO add somme des tarif fixes @endphp
             </div>
+
             <!--Kimolétrage professionnel-->
-            <div class="row justify-content-center">
+            <div class="row mb-4 justify-content-center">
                 <h4 class="mx-auto pt-3">Nombre de kilomètre effectué professionellement (dans la journée)</h4>
                 <div class="w-100"></div>
                 <div class="col input-group">
@@ -110,10 +105,9 @@
                 <div class="col"><span class="text-danger text-sm-right">@error('startingMileageLaden'){{$message}}@enderror</span></div>
                 <div class="col"><span class="text-danger text-sm-right">@error('endingMileageLaden'){{$message}}@enderror</span></div>
                 <div class="col-3"></div>
-                <div class="w-100 pb-4"></div>
             </div>
             <!--Nombre de clients-->
-            <div class="row justify-content-center">
+            <div class="row mb-4 justify-content-center">
                 <h4 class="mx-auto pt-3">Nombre de clients (dans la journée)</h4>
                 <div class="w-100"></div>
                 <div class="col input-group">
@@ -132,10 +126,9 @@
                 <div class="col"><span class="text-danger text-sm-right">@error('startingAmountOfPassengers'){{$message}}@enderror</span></div>
                 <div class="col"><span class="text-danger text-sm-right">@error('endingAmountOrPassengers'){{$message}}@enderror</span></div>
                 <div class="col-3"></div>
-                <div class="w-100 pb-4"></div>
             </div>
             <!--Kilométrage de voiture-->
-            <div class="row justify-content-center">
+            <div class="row mb-4 justify-content-center">
                 <h4 class="mx-auto pt-3">Nombre de kilomètre de la voiture</h4>
                 <div class="w-100"></div>
                 <div class="col input-group">
@@ -154,19 +147,17 @@
                 <div class="col"><span class="text-danger text-sm-right">@error('startingMileageInVehicle'){{$message}}@enderror</span></div>
                 <div class="col"><span class="text-danger text-sm-right">@error('endingMileageInVehicle'){{$message}}@enderror</span></div>
                 <div class="col-3"></div>
-                <div class="w-100 pb-4"></div>
             </div>
             <!--Salaire-->
-            <div class="row justify-content-center">
+            <div class="row mb-4 justify-content-center">
                 <div class="col-3"></div>
                 <div class="col-6 input-group">
                     <label class="input-group-text font-weight-bold bg-transparent border-0" for="salary">Salaire</label>
                     <input id="salary" class="form-control font-weight-bold bg-transparent border-0" type="number" name="salary" readonly disabled>
                 </div>
-                <div class="w-100 pb-4"></div>
             </div>
             <!--Dépenses(gaz, credit, divers)-->
-            <div class="row justify-content-center">
+            <div class="row mb-4 justify-content-center">
                 <div class="col input-group">
                     <label class="input-group-text" for="gaz">Gaz</label>
                     <input id="gaz" class="form-control" value="{{old('gaz')}}" type="number" name="gaz" min="0">
@@ -183,10 +174,9 @@
                 <div class="col"><span class="text-danger text-sm-right">@error('gaz'){{$message}}@enderror</span></div>
                 <div class="col"><span class="text-danger text-sm-right">@error('credit'){{$message}}@enderror</span></div>
                 <div class="col"><span class="text-danger text-sm-right">@error('various'){{$message}}@enderror</span></div>
-                <div class="w-100 pb-4"></div>
             </div>
             <!--Totaux (dépense/net)-->
-            <div class="row justify-content-center">
+            <div class="row mb-4 justify-content-center">
                 <div class="col input-group">
                     <label class="input-group-text font-weight-bold bg-transparent border-0" for="totalExpenses">Total des dépense</label>
                     <input id="totalExpenses" class="form-control font-weight-bold bg-transparent border-0" type="number" name="totalExpenses" readonly disabled>
@@ -197,7 +187,7 @@
                 </div>
             </div>
             <!--Envoyer-->
-            <div class="row mt-3">
+            <div class="row">
                 <div class="col-4"></div>
                 <div class="col"><button type="submit" class="btn btn-lg btn-success">Envoyer</button></div>
             </div>
