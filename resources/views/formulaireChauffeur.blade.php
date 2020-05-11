@@ -16,6 +16,9 @@
                     <label class="input-group-text" for="taxiNo">Numéro du taxi</label>
                     <input id="taxiNo" class="form-control" value="{{old('taxiNo')}}" type="text" name="taxiNo" minlength="1" required>
                 </div>
+                <div class="w-100"></div>
+                <div class="col"></div>
+                <div class="col-5"><span class="text-danger text-sm-right">@error('taxiNo'){{$message}}@enderror</span></div>
             </div>
             <!--Date-->
             <div class="row mb-4 justify-content-center">
