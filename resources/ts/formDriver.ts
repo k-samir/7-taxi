@@ -1,70 +1,128 @@
-export namespace src{export namespace form {
+export namespace src{export namespace form{
 
-        function getID(id: string): HTMLInputElement {
-            return (<HTMLInputElement>document.getElementById(id));
+    function getID(id: string): HTMLInputElement {
+        return (<HTMLInputElement>document.getElementById(id));
+    }
+
+    function setDifference(elementToSetTheValue: HTMLInputElement, startingValue: number, endingValue: number): void {
+        elementToSetTheValue.value = String(startingValue - endingValue);
+    }
+
+    function convertToFloat(htmlElement: HTMLInputElement): number
+    function convertToFloat(value: string): number
+    function convertToFloat(var1: string | HTMLInputElement): number {
+        return typeof var1 === "string" ?
+            var1 == "" ? 0 : parseFloat(var1) :
+            convertToFloat(var1.value);
+    }
+
+    function setSum(elementToSet: HTMLInputElement, elementToSum: number[]): void {
+        let sum = 0;
+        elementToSum.forEach(element => sum += element);
+        elementToSet.value = String(sum);
+    }
+
+    export class FormDriver {
+
+        private readonly commission = window['commission'];
+
+
+        /**
+         * Update the value of the element by id 'salary'
+         * to the value 'realRecipe' multiplied by the commission receive.
+         */
+        public updateSalary(): void {
+            getID("salary").value = String(convertToFloat(getID("realRecipe")) * this.commission);
+        }
+
+        /**
+         * Method to calculate the real recipe from the difference of initial recipe and final recipe plu the fix price.<br>
+         * If the realRecipe is greater than 0, then, the method {@link updateSalary} will be called.
+         */
+        public updateRealRecipe(): void {
+            let startingRecipe = convertToFloat(getID('startRecipe'));
+            let endingRecipe = convertToFloat(getID('finalRecipe'));
+            let fixPrice = convertToFloat(getID('fixPrice'));
+
+            let realRecipe = endingRecipe - startingRecipe + fixPrice;
+            getID('realRecipe').value = String(realRecipe);
+            this.updateSalary();
+            this.__updateTotalexpenses();
+            this.updateTotalNet();
+        }
+
+        public updateTotalNet(): void {
+            this.setDifference("totalNet", "totalExpenses", "realRecipe");
+        }
+
+        private __updateTotalexpenses(): void {
+            this.setSum("totalExpenses", "salary", "gaz", "credit", "various");
+        }
+
+        public updateTotalExpenses(): void {
+            this.__updateTotalexpenses();
+            this.updateTotalNet();
+        }
+
+        public setDifference(elementIDToSetTheValue: string, startingID: string, endingValue: number): void
+        public setDifference(elementIDToSetTheValue: string, startingValue: number, endingID: string): void
+        public setDifference(elementIDToSetTheValue: string, startingID: string, endingID: string): void
+        public setDifference(elementIDToSetTheValue: string, startingValue: number, endingValue: number): void
+        public setDifference(elementToSetTheValue: HTMLInputElement, startingValue: number, endingValue: number): void
+        public setDifference(elementToSet: HTMLInputElement | string, starting: number | string, ending: number | string): void {
+            setDifference(typeof elementToSet === "string" ? getID(elementToSet) : elementToSet,
+                typeof starting === "string" ? convertToFloat(getID(starting)) : starting,
+                typeof ending === "string" ? convertToFloat(getID(ending)) : ending);
         }
 
 
-        function convertToFloat(htmlElement: HTMLInputElement): number
-        function convertToFloat(value: string): number
-        function convertToFloat(var1: string | HTMLInputElement): number {
-            return typeof var1 === "string" ?
-                var1 == "" ? 0 : parseFloat(var1) :
-                convertToFloat(var1.value);
+        public setSum(elementIDToSet: string, ...elementIDsToRetrieveTheSum: string[]): void
+        public setSum(htmlElementToSet: HTMLInputElement | string, ...elementIDsToRetrieveTheSum: string[]): void
+        public setSum(elementIDToSet: string, ...elementValuesToRetrieveTheSum: number[]): void
+        public setSum(htmlElementToSet: HTMLInputElement | string, ...elementValuesToRetrieveTheSum: number[]): void
+        public setSum(elementToSet: HTMLInputElement | string, ...elementsToRetrieveTheSum: (string | number)[]): void {
+            let tempElementToRetrieveTheSum: number[] = [];
+            for (let i = 0; i < elementsToRetrieveTheSum.length; i++)
+                tempElementToRetrieveTheSum[i] = typeof elementsToRetrieveTheSum[i] === "string" ? convertToFloat(getID(<string>elementsToRetrieveTheSum[i])) : <number>elementsToRetrieveTheSum[i];
+
+            setSum(typeof elementToSet === "string" ? getID(elementToSet) : elementToSet, tempElementToRetrieveTheSum);
         }
 
-        export class FormDriver {
-
-            private readonly commission = window['commission'];
-
-
-            /**
-             * Update the value of the element by id 'salary'
-             * to the value 'realRecipe' multiplied by the commission receive.
-             */
-            public updateSalary(): void {
-                getID("salary").value = String(convertToFloat(getID("realRecipe")) * this.commission);
-            }
-
-            public setDifference(start: string,end:string, diff:string): void{
-                const depart = getID(start).value != "" ? parseFloat(getID(start).value) :0;
-                const arrive = getID(end).value != "" ? parseFloat(getID(end).value) :0;
-                getID(diff).value = (arrive - depart).toString();
-            }
-
-
-            /**
-             * Method to calculate the real recipe from the difference of initial recipe and final recipe plu the fix price.<br>
-             * If the realRecipe is greater than 0, then, the method {@link updateSalary} will be called.
-             */
-            public updateRealRecipe(): void {
-                let startingRecipe = convertToFloat(getID('startRecipe'));
-                let endingRecipe = convertToFloat(getID('finalRecipe'));
-                let fixPrice = convertToFloat(getID('fixPrice'));
-
-                let realRecipe = endingRecipe - startingRecipe + fixPrice;
-                getID('realRecipe').value = String(realRecipe);
-                if (realRecipe > 0) this.updateSalary();
-            }
-
+        public onNumberModification(callback: () => void, ...ids: string[]) {
+            ids.forEach(id => {
+                let element = getID(id);
+                element.onchange = () => {
+                    //Serve when the user change the focus to another field or use the field modification (when it's a number/date)
+                    callback();
+                }
+                element.oninput = () => {
+                    //On any change from the input.
+                    callback();
+                }
+                element.onkeydown = (keyEvent) => {
+                    //On the key DELETE, BACKSPACE or just a number, the callback is executed if the others fail.
+                    if (keyEvent.key === "Backspace" || keyEvent.key === "Delete" || keyEvent.key.match(/\d/)) callback();
+                };
+            });
         }
+
+    }
 
 }}
 
 import FormDriver = src.form.FormDriver;
 
 (() => {
-    //Export global methods and variable
+    //Apply the triggers on the elements
 
     let form = new FormDriver();
 
-    window['updateSalary'] = () => form.updateSalary();
-    window['updateRealRecipe'] = () => form.updateRealRecipe();
-
-    window['setDifferenceOnMillage'] = () => form.setDifference("startingMillage", "endingMillage", "totalMillage");
-    window['setDifferenceOnMillageLaden'] = () => form.setDifference("startingMileageLaden", "endingMileageLaden", "totalMileageLaden");
-    window['setDifferenceOnAmountOfPassengers'] = () => form.setDifference("startingAmountOfPassengers", "endingAmountOrPassengers", "totalAmountOfPassengers");
-    window['setDifferenceOnMileageInVehicle'] = () => form.setDifference("startingMileageInVehicle", "endingMileageInVehicle", "totalMileageInVehicle");
-
+    form.onNumberModification(() => form.updateRealRecipe(), "startRecipe", "finalRecipe", "fixPrice");
+    form.onNumberModification(() => form.updateSalary(), "realRecipe");
+    form.onNumberModification(() => form.setDifference("totalMillage", "startingMillage", "endingMillage"), "startingMillage", "endingMillage");
+    form.onNumberModification(() => form.setDifference("totalMileageLaden", "startingMileageLaden", "endingMileageLaden"), "startingMileageLaden", "endingMileageLaden");
+    form.onNumberModification(() => form.setDifference("totalAmountOfPassengers", "startingAmountOfPassengers", "endingAmountOrPassengers"), "startingAmountOfPassengers", "endingAmountOrPassengers");
+    form.onNumberModification(() => form.setDifference("totalMileageInVehicle", "startingMileageInVehicle", "endingMileageInVehicle"), "startingMileageInVehicle", "endingMileageInVehicle");
+    form.onNumberModification(() => form.updateTotalExpenses(), "salary", "gaz", "credit", "various");
 
 })();
