@@ -59,6 +59,10 @@
                 <div class="col"><span class="text-danger text-sm-right">@error('postalCode'){{$message}}@enderror</span></div>
             </div>
 
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col"><button type="button" class="btn btn-lg btn-success w-25">Créer</button></div>
+            </div>
         </form>
     </div>
 @endsection
