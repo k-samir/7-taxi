@@ -10,10 +10,10 @@ class Form extends Model
 {
 
 
-    public function addForm(string $driverNo, FormRequest $request)
+    public function addForm(FormRequest $request)
     {
         DB::table("formulaire")->insert([
-            "id_chauffeur" => $driverNo,
+            "id_chauffeur" => $request['driverNo'],
             "id_taxi" => $request['taxiNo'],
             "date_debut" => $request['dateStart'],
             "date_fin" => $request['dateEnd'],

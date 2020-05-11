@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Form;
 use App\Http\Requests\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class FormDriverController extends Controller
 {
@@ -17,7 +18,7 @@ class FormDriverController extends Controller
 
     public function addRequest(FormRequest $request)
     {
-        $this->driver->addForm(0,$request);//TODO add request to database to get the driver number.
+        $this->driver->addForm($request);
         return view('driverFormSuccess');
     }
 
