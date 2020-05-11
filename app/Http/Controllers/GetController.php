@@ -38,9 +38,18 @@ class GetController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function addConductor(Request $request)
+    public function createConductor(Request $request)
     {
-        return view("formulaireAjoutChauffeur");
+        return view("formulaireCreationChauffeur");
+    }
+
+    /**
+     * @param Request $request
+     * @return Renderable
+     */
+    public function createClient(Request $request)
+    {
+        return view("formulaireCreationClient");
     }
 
 

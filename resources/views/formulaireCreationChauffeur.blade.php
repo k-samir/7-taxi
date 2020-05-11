@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@section('title', "Formulaire d'ajout de chauffeur")
+@section('title', "Formulaire de création de chauffeur")
 
 @section('before-scripts')
 

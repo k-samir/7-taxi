@@ -4,9 +4,9 @@
 @section('body-content')
     <div class="container mb-5">
         @parent
-        <form method="POST" action="{{route("addConductorShiftPost")}}">
-        @csrf
-        <!-- chauffeur & taxi-->
+        <form method="POST" action="{{route("addConductorShift")}}">
+            @csrf
+            <!-- chauffeur & taxi-->
             <div class="row mb-4 justify-content-center">
                 <div class="col input-group">
                     <label class="input-group-text font-weight-bold bg-transparent border-0" for="driverNo">Numéro de conducteur</label>

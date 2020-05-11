@@ -32,7 +32,14 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulaires de chauffeur</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{route('addConductorShift')}}">Ajout de shift</a>
-                        <a class="dropdown-item" href="{{route('addConductor')}}">Ajout de chauffeur</a>
+                        <a class="dropdown-item" href="{{route('createConductor')}}">Création de chauffeur</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown font-weight-bold">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulaires de créations</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{route('createConductor')}}">Création de chauffeur</a>
+                        <a class="dropdown-item" href="{{route('createClient')}}">Création de client</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown font-weight-bold">
