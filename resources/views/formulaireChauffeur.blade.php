@@ -52,8 +52,8 @@
             <div class="row mb-4 justify-content-center">
                 <div class="col-3"></div>
                 <div class="col-6 input-group">
-                    <label class="input-group-text font-weight-bold bg-transparent border-0" for="realRecipe">Recette réelle</label>
-                    <input id="realRecipe" class="form-control font-weight-bold bg-transparent border-0" type="number" name="realRecipe" readonly disabled onchange="updateSalary()">
+                    <label class="input-group-text font-weight-bold bg-transparent border-0">Recette réelle</label>
+                    <input id="realRecipe" class="form-control font-weight-bold bg-transparent border-0" type="number" readonly disabled>
                 </div>
                 <div class="w-100"></div>
                 <div class="col-3"></div>
@@ -72,8 +72,8 @@
                     <input id="endingMillage" class="form-control" value="{{old('endingMillage')}}" type="number" name="endingMillage" required>
                 </div>
                 <div class="col-3 input-group">
-                    <label class="input-group-text font-weight-bold bg-transparent border-0" for="totalMillage">Total</label>
-                    <input id="totalMillage" class="form-control font-weight-bold bg-transparent border-0" type="number" name="totalMillage" readonly disabled>
+                    <label class="input-group-text font-weight-bold bg-transparent border-0">Total</label>
+                    <input id="totalMillage" class="form-control font-weight-bold bg-transparent border-0" type="number" readonly disabled>
                 </div>
                 <div class="w-100"></div>
                 <div class="col"><span class="text-danger text-sm-right">@error('startingMillage'){{$message}}@enderror</span></div>
@@ -94,8 +94,8 @@
                     <input id="endingMileageLaden" class="form-control" value="{{old('endingMileageLaden')}}" type="number" name="endingMileageLaden" required>
                 </div>
                 <div class="col-3 input-group">
-                    <label class="input-group-text font-weight-bold bg-transparent border-0" for="totalMileageLaden">Total</label>
-                    <input id="totalMileageLaden" class="form-control font-weight-bold bg-transparent border-0" type="number" name="totalMileageLaden" readonly disabled>
+                    <label class="input-group-text font-weight-bold bg-transparent border-0">Total</label>
+                    <input id="totalMileageLaden" class="form-control font-weight-bold bg-transparent border-0" type="number" readonly disabled>
                 </div>
                 <div class="w-100"></div>
                 <div class="col"><span class="text-danger text-sm-right">@error('startingMileageLaden'){{$message}}@enderror</span></div>
@@ -115,8 +115,8 @@
                     <input id="endingAmountOrPassengers" class="form-control" value="{{old('endingAmountOrPassengers')}}" type="number" name="endingAmountOrPassengers" required>
                 </div>
                 <div class="col-3 input-group">
-                    <label class="input-group-text font-weight-bold bg-transparent border-0" for="totalAmountOfPassengers">Total</label>
-                    <input id="totalAmountOfPassengers" class="form-control font-weight-bold bg-transparent border-0" type="number" name="totalAmountOfPassengers" readonly disabled>
+                    <label class="input-group-text font-weight-bold bg-transparent border-0">Total</label>
+                    <input id="totalAmountOfPassengers" class="form-control font-weight-bold bg-transparent border-0" type="number"readonly disabled>
                 </div>
                 <div class="w-100"></div>
                 <div class="col"><span class="text-danger text-sm-right">@error('startingAmountOfPassengers'){{$message}}@enderror</span></div>
@@ -136,8 +136,8 @@
                     <input id="endingMileageInVehicle" class="form-control" value="{{old('endingMileageInVehicle')}}" type="number" name="endingMileageInVehicle" required>
                 </div>
                 <div class="col-3 input-group">
-                    <label class="input-group-text font-weight-bold bg-transparent border-0" for="totalMileageInVehicle">Total</label>
-                    <input id="totalMileageInVehicle" class="form-control font-weight-bold bg-transparent border-0" type="number" name="totalMileageInVehicle" min="0" readonly disabled>
+                    <label class="input-group-text font-weight-bold bg-transparent border-0">Total</label>
+                    <input id="totalMileageInVehicle" class="form-control font-weight-bold bg-transparent border-0" type="number" min="0" readonly disabled>
                 </div>
                 <div class="w-100"></div>
                 <div class="col"><span class="text-danger text-sm-right">@error('startingMileageInVehicle'){{$message}}@enderror</span></div>
@@ -148,8 +148,8 @@
             <div class="row mb-4 justify-content-center">
                 <div class="col-3"></div>
                 <div class="col-6 input-group">
-                    <label class="input-group-text font-weight-bold bg-transparent border-0" for="salary">Salaire</label>
-                    <input id="salary" class="form-control font-weight-bold bg-transparent border-0" type="number" name="salary" readonly disabled>
+                    <label class="input-group-text font-weight-bold bg-transparent border-0">Salaire</label>
+                    <input id="salary" class="form-control font-weight-bold bg-transparent border-0" type="number" readonly disabled>
                 </div>
             </div>
             <!--Dépenses(gaz, credit, divers)-->
