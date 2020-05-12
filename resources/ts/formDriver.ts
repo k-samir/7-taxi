@@ -1,11 +1,11 @@
-export namespace src{export namespace form {
+export namespace src{export namespace form{
 
     function getID(id: string): HTMLInputElement {
         return (<HTMLInputElement>document.getElementById(id));
     }
 
     function convertToFloat(elementID: string): number {
-        return getID(elementID).value==""?0:parseFloat(getID(elementID).value);
+        return getID(elementID).value == "" ? 0 : parseFloat(getID(elementID).value);
     }
 
     export class FormDriver {
@@ -26,17 +26,17 @@ export namespace src{export namespace form {
             getID(elementToSetID).value = (convertToFloat(endingID) - convertToFloat(startingID)).toString();
         }
 
-        private __updateTotalDepense():void{
-            getID('totalExpenses').value= (convertToFloat('gaz') + convertToFloat('credit')+ convertToFloat('various') + convertToFloat('salary')).toString();
+        private __updateTotalDepense(): void {
+            getID('totalExpenses').value = (convertToFloat('gaz') + convertToFloat('credit') + convertToFloat('various') + convertToFloat('salary')).toString();
 
         }
 
-        public updateTotalDepense():void{
+        public updateTotalDepense(): void {
             this.__updateTotalDepense();
             this.updateTotalNet();
         }
 
-        public updateTotalNet():void{
+        public updateTotalNet(): void {
             getID('totalNet').value = (convertToFloat('realRecipe') - convertToFloat('totalExpenses')).toString();
         }
 
