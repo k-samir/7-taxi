@@ -1,10 +1,12 @@
 @extends('layouts.base')
-@section('title', "Formulaire de création de client")
+@section('title')
+    Formulaire de {{$type}} de clients @if(isset($id))(Id: {{$id}})@endif
+@endsection
 
 @section('body-content')
+    @parent
     <div class="container mb-5">
-        @parent
-        <form method="POST" action="{{route("createClient")}}">
+        <form method="post" action="{{route("createClient")}}">
             @csrf
 
             <div class="row mb-4 justify-content-center">

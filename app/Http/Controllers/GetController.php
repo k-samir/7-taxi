@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
  */
 class GetController extends Controller
 {
+
+
     /**
      * Show the application dashboard.
      *
@@ -29,8 +31,8 @@ class GetController extends Controller
      */
     public function addConductorShift(Request $request)
     {
-        return view("formulaireChauffeur",[
-            'todayDate'=> Carbon::now()->toDateString()."T". Carbon::now()->toTimeString("minute"),
+        return view("formulaireShift", [
+            'todayDate' => Carbon::now()->toDateString() . "T" . Carbon::now()->toTimeString("minute"),
         ]);
     }
 
@@ -40,7 +42,7 @@ class GetController extends Controller
      */
     public function createConductor(Request $request)
     {
-        return view("formulaireCreationChauffeur");
+        return view("formulaireChauffeur", ["type" => "création"]);
     }
 
     /**
@@ -49,7 +51,16 @@ class GetController extends Controller
      */
     public function createClient(Request $request)
     {
-        return view("formulaireCreationClient");
+        return view("formulaireClient", ["type" => "création"]);
+    }
+
+    /**
+     * @param Request $request
+     * @return Renderable
+     */
+    public function createFixTarif(Request $request)
+    {
+        return view("formulaireTarifFix", ["type" => "création"]);
     }
 
     public function createTaxi(Request $request){
