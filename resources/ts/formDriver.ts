@@ -65,7 +65,7 @@ export namespace src{export namespace form {
             for (let i = 0; i < elementIdsToRetrieveTheSum.length; i++)
                 tempElementToRetrieveTheSum[i] = convertToFloat(elementIdsToRetrieveTheSum[i])[i];
 
-            setSum(typeof elementIDToSet === "string" ? getID(elementIDToSet) : elementIDToSet, tempElementToRetrieveTheSum);
+            setSum(getID(elementIDToSet), tempElementToRetrieveTheSum);
         }
 
         public onNumberModification(callback: () => void, ...ids: string[]) {
