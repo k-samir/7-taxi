@@ -30,10 +30,10 @@ Route::get('/form/create/conductor', 'GetController@createConductor')->name('cre
 Route::get('/form/modify/conductor{id}', 'GetController@modifyConductor')->name('modifyConductor')->middleware('auth');
 
 Route::get('/form/create/client', 'GetController@createClient')->name('createClient')->middleware('auth');
-Route::get('/form/modify/client{id}', 'ClientController@modifyClient')->name('modifyClient')->middleware('auth');
+Route::get('/form/modify/client{id}', 'GetController@modifyClient')->name('modifyClient')->middleware('auth');
 
 Route::get('/form/create/fixTarif', 'GetController@createFixTarif')->name('createFixTarif')->middleware('auth');
-Route::get('/form/modify/fixTarif{id}', 'FixTarifController@modifyFixTarif')->name('modifyFixTarif')->middleware('auth');
+Route::get('/form/modify/fixTarif{id}', 'GetController@modifyFixTarif')->name('modifyFixTarif')->middleware('auth');
 
 Route::get('/form/create/taxis','GetController@createTaxi')->name('createTaxi')->middleware('auth');
 

@@ -42,6 +42,17 @@ class GetController extends Controller
         ]);
     }
 
+    public function modifyConductor(Request $request, int $id): Renderable
+    {
+        return view("formulaireChauffeur", [
+            'type' => "modification",
+            'id' => $id,
+            'routeOnAction' => route('modifyConductor', ["id" => $id]),
+            'messageOnAction' => "Modifier",
+        ]);
+    }
+
+
     public function createClient(Request $request): Renderable
     {
         return view("formulaireClient", [
@@ -51,13 +62,36 @@ class GetController extends Controller
         ]);
     }
 
+    public function modifyClient(Request $request, int $id)
+    {
+        return view("formulaireClient", [
+            'type' => "modification",
+            'id' => $id,
+            'routeOnAction' => route("modifyClient", ["id" => $id]),
+            'messageOnAction' => "Modifier",
+        ]);
+    }
+
+
     public function createFixTarif(Request $request): Renderable
     {
         return view("formulaireTarifFix", [
             "type" => "création",
+            'routeOnAction' => route("createFixTarif"),
             'messageOnAction' => "Créer",
         ]);
     }
+
+    public function modifyFixTarif(Request $request, int $id)
+    {
+        return view("formulaireTarifFix", [
+            'type' => "modification",
+            'id' => $id,
+            'routeOnAction' => route("modifyFixTarif", ["id" => $id]),
+            'messageOnAction' => "Modifier",
+        ]);
+    }
+
 
     public function createTaxi(Request $request): Renderable
     {
