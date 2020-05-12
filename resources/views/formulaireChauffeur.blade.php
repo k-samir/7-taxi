@@ -1,16 +1,14 @@
 @extends('layouts.base')
 @section('title')
-    Formulaire de {{$type}} de chauffeur
-@endsection
-
-@section('before-scripts')
-
+    Formulaire de {{$type}} de chauffeur @if(isset($id))(Id: {{$id}})@endif
 @endsection
 
 @section('body-content')
     <div class="container mb-5">
         @parent
-        <form action="" method="post">
+        <form method="post" action="{{route('createConductor')}}">
+            @csrf
+
             <div class="row mb-4">
                 <div class="col input-group">
                     <label class="input-group-text" for="firstName">Prénom & Nom</label>
