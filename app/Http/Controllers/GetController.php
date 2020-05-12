@@ -25,45 +25,42 @@ class GetController extends Controller
         return view('home');
     }
 
-    /**
-     * @param Request $request
-     * @return Renderable
-     */
-    public function addConductorShift(Request $request)
+    public function addConductorShift(Request $request): Renderable
     {
         return view("formulaireShift", [
             'todayDate' => Carbon::now()->toDateString() . "T" . Carbon::now()->toTimeString("minute"),
         ]);
     }
 
-    /**
-     * @param Request $request
-     * @return Renderable
-     */
-    public function createConductor(Request $request)
+
+    public function createConductor(Request $request): Renderable
     {
-        return view("formulaireChauffeur", ["type" => "création"]);
+        return view("formulaireChauffeur", [
+            "type" => "création",
+            'routeOnAction' => route('createConductor'),
+            'messageOnAction' => "Créer",
+        ]);
     }
 
-    /**
-     * @param Request $request
-     * @return Renderable
-     */
-    public function createClient(Request $request)
+    public function createClient(Request $request): Renderable
     {
-        return view("formulaireClient", ["type" => "création"]);
+        return view("formulaireClient", [
+            "type" => "création",
+            'routeOnAction' => route("createClient"),
+            'messageOnAction' => "Créer",
+        ]);
     }
 
-    /**
-     * @param Request $request
-     * @return Renderable
-     */
-    public function createFixTarif(Request $request)
+    public function createFixTarif(Request $request): Renderable
     {
-        return view("formulaireTarifFix", ["type" => "création"]);
+        return view("formulaireTarifFix", [
+            "type" => "création",
+            'messageOnAction' => "Créer",
+        ]);
     }
 
-    public function createTaxi(Request $request){
+    public function createTaxi(Request $request): Renderable
+    {
         return view("formulaireAjoutTaxi");
     }
 
