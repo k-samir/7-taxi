@@ -4,7 +4,7 @@ export namespace src{export namespace form {
         return (<HTMLInputElement>document.getElementById(id));
     }
 
-    function convertToFloat(elementID: string): number {  
+    function convertToFloat(elementID: string): number {
         return getID(elementID).value==""?0:parseFloat(getID(elementID).value);
     }
 
@@ -19,14 +19,20 @@ export namespace src{export namespace form {
          */
         public updateSalary(): void {
             getID("salary").value = String(convertToFloat("realRecipe") * this.commission);
+            this.__updateTotalDepense();
         }
 
         public setDifference(startingID: string, endingID: string, elementToSetID: string): void {
             getID(elementToSetID).value = (convertToFloat(endingID) - convertToFloat(startingID)).toString();
         }
 
-        public updateTotalDepense():void{
+        private __updateTotalDepense():void{
             getID('totalExpenses').value= (convertToFloat('gaz') + convertToFloat('credit')+ convertToFloat('various') + convertToFloat('salary')).toString();
+
+        }
+
+        public updateTotalDepense():void{
+            this.__updateTotalDepense();
             this.updateTotalNet();
         }
 
