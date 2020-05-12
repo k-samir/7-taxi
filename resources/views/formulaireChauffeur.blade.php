@@ -8,7 +8,6 @@
         @parent
         <form method="post" action="{{route('createConductor')}}">
             @csrf
-
             <div class="row mb-4">
                 <div class="col input-group">
                     <label class="input-group-text" for="firstName">Prénom & Nom</label>
