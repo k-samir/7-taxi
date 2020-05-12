@@ -4,9 +4,9 @@
 @endsection
 
 @section('body-content')
+    @parent
     <div class="container mb-5">
-        @parent
-        <form method="post" action="{{route('createConductor')}}">
+        <form method="post" action="{{$routeOnAction}}">
             @csrf
             <div class="row mb-4">
                 <div class="col input-group">
@@ -57,7 +57,7 @@
 
             <div class="row">
                 <div class="col-4"></div>
-                <div class="col"><button type="button" class="btn btn-lg btn-success w-25">Créer</button></div>
+                <div class="col"><button type="button" class="btn btn-lg btn-success w-25">{{$messageOnAction}}</button></div>
             </div>
 
         </form>
