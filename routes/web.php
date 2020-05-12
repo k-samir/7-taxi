@@ -27,6 +27,9 @@ Route::get('/form/create/conductor', 'GetController@createConductor')->name('cre
 
 Route::get('/form/create/client', 'GetController@createClient')->name('createClient')->middleware('auth');
 
+Route::get('/form/create/fixTarif', 'GetController@createFixTarif')->name('createFixTarif')->middleware('auth');
+Route::get('/form/modify/fixTarif{id}', 'FixTarifController@modifyFixTarif')->name('modifyFixTarif')->where('id','\d+')->middleware('auth');
+
 
 
 
