@@ -10,11 +10,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    @yield('headContent')
-
-    @yield('before-scripts')
-
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('css/font-color.css')}}">
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
@@ -26,12 +22,18 @@
     <link rel="stylesheet" href="{{ asset('css/-Login-form-Page-BS4-.css')}}">
     <link rel="stylesheet" href="{{ asset('css/Responsive-Form-1.css')}}">
     <link rel="stylesheet" href="{{ asset('css/Responsive-Form.css')}}">
+    @yield('headContent')
+
+    @yield('before-scripts')
+    
+   
     @yield('styles')
+    
 </head>
 
 <body id="base-body">
     <div id="navigation-bar" class="container-fluid mb-3 navbar-light bg-light">
-        <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark" id="mainNav">
+        <nav class="navbar navbar-dark navbar-expand-lg bg-dark" id="mainNav">
             <div class="container"><a class="navbar-brand" href="{{route('home')}}">7-Taxi</a><button
                     data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right"
                     type="button" data-toogle="collapse" aria-controls="navbarResponsive" aria-expanded="false"
@@ -44,10 +46,10 @@
                         @if (Route::has('register'))
                         <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger"
                                 href="{{route('register')}}">INSCRIPTION</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="#services">SERVICES</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="#portfolio">L'ENTREPRISE</a>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('home')}}#services">SERVICES</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('home')}}#portfolio">L'ENTREPRISE</a>
                         </li>
-                        <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="#about">A
+                        <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="{{route('home')}}#about">A
                                 PROPOS</a></li>
                         <li class="nav-item" role="presentation"></li>
                         <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger"
@@ -111,9 +113,12 @@
 
     </div>
     @section('body-content')
-    <div class="row pb-3">
+
+    <!--<div class="row pb-3">
         <h1 class="mx-auto" style="margin-top:9rem;"><u> @yield('title')</u></h1>
     </div>
+-->
+
     @show
     <section id="contact" style="background-image:url('img/map-image.png');">
         <div class="container">
