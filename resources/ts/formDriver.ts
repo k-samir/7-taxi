@@ -19,20 +19,15 @@ export namespace src{export namespace form{
          */
         public updateSalary(): void {
             getID("salary").value = String(convertToFloat("realRecipe") * this.commission);
-            this.__updateTotalDepense();
+            this.updateTotalDepense();
         }
 
         public setDifference(startingID: string, endingID: string, elementToSetID: string): void {
             getID(elementToSetID).value = (convertToFloat(endingID) - convertToFloat(startingID)).toString();
         }
 
-        private __updateTotalDepense(): void {
-            getID('totalExpenses').value = (convertToFloat('gaz') + convertToFloat('credit') + convertToFloat('various') + convertToFloat('salary')).toString();
-
-        }
-
         public updateTotalDepense(): void {
-            this.__updateTotalDepense();
+            getID('totalExpenses').value = (convertToFloat('gaz') + convertToFloat('credit') + convertToFloat('various') + convertToFloat('salary')).toString();
             this.updateTotalNet();
         }
 
