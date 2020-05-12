@@ -8,7 +8,6 @@
     <div class="container mb-5">
         <form method="post" action="{{$routeOnAction}}">
             @csrf
-
             <div class="row mb-4">
                 <div class="col input-group">
                     <label class="input-group-text" for="firstName">Prénom & Nom</label>
