@@ -52,5 +52,9 @@ class GetController extends Controller
         return view("formulaireCreationClient");
     }
 
+    public function createTaxi(Request $request){
+        return view("formulaireAjoutTaxi");
+    }
+
 
 }

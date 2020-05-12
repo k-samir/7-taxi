@@ -2,8 +2,8 @@
 @section('title', "Formulaire pour les chauffeurs")
 
 @section('body-content')
-    <div class="container mb-5">
-        @parent
+    @parent
+        <div class="container mb-5">
         <form method="POST" action="{{route("addConductorShift")}}">
             @csrf
             <!-- chauffeur & taxi-->
