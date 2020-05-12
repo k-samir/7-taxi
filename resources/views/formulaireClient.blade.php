@@ -4,8 +4,8 @@
 @endsection
 
 @section('body-content')
+    @parent
     <div class="container mb-5">
-        @parent
         <form method="post" action="{{route("createClient")}}">
             @csrf
 
