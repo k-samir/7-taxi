@@ -19,6 +19,7 @@ export namespace src{export namespace form {
          */
         public updateSalary(): void {
             getID("salary").value = String(convertToFloat("realRecipe") * this.commission);
+            this.updateTotalDepense();
         }
 
         public setDifference(startingID: string, endingID: string, elementToSetID: string): void {
