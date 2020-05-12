@@ -10,7 +10,10 @@ class ClientController extends Controller
 
     public function modifyClient(Request $request, int $id)
     {
-        return view("home");
+        return view("formulaireClient", [
+            'type' => "modification",
+            'id' => $id,
+        ]);
     }
 
 

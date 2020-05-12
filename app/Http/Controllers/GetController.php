@@ -31,7 +31,7 @@ class GetController extends Controller
      */
     public function addConductorShift(Request $request)
     {
-        return view("formulaireChauffeur", [
+        return view("formulaireShift", [
             'todayDate' => Carbon::now()->toDateString() . "T" . Carbon::now()->toTimeString("minute"),
         ]);
     }
@@ -42,7 +42,7 @@ class GetController extends Controller
      */
     public function createConductor(Request $request)
     {
-        return view("formulaireCreationChauffeur", ["type" => "création"]);
+        return view("formulaireChauffeur", ["type" => "création"]);
     }
 
     /**

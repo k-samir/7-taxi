@@ -10,7 +10,10 @@ class ConductorController extends Controller
 
     public function modifyConductor(Request $request, int $id)
     {
-        return view("home");
+        return view("formulaireChauffeur", [
+            'type' => "modification",
+            'id' => $id,
+        ]);
     }
 
 

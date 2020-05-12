@@ -10,7 +10,10 @@ class FixTarifController extends Controller
 
     public function modifyFixTarif(Request $request, int $id)
     {
-        return view("home");
+        return view("formulaireTarifFix", [
+            'type' => "modification",
+            'id' => $id,
+        ]);
     }
 
 
