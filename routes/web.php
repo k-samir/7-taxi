@@ -13,7 +13,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Auth::routes();
+
+Route::pattern('id','\d+');
 
 Route::get('/', function () {
     return redirect('home');
@@ -26,9 +29,10 @@ Route::post('/form/driver/addShift', 'FormDriverController@addRequest')->middlew
 Route::get('/form/create/conductor', 'GetController@createConductor')->name('createConductor')->middleware('auth');
 
 Route::get('/form/create/client', 'GetController@createClient')->name('createClient')->middleware('auth');
+Route::get('/form/modify/client{id}', 'ClientController@modifyClient')->name('modifyClient')->middleware('auth');
 
 Route::get('/form/create/fixTarif', 'GetController@createFixTarif')->name('createFixTarif')->middleware('auth');
-Route::get('/form/modify/fixTarif{id}', 'FixTarifController@modifyFixTarif')->name('modifyFixTarif')->where('id','\d+')->middleware('auth');
+Route::get('/form/modify/fixTarif{id}', 'FixTarifController@modifyFixTarif')->name('modifyFixTarif')->middleware('auth');
 
 
 
