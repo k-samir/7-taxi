@@ -1,4 +1,4 @@
-export namespace src{export namespace form {
+export namespace src{export namespace form{
 
     function getID(id: string): HTMLInputElement {
         return (<HTMLInputElement>document.getElementById(id));
@@ -42,12 +42,12 @@ export namespace src{export namespace form {
             updateValidation(diff>0,startingID,endingID);
         }
 
-        public updateTotalDepense():void{
-            getID('totalExpenses').value= (convertToFloat('gaz') + convertToFloat('credit')+ convertToFloat('various') + convertToFloat('salary')).toString();
+        public updateTotalDepense(): void {
+            getID('totalExpenses').value = (convertToFloat('gaz') + convertToFloat('credit') + convertToFloat('various') + convertToFloat('salary')).toString();
             this.updateTotalNet();
         }
 
-        public updateTotalNet():void{
+        public updateTotalNet(): void {
             getID('totalNet').value = (convertToFloat('realRecipe') - convertToFloat('totalExpenses')).toString();
         }
 
