@@ -4,6 +4,19 @@ export namespace src{export namespace form {
         return (<HTMLInputElement>document.getElementById(id));
     }
 
+    function updateValidation(isValid: boolean,...ids: string[] ) : void{
+        ids.forEach((id)=>{
+            let listeId = getID(id).classList;
+            if(isValid){
+                listeId.remove("is-invalid");
+                listeId.add("is-valid");
+            }else{
+                listeId.remove("is-valid");
+                listeId.add("is-invalid");
+            }
+        });
+    }
+
     function convertToFloat(elementID: string): number {  
         return getID(elementID).value==""?0:parseFloat(getID(elementID).value);
     }
@@ -23,7 +36,10 @@ export namespace src{export namespace form {
         }
 
         public setDifference(startingID: string, endingID: string, elementToSetID: string): void {
-            getID(elementToSetID).value = (convertToFloat(endingID) - convertToFloat(startingID)).toString();
+            
+            let diff = convertToFloat(endingID) - convertToFloat(startingID);
+            getID(elementToSetID).value = (diff).toString();
+            updateValidation(diff>0,startingID,endingID);
         }
 
         public updateTotalDepense():void{
