@@ -42,7 +42,7 @@ class GetController extends Controller
      */
     public function createConductor(Request $request)
     {
-        return view("formulaireCreationChauffeur");
+        return view("formulaireCreationChauffeur", ["type" => "création"]);
     }
 
     /**
@@ -51,7 +51,7 @@ class GetController extends Controller
      */
     public function createClient(Request $request)
     {
-        return view("formulaireCreationClient");
+        return view("formulaireClient", ["type" => "création"]);
     }
 
     /**
@@ -60,7 +60,7 @@ class GetController extends Controller
      */
     public function createFixTarif(Request $request)
     {
-        return view("home");
+        return view("formulaireTarifFix", ["type" => "création"]);
     }
 
 

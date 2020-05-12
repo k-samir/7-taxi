@@ -1,5 +1,7 @@
 @extends('layouts.base')
-@section('title', "Formulaire de création de client")
+@section('title')
+    Formulaire de {{$type}} de clients
+@endsection
 
 @section('body-content')
     <div class="container mb-5">
