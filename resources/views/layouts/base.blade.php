@@ -41,6 +41,23 @@
                         <a class="dropdown-item" href="{{route('createConductor')}}">Création de chauffeur</a>
                         <a class="dropdown-item" href="{{route('createClient')}}">Création de client</a>
                         <a class="dropdown-item" href="{{route('createTaxi')}}"> Création de taxi</a>
+                        <a class="dropdown-item" href="{{route('createFixTarif')}}"> Création de tarif fix</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown font-weight-bold">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulaires de modifications</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <form method="post">
+                            @csrf
+                            <div class="col input-group">
+                                <label class="input-group-text" for="id">ID</label>
+                                <input id="id" class="form-control" type="number" maxlength="7" name="id" placeholder="Numéro" required>
+                            </div>
+                            <button type="submit" class="dropdown-item" value="conductor" formaction="{{route('modifyConductorRequest')}}">Modification de chauffeur</button>
+                            <button type="submit" class="dropdown-item" value="client" formaction="{{route('modifyClientRequest')}}">Modification de client</button>
+                            <button type="submit" class="dropdown-item" value="taxi" formaction="{{route('modifyTaxiRequest')}}">Modification de taxi</button>
+                            <button type="submit" class="dropdown-item" value="fixTarif" formaction="{{route('modifyFixTarifRequest')}}">Modification de tarif fix</button>
+                        </form>
                     </div>
                 </li>
                 <li class="nav-item dropdown font-weight-bold">

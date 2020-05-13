@@ -42,6 +42,11 @@ class GetController extends Controller
         ]);
     }
 
+    public function modifyConductorFromRequest(Request $request): Renderable
+    {
+        return $this->modifyConductor($request, $request['id']);
+    }
+
     public function modifyConductor(Request $request, int $id): Renderable
     {
         return view("formulaireChauffeur", [
@@ -62,7 +67,12 @@ class GetController extends Controller
         ]);
     }
 
-    public function modifyClient(Request $request, int $id)
+    public function modifyClientFromRequest(Request $request): Renderable
+    {
+        return $this->modifyClient($request, $request['id']);
+    }
+
+    public function modifyClient(Request $request, int $id): Renderable
     {
         return view("formulaireClient", [
             'type' => "modification",
@@ -82,7 +92,12 @@ class GetController extends Controller
         ]);
     }
 
-    public function modifyFixTarif(Request $request, int $id)
+    public function modifyFixTarifFromRequest(Request $request): Renderable
+    {
+        return $this->modifyFixTarif($request, $request['id']);
+    }
+
+    public function modifyFixTarif(Request $request, int $id): Renderable
     {
         return view("formulaireTarifFix", [
             'type' => "modification",
