@@ -32,7 +32,7 @@
 </head>
 
 <body id="base-body">
-    <div id="navigation-bar" class="container-fluid mb-3 navbar-light bg-light">
+    <div id="navigation-bar" class="container-fluid mb-3 navbar-light bg-light" style="padding:0">
         <nav class="navbar navbar-dark navbar-expand-lg bg-dark" id="mainNav">
             <div class="container"><a class="navbar-brand" href="{{route('home')}}">7-Taxi</a><button
                     data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right"
@@ -120,7 +120,7 @@
 -->
 
     @show
-    <section id="contact" style="background-image:url('img/map-image.png');">
+    <section id="contact" style="background-image:url('img/map-image.png');margin-top:2rem">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -133,10 +133,10 @@
                     <form id="contactForm" name="contactForm" novalidate="novalidate">
                         <div class="form-row">
                             <div class="col col-md-6">
-                                <div class="form-group"><input class="form-control" type="text" id="name"
+                                <div class="form-group"><input class="form-control" type="text" id="name1"
                                         placeholder="Votre Nom *" required=""><small
                                         class="form-text text-danger flex-grow-1 help-block lead"></small></div>
-                                <div class="form-group"><input class="form-control" type="email" id="email"
+                                <div class="form-group"><input class="form-control" type="email" id="email1"
                                         placeholder="Votre Email *" required=""><small
                                         class="form-text text-danger help-block lead"></small></div>
                                 <div class="form-group"><input class="form-control" type="tel"
