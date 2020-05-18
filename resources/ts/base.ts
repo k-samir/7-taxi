@@ -6,12 +6,12 @@ export namespace src{export namespace base{
         }
 
 
-        private static getID(id: string): DOMTokenList {
+        private static getClassListFromID(id: string): DOMTokenList {
             let objectByID = document.getElementById(id);
             return objectByID == null ? null : objectByID.classList;
         }
 
-        private static getClass(clazz: string): DOMTokenList[] {
+        private static getClassListFromClass(clazz: string): DOMTokenList[] {
             let returnedElement = [];
             let objectByClass = document.getElementsByClassName(clazz);
             for (let i = 0; i < objectByClass.length; i++)
@@ -19,7 +19,7 @@ export namespace src{export namespace base{
             return returnedElement;
         }
 
-        private static getClassWithTransparency(clazz: string): { dom: DOMTokenList, transparent: boolean }[] {
+        private static getClassListWithTransparencyFromClass(clazz: string): { dom: DOMTokenList, transparent: boolean }[] {
             let returnedElement = [];
             let objectByClass = document.getElementsByClassName(clazz);
             for (let i = 0; i < objectByClass.length; i++)
@@ -31,31 +31,44 @@ export namespace src{export namespace base{
             return returnedElement;
         }
 
+        private static getIDAsInput(id: string): HTMLInputElement {
+            let objectByID = document.getElementById(id);
+            return (objectByID instanceof HTMLInputElement)?objectByID:null;
+        }
+
+        private static getClassAsInput(clazz: string): HTMLInputElement[] {
+            let returnedElement = [];
+            let objectByClass = document.getElementsByClassName(clazz);
+            for (let i = 0; i < objectByClass.length; i++)
+                if (objectByClass[i] instanceof HTMLInputElement)
+                    returnedElement[i] = objectByClass[i];
+            return returnedElement;
+        }
+
 
         public static getBodyClassList(): DOMTokenList {
-            return BaseList.getID("base-body");
+            return BaseList.getClassListFromID("base-body");
         }
 
         public static getNavigationBarClassList(): DOMTokenList {
-            return BaseList.getID("navigation-bar");
+            return BaseList.getClassListFromID("navigation-bar");
         }
 
         public static getNavigationsTabClassList(): DOMTokenList[] {
-            return BaseList.getClass("dropdown-menu");
+            return BaseList.getClassListFromClass("dropdown-menu");
         }
 
         public static getNavigationsTextClassList(): DOMTokenList[] {
-            return BaseList.getClass("dropdown-item");
+            return BaseList.getClassListFromClass("dropdown-item");
         }
 
         public static getLabelFormControlList(): { dom: DOMTokenList, transparent: boolean }[] {
-            return BaseList.getClassWithTransparency("input-group-text");
+            return BaseList.getClassListWithTransparencyFromClass("input-group-text");
         }
 
         public static getFormControlList(): { dom: DOMTokenList, transparent: boolean }[] {
-            return BaseList.getClassWithTransparency("form-control");
+            return BaseList.getClassListWithTransparencyFromClass("form-control");
         }
-
 
     }
 
@@ -175,15 +188,16 @@ export namespace src{export namespace base{
         }
 
         private __execute(): void {
-            BaseList.getBodyClassList().remove(this.getCurrentPossibility());
-            this.__currentIndex = (this.__currentIndex == this.lastIndexOfPossibilities) ? 0 : this.__currentIndex + 1;
+            if (this.isChangingColorAutomatically()){
+                BaseList.getBodyClassList().remove(this.getCurrentPossibility());
+                this.__currentIndex = (this.__currentIndex == this.lastIndexOfPossibilities) ? 0 : this.__currentIndex + 1;
 
-            BaseList.getBodyClassList().add(this.setCurrentPossibility(this.__currentIndex).getCurrentPossibility());
+                BaseList.getBodyClassList().add(this.setCurrentPossibility(this.__currentIndex).getCurrentPossibility());
+            }
 
-
-            if (this.isChangingColorAutomatically())//Re-execute itself after
-                setTimeout(() => this.__execute(), BaseTask.DELAY_TIME);
+            setTimeout(() => this.__execute(), BaseTask.DELAY_TIME);
         }
+
 
     }
 
@@ -200,4 +214,5 @@ import BaseTask = src.base.BaseTask;
     window["baseTask"] = baseTask;
     window["changeDarkOrLightMode"] = () => baseTask.setDarkMode(!baseTask.isDarkModeEnable());
     window["changeAutomaticColor"] = () => baseTask.setChangeColorAutomatically(!baseTask.isChangingColorAutomatically());
+
 })();

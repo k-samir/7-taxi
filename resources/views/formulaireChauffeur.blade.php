@@ -1,200 +1,66 @@
 @extends('layouts.base')
-@section('title', "Formulaire pour les chauffeurs")
+@section('title')
+    Formulaire de {{$type}} de chauffeur @if(isset($id))(Id: {{$id}})@endif
+@endsection
 
 @section('body-content')
     @parent
-    <form method="POST" action="{{route("addConductorShift")}}">
-        @csrf
-        <div class="container mb-5">
-        <!-- chauffeur & taxi-->
-            <div class="row mb-4 justify-content-center">
+    <div class="container mb-5">
+        <form method="post" action="{{$routeOnAction}}">
+            @csrf
+            <div class="row mb-4">
                 <div class="col input-group">
-                    <label class="input-group-text font-weight-bold bg-transparent border-0" for="driverNo">Numéro de conducteur</label>
-                    <input id="driverNo" class="form-control font-weight-bold bg-transparent border-0" value="{{\Illuminate\Support\Facades\Auth::id()}}" type="text" name="driverNo" minlength="1" readonly disabled>
+                    <label class="input-group-text" for="firstName">Prénom & Nom</label>
+                    <input id="firstName" class="form-control" value="{{old('firstName', $firstName ?? "")}}" type="text" name="firstName" placeholder="Prénom">
+                    <label class="input-group-text" for="lastName" hidden></label>
+                    <input id="lastName" class="form-control" value="{{old('lastName', $lastName ?? "")}}" type="text" name="lastName" placeholder="Nom">
                 </div>
                 <div class="col input-group">
-                    <label class="input-group-text" for="taxiNo">Numéro du taxi</label>
-                    <input id="taxiNo" class="form-control" value="{{old('taxiNo')}}" type="text" name="taxiNo" minlength="1" required>
+                    <label class="input-group-text" for="phoneNumber">Numéro de téléphone</label>
+                    <input id="phoneNumber" class="form-control" value="{{old('phoneNumber', $phoneNumber ?? "")}}" type="tel" name="phoneNumber" placeholder="(123) 456-7890">
                 </div>
-                <div class="w-100"></div>
-                <div class="col"></div>
-                <div class="col-5"><span class="text-danger text-sm-right">@error('taxiNo'){{$message}}@enderror</span></div>
-            </div>
-            <!--Date-->
-            <div class="row mb-4 justify-content-center">
+                <div class="w-100 pb-4"></div>
+
+                <div class="col input-group">
+                    <label class="input-group-text" for="streetNumber">Rue</label>
+                    <input id="streetNumber" class="form-control" value="{{old('streetNumber', $streetNumber ?? "")}}" type="number" name="streetNumber" placeholder="Numéro">
+                    <label class="input-group-text" for="streetName" hidden></label>
+                    <input id="streetName" class="form-control" value="{{old('streetName', $streetName ?? "")}}" type="text" name="streetName" placeholder="Rue">
+                </div>
                 <div class="col-5 input-group">
-                    <label class="input-group-text" for="dateStart">Date (Début)</label>
-                    <input id="dateStart" class="form-control" value="{{old('dateStart', $todayDate)}}" type="datetime-local" name="dateStart" placeholder="jj/mm/aaaa hh:mm" required>
-                </div>
-                <div class="col-5 input-group">
-                    <label class="input-group-text" for="dateEnd">Date (Fin)</label>
-                    <input id="dateEnd" class="form-control" value="{{old('dateEnd', $todayDate)}}" type="datetime-local" name="dateEnd" placeholder="jj/mm/aaaa hh:mm" required>
-                </div>
-                <div class="w-100"></div>
-                <div class="col-5"><span class="text-danger text-sm-right">@error('dateStart'){{$message}}@enderror</span></div>
-                <div class="col-5"><span class="text-danger text-sm-right">@error('dateEnd'){{$message}}@enderror</span></div>
-            </div>
-            <!--Recette-->
-            <div class="row mb-4 justify-content-center">
-                <div class="col-9 input-group">
-                    <label class="input-group-text" for="startRecipe">Recette</label>
-                    <input id="startRecipe" class="form-control" value="{{old('startRecipe')}}" type="number" name="startRecipe" min="0" placeholder="Initiale" required>
-                    <label class="input-group-text" for="finalRecipe" hidden></label>
-                    <input id="finalRecipe" class="form-control" value="{{old('finalRecipe')}}" type="number" name="finalRecipe" min="0" placeholder="Finale" required>
+                    <label class="input-group-text" for="cityName">Ville</label>
+                    <input id="cityName" class="form-control" value="{{old('cityName', $cityName ?? "")}}" type="text" name="cityName">
                 </div>
                 <div class="col input-group">
-                    <label class="input-group-text" for="fixPrice">Prix fixe</label>
-                    <input id="fixPrice" class="form-control" value="{{old('fixPrice')}}" type="number" name="fixPrice" min="0" required>
+                    <label class="input-group-text" for="postalCode">Code Postal</label>
+                    <input id="postalCode" class="form-control" value="{{old('postalCode', $postalCode ?? "")}}" type="text" name="postalCode" placeholder="A1A 1A1">
                 </div>
-                <div class="w-100"></div>
-                <div class="col"><span class="text-danger text-sm-right">@error('startRecipe'){{$message}}@enderror</span></div>
-                <div class="col"><span class="text-danger text-sm-right">@error('finalRecipe'){{$message}}@enderror</span></div>
-                <div class="col-3"><span class="text-danger text-sm-right">@error('fixPrice'){{$message}}@enderror</span></div>
-            </div>
-            <!--Recette réelle-->
-            <div class="row mb-4 justify-content-center">
-                <div class="col-3"></div>
-                <div class="col-6 input-group">
-                    <label class="input-group-text font-weight-bold bg-transparent border-0">Recette réelle</label>
-                    <input id="realRecipe" class="form-control font-weight-bold bg-transparent border-0" type="number" readonly disabled>
-                </div>
-                <div class="w-100"></div>
-                <div class="col-3"></div>
-                <div class="col-6"><span class="text-danger text-sm-right">@error('realRecipe'){{$message}}@enderror</span></div>
-            </div>
-            <!--Taximètre-->
-            <div class="row mb-4 justify-content-center">
-                <h4 class="mx-auto pt-3">Nombre de kilomètre dans le taximètre</h4>
-                <div class="w-100"></div>
+                <div class="w-100 pb-4"></div>
+
                 <div class="col input-group">
-                    <label class="input-group-text" for="startingMillage">Départ</label>
-                    <input id="startingMillage" class="form-control" value="{{old('startingMillage')}}" type="number" name="startingMillage" required>
+                    <label class="input-group-text" for="licenceNumber">Numéro de permis</label>
+                    <input id="licenceNumber" class="form-control" value="{{old('licenceNumber', $licenceNumber ?? "")}}" type="text" name="licenceNumber">
                 </div>
                 <div class="col input-group">
-                    <label class="input-group-text" for="endingMillage">Arrivée</label>
-                    <input id="endingMillage" class="form-control" value="{{old('endingMillage')}}" type="number" name="endingMillage" required>
+                    <label class="input-group-text" for="licenceExpirationDate">Date d'expiration du permis</label>
+                    <input id="licenceExpirationDate" class="form-control" value="{{old('licenceExpirationDate', $licenceExpirationDate ?? "")}}" type="date" name="licenceExpirationDate">
                 </div>
-                <div class="col-3 input-group">
-                    <label class="input-group-text font-weight-bold bg-transparent border-0">Total</label>
-                    <input id="totalMillage" class="form-control font-weight-bold bg-transparent border-0" type="number" readonly disabled>
+                <div class="w-100 pb-4"></div>
+
+                <div class="col input-group">
+                    <label class="input-group-text" for="commission">Commission & Solde</label>
+                    <input id="commission" class="form-control" value="{{old('commission', $commission ?? "")}}" type="number" name="commission" placeholder="Commission">
+                    <label class="input-group-text" for="balance" hidden></label>
+                    <input id="balance" class="form-control" value="{{old('balance', $balance ?? "")}}" type="number" name="balance" placeholder="Solde">
                 </div>
-                <div class="w-100"></div>
-                <div class="col"><span class="text-danger text-sm-right">@error('startingMillage'){{$message}}@enderror</span></div>
-                <div class="col"><span class="text-danger text-sm-right">@error('endingMillage'){{$message}}@enderror</span></div>
-                <div class="col-3"></div>
             </div>
 
-            <!--Kimolétrage professionnel-->
-            <div class="row mb-4 justify-content-center">
-                <h4 class="mx-auto pt-3">Nombre de kilomètre effectué professionellement (dans la journée)</h4>
-                <div class="w-100"></div>
-                <div class="col input-group">
-                    <label class="input-group-text" for="startingMileageLaden">Départ</label>
-                    <input id="startingMileageLaden" class="form-control" value="{{old('startingMileageLaden')}}" type="number" name="startingMileageLaden" required>
-                </div>
-                <div class="col input-group">
-                    <label class="input-group-text" for="endingMileageLaden">Arrivée</label>
-                    <input id="endingMileageLaden" class="form-control" value="{{old('endingMileageLaden')}}" type="number" name="endingMileageLaden" required>
-                </div>
-                <div class="col-3 input-group">
-                    <label class="input-group-text font-weight-bold bg-transparent border-0">Total</label>
-                    <input id="totalMileageLaden" class="form-control font-weight-bold bg-transparent border-0" type="number" readonly disabled>
-                </div>
-                <div class="w-100"></div>
-                <div class="col"><span class="text-danger text-sm-right">@error('startingMileageLaden'){{$message}}@enderror</span></div>
-                <div class="col"><span class="text-danger text-sm-right">@error('endingMileageLaden'){{$message}}@enderror</span></div>
-                <div class="col-3"></div>
-            </div>
-            <!--Nombre de clients-->
-            <div class="row mb-4 justify-content-center">
-                <h4 class="mx-auto pt-3">Nombre de clients (dans la journée)</h4>
-                <div class="w-100"></div>
-                <div class="col input-group">
-                    <label class="input-group-text" for="startingAmountOfPassengers">Départ</label>
-                    <input id="startingAmountOfPassengers" class="form-control" value="{{old('startingAmountOfPassengers')}}" type="number" name="startingAmountOfPassengers" required>
-                </div>
-                <div class="col input-group">
-                    <label class="input-group-text" for="endingAmountOrPassengers">Arrivée</label>
-                    <input id="endingAmountOrPassengers" class="form-control" value="{{old('endingAmountOrPassengers')}}" type="number" name="endingAmountOrPassengers" required>
-                </div>
-                <div class="col-3 input-group">
-                    <label class="input-group-text font-weight-bold bg-transparent border-0">Total</label>
-                    <input id="totalAmountOfPassengers" class="form-control font-weight-bold bg-transparent border-0" type="number"readonly disabled>
-                </div>
-                <div class="w-100"></div>
-                <div class="col"><span class="text-danger text-sm-right">@error('startingAmountOfPassengers'){{$message}}@enderror</span></div>
-                <div class="col"><span class="text-danger text-sm-right">@error('endingAmountOrPassengers'){{$message}}@enderror</span></div>
-                <div class="col-3"></div>
-            </div>
-            <!--Kilométrage de voiture-->
-            <div class="row mb-4 justify-content-center">
-                <h4 class="mx-auto pt-3">Nombre de kilomètre de la voiture</h4>
-                <div class="w-100"></div>
-                <div class="col input-group">
-                    <label class="input-group-text" for="startingMileageInVehicle">Départ</label>
-                    <input id="startingMileageInVehicle" class="form-control" value="{{old('startingMileageInVehicle')}}" type="number" name="startingMileageInVehicle" required>
-                </div>
-                <div class="col input-group">
-                    <label class="input-group-text" for="endingMileageInVehicle">Arrivée</label>
-                    <input id="endingMileageInVehicle" class="form-control" value="{{old('endingMileageInVehicle')}}" type="number" name="endingMileageInVehicle" required>
-                </div>
-                <div class="col-3 input-group">
-                    <label class="input-group-text font-weight-bold bg-transparent border-0">Total</label>
-                    <input id="totalMileageInVehicle" class="form-control font-weight-bold bg-transparent border-0" type="number" min="0" readonly disabled>
-                </div>
-                <div class="w-100"></div>
-                <div class="col"><span class="text-danger text-sm-right">@error('startingMileageInVehicle'){{$message}}@enderror</span></div>
-                <div class="col"><span class="text-danger text-sm-right">@error('endingMileageInVehicle'){{$message}}@enderror</span></div>
-                <div class="col-3"></div>
-            </div>
-            <!--Salaire-->
-            <div class="row mb-4 justify-content-center">
-                <div class="col-3"></div>
-                <div class="col-6 input-group">
-                    <label class="input-group-text font-weight-bold bg-transparent border-0">Salaire</label>
-                    <input id="salary" class="form-control font-weight-bold bg-transparent border-0" type="number" readonly disabled>
-                </div>
-            </div>
-            <!--Dépenses(gaz, credit, divers)-->
-            <div class="row mb-4 justify-content-center">
-                <div class="col input-group">
-                    <label class="input-group-text" for="gaz">Gaz</label>
-                    <input id="gaz" class="form-control" value="{{old('gaz')}}" type="number" name="gaz" min="0">
-                </div>
-                <div class="col input-group">
-                    <label class="input-group-text" for="credit">Crédit</label>
-                    <input id="credit" class="form-control" value="{{old('credit')}}" type="number" name="credit" min="0">
-                </div>
-                <div class="col input-group">
-                    <label class="input-group-text" for="various">Divers</label>
-                    <input id="various" class="form-control" value="{{old('various')}}" type="number" name="various" min="0">
-                </div>
-                <div class="w-100"></div>
-                <div class="col"><span class="text-danger text-sm-right">@error('gaz'){{$message}}@enderror</span></div>
-                <div class="col"><span class="text-danger text-sm-right">@error('credit'){{$message}}@enderror</span></div>
-                <div class="col"><span class="text-danger text-sm-right">@error('various'){{$message}}@enderror</span></div>
-            </div>
-            <!--Totaux (dépense/net)-->
-            <div class="row mb-4 justify-content-center">
-                <div class="col input-group">
-                    <label class="input-group-text font-weight-bold bg-transparent border-0" for="totalExpenses">Total des dépense</label>
-                    <input id="totalExpenses" class="form-control font-weight-bold bg-transparent border-0" type="number" name="totalExpenses" readonly disabled>
-                </div>
-                <div class="col input-group">
-                    <label class="input-group-text font-weight-bold bg-transparent border-0" for="totalNet">Total Net</label>
-                    <input id="totalNet" class="form-control font-weight-bold bg-transparent border-0" type="number" name="totalNet" readonly disabled>
-                </div>
-            </div>
-            <!--Envoyer-->
             <div class="row">
                 <div class="col-4"></div>
-                <div class="col"><button type="submit" class="btn btn-lg btn-success">Envoyer</button></div>
+                <div class="col"><button type="button" class="btn btn-lg btn-success w-25">{{$messageOnAction}}</button></div>
             </div>
+
         </form>
     </div>
 @endsection
 
-@section('after-scripts')
-    <script>var commission = {{$commission??0.36}}</script>
-    <script src="{{asset('js/formDriver.js')}}" defer></script>
-@endsection

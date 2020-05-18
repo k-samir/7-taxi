@@ -15,7 +15,7 @@ class FormDriverController extends Controller
         $this->driver = new Form();
     }
 
-    public function addRequest(FormRequest $request)
+    public function addConductorShift(FormRequest $request)
     {
         $this->driver->addForm($request);
         return view('driverFormSuccess');

@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
  */
 class GetController extends Controller
 {
+
+
     /**
      * Show the application dashboard.
      *
@@ -23,36 +25,91 @@ class GetController extends Controller
         return view('home');
     }
 
-    /**
-     * @param Request $request
-     * @return Renderable
-     */
-    public function addConductorShift(Request $request)
+    public function addConductorShift(Request $request): Renderable
     {
-        return view("formulaireChauffeur",[
-            'todayDate'=> Carbon::now()->toDateString()."T". Carbon::now()->toTimeString("minute"),
+        return view("formulaireShift", [
+            'todayDate' => Carbon::now()->toDateString() . "T" . Carbon::now()->toTimeString("minute"),
         ]);
     }
 
-    /**
-     * @param Request $request
-     * @return Renderable
-     */
-    public function createConductor(Request $request)
+
+    public function createConductor(Request $request): Renderable
     {
-        return view("formulaireCreationChauffeur");
+        return view("formulaireChauffeur", [
+            "type" => "création",
+            'routeOnAction' => route('createConductor'),
+            'messageOnAction' => "Créer",
+        ]);
     }
 
-    /**
-     * @param Request $request
-     * @return Renderable
-     */
-    public function createClient(Request $request)
+    public function modifyConductorFromRequest(Request $request): Renderable
     {
-        return view("formulaireCreationClient");
+        return $this->modifyConductor($request, $request['id']);
     }
 
-    public function createTaxi(Request $request){
+    public function modifyConductor(Request $request, int $id): Renderable
+    {
+        return view("formulaireChauffeur", [
+            'type' => "modification",
+            'id' => $id,
+            'routeOnAction' => route('modifyConductor', ["id" => $id]),
+            'messageOnAction' => "Modifier",
+        ]);
+    }
+
+
+    public function createClient(Request $request): Renderable
+    {
+        return view("formulaireClient", [
+            "type" => "création",
+            'routeOnAction' => route("createClient"),
+            'messageOnAction' => "Créer",
+        ]);
+    }
+
+    public function modifyClientFromRequest(Request $request): Renderable
+    {
+        return $this->modifyClient($request, $request['id']);
+    }
+
+    public function modifyClient(Request $request, int $id): Renderable
+    {
+        return view("formulaireClient", [
+            'type' => "modification",
+            'id' => $id,
+            'routeOnAction' => route("modifyClient", ["id" => $id]),
+            'messageOnAction' => "Modifier",
+        ]);
+    }
+
+
+    public function createFixTarif(Request $request): Renderable
+    {
+        return view("formulaireTarifFix", [
+            "type" => "création",
+            'routeOnAction' => route("createFixTarif"),
+            'messageOnAction' => "Créer",
+        ]);
+    }
+
+    public function modifyFixTarifFromRequest(Request $request): Renderable
+    {
+        return $this->modifyFixTarif($request, $request['id']);
+    }
+
+    public function modifyFixTarif(Request $request, int $id): Renderable
+    {
+        return view("formulaireTarifFix", [
+            'type' => "modification",
+            'id' => $id,
+            'routeOnAction' => route("modifyFixTarif", ["id" => $id]),
+            'messageOnAction' => "Modifier",
+        ]);
+    }
+
+
+    public function createTaxi(Request $request): Renderable
+    {
         return view("formulaireAjoutTaxi");
     }
 

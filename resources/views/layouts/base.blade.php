@@ -111,6 +111,65 @@
             </div>
         </nav>
 
+        <div id="navbarSupportedContent" class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown font-weight-bold">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulaires de chauffeur</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{route('addConductorShift')}}">Ajout de shift</a>
+                        <a class="dropdown-item" href="{{route('createConductor')}}">Création de chauffeur</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown font-weight-bold">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulaires de créations</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{route('createConductor')}}">Création de chauffeur</a>
+                        <a class="dropdown-item" href="{{route('createClient')}}">Création de client</a>
+                        <a class="dropdown-item" href="{{route('createTaxi')}}"> Création de taxi</a>
+                        <a class="dropdown-item" href="{{route('createFixTarif')}}"> Création de tarif fix</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown font-weight-bold">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulaires de modifications</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <form method="post">
+                            @csrf
+                            <div class="col input-group">
+                                <label class="input-group-text" for="id">ID</label>
+                                <input id="id" class="form-control" type="number" maxlength="7" name="id" placeholder="Numéro" required>
+                            </div>
+                            <button type="submit" class="dropdown-item" value="conductor" formaction="{{route('modifyConductorRequest')}}">Modification de chauffeur</button>
+                            <button type="submit" class="dropdown-item" value="client" formaction="{{route('modifyClientRequest')}}">Modification de client</button>
+                            <button type="submit" class="dropdown-item" value="taxi" formaction="{{route('modifyTaxiRequest')}}">Modification de taxi</button>
+                            <button type="submit" class="dropdown-item" value="fixTarif" formaction="{{route('modifyFixTarifRequest')}}">Modification de tarif fix</button>
+                        </form>
+                    </div>
+                </li>
+                <li class="nav-item dropdown font-weight-bold">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <button type="button" id="btn-obscur-light" class="navigation-text dropdown-item" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="changeDarkOrLightMode()">Mode obscur</button>
+                        <button type="button" class="navigation-text dropdown-item" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="changeAutomaticColor()">Couleurs automatique</button>
+                    </div>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                @guest
+                    <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('login')}}">Connexion</a></li>
+                    @if (Route::has('register'))
+                        <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('register')}}">Inscription</a></li>
+                    @endif
+                @else
+                    <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Déconnexion</a></li>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
+                @endguest
+            </ul>
+        </div>
+    </nav>
+</div>
+@section('body-content')
+    <div class="row pb-3">
+        <h1 class="mx-auto"><u>@yield('title')</u></h1>
     </div>
     @section('body-content')
 
