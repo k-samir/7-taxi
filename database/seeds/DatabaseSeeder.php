@@ -12,5 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
+
+        DB::unprepared(File::get(base_path() . '/database/seeds/type_voiture.sql'));
     }
 }

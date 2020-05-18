@@ -136,6 +136,8 @@ class CreateDatabase extends Migration
             $table->foreign("id_type_tarif_fixe")->references("id_type_tarif_fixe")->on("type_tarif_fixe");
 
         });
+
+        
     }
 
 
