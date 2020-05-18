@@ -18,3 +18,4 @@ yarn-error.log
 /public/css/*
 !/public/css/font-color.css
 !public/img
+!public/*
