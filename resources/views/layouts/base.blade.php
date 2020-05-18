@@ -79,7 +79,7 @@
                                     <a class="dropdown-item" href="{{route('createConductor')}}">Création de
                                         chauffeur</a>
                                     <a class="dropdown-item" href="{{route('createClient')}}">Création de client</a>
-                                    <a class="dropdown-item" href="{{route('createTaxi')}}"> Création de taxi</a>
+                                    <a class="dropdown-item" href="{{route('getTaxi')}}"> Création de taxi</a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown font-weight-bold">

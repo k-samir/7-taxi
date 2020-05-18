@@ -39,16 +39,17 @@ class CreateDatabase extends Migration
 
         Schema::create('taxi', function (Blueprint $table) {
             $table->integer("id_taxi", true);
-            $table->string("no_taxi", 255)->nullable(false);
-            $table->string("plaque_immatriculation", 20)->nullable(false);
-            $table->integer("kilometrage_taxi")->nullable(false);
-            $table->date("date_debut_circulation")->nullable(false);
-            $table->string("no_assurance", 255)->nullable(true);
-            $table->string("no_taximetre", 255)->nullable(false);
-            $table->integer("kilometrage_taximetre")->nullable(false);
-            $table->float("recette_taximetre", 7, 2)->nullable(true);
-            $table->integer("prise_en_charge_taximetre")->nullable(true);
-            $table->integer("no_type_voiture")->nullable(false);
+            $table->string("no_taxi", 255);
+            $table->string("plaque_immatriculation", 20);
+            $table->integer("kilometrage_taxi");
+            $table->date("date_debut_circulation");
+            $table->string("no_assurance", 255);
+            $table->string("no_taximetre", 255);
+            $table->float("kilometrage_taximetre");
+            $table->float("kilometrage_en_charge_taximetre");
+            $table->float("recette_taximetre");
+            $table->integer("prise_en_charge_taximetre");
+            $table->integer("no_type_voiture");
             $table->timestamps();
 
             $table->foreign("no_type_voiture", "no_type_voiture")->references("no_type_voiture")->on("type_voiture");
@@ -121,7 +122,6 @@ class CreateDatabase extends Migration
             $table->string("lieu_depart", 255)->nullable(false);
             $table->string("lieu_arrive", 255)->nullable(false);
             $table->float("montant", 7, 2)->nullable(true);
-            $table->timestamps();
         });
 
         Schema::create("tarif_fixe", function (Blueprint $table) {

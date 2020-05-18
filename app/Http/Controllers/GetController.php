@@ -106,12 +106,4 @@ class GetController extends Controller
             'messageOnAction' => "Modifier",
         ]);
     }
-
-
-    public function createTaxi(Request $request): Renderable
-    {
-        return view("formulaireAjoutTaxi");
-    }
-
-
 }
