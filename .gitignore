@@ -1,5 +1,5 @@
 /node_modules
-!/public/img
+public/!img
 /public
 /storage/*.key
 /vendor
@@ -14,5 +14,4 @@ yarn-error.log
 /public/js/*
 /public/css/*
 !/public/css/font-color.css
-!public/img
-!public/*
+
