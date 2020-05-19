@@ -11,9 +11,9 @@
             <div class="row mb-4 justify-content-center">
                 <div class="col-4 input-group">
                     <label class="input-group-text" for="startingLocation">Lieux</label>
-                    <input id="startingLocation" class="form-control" value="{{old('startingLocation', $startingLocation ?? "")}}" maxlength="255" type="number" name="startingLocation" placeholder="Départ" required>
+                    <input id="startingLocation" class="form-control" value="{{old('startingLocation', $startingLocation ?? "")}}" maxlength="255" type="text" name="startingLocation" placeholder="Départ" required>
                     <label class="input-group-text" for="endingLocation" hidden>Lieux</label>
-                    <input id="endingLocation" class="form-control" value="{{old('endingLocation', $endingLocation ?? "")}}" maxlength="255" type="number" name="startingLocation" placeholder="Arrivé" required>
+                    <input id="endingLocation" class="form-control" value="{{old('endingLocation', $endingLocation ?? "")}}" maxlength="255" type="text" name="startingLocation" placeholder="Arrivé" required>
                 </div>
                 <div class="w-100 pb-4"></div>
                 <div class="col-4 input-group">

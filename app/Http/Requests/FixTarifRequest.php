@@ -26,8 +26,8 @@ class FixTarifRequest extends FormRequest
     public function rules()
     {
         return [
-            "startingLocation"=>"numeric|max:255",
-            "endingLocation"=>"numeric|max:255",
+            "startingLocation"=>"max:255",
+            "endingLocation"=>"max:255",
             "amount"=>"numeric|max:7",
         ];
     }
