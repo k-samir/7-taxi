@@ -50,8 +50,8 @@ Route::post('/form/modify/fixTarif{id}', 'FixTarifController@modifyFixTarif')->m
 Route::post('/form/modify/fixTarif', 'GetController@modifyFixTarifFromRequest')->name('modifyFixTarifRequest')->middleware('auth');
 
 //taxi
-Route::get('/form/create/taxi', 'GetController@createTaxi')->name("createTaxi")->middleware('auth');
-Route::post('/form/create/taxi', 'TaxiController@createTaxi')->middleware('auth');
+Route::get('/form/get/taxi', 'TaxiController@taxi')->name('getTaxi')->middleware('auth');
+Route::post('/form/create/taxi', 'TaxiController@createTaxi')->name('createTaxi')->middleware('auth');
 Route::get('/form/modify/taxi{id}', 'GetController@modifyTaxi')->name('modifyTaxi')->middleware('auth');
 Route::post('/form/modify/taxi{id}', 'TaxiController@modifyTaxi')->middleware('auth');
 Route::post('/form/modify/taxi', 'GetController@modifyTaxiFromRequest')->name('modifyTaxiRequest')->middleware('auth');

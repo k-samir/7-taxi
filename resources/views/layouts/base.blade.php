@@ -62,7 +62,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{route('createConductor')}}">Création de chauffeur</a>
                         <a class="dropdown-item" href="{{route('createClient')}}">Création de client</a>
-                        <a class="dropdown-item" href="{{route('createTaxi')}}">Création de taxi</a>
+                        <a class="dropdown-item" href="{{route('getTaxi')}}">Création de taxi</a>
                         <a class="dropdown-item" href="{{route('createFixTarif')}}">Création de tarif fix</a>
 
                     </div>
