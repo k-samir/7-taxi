@@ -14,18 +14,15 @@ class TaxiController extends Controller
 
     public function createTaxi(Request $request)
     {
-        $type = 0;
-        if($request->input('petit') && $request->input('grand')){
+        if($request->input('petit') && $request->input('grand') || $request->has(['petit,grand'])){
             return redirect()->route('getTaxi')->with('errorMessage', 'Veuillez choisir le type de voiture')->withInput();
         }
         if ($request->input('petit')) {
             $type = 1;
-        } else if ($request->input('grand')) {
+        } else{
             $type = 2;
         }
-        if ($type == 0) {
-            return redirect()->route('getTaxi')->with('errorMessage', 'Veuillez choisir le type de voiture')->withInput();
-        }
+        
         $taxi = new Taxi();
         $taxi->no_taxi = $request->input('NoTaxi');
         $taxi->plaque_immatriculation = $request->input('immat');
