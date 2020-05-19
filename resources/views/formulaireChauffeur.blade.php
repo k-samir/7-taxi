@@ -6,7 +6,7 @@
 @section('body-content')
     @parent
     <div class="container mb-5">
-        <form method="post" action="{{$routeOnAction}}">
+    <form action="{{route('createChauffeur')}}" method="post">
             @csrf
             <div class="row mb-4">
                 <div class="col input-group">
@@ -53,11 +53,19 @@
                     <label class="input-group-text" for="balance" hidden></label>
                     <input id="balance" class="form-control" value="{{old('balance', $balance ?? "")}}" type="number" name="balance" placeholder="Solde">
                 </div>
+
+                <div class="w-100 pb-4"></div>
+
+                <div class="col input-group">
+                    <label class="input-group-text" for="no_chauffeur">Numéro de Chauffeur</label>
+                    <input id="no_chauffeur" class="form-control" value="{{old('no_chauffeur', $no_chauffeur ?? "")}}" type="number" name="no_chauffeur">
+                </div>
+
             </div>
 
             <div class="row">
                 <div class="col-4"></div>
-                <div class="col"><button type="button" class="btn btn-lg btn-success w-25">{{$messageOnAction}}</button></div>
+                <div class="col"><button type="submit" class="btn btn-lg btn-success w-25">{{$messageOnAction}}</button></div>
             </div>
 
         </form>

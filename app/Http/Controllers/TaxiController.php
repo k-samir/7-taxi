@@ -8,9 +8,9 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 
 class TaxiController extends Controller
 {
-    public function taxi()
+    public function taxi(Request $request)
     {
-        return view("formulaireAjoutTaxi");
+        return view("formulaireAjoutTaxi")->with('errorMessage', $request->session()->get('errorMessage'));
     }
     public function createTaxi(Request $request){
         $type=0;
@@ -22,7 +22,7 @@ class TaxiController extends Controller
             $type=2;
         }
         if($type==0){
-            return redirect()->route('getTaxi');
+            return redirect()->route('getTaxi')->with('errorMessage','Veuillez choisir le type de voiture')->withInput();
         }
         $taxi = new Taxi();
         $taxi->no_taxi = $request->input('NoTaxi');
