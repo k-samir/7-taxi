@@ -10,7 +10,7 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 /public/css/*
-/public/!js
+/public/js
 !/public/css/font-color.css
 public/!img
 /public/*.json
