@@ -22,7 +22,7 @@ class TaxiController extends Controller
             $type=2;
         }
         if($type==0){
-            return redirect()->route('getTaxi')->with('errorMessage','Veuillez choisir le type de voiture')->withInput();
+            return redirect()->route('createTaxi')->with('errorMessage','Veuillez choisir le type de voiture')->withInput();
         }
         $taxi = new Taxi();
         $taxi->no_taxi = $request->input('NoTaxi');
