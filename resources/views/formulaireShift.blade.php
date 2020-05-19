@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@section('title', "Formulaire pour les shifts")
+@section('title', "Formulaire d'ajout de shifts")
 
 @section('body-content')
     @parent
