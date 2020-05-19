@@ -25,7 +25,7 @@
             <div class="row mb-4 justify-content-center">
                 <div class="col input-group">
                     <label for="DateMiseCiruc" class="input-group-text">Date de mise en circulation du taxi</label>
-                <input id="date_circ" name="date_circ" class="form-control" type="date" value="{{old('date_circ')}}" required>
+                    <input id="date_circ" name="date_circ" class="form-control" type="date" value="{{old('date_circ')}}" required>
                 </div>
                 <div class="col input-group">
                     <label for="DateMiseCiruc" class="input-group-text">Kilommetrage de la voiture</label>
@@ -52,14 +52,14 @@
                 </div>
                 <div class="col input-group">
                     <label for="NoTaximetre" class="input-group-text">Recette</label>
-                <input type="number" name="recette_taximetre" min="0" class="form-control" value="{{old('recette_taximetre')}}" required>
+                    <input type="number" name="recette_taximetre" min="0" class="form-control" value="{{old('recette_taximetre')}}" required>
                 </div>
 
             </div>
             <div class="row mb-4 justify-content-center">
                 <div class="col input-group">
                     <label for="NoTaximetre" class="input-group-text">Millage</label>
-                <input type="number" name="millage_taximetre" min="0" class="form-control" value="{{old('millage_taximetre')}}" required>
+                    <input type="number" name="millage_taximetre" min="0" class="form-control" value="{{old('millage_taximetre')}}" required>
                 </div>
                 <div class="col input-group">
                     <label for="NoTaximetre" class="input-group-text">Millage en charge</label>
