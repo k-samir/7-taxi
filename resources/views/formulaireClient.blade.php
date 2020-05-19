@@ -6,7 +6,7 @@
 @section('body-content')
     @parent
     <div class="container mb-5">
-        <form method="post" action="{{$routeOnAction}}">
+    <form action="{{route('createClient')}}" method="post">
             @csrf
 
             <div class="row mb-4 justify-content-center">
@@ -63,7 +63,7 @@
 
             <div class="row">
                 <div class="col-4"></div>
-                <div class="col"><button type="button" class="btn btn-lg btn-success w-25">{{$messageOnAction}}</button></div>
+                <div class="col"><button type="submit" class="btn btn-lg btn-success w-25">{{$messageOnAction}}</button></div>
             </div>
         </form>
     </div>
