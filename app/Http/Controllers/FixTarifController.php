@@ -25,7 +25,7 @@ class FixTarifController extends Controller
 
     public function modifyFixTarif(FixTarifRequest $request, int $id): Renderable
     {
-        $this->fixTarif->updateFixTarif($request,$id);
+        $this->fixTarif->updateFixTarif($request, $id);
         return view('home')->with(['message' => "Le tarif fix a bien été modifié."]);
     }
 
