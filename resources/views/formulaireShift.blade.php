@@ -14,7 +14,7 @@
             </div>
             <div class="col input-group">
                 <label class="input-group-text" for="taxiNo">Numéro du taxi</label>
-                <input id="taxiNo" class="form-control" value="{{old('taxiNo')}}" type="text" name="taxiNo" minlength="1" required>
+                <input id="taxiNo" class="form-control" value="{{old('taxiNo')}}" type="text" name="taxiNo" min="0" required>
             </div>
             <div class="w-100"></div>
             <div class="col"></div>
@@ -64,11 +64,11 @@
             <div class="w-100"></div>
             <div class="col input-group">
                 <label class="input-group-text" for="startingMillage">Départ</label>
-                <input id="startingMillage" class="form-control" value="{{old('startingMillage')}}" type="number" name="startingMillage" required oninput="setDifferenceOnMillage()">
+                <input id="startingMillage" class="form-control" value="{{old('startingMillage')}}" type="number" name="startingMillage" required oninput="setDifferenceOnMillage()" min="0">
             </div>
             <div class="col input-group">
                 <label class="input-group-text" for="endingMillage">Arrivée</label>
-                <input id="endingMillage" class="form-control" value="{{old('endingMillage')}}" type="number" name="endingMillage" required oninput="setDifferenceOnMillage()">
+                <input id="endingMillage" class="form-control" value="{{old('endingMillage')}}" min="0" type="number" name="endingMillage" required oninput="setDifferenceOnMillage()">
             </div>
             <div class="col-3 input-group">
                 <label class="input-group-text font-weight-bold bg-transparent border-0">Total</label>
@@ -83,11 +83,11 @@
             <div class="w-100"></div>
             <div class="col input-group">
                 <label class="input-group-text" for="startingMileageLaden">Départ</label>
-                <input id="startingMileageLaden" class="form-control" value="{{old('startingMileageLaden')}}" type="number" name="startingMileageLaden" required oninput="setDifferenceOnMillageLaden()">
+                <input id="startingMileageLaden" class="form-control" value="{{old('startingMileageLaden')}}" min="0" type="number" name="startingMileageLaden" required oninput="setDifferenceOnMillageLaden()">
             </div>
             <div class="col input-group">
                 <label class="input-group-text" for="endingMileageLaden">Arrivée</label>
-                <input id="endingMileageLaden" class="form-control" value="{{old('endingMileageLaden')}}" type="number" name="endingMileageLaden" required oninput="setDifferenceOnMillageLaden()">
+                <input id="endingMileageLaden" class="form-control" value="{{old('endingMileageLaden')}}" type="number" min="0" name="endingMileageLaden" required oninput="setDifferenceOnMillageLaden()">
             </div>
             <div class="col-3 input-group">
                 <label class="input-group-text font-weight-bold bg-transparent border-0">Total</label>
@@ -101,11 +101,11 @@
             <div class="w-100"></div>
             <div class="col input-group">
                 <label class="input-group-text" for="startingAmountOfPassengers">Départ</label>
-                <input id="startingAmountOfPassengers" class="form-control" value="{{old('startingAmountOfPassengers')}}" type="number" name="startingAmountOfPassengers" required oninput="setDifferenceOnAmountOfPassengers()">
+                <input id="startingAmountOfPassengers" class="form-control" value="{{old('startingAmountOfPassengers')}}" min="0" type="number" name="startingAmountOfPassengers" required oninput="setDifferenceOnAmountOfPassengers()">
             </div>
             <div class="col input-group">
                 <label class="input-group-text" for="endingAmountOrPassengers">Arrivée</label>
-                <input id="endingAmountOrPassengers" class="form-control" value="{{old('endingAmountOrPassengers')}}" type="number" name="endingAmountOrPassengers" required oninput="setDifferenceOnAmountOfPassengers()">
+                <input id="endingAmountOrPassengers" class="form-control" value="{{old('endingAmountOrPassengers')}}" type="number" min="0" name="endingAmountOrPassengers" required oninput="setDifferenceOnAmountOfPassengers()">
             </div>
             <div class="col-3 input-group">
                 <label class="input-group-text font-weight-bold bg-transparent border-0">Total</label>
@@ -122,11 +122,11 @@
             <div class="w-100"></div>
             <div class="col input-group">
                 <label class="input-group-text" for="startingMileageInVehicle">Départ</label>
-                <input id="startingMileageInVehicle" class="form-control" value="{{old('startingMileageInVehicle')}}" type="number" name="startingMileageInVehicle" required oninput="setDifferenceOnMileageInVehicle()">
+                <input id="startingMileageInVehicle" class="form-control" value="{{old('startingMileageInVehicle')}}" min="0" type="number" name="startingMileageInVehicle" required oninput="setDifferenceOnMileageInVehicle()">
             </div>
             <div class="col input-group">
                 <label class="input-group-text" for="endingMileageInVehicle">Arrivée</label>
-                <input id="endingMileageInVehicle" class="form-control" value="{{old('endingMileageInVehicle')}}" type="number" name="endingMileageInVehicle" required oninput="setDifferenceOnMileageInVehicle()">
+                <input id="endingMileageInVehicle" class="form-control" value="{{old('endingMileageInVehicle')}}" type="number" min="0" name="endingMileageInVehicle" required oninput="setDifferenceOnMileageInVehicle()">
             </div>
             <div class="col-3 input-group">
                 <label class="input-group-text font-weight-bold bg-transparent border-0">Total</label>
