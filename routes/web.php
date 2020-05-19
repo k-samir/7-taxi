@@ -23,6 +23,12 @@ Route::pattern('id','\d+');
 Route::get('/', function () {
     return redirect('home');
 });
+
+Route::get('/test', function () {
+    return view('datagrid');
+});
+
+
 Route::get('/home', 'GetController@index')->name('home');
 /*shift*/ 
 Route::get('/form/create/shift', 'GetController@addConductorShift')->name('addConductorShift')->middleware('auth');

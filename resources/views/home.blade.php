@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@section('title', "Page d'accueil")
+@section('title', "Accueil")
 
 @section('body-content')
 
@@ -10,7 +10,7 @@
         <div class="container">
             <div class="intro-text">
                 <div class="intro-lead-in"><span>Bienvenue chez 7-Taxi</span></div>
-                <div class="intro-heading text-uppercase"><span>VoyageZ AVEC NOUS</span></div><a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" role="button" href="#services">COMMENCER</a></div>
+                <div class="intro-heading text-uppercase"><span>Voyagez AVEC NOUS</span></div><a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" role="button" href="#services">COMMENCER</a></div>
         </div>
     </header>
     <section id="services">
@@ -18,7 +18,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="text-uppercase section-heading">Services</h2>
-                    <h3 class="text-muted section-subheading">Lorem ipsum dolor sit amet consectetur</h3>
+                    <h3 class="text-muted section-subheading">Simple et rapide</h3>
                 </div>
             </div>
             <div class="row text-center">
@@ -38,7 +38,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="text-uppercase section-heading">L'ENTREPRISE</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h3 class="section-subheading text-muted"></h3>
                 </div>
             </div>
             <div class="row">
@@ -47,7 +47,7 @@
                         <div class="portfolio-hover"></div><img class="img-fluid" src="img/Depositphotos_110892424_l-2015-1600x1067.jpg"></a>
                     <div class="portfolio-caption">
                         <h4>Qualité</h4>
-                        <p class="text-muted">Illustration</p>
+                        <p class="text-muted"></p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-4 portfolio-item">
@@ -67,7 +67,7 @@
                         </div><img class="img-fluid" src="img/45003.jpg"></a>
                     <div class="portfolio-caption">
                         <h4>Professionalisme</h4>
-                        <p class="text-muted">Identity</p>
+                        <p class="text-muted"></p>
                     </div>
                 </div>
             </div>
