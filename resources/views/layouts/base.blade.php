@@ -47,10 +47,7 @@
                             <li class="nav-item" role="presentation"></li>
                             <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
                         @endif
-                    @endguest
-                    @guest
-                        @if (Route::has('register'))
-                        @endif
+
                     @else
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item dropdown ">
@@ -156,19 +153,13 @@
     <div class="row pb-3">
         <h1 class="mx-auto"><u>@yield('title')</u></h1>
     </div>
-@section('body-content')
-
-    <!--<div class="row pb-3">
-        <h1 class="mx-auto" style="margin-top:9rem;"><u> @yield('title')</u></h1>
-    </div>
--->
 
 @show
 <section id="contact" style="background-image:url('img/map-image.png');margin-top:2rem">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2 class="text-uppercase section-heading">NOUS CONTACTER</h2>
+                <h2 class="text-uppercase section-heading">Nous contacter</h2>
                 <h3 class="section-subheading text-muted"></h3>
             </div>
         </div>
