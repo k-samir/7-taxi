@@ -31,20 +31,6 @@ export namespace src{export namespace base{
             return returnedElement;
         }
 
-        private static getIDAsInput(id: string): HTMLInputElement {
-            let objectByID = document.getElementById(id);
-            return (objectByID instanceof HTMLInputElement)?objectByID:null;
-        }
-
-        private static getClassAsInput(clazz: string): HTMLInputElement[] {
-            let returnedElement = [];
-            let objectByClass = document.getElementsByClassName(clazz);
-            for (let i = 0; i < objectByClass.length; i++)
-                if (objectByClass[i] instanceof HTMLInputElement)
-                    returnedElement[i] = objectByClass[i];
-            return returnedElement;
-        }
-
 
         public static getBodyClassList(): DOMTokenList {
             return BaseList.getClassListFromID("base-body");
