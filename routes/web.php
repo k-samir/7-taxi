@@ -30,7 +30,7 @@ Route::post('/form/create/shift', 'FormDriverController@addConductorShift')->mid
 
 //chauffeur
 Route::get('/form/create/conductor', 'GetController@createConductor')->name('createConductor')->middleware('auth');
-Route::post('/form/create/chauffeur', 'ChauffeurController@createChauffeur')->middleware('auth');
+Route::post('/form/create/conductor', 'ChauffeurController@createChauffeur')->middleware('auth');
 Route::get('/form/modify/conductor{id}', 'GetController@modifyConductor')->name('modifyConductor')->middleware('auth');
 Route::post('/form/modify/conductor', 'GetController@modifyConductorFromRequest')->name('modifyConductorRequest')->middleware('auth');
 
@@ -47,7 +47,7 @@ Route::get('/form/modify/fixTarif{id}', 'GetController@modifyFixTarif')->name('m
 Route::post('/form/modify/fixTarif', 'GetController@modifyFixTarifFromRequest')->name('modifyFixTarifRequest')->middleware('auth');
 
 //taxi
-Route::get('/form/create/taxi', 'TaxiController@taxi')->name("createTaxi")->middleware('auth');
+Route::get('/form/create/taxi', 'GetController@createTaxi')->name("createTaxi")->middleware('auth');
 Route::post('/form/create/taxi', 'TaxiController@createTaxi')->middleware('auth');
 Route::get('/form/modify/taxi{id}', 'GetController@modifyTaxi')->name('modifyTaxi')->middleware('auth');
 Route::post('/form/modify/taxi', 'GetController@modifyTaxiFromRequest')->name('modifyTaxiRequest')->middleware('auth');
