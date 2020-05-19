@@ -14,6 +14,7 @@
         <tr>
             <td>Row 1 Data 1</td>
             <td>Row 1 Data 2</td>
+            <button>ok</button>
         </tr>
         <tr>
             <td>Row 2 Data 1</td>
