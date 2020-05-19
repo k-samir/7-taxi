@@ -32,15 +32,14 @@
                 </div>
             </div>
             <div class="row mb-4 justify-content-center">
-                <div class="col input-group"> 
+                <div class="col input-group">
                     <div class="mr-5 ml-4">
-                        <input type="radio" class="form-check-input" name="petit" id="petit">
                         <label class="form-check-label" for="petit">Petite voiture</label>
-
+                        <input type="radio" class="form-check-input" name="petit" id="petit">
                     </div>
                     <div>
-                        <input type="radio" class="form-check-input" name="grand" id="grand">
                         <label class="form-check-label" for="grand">Grande voiture</label>
+                        <input type="radio" class="form-check-input" name="grand" id="grand">
                     </div>
                 </div>
             </div>
@@ -71,9 +70,9 @@
                 </div>
             </div>
             <div class="row mb-5 justify-content-center">
-                <button class="btn btn-success">Crée</button>
+                <button class="btn btn-success">Créer</button>
             </div>
         </div>
     </form>
-    
+
 @endsection
