@@ -1,24 +1,24 @@
-export namespace src{export namespace form{
+export namespace src.form {
 
     function getID(id: string): HTMLInputElement {
         return (<HTMLInputElement>document.getElementById(id));
     }
 
-    function updateValidation(isValid: boolean,...ids: string[] ) : void{
-        ids.forEach((id)=>{
+    function updateValidation(isValid: boolean, ...ids: string[]): void {
+        ids.forEach((id) => {
             let listeId = getID(id).classList;
-            if(isValid){
+            if (isValid) {
                 listeId.remove("is-invalid");
                 listeId.add("is-valid");
-            }else{
+            } else {
                 listeId.remove("is-valid");
                 listeId.add("is-invalid");
             }
         });
     }
 
-    function convertToFloat(elementID: string): number {  
-        return getID(elementID).value==""?0:parseFloat(getID(elementID).value);
+    function convertToFloat(elementID: string): number {
+        return getID(elementID).value == "" ? 0 : parseFloat(getID(elementID).value);
     }
 
     export class FormDriver {
@@ -36,10 +36,10 @@ export namespace src{export namespace form{
         }
 
         public setDifference(startingID: string, endingID: string, elementToSetID: string): void {
-            
+
             let diff = convertToFloat(endingID) - convertToFloat(startingID);
             getID(elementToSetID).value = (diff).toString();
-            updateValidation(diff>0,startingID,endingID);
+            updateValidation(diff > 0, startingID, endingID);
         }
 
         public updateTotalDepense(): void {
@@ -65,7 +65,7 @@ export namespace src{export namespace form{
             this.updateSalary();
         }
     }
-}}
+}
 
 import FormDriver = src.form.FormDriver;
 

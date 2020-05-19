@@ -22,10 +22,10 @@
                     <input id="assurence" name="assurence" class="form-control" type="number" value="{{old('assurence')}}" required>
                 </div>
             </div>
-            <div class="row mb-4 justify-content-center">
+            <div class="row mb-4">
                 <div class="col input-group">
                     <label for="DateMiseCiruc" class="input-group-text">Date de mise en circulation du taxi</label>
-                <input id="date_circ" name="date_circ" class="form-control" type="date" value="{{old('date_circ')}}" required>
+                    <input id="date_circ" name="date_circ" class="form-control" type="date" value="{{old('date_circ')}}" required>
                 </div>
                 <div class="col input-group">
                     <label for="DateMiseCiruc" class="input-group-text">Kilommetrage de la voiture</label>
@@ -36,8 +36,7 @@
                 <div class="col input-group"> 
                     <div class="mr-5 ml-4">
                         <input type="radio" class="form-check-input" name="petit" id="petit">
-                        <label class="form-check-label" for="petit">Petite voiture</label>
-
+                        <label class="form-check-label" for="petit">Petit voiture</label>
                     </div>
                     <div>
                         <input type="radio" class="form-check-input" name="grand" id="grand">
@@ -72,9 +71,9 @@
                 </div>
             </div>
             <div class="row mb-5 justify-content-center">
-                <button class="btn btn-success">Crée</button>
+                <button class="btn btn-success">Créer</button>
             </div>
         </div>
     </form>
-    
+
 @endsection

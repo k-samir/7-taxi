@@ -1,4 +1,4 @@
-export namespace src{export namespace base{
+export namespace src.base {
 
     abstract class BaseList {
 
@@ -174,7 +174,7 @@ export namespace src{export namespace base{
         }
 
         private __execute(): void {
-            if (this.isChangingColorAutomatically()){
+            if (this.isChangingColorAutomatically()) {
                 BaseList.getBodyClassList().remove(this.getCurrentPossibility());
                 this.__currentIndex = (this.__currentIndex == this.lastIndexOfPossibilities) ? 0 : this.__currentIndex + 1;
 
@@ -187,7 +187,7 @@ export namespace src{export namespace base{
 
     }
 
-}}
+}
 
 import BaseTask = src.base.BaseTask;
 

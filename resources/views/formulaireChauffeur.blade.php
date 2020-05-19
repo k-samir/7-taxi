@@ -6,7 +6,7 @@
 @section('body-content')
     @parent
     <div class="container mb-5">
-    <form action="{{route('createChauffeur')}}" method="post">
+    <form action="{{$routeOnAction}}" method="post">
             @csrf
             <div class="row mb-4">
                 <div class="col input-group">
@@ -29,7 +29,7 @@
                 </div>
                 <div class="col-5 input-group">
                     <label class="input-group-text" for="cityName">Ville</label>
-                    <input id="cityName" class="form-control" value="{{old('cityName', $cityName ?? "")}}" type="text" name="cityName">
+                    <input id="cityName" class="form-control" value="{{old('cityName', $cityName ?? "")}}" type="text"name="cityName">
                 </div>
                 <div class="col input-group">
                     <label class="input-group-text" for="postalCode">Code Postal</label>

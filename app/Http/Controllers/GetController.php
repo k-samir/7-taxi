@@ -12,6 +12,14 @@ use Illuminate\Http\Request;
  */
 class GetController extends Controller
 {
+    private const CREATE_TAG = [
+        "type" => "création",
+        "messageOnAction" => "Créer",
+    ];
+    private const MODIFY_TAG = [
+        "type" => "modification",
+        "messageOnAction" => "Modifier",
+    ];
 
 
     /**
@@ -25,6 +33,7 @@ class GetController extends Controller
         return view('home');
     }
 
+
     public function addConductorShift(Request $request): Renderable
     {
         return view("formulaireShift", [
@@ -35,11 +44,7 @@ class GetController extends Controller
 
     public function createConductor(Request $request): Renderable
     {
-        return view("formulaireChauffeur", [
-            "type" => "création",
-            'routeOnAction' => route('createConductor'),
-            'messageOnAction' => "Créer",
-        ]);
+        return $this->sendToView("formulaireChauffeur", self::CREATE_TAG, route("createConductor"));
     }
 
     public function modifyConductorFromRequest(Request $request): Renderable
@@ -49,22 +54,13 @@ class GetController extends Controller
 
     public function modifyConductor(Request $request, int $id): Renderable
     {
-        return view("formulaireChauffeur", [
-            'type' => "modification",
-            'id' => $id,
-            'routeOnAction' => route('modifyConductor', ["id" => $id]),
-            'messageOnAction' => "Modifier",
-        ]);
+        return $this->sendToView("formulaireChauffeur", self::MODIFY_TAG, route("modifyConductor", ["id" => $id]), $id);
     }
 
 
     public function createClient(Request $request): Renderable
     {
-        return view("formulaireClient", [
-            "type" => "création",
-            'routeOnAction' => route("createClient"),
-            'messageOnAction' => "Créer",
-        ]);
+        return $this->sendToView("formulaireClient", self::CREATE_TAG, route("createClient"));
     }
 
     public function modifyClientFromRequest(Request $request): Renderable
@@ -74,22 +70,13 @@ class GetController extends Controller
 
     public function modifyClient(Request $request, int $id): Renderable
     {
-        return view("formulaireClient", [
-            'type' => "modification",
-            'id' => $id,
-            'routeOnAction' => route("modifyClient", ["id" => $id]),
-            'messageOnAction' => "Modifier",
-        ]);
+        return $this->sendToView("formulaireClient", self::MODIFY_TAG, route("modifyClient", ["id" => $id]), $id);
     }
 
 
     public function createFixTarif(Request $request): Renderable
     {
-        return view("formulaireTarifFix", [
-            "type" => "création",
-            'routeOnAction' => route("createFixTarif"),
-            'messageOnAction' => "Créer",
-        ]);
+        return $this->sendToView("formulaireTarifFix", self::CREATE_TAG, route("createFixTarif"));
     }
 
     public function modifyFixTarifFromRequest(Request $request): Renderable
@@ -99,11 +86,32 @@ class GetController extends Controller
 
     public function modifyFixTarif(Request $request, int $id): Renderable
     {
-        return view("formulaireTarifFix", [
-            'type' => "modification",
-            'id' => $id,
-            'routeOnAction' => route("modifyFixTarif", ["id" => $id]),
-            'messageOnAction' => "Modifier",
-        ]);
+        return $this->sendToView("formulaireTarifFix", self::MODIFY_TAG, route("modifyFixTarif", ["id" => $id]), $id);
     }
+
+    public function modifyTaxi(Request $request, int $id): Renderable
+    {
+        return $this->sendToView("formulaireAjoutTaxi", self::MODIFY_TAG, route("modifyTaxi", ["id" => $id]), $id);
+    }
+
+    public function modifyTaxiFromRequest(Request $request): Renderable
+    {
+        return $this->modifyTaxi($request, $request['id']);
+    }
+
+
+
+    private function sendToView(string $view, array $tag, string $route, int $id = -1): Renderable
+    {
+        $variables = [
+            'type' => $tag["type"],
+            'routeOnAction' => $route,
+            'messageOnAction' => $tag["messageOnAction"],
+        ];
+        if ($id != -1)
+            $variables['id'] = $id;
+
+        return view($view, $variables);
+    }
+
 }
