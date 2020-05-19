@@ -26,19 +26,7 @@ class TaxiController extends Controller
         if ($type == 0) {
             return redirect()->route('createTaxi')->with('errorMessage', 'Veuillez choisir le type de voiture')->withInput();
         }
-        $taxi = new Taxi();
-        $taxi->no_taxi = $request->input('NoTaxi');
-        $taxi->plaque_immatriculation = $request->input('immat');
-        $taxi->no_assurance = $request->input('assurence');
-        $taxi->date_debut_circulation = $request->input('date_circ');
-        $taxi->kilometrage_taxi = $request->input('kilo_voiture');
-        $taxi->no_type_voiture = $type;
-        $taxi->no_taximetre = $request->input('NoTaximetre');
-        $taxi->recette_taximetre = $request->input('recette_taximetre');
-        $taxi->kilometrage_taximetre = $request->input('millage_taximetre');
-        $taxi->kilometrage_en_charge_taximetre = $request->input('millage_en_charge_taximetre');
-        $taxi->prise_en_charge_taximetre = $request->input('prise_en_charge_taximetre');
-        $taxi->save();
+        Taxi::createTaxi($request,$type);
         return redirect()->route("home");
     }
 }
