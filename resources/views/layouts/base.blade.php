@@ -122,6 +122,15 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{route('addConductorShift')}}">Ajout de shift</a>
                         <a class="dropdown-item" href="{{route('createConductor')}}">Création de chauffeur</a>
+                        <div class="dropdown-divider"></div>
+                        <form method="post" action="{{route('modifyConductorRequest')}}">
+                            @csrf
+                            <div class="col input-group">
+                                <label class="input-group-text" for="id">ID</label>
+                                <input id="id" class="form-control" type="number" maxlength="7" name="id" placeholder="Numéro" required>
+                            </div>
+                            <button type="submit" class="dropdown-item" value="conductor">Modification de chauffeur</button>
+                        </form>
                     </div>
                 </li>
                 <li class="nav-item dropdown font-weight-bold">

@@ -8,10 +8,6 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 
 class TaxiController extends Controller
 {
-    public function taxi(Request $request)
-    {
-        return view("formulaireAjoutTaxi")->with('errorMessage', $request->session()->get('errorMessage'));
-    }
 
     public function createTaxi(Request $request)
     {
