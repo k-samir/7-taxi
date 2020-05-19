@@ -52,14 +52,14 @@
                 </div>
                 <div class="col input-group">
                     <label for="NoTaximetre" class="input-group-text">Recette</label>
-                <input type="number" name="recette_taximetre" min="0" class="form-control" value="{{old('recette_taximetre')}}" required>
+                    <input type="number" name="recette_taximetre" min="0" class="form-control" value="{{old('recette_taximetre')}}" required>
                 </div>
 
             </div>
             <div class="row mb-4 justify-content-center">
                 <div class="col input-group">
                     <label for="NoTaximetre" class="input-group-text">Millage</label>
-                <input type="number" name="millage_taximetre" min="0" class="form-control" value="{{old('millage_taximetre')}}" required>
+                    <input type="number" name="millage_taximetre" min="0" class="form-control" value="{{old('millage_taximetre')}}" required>
                 </div>
                 <div class="col input-group">
                     <label for="NoTaximetre" class="input-group-text">Millage en charge</label>

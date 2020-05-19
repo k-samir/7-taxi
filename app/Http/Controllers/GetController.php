@@ -89,6 +89,7 @@ class GetController extends Controller
         return $this->sendToView("formulaireTarifFix", self::MODIFY_TAG, route("modifyFixTarif", ["id" => $id]), $id);
     }
 
+
     public function modifyTaxi(Request $request, int $id): Renderable
     {
         return $this->sendToView("formulaireAjoutTaxi", self::MODIFY_TAG, route("modifyTaxi", ["id" => $id]), $id);
@@ -98,7 +99,6 @@ class GetController extends Controller
     {
         return $this->modifyTaxi($request, $request['id']);
     }
-
 
 
     private function sendToView(string $view, array $tag, string $route, int $id = -1): Renderable
