@@ -234,6 +234,7 @@
         </div>
     </section>
 
+<<<<<<< HEAD
     <footer>
         <div class="container">
             <div class="row">
@@ -251,6 +252,24 @@
                         <li class="list-inline-item"><a href="#" style="color:black;">Terms of Use</a></li>
                     </ul>
                 </div>
+=======
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4"><span class="copyright">Copyright&nbsp;© 7-Taxi 2020</span><span class="copyright"><br> Jonathan Bédard - Yoann Stephanus - Samir Kamar</span></div>
+            <div class="col-md-4">
+                <ul class="list-inline social-buttons">
+                    <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-inline quicklinks">
+                    <li class="list-inline-item"><a href="#" style="color:black;">Privacy Policy</a></li>
+                    <li class="list-inline-item"><a href="#" style="color:black;">Terms of Use</a></li>
+                </ul>
+>>>>>>> ecd353dd6b1af8f713bcfd6d743ea3449defe476
             </div>
         </div>
     </div>

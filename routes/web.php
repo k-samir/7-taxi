@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-Auth::routes(['verify'=>true]);
+Auth::routes(['verify' => true]);
 Route::pattern('id', '\d+');
 
 Route::get('/', function () {
@@ -23,7 +23,7 @@ Route::get('/', function () {
 });
 
 Route::get('/homeNo', 'GetController@index')->name('homeNoVerification');
-Route::prefix('taxi')->middleware(['verified','auth'])->group( function() {
+Route::prefix('taxi')->middleware(['verified', 'auth'])->group(function () {
     Route::get('home', 'GetController@index')->name('home');
     //shift
     Route::get('form/create/shift', 'GetController@addConductorShift')->name('addConductorShift');

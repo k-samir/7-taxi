@@ -1,17 +1,26 @@
 @extends('layouts.base')
 @section('title', "Accueil")
 
+@section('styles')
+    <style>
+        .masthead {
+            background-image: url("img/taxi-background.jpg");
+            background-position: center;
+        }
+    </style>
+@endsection
+
 @section('body-content')
 
 
     <body id="page-top">
 
-    <header class="masthead" style="background-image: url(&quot;img/taxi-background.jpg&quot;);background-position: center;">
+    <header class="masthead">
         <div class="container">
             <div class="intro-text">
                 <div class="intro-lead-in"><span>Bienvenue chez 7-Taxi</span></div>
                 <div class="intro-heading text-uppercase"><span>Voyagez avec nous</span></div>
-                <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" role="button" href="#services">COMMENCER</a>
+                <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" role="button" href="#services">Commencer</a>
             </div>
         </div>
     </header>
@@ -24,13 +33,11 @@
                 </div>
             </div>
             <div class="row text-center">
-                <div class="col-md-6"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i
-                            class="fa fa-plane fa-stack-1x fa-inverse"></i></span>
+                <div class="col-md-6"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-plane fa-stack-1x fa-inverse"></i></span>
                     <h4 class="section-heading">Transport</h4>
                     <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
                 </div>
-                <div class="col-md-6"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i
-                            class="fa fa-smile-o fa-stack-1x fa-inverse"></i></span>
+                <div class="col-md-6"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-smile-o fa-stack-1x fa-inverse"></i></span>
                     <h4 class="section-heading">Assistance</h4>
                     <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
                 </div>
@@ -41,8 +48,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
+<<<<<<< HEAD
                     <h2 class="text-uppercase section-heading">L'ENTREPRISE</h2>
                     <h3 class="section-subheading text-muted"></h3>
+=======
+                    <h2 class="text-uppercase section-heading">L'entreprise</h2>
+                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+>>>>>>> ecd353dd6b1af8f713bcfd6d743ea3449defe476
                 </div>
             </div>
             <div class="row">
@@ -84,7 +96,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="text-uppercase">A PROPOS DE NOUS</h2>
+                    <h2 class="text-uppercase">À propos de nous</h2>
                     <h3 class="text-muted section-subheading">Notre Histoire</h3>
                 </div>
             </div>
@@ -92,15 +104,14 @@
                 <div class="col-lg-12">
                     <ul class="list-group timeline">
                         <li class="list-group-item">
-                            <div class="timeline-image"><img class="rounded-circle img-fluid" src="img/about/1.jpg">
-                            </div>
+                            <div class="timeline-image"><img class="rounded-circle img-fluid" src="img/about/1.jpg"></div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
                                     <h4>&nbsp;Mars 2020</h4>
                                     <h4 class="subheading">Commencement</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                    <p class="text-muted">Le projet a débuté à cette date.<br>Nous avons reçu la demande de notre enseignant de faire une site web centralisé sur les taxis.</p>
                                 </div>
                             </div>
                         </li>
@@ -109,10 +120,10 @@
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
                                     <h4>Mai 2020</h4>
-                                    <h4 class="subheading">Dévellopement</h4>
+                                    <h4 class="subheading">Dévelopement</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                    <p class="text-muted">(À continuer)</p>
                                 </div>
                             </div>
                         </li>
@@ -123,7 +134,7 @@
                                     <h4>Juin 2020</h4>
                                     <h4 class="subheading">Phase de lancement</h4>
                                 </div>
-                                <div class="timeline-body"><p class="text-muted">dfgdgddgdgd</p></div>
+                                <div class="timeline-body"><p class="text-muted">Étant la date de lancement, le projet a grandement évolué et s'est développé pour devenir une belle application web</p></div>
                             </div>
                         </li>
                     </ul>
@@ -131,7 +142,6 @@
             </div>
         </div>
     </section>
-
 
     </body>
 
