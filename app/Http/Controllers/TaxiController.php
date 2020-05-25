@@ -16,7 +16,6 @@ class TaxiController extends Controller
 
     public function createTaxi(Request $request)
     {
-        dd($request->input('carSize'));
         if (!$request->has('carSize'))
             return redirect()->route('getTaxi')->with('errorMessage', 'Veuillez choisir le type de voiture')->withInput();
 
@@ -38,5 +37,8 @@ class TaxiController extends Controller
         return redirect()->route("home")->with(['message' => "Le taxi a bien été créé!"]);
     }
 
-
+    public function getTaxis(){
+       $taxis =  Taxi::all();
+       return view('ListeTaxi')->with('taxis',$taxis);
+    }
 }

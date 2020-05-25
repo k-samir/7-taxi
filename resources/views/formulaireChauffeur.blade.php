@@ -63,8 +63,8 @@
                 <div class="w-100 pb-4"></div>
 
                 <div class="col input-group">
-                    <label class="input-group-text" for="no_chauffeur">Numéro de Chauffeur</label>
-                    <input id="no_chauffeur" class="form-control" value="{{old('no_chauffeur', $no_chauffeur ?? "")}}" type="number" name="no_chauffeur">
+                    <label class="input-group-text" for="driverNo">Numéro</label>
+                    <input id="driverNo" class="form-control" value="{{old('driverNo', $driverNo ?? "")}}" type="number" name="driverNo" placeholder="Numéro">
                 </div>
             </div>
 
