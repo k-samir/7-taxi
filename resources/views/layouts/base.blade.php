@@ -6,8 +6,9 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title','Projet - Taxi')</title>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('css/font-color.css')}}">
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css')}}">
@@ -20,6 +21,10 @@
     <link rel="stylesheet" href="{{ asset('css/-Login-form-Page-BS4-.css')}}">
     <link rel="stylesheet" href="{{ asset('css/Responsive-Form-1.css')}}">
     <link rel="stylesheet" href="{{ asset('css/Responsive-Form.css')}}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+
+
+
     @yield('headContent')
 
     @yield('before-scripts')
@@ -35,7 +40,7 @@
 </head>
 
 <body id="base-body">
-<nav id="navigation-bar" class="container-fluid navbar navbar-expand-lg mb-3 navbar-light bg-light">
+<nav id="navigation-bar" class="container-fluid navbar navbar-expand-lg mb-3 p-0 navbar-light bg-light">
     <a class="navbar-brand" href="{{route('home')}}">7-Taxi</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" data-toogle="collapse" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -47,7 +52,7 @@
                 <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
             @else
                 <li class="nav-item dropdown font-weight-bold">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulaires de chauffeur</a>
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulaires de chauffeur</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{route('addConductorShift')}}">Ajout de shift</a>
                         <a class="dropdown-item" href="{{route('createConductor')}}">Création de chauffeur</a>
@@ -63,7 +68,7 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown font-weight-bold">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulaires de créations</a>
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulaires de créations</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{route('createConductor')}}">Création de chauffeur</a>
                         <a class="dropdown-item" href="{{route('createClient')}}">Création de client</a>
@@ -73,7 +78,7 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown font-weight-bold">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulaires de modifications</a>
+                    <a  id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulaires de modifications</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <form method="post">
                             @csrf
@@ -99,12 +104,12 @@
                 </div>
             </li>
             @guest
-                <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="{{route('login')}}">Connexion</a></li>
+                <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('login')}}">Connexion</a></li>
                 @if (Route::has('register'))
-                    <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="{{route('register')}}">Inscription</a></li>
+                    <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('register')}}">Inscription</a></li>
                 @endif
             @else
-                <li class="nav-item"><a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Déconnexion</a></li>
+                <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Déconnexion</a></li>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST"  hidden>@csrf</form>
             @endguest
         </ul>

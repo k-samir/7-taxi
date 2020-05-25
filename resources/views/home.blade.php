@@ -1,5 +1,5 @@
 @extends('layouts.base')
-@section('title', "Page d'accueil")
+@section('title', "Accueil")
 
 @section('styles')
     <style>
@@ -29,7 +29,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="text-uppercase section-heading">Services</h2>
-                    <h3 class="text-muted section-subheading">Lorem ipsum dolor sit amet consectetur</h3>
+                    <h3 class="text-muted section-subheading">Simple et rapide</h3>
                 </div>
             </div>
             <div class="row text-center">
@@ -48,8 +48,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
+<<<<<<< HEAD
+                    <h2 class="text-uppercase section-heading">L'ENTREPRISE</h2>
+                    <h3 class="section-subheading text-muted"></h3>
+=======
                     <h2 class="text-uppercase section-heading">L'entreprise</h2>
                     <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+>>>>>>> ecd353dd6b1af8f713bcfd6d743ea3449defe476
                 </div>
             </div>
             <div class="row">
@@ -59,7 +64,7 @@
                         <img class="img-fluid" src="img/Depositphotos_110892424_l-2015-1600x1067.jpg"></a>
                     <div class="portfolio-caption">
                         <h4>Qualité</h4>
-                        <p class="text-muted">Illustration</p>
+                        <p class="text-muted"></p>
                     </div>
                 </div>
                 <div class="col-sm-6 col-md-4 portfolio-item">
@@ -81,7 +86,7 @@
                         <img class="img-fluid" src="img/45003.jpg"></a>
                     <div class="portfolio-caption">
                         <h4>Professionalisme</h4>
-                        <p class="text-muted">Identity</p>
+                        <p class="text-muted"></p>
                     </div>
                 </div>
             </div>
