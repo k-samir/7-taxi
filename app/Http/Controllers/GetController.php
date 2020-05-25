@@ -6,6 +6,7 @@ use App\Taxi;
 use Carbon\Carbon;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
+use App\Taxi;
 
 /**
  * A class that only send views from a get.
@@ -40,9 +41,10 @@ class GetController extends Controller
 
     public function addConductorShift(Request $request): Renderable
     {
+        $taxis = Taxi::All();
         return view("formulaireShift", [
             'todayDate' => Carbon::now()->toDateString() . "T" . Carbon::now()->toTimeString("minute"),
-        ]);
+        ])->with('taxis',$taxis);
     }
 
     //create

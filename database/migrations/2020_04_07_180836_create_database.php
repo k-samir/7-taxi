@@ -21,6 +21,7 @@ class CreateDatabase extends Migration
             $table->string("nom", 255)->nullable(true);
             $table->float("commission", 3, 2)->nullable(true);
             $table->string("telephone", 255)->nullable(true);
+            $table->string("email", 255)->nullable(true);
             $table->integer("no_rue")->nullable(true);
             $table->string("rue", 255)->nullable(true);
             $table->string("ville", 255)->nullable(true);
@@ -57,6 +58,7 @@ class CreateDatabase extends Migration
 
         Schema::create("client", function (Blueprint $table) {
             $table->integer("id_client", true);
+            $table->integer("no_client")->nullable(true);
             $table->float("solde_client", 7, 2)->nullable(true);
             $table->string("prenom", 255)->nullable(true);
             $table->string("nom", 255)->nullable(true);
@@ -137,7 +139,7 @@ class CreateDatabase extends Migration
 
         });
 
-        
+
     }
 
 
