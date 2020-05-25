@@ -6,7 +6,7 @@
 @section('body-content')
     @parent
     <div class="container mb-5">
-    <form action="{{$routeOnAction}}" method="post">
+        <form action="{{$routeOnAction}}" method="post">
             @csrf
             <div class="row mb-4">
                 <div class="col input-group">
@@ -27,9 +27,15 @@
                     <label class="input-group-text" for="streetName" hidden></label>
                     <input id="streetName" class="form-control" value="{{old('streetName', $streetName ?? "")}}" type="text" name="streetName" placeholder="Rue">
                 </div>
+                <div class="col input-group">
+                    <label class="input-group-text" for="email">Courriel</label>
+                    <input id="email" class="form-control" value="{{old('email', $email ?? "")}}" type="tel" name="email" placeholder="email@template.com">
+                </div>
+                <div class="w-100 pb-4"></div>
+
                 <div class="col-5 input-group">
                     <label class="input-group-text" for="cityName">Ville</label>
-                    <input id="cityName" class="form-control" value="{{old('cityName', $cityName ?? "")}}" type="text"name="cityName">
+                    <input id="cityName" class="form-control" value="{{old('cityName', $cityName ?? "")}}" type="text" name="cityName">
                 </div>
                 <div class="col input-group">
                     <label class="input-group-text" for="postalCode">Code Postal</label>
@@ -60,7 +66,6 @@
                     <label class="input-group-text" for="no_chauffeur">Numéro de Chauffeur</label>
                     <input id="no_chauffeur" class="form-control" value="{{old('no_chauffeur', $no_chauffeur ?? "")}}" type="number" name="no_chauffeur">
                 </div>
-
             </div>
 
             <div class="row">
