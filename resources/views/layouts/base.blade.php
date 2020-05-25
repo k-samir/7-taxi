@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="{{ asset('css/Responsive-Form.css')}}">
     <style>
         #contact {
-            background-image: url('img/map-image.png');
+            background-image: url("{{asset("img/map-image.png")}}");
         }
     </style>
     @yield('styles')
