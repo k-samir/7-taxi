@@ -59,6 +59,6 @@ Route::prefix('taxi')->middleware(['verified', 'auth'])->group(function () {
     Route::post('form/modify/taxi', 'GetController@modifyTaxiFromRequest')->name('modifyTaxiRequest');
 
     //list
-    Route::get('form/list/taxi','TaxiController@getTaxis')->name('ListeTaxis');
+    Route::get('form/list/taxi','TaxiController@getTaxis')->name('listTaxi');
 
 });
