@@ -6,7 +6,6 @@ use App\Taxi;
 use Carbon\Carbon;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
-use App\Taxi;
 
 /**
  * A class that only send views from a get.
