@@ -6,9 +6,12 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title','Projet - Taxi')</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    @yield('headContent')
+
+    @yield('before-scripts')
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('css/font-color.css')}}">
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css')}}">
@@ -19,105 +22,30 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="{{ asset('fonts/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/-Login-form-Page-BS4-.css')}}">
-    <link rel="stylesheet" href="{{ asset('css/Responsive-Form-1.css')}}">
     <link rel="stylesheet" href="{{ asset('css/Responsive-Form.css')}}">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
-  
-
-
-    @yield('headContent')
-
-    @yield('before-scripts')
-    
-   
+    <style>
+        #contact{
+            background-image:url('img/map-image.png');
+        }
+    </style>
     @yield('styles')
-    
+
 </head>
 
 <body id="base-body">
-    <div id="navigation-bar" class="container-fluid mb-3 navbar-light bg-light" style="padding:0">
-        <nav class="navbar navbar-dark navbar-expand-lg bg-dark" id="mainNav">
-            <div class="container"><a class="navbar-brand" href="{{route('home')}}">7-Taxi</a><button
-                    data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right"
-                    type="button" data-toogle="collapse" aria-controls="navbarResponsive" aria-expanded="false"
-                    aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="nav navbar-nav ml-auto text-uppercase">
-                        @guest
-                        <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger"
-                                href="{{route('login')}}">CONNEXION</a></li>
-                        @if (Route::has('register'))
-                        <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger"
-                                href="{{route('register')}}">INSCRIPTION</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('home')}}#services">SERVICES</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('home')}}#portfolio">L'ENTREPRISE</a>
-                        </li>
-                        <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="{{route('home')}}#about">A
-                                PROPOS</a></li>
-                        <li class="nav-item" role="presentation"></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger"
-                                href="#contact">Contact</a></li>
-                        @endif
-                        @endguest
-                        @guest
-                        @if (Route::has('register'))
-                        @endif
-                        @else
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item dropdown ">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulaires de
-                                    chauffeur</a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{route('addConductorShift')}}">Ajout de shift</a>
-                                    <a class="dropdown-item" href="{{route('createConductor')}}">Création de
-                                        chauffeur</a>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown ">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulaires de
-                                    créations</a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{route('createConductor')}}">Création de
-                                        chauffeur</a>
-                                    <a class="dropdown-item" href="{{route('createClient')}}">Création de client</a>
-                                    <a class="dropdown-item" href="{{route('getTaxi')}}"> Création de taxi</a>
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown font-weight-bold">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">Options</a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <button type="button" id="btn-obscur-light" class="navigation-text dropdown-item"
-                                        data-toggle="button" aria-pressed="false" autocomplete="off"
-                                        onclick="changeDarkOrLightMode()">Mode obscur</button>
-                                    <button type="button" class="navigation-text dropdown-item" data-toggle="button"
-                                        aria-pressed="false" autocomplete="off"
-                                        onclick="changeAutomaticColor()">Couleurs automatique</button>
-                                </div>
-                            </li>
-                        </ul>
-                        @endguest
-                        @guest
-                        @if (Route::has('register'))
-                        @endif
-                        @else
-                        <li class="nav-item"><a class="nav-link" href="{{route('logout')}}"
-                                onclick="event.preventDefault();document.getElementById('logout-form').submit();">Déconnexion</a>
-                        </li>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf
-                        </form>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <div id="navbarSupportedContent" class="collapse navbar-collapse">
-            <ul class="navbar-nav mr-auto">
+<nav id="navigation-bar" class="container-fluid navbar navbar-expand-lg mb-3 navbar-light bg-light">
+    <a class="navbar-brand" href="{{route('home')}}">7-Taxi</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" data-toogle="collapse" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            @guest
+                <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('home')}}#services">Services</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('home')}}#portfolio">L'entreprise</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="{{route('home')}}#about">À propos</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
+            @else
                 <li class="nav-item dropdown font-weight-bold">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulaires de chauffeur</a>
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulaires de chauffeur</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{route('addConductorShift')}}">Ajout de shift</a>
                         <a class="dropdown-item" href="{{route('createConductor')}}">Création de chauffeur</a>
@@ -133,7 +61,7 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown font-weight-bold">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulaires de créations</a>
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulaires de créations</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{route('createConductor')}}">Création de chauffeur</a>
                         <a class="dropdown-item" href="{{route('createClient')}}">Création de client</a>
@@ -151,81 +79,62 @@
                             <a class="dropdown-item" href="{{route('modifyFixTarifRequest')}}">Liste des tarifs fixes</button>
                     </div>
                 </li>
-                <li class="nav-item dropdown font-weight-bold">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <button type="button" id="btn-obscur-light" class="navigation-text dropdown-item" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="changeDarkOrLightMode()">Mode obscur</button>
-                        <button type="button" class="navigation-text dropdown-item" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="changeAutomaticColor()">Couleurs automatique</button>
-                    </div>
-                </li>
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                @guest
-                    <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('login')}}">Connexion</a></li>
-                    @if (Route::has('register'))
-                        <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('register')}}">Inscription</a></li>
-                    @endif
-                @else
-                    <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Déconnexion</a></li>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
-                @endguest
-            </ul>
-        </div>
-    </nav>
-</div>
+            @endguest
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown font-weight-bold">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <button type="button" id="btn-obscur-light" class="navigation-text dropdown-item" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="changeDarkOrLightMode()">Mode obscur</button>
+                    <button type="button" class="navigation-text dropdown-item" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="changeAutomaticColor()">Couleurs automatique</button>
+                </div>
+            </li>
+            @guest
+                <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('login')}}">Connexion</a></li>
+                @if (Route::has('register'))
+                    <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('register')}}">Inscription</a></li>
+                @endif
+            @else
+                <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Déconnexion</a></li>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST"  hidden>@csrf</form>
+            @endguest
+        </ul>
+    </div>
+</nav>
 @section('body-content')
     <div class="row pb-3">
         <h1 class="mx-auto"><u>@yield('title')</u></h1>
     </div>
-    @section('body-content')
-
-    <!--<div class="row pb-3">
-        <h1 class="mx-auto" style="margin-top:9rem;"><u> @yield('title')</u></h1>
-    </div>
--->
-
-    @show
-    <section id="contact" style="background-image:url('img/map-image.png');margin-top:2rem">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="text-uppercase section-heading">NOUS CONTACTER</h2>
-                    <h3 class="section-subheading text-muted"></h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <form id="contactForm" name="contactForm" novalidate="novalidate">
-                        <div class="form-row">
-                            <div class="col col-md-6">
-                                <div class="form-group"><input class="form-control" type="text" id="name1"
-                                        placeholder="Votre Nom *" required=""><small
-                                        class="form-text text-danger flex-grow-1 help-block lead"></small></div>
-                                <div class="form-group"><input class="form-control" type="email" id="email1"
-                                        placeholder="Votre Email *" required=""><small
-                                        class="form-text text-danger help-block lead"></small></div>
-                                <div class="form-group"><input class="form-control" type="tel"
-                                        placeholder="Votre Numéro *" required=""><small
-                                        class="form-text text-danger help-block lead"></small></div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group"><textarea class="form-control" id="message"
-                                        placeholder="Votre Message *" required=""></textarea><small
-                                        class="form-text text-danger help-block lead"></small></div>
-                            </div>
-                            <div class="col">
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="col-lg-12 text-center">
-                                <div id="success"></div><button class="btn btn-primary btn-xl text-uppercase"
-                                    id="sendMessageButton" type="submit">ENVOYER</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+@show
+<section id="contact" class="mt-1">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="text-uppercase section-heading">Nous contacter</h2>
+                <h3 class="section-subheading text-muted"></h3>
             </div>
         </div>
-    </section>
+        <div class="row">
+            <div class="col-lg-12">
+                <form id="contactForm" name="contactForm" novalidate="novalidate">
+                    <div class="form-row">
+                        <div class="col col-md-6">
+                            <div class="form-group"><input class="form-control" type="text" id="name1" placeholder="Votre Nom *" required=""><small class="form-text text-danger flex-grow-1 help-block lead"></small></div>
+                            <div class="form-group"><input class="form-control" type="email" id="email1" placeholder="Votre Email - email@templace.com" required=""><small class="form-text text-danger help-block lead"></small></div>
+                            <div class="form-group"><input class="form-control" type="tel" placeholder="Votre Téléphone - (123) 4567-890" required=""><small class="form-text text-danger help-block lead"></small></div>
+                        </div>
+                        <div class="col-md-6"><div class="form-group"><textarea class="form-control" id="message" placeholder="Votre Message *" required=""></textarea><small class="form-text text-danger help-block lead"></small></div></div>
+                        <div class="col"><div class="clearfix"></div></div>
+                        <div class="col-lg-12 text-center">
+                            <div id="success"></div>
+                            <button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit">Envoyer</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 
 <footer>
     <div class="container">
@@ -240,8 +149,8 @@
             </div>
             <div class="col-md-4">
                 <ul class="list-inline quicklinks">
-                    <li class="list-inline-item"><a href="#" style="color:black;">Privacy Policy</a></li>
-                    <li class="list-inline-item"><a href="#" style="color:black;">Terms of Use</a></li>
+                    <li class="list-inline-item"><a class="text-dark" href="#">Privacy Policy</a></li>
+                    <li class="list-inline-item"><a class="text-dark" href="#">Terms of Use</a></li>
                 </ul>
             </div>
         </div>
@@ -254,8 +163,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="{{asset('js/base.js')}}" defer></script>
 
-        @yield('after-scripts')
-    </scripts>
+    @yield('after-scripts')
+</scripts>
 </body>
 
 </html>

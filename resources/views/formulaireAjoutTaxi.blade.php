@@ -12,7 +12,7 @@
             <div class="row justify-content-center">
                 <div class="col input-group">
                     <label for="noTaxi" class="input-group-text">Numéro</label>
-                    <input id="noTaxi" class="form-control" name="NoTaxi" type="text" minlength="4" value="{{ old('noTaxi', '') }}" required>
+                    <input id="noTaxi" class="form-control" name="noTaxi" type="text" minlength="4" value="{{ old('noTaxi', '') }}" required>
                 </div>
                 <div class="col input-group">
                     <label for="immatriculation" class="input-group-text">Immatriculation</label>
@@ -36,19 +36,16 @@
             </div>
             <div class="w-100 pb-4"></div>
             <div class="row justify-content-center">
-                <div class="col"></div>
                 <div class="col-5 form-check-inline pl-3">
-                    <div class="input-group-text">Taille</div>
                     <div class="form-check">
                         <input id="smallCarSize" class="form-check-input" type="radio" name="carSize" value="1" checked>
-                        <label class="form-check-label" for="smallCarSize">Petite</label>
+                        <label class="form-check-label" for="smallCarSize">Petite voiture</label>
                     </div>
                     <div class="form-check">
                         <input id="bigCarSize" class="form-check-input" type="radio" name="carSize" value="2">
-                        <label class="form-check-label" for="bigCarSize">Grande</label>
+                        <label class="form-check-label" for="bigCarSize">Grande voiture</label>
                     </div>
                 </div>
-                <div class="col"></div>
             </div>
             <div class="w-100 pb-4"></div>
             <h4>Taximetre</h4>
