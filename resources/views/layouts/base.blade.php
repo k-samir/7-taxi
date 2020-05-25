@@ -25,6 +25,11 @@
     @yield('before-scripts')
 
 
+    <style>
+        #contact{
+            background-image:url('img/map-image.png');
+        }
+    </style>
     @yield('styles')
 
 </head>
@@ -100,7 +105,7 @@
                 @endif
             @else
                 <li class="nav-item"><a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Déconnexion</a></li>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST"  hidden>@csrf</form>
             @endguest
         </ul>
     </div>
@@ -110,7 +115,7 @@
         <h1 class="mx-auto"><u>@yield('title')</u></h1>
     </div>
 @show
-<section id="contact" style="background-image:url('img/map-image.png');margin-top:2rem">
+<section id="contact" class="mt-1">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -123,12 +128,17 @@
                 <form id="contactForm" name="contactForm" novalidate="novalidate">
                     <div class="form-row">
                         <div class="col col-md-6">
-                            <div class="form-group"><input class="form-control" type="text" id="name1" placeholder="Votre Nom *" required=""><small class="form-text text-danger flex-grow-1 help-block lead"></small></div>
-                            <div class="form-group"><input class="form-control" type="email" id="email1" placeholder="Votre Email *" required=""><small class="form-text text-danger help-block lead"></small></div>
-                            <div class="form-group"><input class="form-control" type="tel" placeholder="Votre Numéro *" required=""><small class="form-text text-danger help-block lead"></small></div>
+                            <div class="form-group">
+                                <input class="form-control" type="text" id="name1" placeholder="Votre Nom *" required=""><small class="form-text text-danger flex-grow-1 help-block lead"></small></div>
+                            <div class="form-group">
+                                <input class="form-control" type="email" id="email1" placeholder="Votre Email - email@templace.com" required=""><small class="form-text text-danger help-block lead"></small></div>
+                            <div class="form-group">
+                                <input class="form-control" type="tel" placeholder="Votre Téléphone - (123) 4567-890" required=""><small class="form-text text-danger help-block lead"></small></div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group"><textarea class="form-control" id="message" placeholder="Votre Message *" required=""></textarea><small class="form-text text-danger help-block lead"></small></div>
+                            <div class="form-group">
+                                <textarea class="form-control" id="message" placeholder="Votre Message *" required=""></textarea>
+                                <small class="form-text text-danger help-block lead"></small></div>
                         </div>
                         <div class="col"><div class="clearfix"></div></div>
                         <div class="col-lg-12 text-center">
@@ -155,8 +165,8 @@
             </div>
             <div class="col-md-4">
                 <ul class="list-inline quicklinks">
-                    <li class="list-inline-item"><a href="#" style="color:black;">Privacy Policy</a></li>
-                    <li class="list-inline-item"><a href="#" style="color:black;">Terms of Use</a></li>
+                    <li class="list-inline-item"><a class="text-dark" href="#">Privacy Policy</a></li>
+                    <li class="list-inline-item"><a class="text-dark" href="#">Terms of Use</a></li>
                 </ul>
             </div>
         </div>
