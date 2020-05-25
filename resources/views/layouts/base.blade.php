@@ -24,8 +24,8 @@
     <link rel="stylesheet" href="{{ asset('css/-Login-form-Page-BS4-.css')}}">
     <link rel="stylesheet" href="{{ asset('css/Responsive-Form.css')}}">
     <style>
-        #contact{
-            background-image:url('img/map-image.png');
+        #contact {
+            background-image: url('img/map-image.png');
         }
     </style>
     @yield('styles')
@@ -67,16 +67,15 @@
                         <a class="dropdown-item" href="{{route('createClient')}}">Création de client</a>
                         <a class="dropdown-item" href="{{route('getTaxi')}}">Création de taxi</a>
                         <a class="dropdown-item" href="{{route('createFixTarif')}}">Création de tarif fix</a>
-
                     </div>
                 </li>
                 <li class="nav-item dropdown font-weight-bold">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Liste des entités</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{route('modifyConductorRequest')}}">Liste des chauffeurs</button>
-                            <a class="dropdown-item" href="{{route('modifyClientRequest')}}">Liste des clients</button>
-                            <a class="dropdown-item" href="{{route('ListeTaxis')}}">Liste des taxis</button>
-                            <a class="dropdown-item" href="{{route('modifyFixTarifRequest')}}">Liste des tarifs fixes</button>
+                        <a class="dropdown-item" href="{{route('home')}}">Liste des chauffeurs</a>
+                        <a class="dropdown-item" href="{{route('home')}}">Liste des clients</a>
+                        <a class="dropdown-item" href="{{route('listeTaxis')}}">Liste des taxis</a>
+                        <a class="dropdown-item" href="{{route('home')}}">Liste des tarifs fixes</a>
                     </div>
                 </li>
             @endguest
@@ -96,7 +95,7 @@
                 @endif
             @else
                 <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Déconnexion</a></li>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST"  hidden>@csrf</form>
+                <form id="logout-form" action="{{ route('logout') }}" method="post" hidden>@csrf</form>
             @endguest
         </ul>
     </div>
