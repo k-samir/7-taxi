@@ -1,12 +1,21 @@
 @extends('layouts.base')
 @section('title', "Page d'accueil")
 
+@section('styles')
+    <style>
+        .masthead {
+            background-image: url("img/taxi-background.jpg");
+            background-position: center;
+        }
+    </style>
+@endsection
+
 @section('body-content')
 
 
     <body id="page-top">
 
-    <header class="masthead" style="background-image: url(&quot;img/taxi-background.jpg&quot;);background-position: center;">
+    <header class="masthead">
         <div class="container">
             <div class="intro-text">
                 <div class="intro-lead-in"><span>Bienvenue chez 7-Taxi</span></div>
@@ -39,7 +48,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="text-uppercase section-heading">L'ENTREPRISE</h2>
+                    <h2 class="text-uppercase section-heading">L'entreprise</h2>
                     <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
                 </div>
             </div>
@@ -82,7 +91,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="text-uppercase">A PROPOS DE NOUS</h2>
+                    <h2 class="text-uppercase">À propos de nous</h2>
                     <h3 class="text-muted section-subheading">Notre Histoire</h3>
                 </div>
             </div>
@@ -97,7 +106,7 @@
                                     <h4 class="subheading">Commencement</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                    <p class="text-muted">Le projet a débuté à cette date.<br>Nous avons reçu la demande de notre enseignant de faire une site web centralisé sur les taxis.</p>
                                 </div>
                             </div>
                         </li>
@@ -106,10 +115,10 @@
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
                                     <h4>Mai 2020</h4>
-                                    <h4 class="subheading">Dévellopement</h4>
+                                    <h4 class="subheading">Dévelopement</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                    <p class="text-muted">(À continuer)</p>
                                 </div>
                             </div>
                         </li>
@@ -120,7 +129,7 @@
                                     <h4>Juin 2020</h4>
                                     <h4 class="subheading">Phase de lancement</h4>
                                 </div>
-                                <div class="timeline-body"><p class="text-muted">dfgdgddgdgd</p></div>
+                                <div class="timeline-body"><p class="text-muted">Étant la date de lancement, le projet a grandement évolué et s'est développé pour devenir une belle application web</p></div>
                             </div>
                         </li>
                     </ul>

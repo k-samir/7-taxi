@@ -145,7 +145,7 @@
 <footer>
     <div class="container">
         <div class="row">
-            <div class="col-md-4"><span class="copyright">Copyright&nbsp;© 7-Taxi 2020</span><span class="copyright"><br> J.Bédard - Y.Stephanus - S.Kamar</span></div>
+            <div class="col-md-4"><span class="copyright">Copyright&nbsp;© 7-Taxi 2020</span><span class="copyright"><br> Jonathan Bédard - Yoann Stephanus - Samir Kamar</span></div>
             <div class="col-md-4">
                 <ul class="list-inline social-buttons">
                     <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
