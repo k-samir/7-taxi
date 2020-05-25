@@ -194,7 +194,7 @@ import BaseTask = src.base.BaseTask;
 (() => {
     //Export global methods and variable
 
-    let baseTask = new BaseTask(true);
+    let baseTask = new BaseTask();
     baseTask.execute();
 
     window["baseTask"] = baseTask;
