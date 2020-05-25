@@ -68,19 +68,12 @@
                     </div>
                 </li>
                 <li class="nav-item dropdown font-weight-bold">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulaires de modifications</a>
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Liste des entités</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <form method="post">
-                            @csrf
-                            <div class="col input-group">
-                                <label class="input-group-text" for="id">ID</label>
-                                <input id="id" class="form-control" type="number" maxlength="7" name="id" placeholder="Numéro" required>
-                            </div>
-                            <button type="submit" class="dropdown-item" value="conductor" formaction="{{route('modifyConductorRequest')}}">Modification de chauffeur</button>
-                            <button type="submit" class="dropdown-item" value="client" formaction="{{route('modifyClientRequest')}}">Modification de client</button>
-                            <button type="submit" class="dropdown-item" value="taxi" formaction="{{route('modifyTaxiRequest')}}">Modification de taxi</button>
-                            <button type="submit" class="dropdown-item" value="fixTarif" formaction="{{route('modifyFixTarifRequest')}}">Modification de tarif fix</button>
-                        </form>
+                            <a class="dropdown-item" href="{{route('modifyConductorRequest')}}">Liste des chauffeurs</button>
+                            <a class="dropdown-item" href="{{route('modifyClientRequest')}}">Liste des clients</button>
+                            <a class="dropdown-item" href="{{route('ListeTaxis')}}">Liste des taxis</button>
+                            <a class="dropdown-item" href="{{route('modifyFixTarifRequest')}}">Liste des tarifs fixes</button>
                     </div>
                 </li>
             @endguest
@@ -93,15 +86,17 @@
                     <button type="button" class="navigation-text dropdown-item" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="changeAutomaticColor()">Couleurs automatique</button>
                 </div>
             </li>
-            @guest
+            @if ($connected ?? false == false)    
+                @guest 
                 <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="{{route('login')}}">Connexion</a></li>
                 @if (Route::has('register'))
-                    <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="{{route('register')}}">Inscription</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="{{route('register')}}">Inscription</a></li>
                 @endif
-            @else
+                @else
                 <li class="nav-item"><a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Déconnexion</a></li>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
-            @endguest
+                @endguest
+            @endif
         </ul>
     </div>
 </nav>

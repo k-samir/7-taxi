@@ -41,7 +41,7 @@ class CreateDatabase extends Migration
             $table->integer("id_taxi", true);
             $table->string("no_taxi", 255);
             $table->string("plaque_immatriculation", 20);
-            $table->integer("kilometrage_taxi");
+            $table->float("kilometrage_taxi",16,1);
             $table->date("date_debut_circulation");
             $table->string("no_assurance", 255);
             $table->string("no_taximetre", 255);

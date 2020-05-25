@@ -22,7 +22,7 @@ Route::get('/', function () {
     return redirect()->route('homeNoVerification');
 });
 
-Route::get('/homeNo', 'GetController@index')->name('homeNoVerification');
+Route::get('/homeNo', 'GetController@indexNo')->name('homeNoVerification');
 Route::prefix('taxi')->middleware(['verified','auth'])->group( function() {
     Route::get('home', 'GetController@index')->name('home');
     //shift
@@ -52,9 +52,13 @@ Route::prefix('taxi')->middleware(['verified','auth'])->group( function() {
     Route::post('form/modify/fixTarif', 'GetController@modifyFixTarifFromRequest')->name('modifyFixTarifRequest');
 
     //taxi
-    Route::get('form/get/taxi', 'TaxiController@taxi')->name('getTaxi');
+    Route::get('form/get/taxi', 'GetController@createTaxi')->name('getTaxi');
     Route::post('form/create/taxi', 'TaxiController@createTaxi')->name('createTaxi');
-    Route::get('form/modify/taxi{id}', 'GetController@modifyTaxi')->name('modifyTaxi');
-    Route::post('form/modify/taxi{id}', 'TaxiController@modifyTaxi');
+    Route::get('form/modify/taxi_{id}', 'GetController@modifyTaxi')->name('modifyTaxi');
+    Route::post('form/modify/taxi_{id}', 'TaxiController@modifyTaxi');
     Route::post('form/modify/taxi', 'GetController@modifyTaxiFromRequest')->name('modifyTaxiRequest');
+
+    //list
+    Route::get('form/list/taxi','TaxiController@getTaxis')->name('ListeTaxis');
+
 });

@@ -3,7 +3,8 @@
 
 @section('body-content')
     @parent
-    <form action="{{route('createTaxi')}}" method="post">
+    <p>{{$value->no_taxi ?? ''}}</p>
+    <form action="{{$routeOnAction}}" method="post">
         @csrf
         <div class="container mb-5">
             <p>{{$errorMessage ?? ''}}</p>
@@ -35,11 +36,11 @@
             <div class="row mb-4 justify-content-center">
                 <div class="col input-group"> 
                     <div class="mr-5 ml-4">
-                        <input type="radio" class="form-check-input" name="petit" id="petit">
+                        <input type="radio" class="form-check-input" name="type" value="1">
                         <label class="form-check-label" for="petit">Petit voiture</label>
                     </div>
                     <div>
-                        <input type="radio" class="form-check-input" name="grand" id="grand">
+                        <input type="radio" class="form-check-input" name="type" value="2">
                         <label class="form-check-label" for="grand">Grande voiture</label>
                     </div>
                 </div>
@@ -71,7 +72,7 @@
                 </div>
             </div>
             <div class="row mb-5 justify-content-center">
-                <button class="btn btn-success">Créer</button>
+                <button class="btn btn-success"> {{$messageOnAction}} </button>
             </div>
         </div>
     </form>
