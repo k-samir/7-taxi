@@ -11,7 +11,7 @@
             <div class="intro-text">
                 <div class="intro-lead-in"><span>Bienvenue chez 7-Taxi</span></div>
                 <div class="intro-heading text-uppercase"><span>Voyagez avec nous</span></div>
-                <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" role="button" href="#services">COMMENCER</a>
+                <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" role="button" href="#services">Commencer</a>
             </div>
         </div>
     </header>
@@ -24,13 +24,11 @@
                 </div>
             </div>
             <div class="row text-center">
-                <div class="col-md-6"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i
-                            class="fa fa-plane fa-stack-1x fa-inverse"></i></span>
+                <div class="col-md-6"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-plane fa-stack-1x fa-inverse"></i></span>
                     <h4 class="section-heading">Transport</h4>
                     <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
                 </div>
-                <div class="col-md-6"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i
-                            class="fa fa-smile-o fa-stack-1x fa-inverse"></i></span>
+                <div class="col-md-6"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-smile-o fa-stack-1x fa-inverse"></i></span>
                     <h4 class="section-heading">Assistance</h4>
                     <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
                 </div>
@@ -92,8 +90,7 @@
                 <div class="col-lg-12">
                     <ul class="list-group timeline">
                         <li class="list-group-item">
-                            <div class="timeline-image"><img class="rounded-circle img-fluid" src="img/about/1.jpg">
-                            </div>
+                            <div class="timeline-image"><img class="rounded-circle img-fluid" src="img/about/1.jpg"></div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
                                     <h4>&nbsp;Mars 2020</h4>
@@ -131,7 +128,6 @@
             </div>
         </div>
     </section>
-
 
     </body>
 

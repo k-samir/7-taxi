@@ -4,25 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Taxi;
 use Illuminate\Http\Request;
-use Symfony\Component\Console\Output\ConsoleOutput;
 
 class TaxiController extends Controller
 {
-    public function taxi(Request $request){
+
+
+    public function taxi(Request $request)
+    {
         return view("formulaireAjoutTaxi")->with('errorMessage', $request->session()->get('errorMessage'));
     }
 
     public function createTaxi(Request $request)
     {
-        if($request->input('petit') && $request->input('grand') || $request->has(['petit,grand'])){
+        if ($request->input('petit') && $request->input('grand') || $request->has(['petit,grand'])) {
             return redirect()->route('getTaxi')->with('errorMessage', 'Veuillez choisir le type de voiture')->withInput();
         }
         if ($request->input('petit')) {
             $type = 1;
-        } else{
+        } else {
             $type = 2;
         }
-        
+
         $taxi = new Taxi();
         $taxi->no_taxi = $request->input('NoTaxi');
         $taxi->plaque_immatriculation = $request->input('immat');
@@ -39,4 +41,6 @@ class TaxiController extends Controller
 
         return redirect()->route("home");
     }
+
+
 }
