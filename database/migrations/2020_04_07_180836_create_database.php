@@ -21,6 +21,7 @@ class CreateDatabase extends Migration
             $table->string("nom", 255)->nullable(true);
             $table->float("commission", 3, 2)->nullable(true);
             $table->string("telephone", 255)->nullable(true);
+            $table->string("email", 255)->nullable(true);
             $table->integer("no_rue")->nullable(true);
             $table->string("rue", 255)->nullable(true);
             $table->string("ville", 255)->nullable(true);
@@ -137,7 +138,7 @@ class CreateDatabase extends Migration
 
         });
 
-        
+
     }
 
 
