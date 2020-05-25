@@ -22,10 +22,10 @@
                     <input id="assurence" name="assurence" class="form-control" type="number" value="{{old('assurence')}}" required>
                 </div>
             </div>
-            <div class="row mb-4 justify-content-center">
+            <div class="row mb-4">
                 <div class="col input-group">
                     <label for="DateMiseCiruc" class="input-group-text">Date de mise en circulation du taxi</label>
-                <input id="date_circ" name="date_circ" class="form-control" type="date" value="{{old('date_circ')}}" required>
+                    <input id="date_circ" name="date_circ" class="form-control" type="date" value="{{old('date_circ')}}" required>
                 </div>
                 <div class="col input-group">
                     <label for="DateMiseCiruc" class="input-group-text">Kilommetrage de la voiture</label>
@@ -33,14 +33,14 @@
                 </div>
             </div>
             <div class="row mb-4 justify-content-center">
-                <div class="col input-group">
+                <div class="col input-group"> 
                     <div class="mr-5 ml-4">
-                        <label class="form-check-label" for="petit">Petite voiture</label>
                         <input type="radio" class="form-check-input" name="petit" id="petit">
+                        <label class="form-check-label" for="petit">Petit voiture</label>
                     </div>
                     <div>
-                        <label class="form-check-label" for="grand">Grande voiture</label>
                         <input type="radio" class="form-check-input" name="grand" id="grand">
+                        <label class="form-check-label" for="grand">Grande voiture</label>
                     </div>
                 </div>
             </div>
@@ -52,14 +52,14 @@
                 </div>
                 <div class="col input-group">
                     <label for="NoTaximetre" class="input-group-text">Recette</label>
-                <input type="number" name="recette_taximetre" min="0" class="form-control" value="{{old('recette_taximetre')}}" required>
+                    <input type="number" name="recette_taximetre" min="0" class="form-control" value="{{old('recette_taximetre')}}" required>
                 </div>
 
             </div>
             <div class="row mb-4 justify-content-center">
                 <div class="col input-group">
                     <label for="NoTaximetre" class="input-group-text">Millage</label>
-                <input type="number" name="millage_taximetre" min="0" class="form-control" value="{{old('millage_taximetre')}}" required>
+                    <input type="number" name="millage_taximetre" min="0" class="form-control" value="{{old('millage_taximetre')}}" required>
                 </div>
                 <div class="col input-group">
                     <label for="NoTaximetre" class="input-group-text">Millage en charge</label>

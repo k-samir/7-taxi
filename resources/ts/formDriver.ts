@@ -36,9 +36,8 @@ export namespace src.form {
         }
 
         public setDifference(startingID: string, endingID: string, elementToSetID: string): void {
-
             let diff = convertToFloat(endingID) - convertToFloat(startingID);
-            getID(elementToSetID).value = (diff).toString();
+            getID(elementToSetID).textContent = (diff).toString();
             updateValidation(diff > 0, startingID, endingID);
         }
 

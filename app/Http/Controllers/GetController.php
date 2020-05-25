@@ -90,11 +90,6 @@ class GetController extends Controller
     }
 
 
-    public function createTaxi(Request $request)
-    {
-        return $this->sendToView(view("formulaireAjoutTaxi"), self::CREATE_TAG, route('createTaxi'))
-            ->with('errorMessage', $request->session()->get('errorMessage'));
-    }
     public function modifyTaxi(Request $request, int $id): Renderable
     {
         return $this->sendToView("formulaireAjoutTaxi", self::MODIFY_TAG, route("modifyTaxi", ["id" => $id]), $id);
@@ -104,7 +99,6 @@ class GetController extends Controller
     {
         return $this->modifyTaxi($request, $request['id']);
     }
-
 
 
     private function sendToView(string $view, array $tag, string $route, int $id = -1): Renderable

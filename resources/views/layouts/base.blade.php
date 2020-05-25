@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -138,8 +137,9 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{route('createConductor')}}">Création de chauffeur</a>
                         <a class="dropdown-item" href="{{route('createClient')}}">Création de client</a>
-                        <a class="dropdown-item" href="{{route('createTaxi')}}"> Création de taxi</a>
-                        <a class="dropdown-item" href="{{route('createFixTarif')}}"> Création de tarif fix</a>
+                        <a class="dropdown-item" href="{{route('getTaxi')}}">Création de taxi</a>
+                        <a class="dropdown-item" href="{{route('createFixTarif')}}">Création de tarif fix</a>
+
                     </div>
                 </li>
                 <li class="nav-item dropdown font-weight-bold">
@@ -253,17 +253,14 @@
                 </div>
             </div>
         </div>
-    </footer>
-    <scripts>
-
-   
-  
-    
-    
-
-        <script src="{{asset('js/base.js')}}" defer></script>
-        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
-  
+    </div>
+</footer>
+<scripts>
+    <script src="{{asset('js/agency.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="{{asset('js/base.js')}}" defer></script>
 
         @yield('after-scripts')
     </scripts>

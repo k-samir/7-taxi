@@ -8,17 +8,17 @@ use App\Http\Requests\FormRequest;
 class FormDriverController extends Controller
 {
 
-    private $driver;
+    private $form;
 
     public function __construct()
     {
-        $this->driver = new Form();
+        $this->form = new Form();
     }
 
     public function addConductorShift(FormRequest $request)
     {
-        $this->driver->addForm($request);
-        return view('driverFormSuccess');
+        $this->form->addForm($request);
+        return view('home')->with(['message' => "Le conducteur a bien été ajouté"]);
     }
 
 
