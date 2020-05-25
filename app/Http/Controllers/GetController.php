@@ -77,7 +77,7 @@ class GetController extends Controller
     }
 
     public function modifyTaxi(Request $request, int $id): Renderable{
-        $taxi = Taxi::where('id_taxi',$id)->get();
+        $taxi = Taxi::where('id_taxi',$id)->first();
         return $this->sendToView("formulaireAjoutTaxi", self::MODIFY_TAG, route("modifyTaxi", ["id" => $id]),$taxi);
     }
 
@@ -90,7 +90,9 @@ class GetController extends Controller
             'routeOnAction' => $route,
             'messageOnAction' => $tag["messageOnAction"],
         ];
-        if($value != null) $variables['value'] = $value;
+        if($value != null) {
+            $variables['value'] = $value;
+        }
 
         return view($view, $variables);
     }

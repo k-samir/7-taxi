@@ -8,4 +8,5 @@ use Illuminate\Http\Request;
 class Taxi extends Model
 {
     protected $table = 'taxi';
+    protected $primaryKey = null;
 }
