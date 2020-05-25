@@ -48,13 +48,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-<<<<<<< HEAD
-                    <h2 class="text-uppercase section-heading">L'ENTREPRISE</h2>
-                    <h3 class="section-subheading text-muted"></h3>
-=======
                     <h2 class="text-uppercase section-heading">L'entreprise</h2>
                     <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
->>>>>>> ecd353dd6b1af8f713bcfd6d743ea3449defe476
                 </div>
             </div>
             <div class="row">
