@@ -10,9 +10,9 @@
             @if (session('resent'))
                 <div class="alert alert-success" role="alert">Un nouveau lien de vérification a été envoyé à votre adresse courriel.</div>
             @endif
-            Avant de continuer, veuillez vérifier votre courriel pour un lien de virification.
+            Avant de continuer, veuillez vérifier votre courriel pour un lien de vérification.
             Si vous n'avez pas reçu le courriel
-            <form class="d-inline" method="POST" accept-charset="{{route('verification.resend')}}">
+            <form class="d-inline" method="post" accept-charset="{{route('verification.resend')}}">
                 @csrf
                 <button type="submit" class="btn btn-link p-0 m-0 align-baseline">Appuyez ici pour recevoir un autre courriel</button>.
             </form>
