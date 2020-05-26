@@ -33,16 +33,16 @@
 </head>
 
 <body id="base-body">
-<nav id="navigation-bar" class="container-fluid navbar navbar-expand-lg mb-3 navbar-light bg-light">
+<nav class="navbar navbar-dark navbar-expand-lg bg-dark" id="mainNav">
     <a class="navbar-brand" href="{{route('home')}}">7-Taxi</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" data-toogle="collapse" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             @guest
-                <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('home')}}#services">Services</a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('home')}}#portfolio">L'entreprise</a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="{{route('home')}}#about">À propos</a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="/homeNo#services">SERVICES</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="/homeNo#portfolio">L'ENTREPRISE</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="/homeNo#about">À PROPOS</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="/homeNo#contact">CONTACT</a></li>
             @else
                 <li class="nav-item dropdown font-weight-bold">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulaires de chauffeur</a>
@@ -66,7 +66,7 @@
                         <a class="dropdown-item" href="{{route('createConductor')}}">Création de chauffeur</a>
                         <a class="dropdown-item" href="{{route('createClient')}}">Création de client</a>
                         <a class="dropdown-item" href="{{route('getTaxi')}}">Création de taxi</a>
-                        <a class="dropdown-item" href="{{route('createFixTarif')}}">Création de tarif fix</a>
+                        <a class="dropdown-item" href="{{route('createFixTarif')}}">Création de tarif fixe</a>
 
                     </div>
                 </li>
@@ -92,15 +92,11 @@
             @guest
                 <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('login')}}">Connexion</a></li>
                 @if (Route::has('register'))
-                    <li class="nav-item font-weight-bold ml-auto">
-                    <a class="nav-link" href="{{route('register')}}">Inscription</a>
-                    </li>
+                    <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('register')}}">Inscription</a></li>
                 @endif
             @else
-                <li class="nav-item font-weight-bold ml-auto">
-                <a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Déconnexion</a>
-                </li>
-               
+                <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Déconnexion</a></li>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST"  hidden>@csrf</form>
             @endguest
         </ul>
     </div>

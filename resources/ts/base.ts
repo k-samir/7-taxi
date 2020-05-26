@@ -68,7 +68,7 @@ export namespace src.base {
 
         private __currentIndex: number = 0;
         private __currentPossibility: string;
-        private readonly possibilities: string[] = ["bg-green", "bg-turquoise", "bg-yellow", "bg-orange", "bg-orangered", "bg-pink", "bg-gold", "bg-silver"];
+        private readonly possibilities: string[] = [""];
         private readonly lastIndexOfPossibilities = this.possibilities.length - 1;
 
         constructor(isDarkModeEnable?: boolean) {
