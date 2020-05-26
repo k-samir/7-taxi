@@ -61,5 +61,7 @@ Route::prefix('taxi')->middleware(['verified', 'auth'])->group(function () {
     //Routes for the lists
     Route::get('list/taxi', 'TaxiController@getTaxis')->name('listTaxi');
     Route::get('list/chauffeur', 'ChauffeurController@getChauffeur')->name('listChauffeur');
+    Route::get('list/users', 'GetController@getListOfUsers')->name('listUsers');
+    Route::post('list/users', 'GetController@getListOfUsers');
 
 });
