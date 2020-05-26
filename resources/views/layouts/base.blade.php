@@ -32,7 +32,7 @@
 
 </head>
 <body id="base-body">
-<nav id="navigation-bar" class="navbar navbar-dark navbar-expand-lg bg-dark">
+<nav class="navbar navbar-dark navbar-expand-lg bg-dark" id="mainNav">
     <a class="navbar-brand" href="{{route('home')}}">7-Taxi</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" data-toogle="collapse" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -96,7 +96,7 @@
         <h1 class="mx-auto"><u>@yield('title')</u></h1>
     </div>
 @show
-<section id="section-contactUs" class="mt-1">
+<section id="contact" style="background-image:url('img/map-image.png');margin-top:2rem">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
