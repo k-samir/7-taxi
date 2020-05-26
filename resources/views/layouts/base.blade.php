@@ -92,11 +92,15 @@
             @guest
                 <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('login')}}">Connexion</a></li>
                 @if (Route::has('register'))
-                    <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('register')}}">Inscription</a></li>
+                    <li class="nav-item font-weight-bold ml-auto">
+                    <a class="nav-link" href="{{route('register')}}">Inscription</a>
+                    </li>
                 @endif
             @else
-                <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Déconnexion</a></li>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST"  hidden>@csrf</form>
+                <li class="nav-item font-weight-bold ml-auto">
+                <a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Déconnexion</a>
+                </li>
+               
             @endguest
         </ul>
     </div>
@@ -136,25 +140,6 @@
     </div>
 </section>
 
-<<<<<<< HEAD
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4"><span class="copyright">Copyright&nbsp;© 7-Taxi 2020</span><span class="copyright"><br> J.Bédard - Y.Stephanus - S.Kamar</span></div>
-                <div class="col-md-4">
-                    <ul class="list-inline social-buttons">
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-inline quicklinks">
-                        <li class="list-inline-item"><a href="#" style="color:black;">Privacy Policy</a></li>
-                        <li class="list-inline-item"><a href="#" style="color:black;">Terms of Use</a></li>
-                    </ul>
-                </div>
-=======
 <footer>
     <div class="container">
         <div class="row">
@@ -171,7 +156,6 @@
                     <li class="list-inline-item"><a class="text-dark" href="#">Privacy Policy</a></li>
                     <li class="list-inline-item"><a class="text-dark" href="#">Terms of Use</a></li>
                 </ul>
->>>>>>> e383cc14fa24b890e9a83b3fd9182e8ab18b4ea8
             </div>
         </div>
     </div>
