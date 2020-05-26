@@ -11,7 +11,7 @@
 @section('body-content')
     @parent
     <div class="container mb-5">
-        <form method="POST" action="{{route("addConductorShift")}}">
+        <form method="POST" action="{{route("addConductorShift")}}" name="form_shift">
         @csrf
         <!-- chauffeur & taxi-->
         <div class="row mb-4 justify-content-center">

@@ -96,11 +96,11 @@
         <h1 class="mx-auto"><u>@yield('title')</u></h1>
     </div>
 @show
-<section id="section-contactUs" class="bg-dark mt-1">
+<section id="section-contactUs" class="mt-1">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2 class="text-uppercase section-heading text-light">Nous contacter</h2>
+                <h2 class="text-uppercase section-heading">Nous contacter</h2>
                 <h3 class="section-subheading text-muted"></h3>
             </div>
         </div>
