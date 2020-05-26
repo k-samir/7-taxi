@@ -49,14 +49,6 @@
                         <a class="dropdown-item" href="{{route('addConductorShift')}}">Ajout de shift</a>
                         <a class="dropdown-item" href="{{route('createConductor')}}">Création de chauffeur</a>
                         <div class="dropdown-divider"></div>
-                        <form method="post" action="{{route('modifyConductorRequest')}}">
-                            @csrf
-                            <div class="col input-group">
-                                <label class="input-group-text" for="id">ID</label>
-                                <input id="id" class="form-control" type="number" maxlength="7" name="id" placeholder="Numéro" required>
-                            </div>
-                            <button type="submit" class="dropdown-item" value="conductor">Modification de chauffeur</button>
-                        </form>
                     </div>
                 </li>
                 <li class="nav-item dropdown font-weight-bold">
@@ -71,7 +63,7 @@
                 <li class="nav-item dropdown font-weight-bold">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Liste des entités</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{route('home')}}">Liste des chauffeurs</a>
+                        <a class="dropdown-item" href="{{route('listChauffeur')}}">Liste des chauffeurs</a>
                         <a class="dropdown-item" href="{{route('home')}}">Liste des clients</a>
                         <a class="dropdown-item" href="{{route('listTaxi')}}">Liste des taxis</a>
                         <a class="dropdown-item" href="{{route('home')}}">Liste des tarifs fixes</a>
