@@ -16,7 +16,7 @@ class CreateDatabase extends Migration
 
         Schema::create("chauffeur", function (Blueprint $table) {
             $table->integer("id_chauffeur", true);
-            $table->integer("no_chauffeur")->nullable(true);
+            $table->string("no_chauffeur")->nullable(true);
             $table->string("prenom", 255)->nullable(true);
             $table->string("nom", 255)->nullable(true);
             $table->float("commission", 3, 2)->nullable(true);
