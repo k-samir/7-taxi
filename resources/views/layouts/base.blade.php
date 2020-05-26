@@ -33,7 +33,7 @@
 </head>
 <body id="base-body">
 <nav id="navigation-bar" class="navbar navbar-dark navbar-expand-lg bg-dark">
-    <a class="navbar-brand" href="{{route('home')}}">7-Taxi</a>
+    <a class="navbar-brand text-warning" href="{{route('home')}}">7-Taxi</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" data-toogle="collapse" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
@@ -48,7 +48,6 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{route('addConductorShift')}}">Ajout de shift</a>
                         <a class="dropdown-item" href="{{route('createConductor')}}">Création de chauffeur</a>
-                        <div class="dropdown-divider"></div>
                     </div>
                 </li>
                 <li class="nav-item dropdown font-weight-bold">
