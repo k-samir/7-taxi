@@ -18,8 +18,6 @@ class TaxiController extends Controller
     {
         if (!$request->has('carSize'))
             return redirect()->route('getTaxi')->with('errorMessage', 'Veuillez choisir le type de voiture')->withInput();
-
-
         $taxi = new Taxi();
         $taxi->no_taxi = $request->input('noTaxi');
         $taxi->plaque_immatriculation = $request->input('immatriculation');
@@ -40,5 +38,25 @@ class TaxiController extends Controller
     public function getTaxis(){
        $taxis =  Taxi::all();
        return view('ListeTaxi')->with('taxis',$taxis);
+    }
+
+    public function modifyTaxi(Request $request, $id){
+        //recherche
+        $taxi = Taxi::where('id_taxi',$id)->first();
+        //modification des valeurs
+        $taxi->no_taxi = $request->input('noTaxi');
+        $taxi->plaque_immatriculation = $request->input('immatriculation');
+        $taxi->no_assurance = $request->input('assurance');
+        $taxi->date_debut_circulation = $request->input('circulationDate');
+        $taxi->kilometrage_taxi = $request->input('carMileage');
+        $taxi->no_type_voiture = $request->input('carSize');
+        $taxi->no_taximetre = $request->input('taximeterNo');
+        $taxi->recette_taximetre = $request->input('taximeterRecipe');
+        $taxi->kilometrage_taximetre = $request->input('taximeterMileage');
+        $taxi->kilometrage_en_charge_taximetre = $request->input('taximeterMileageLaden');
+        $taxi->prise_en_charge_taximetre = $request->input('taximeterAmountOfCourses');
+        $taxi->save();
+        //redirection vers listeTaxi
+        return redirect()->route('listTaxi');
     }
 }

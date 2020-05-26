@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Taxi;
+use App\Chauffeur;
+use App\Client;
 use Carbon\Carbon;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
@@ -38,8 +40,7 @@ class GetController extends Controller
     }
 
 
-    public function addConductorShift(Request $request): Renderable
-    {
+    public function addConductorShift(Request $request): Renderable {
         $taxis = Taxi::All();
         return view("formulaireShift", [
             'todayDate' => Carbon::now()->toDateString() . "T" . Carbon::now()->toTimeString("minute"),
@@ -48,6 +49,7 @@ class GetController extends Controller
 
     //create
     public function createConductor(Request $request): Renderable{
+
         return $this->sendToView("formulaireChauffeur", self::CREATE_TAG, route("createConductor"));
     }
 
@@ -65,11 +67,13 @@ class GetController extends Controller
     
     //modify
     public function modifyClient(Request $request, int $id): Renderable{
-        return $this->sendToView("formulaireClient", self::MODIFY_TAG, route("modifyClient", ["id" => $id]));
+        $clients = Client::where('id_client',$id);
+        return $this->sendToView("formulaireClient", self::MODIFY_TAG, route("modifyClient", ["id" => $id]),$clients);
     }
-
+    
     public function modifyConductor(Request $request, int $id): Renderable{
-        return $this->sendToView("formulaireChauffeur", self::MODIFY_TAG, route("modifyConductor", ["id" => $id]));
+        $chauffeur = Chauffeur::where('id_chauffeur',$id)->first();
+        return $this->sendToView("formulaireChauffeur", self::MODIFY_TAG, route("modifyConductor", ["id" => $id]),$chauffeur);
     }
 
     public function modifyFixTarif(Request $request, int $id): Renderable{
@@ -77,20 +81,21 @@ class GetController extends Controller
     }
 
     public function modifyTaxi(Request $request, int $id): Renderable{
-        $taxi = Taxi::where('id_taxi',$id)->get();
+        $taxi = Taxi::where('id_taxi',$id)->first();
         return $this->sendToView("formulaireAjoutTaxi", self::MODIFY_TAG, route("modifyTaxi", ["id" => $id]),$taxi);
     }
 
 
 
-    private function sendToView(string $view, array $tag, string $route, $value=null): Renderable
-    {
+    private function sendToView(string $view, array $tag, string $route, $value=null): Renderable{
         $variables = [
             'type' => $tag["type"],
             'routeOnAction' => $route,
             'messageOnAction' => $tag["messageOnAction"],
         ];
-        if($value != null) $variables['value'] = $value;
+        if($value != null) {
+            $variables['value'] = $value;
+        }
 
         return view($view, $variables);
     }
