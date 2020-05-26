@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Chauffeur;
 use App\Client;
 use App\Taxi;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
@@ -39,10 +40,15 @@ class GetController extends Controller
 
     public function addConductorShift(Request $request): Renderable
     {
-        $taxis = Taxi::All();
-        return view("formulaireShift", [
+        return view("formulaireShift")->with([
             'todayDate' => Carbon::now()->toDateString() . "T" . Carbon::now()->toTimeString("minute"),
-        ])->with('taxis', $taxis);
+            'taxis' => Taxi::All(),
+        ]);
+    }
+
+    public function getListOfUsers(Request $request): Renderable
+    {
+        return view('listUsers')->with('users', User::all()->all());
     }
 
 
@@ -92,7 +98,6 @@ class GetController extends Controller
         $taxi = Taxi::where('id_taxi', $id)->first();
         return $this->sendToView("formulaireAjoutTaxi", self::MODIFY_TAG, route("modifyTaxi", ["id" => $id]), $taxi);
     }
-
 
     private function sendToView(string $view, array $tag, string $route, $value = null): Renderable
     {

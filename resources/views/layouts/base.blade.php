@@ -62,6 +62,7 @@
                 <li class="nav-item dropdown font-weight-bold">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Liste des entités</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{route('listUsers')}}">Liste des utilisateurs</a>
                         <a class="dropdown-item" href="{{route('listChauffeur')}}">Liste des chauffeurs</a>
                         <a class="dropdown-item" href="{{route('home')}}">Liste des clients</a>
                         <a class="dropdown-item" href="{{route('listTaxi')}}">Liste des taxis</a>
