@@ -3,7 +3,7 @@
     <table class="table">
         <tr>
             <th>Numéro</th>
-            <th>Prénom </th>
+            <th>Prénom</th>
             <th>Nom</th>
             <th>Email</th>
             <th>Telephone</th>
@@ -18,9 +18,9 @@
                 <td>{{$item->email}}</td>
                 <td>{{$item->telephone}}</td>
                 <td>{{$item->commission}}</td>
-                <td> <a href="{{route('modifyConductor',['id'=>$item->id_chauffeur])}}"> modifier</a> </td>
+                <td><a class="btn btn-warning" href="{{route('modifyConductor',['id'=>$item->id_chauffeur])}}">Modifier</a></td>
             </tr>
-                        
+
         @endforeach
-    </table>    
+    </table>
 @endsection
