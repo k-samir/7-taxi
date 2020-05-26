@@ -56,7 +56,6 @@ class ChauffeurController extends Controller
         $chauffeur->no_permis = $request->input('licenceNumber');
         $chauffeur->date_expiration_permis = $request->input('licenceExpirationDate');
         $chauffeur->solde = $request->input('balance');
-        //dd($chauffeur);
         $chauffeur->save();
 
         return redirect()->route('listChauffeur');
