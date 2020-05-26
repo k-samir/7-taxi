@@ -32,11 +32,7 @@
 
 </head>
 <body id="base-body">
-<<<<<<< HEAD
 <nav class="navbar navbar-dark navbar-expand-lg bg-dark" id="mainNav">
-=======
-<nav id="navigation-bar" class="container-fluid navbar navbar-expand-lg mb-3 navbar-dark bg-dark">
->>>>>>> 80352b97926de2ffac5516f4d5a46c0ccabcab54
     <a class="navbar-brand" href="{{route('home')}}">7-Taxi</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" data-toogle="collapse" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -69,12 +65,8 @@
                         <a class="dropdown-item" href="{{route('createConductor')}}">Création de chauffeur</a>
                         <a class="dropdown-item" href="{{route('createClient')}}">Création de client</a>
                         <a class="dropdown-item" href="{{route('getTaxi')}}">Création de taxi</a>
-<<<<<<< HEAD
                         <a class="dropdown-item" href="{{route('createFixTarif')}}">Création de tarif fixe</a>
 
-=======
-                        <a class="dropdown-item" href="{{route('createFixTarif')}}">Création de tarif fix</a>
->>>>>>> 80352b97926de2ffac5516f4d5a46c0ccabcab54
                     </div>
                 </li>
                 <li class="nav-item dropdown font-weight-bold">
