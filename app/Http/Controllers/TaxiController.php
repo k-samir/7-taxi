@@ -42,7 +42,8 @@ class TaxiController extends Controller
 
     public function modifyTaxi(Request $request, $id){
         //recherche
-        $taxi = Taxi::where('id_taxi',$id)->first();
+        $taxi = Taxi::find($id);
+        
         //modification des valeurs
         $taxi->no_taxi = $request->input('noTaxi');
         $taxi->plaque_immatriculation = $request->input('immatriculation');
@@ -56,6 +57,7 @@ class TaxiController extends Controller
         $taxi->kilometrage_en_charge_taximetre = $request->input('taximeterMileageLaden');
         $taxi->prise_en_charge_taximetre = $request->input('taximeterAmountOfCourses');
         $taxi->save();
+        
         //redirection vers listeTaxi
         return redirect()->route('listTaxi');
     }

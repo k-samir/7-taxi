@@ -33,7 +33,7 @@ class ChauffeurController extends Controller
         $chauffeur->solde = $request->input('balance');
         $chauffeur->save();
 
-        return redirect()->route("home");
+        return redirect()->route('home');
     }
 
     public function getChauffeur(){
@@ -42,8 +42,7 @@ class ChauffeurController extends Controller
     }
 
     public function modifyConductor(Request $request,$id){
-        $chauffeur = Chauffeur::where('id_chauffeur',"=",$id)->first();
-        
+        $chauffeur = Chauffeur::find($id);
         $chauffeur->no_chauffeur = $request->input('driverNo');
         $chauffeur->prenom = $request->input('firstName');
         $chauffeur->nom = $request->input('lastName');
@@ -57,6 +56,7 @@ class ChauffeurController extends Controller
         $chauffeur->no_permis = $request->input('licenceNumber');
         $chauffeur->date_expiration_permis = $request->input('licenceExpirationDate');
         $chauffeur->solde = $request->input('balance');
+        //dd($chauffeur);
         $chauffeur->save();
 
         return redirect()->route('listChauffeur');
