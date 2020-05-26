@@ -31,10 +31,6 @@ class GetController extends Controller
      * @param Request $request
      * @return Renderable
      */
-    public function indexNo(Request $request)
-    {
-        return view('home')->with('Connected',false);
-    }
     public function index(Request $request){
         return view('home');
     }
