@@ -4,7 +4,7 @@
 @section('styles')
     <style>
         .masthead {
-            background-image: url("img/taxi-background.jpg");
+            background-image: url("{{asset("img/taxi-background.jpg")}}");
             background-position: center;
         }
     </style>
@@ -49,14 +49,18 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="text-uppercase section-heading">L'entreprise</h2>
+<<<<<<< HEAD
                     <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+=======
+                    <h3 class="section-subheading text-muted"></h3>
+>>>>>>> 80352b97926de2ffac5516f4d5a46c0ccabcab54
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-6 col-md-4 portfolio-item">
                     <a class="portfolio-link">
                         <div class="portfolio-hover"></div>
-                        <img class="img-fluid" src="img/Depositphotos_110892424_l-2015-1600x1067.jpg"></a>
+                        <img class="img-fluid" src="{{asset("img/Depositphotos_110892424_l-2015-1600x1067.jpg")}}"></a>
                     <div class="portfolio-caption">
                         <h4>Qualité</h4>
                         <p class="text-muted"></p>
@@ -67,7 +71,7 @@
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content"></div>
                         </div>
-                        <img class="img-fluid" src="img/img-texte-pv-no6.png"></a>
+                        <img class="img-fluid" src="{{asset("img/img-texte-pv-no6.png")}}"></a>
                     <div class="portfolio-caption">
                         <h4>Sûreté</h4>
                         <p class="text-muted"></p>
@@ -78,7 +82,7 @@
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content"></div>
                         </div>
-                        <img class="img-fluid" src="img/45003.jpg"></a>
+                        <img class="img-fluid" src="{{asset("img/45003.jpg")}}"></a>
                     <div class="portfolio-caption">
                         <h4>Professionalisme</h4>
                         <p class="text-muted"></p>
@@ -99,7 +103,7 @@
                 <div class="col-lg-12">
                     <ul class="list-group timeline">
                         <li class="list-group-item">
-                            <div class="timeline-image"><img class="rounded-circle img-fluid" src="img/about/1.jpg"></div>
+                            <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{asset("img/about/1.jpg")}}"></div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
                                     <h4>&nbsp;Mars 2020</h4>
@@ -111,7 +115,7 @@
                             </div>
                         </li>
                         <li class="list-group-item timeline-inverted">
-                            <div class="timeline-image"><img class="rounded-circle img-fluid" src="img/rsz_code-editoren-t.jpg"></div>
+                            <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{asset("img/rsz_code-editoren-t.jpg")}}"></div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
                                     <h4>Mai 2020</h4>
@@ -123,7 +127,7 @@
                             </div>
                         </li>
                         <li class="list-group-item">
-                            <div class="timeline-image"><img class="rounded-circle img-fluid" src="img/rsz_lancement-site-web_1212-24.jpg"></div>
+                            <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{asset("img/rsz_lancement-site-web_1212-24.jpg")}}"></div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
                                     <h4>Juin 2020</h4>

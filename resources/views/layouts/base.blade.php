@@ -24,16 +24,19 @@
     <link rel="stylesheet" href="{{ asset('css/-Login-form-Page-BS4-.css')}}">
     <link rel="stylesheet" href="{{ asset('css/Responsive-Form.css')}}">
     <style>
-        #contact{
-            background-image:url('img/map-image.png');
+        #contact {
+            background-image: url("{{asset("img/map-image.png")}}");
         }
     </style>
     @yield('styles')
 
 </head>
-
 <body id="base-body">
+<<<<<<< HEAD
 <nav class="navbar navbar-dark navbar-expand-lg bg-dark" id="mainNav">
+=======
+<nav id="navigation-bar" class="container-fluid navbar navbar-expand-lg mb-3 navbar-dark bg-dark">
+>>>>>>> 80352b97926de2ffac5516f4d5a46c0ccabcab54
     <a class="navbar-brand" href="{{route('home')}}">7-Taxi</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" data-toogle="collapse" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -66,17 +69,21 @@
                         <a class="dropdown-item" href="{{route('createConductor')}}">Création de chauffeur</a>
                         <a class="dropdown-item" href="{{route('createClient')}}">Création de client</a>
                         <a class="dropdown-item" href="{{route('getTaxi')}}">Création de taxi</a>
+<<<<<<< HEAD
                         <a class="dropdown-item" href="{{route('createFixTarif')}}">Création de tarif fixe</a>
 
+=======
+                        <a class="dropdown-item" href="{{route('createFixTarif')}}">Création de tarif fix</a>
+>>>>>>> 80352b97926de2ffac5516f4d5a46c0ccabcab54
                     </div>
                 </li>
                 <li class="nav-item dropdown font-weight-bold">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Liste des entités</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{route('modifyConductorRequest')}}">Liste des chauffeurs</button>
-                            <a class="dropdown-item" href="{{route('modifyClientRequest')}}">Liste des clients</button>
-                            <a class="dropdown-item" href="{{route('ListeTaxis')}}">Liste des taxis</button>
-                            <a class="dropdown-item" href="{{route('modifyFixTarifRequest')}}">Liste des tarifs fixes</button>
+                        <a class="dropdown-item" href="{{route('home')}}">Liste des chauffeurs</a>
+                        <a class="dropdown-item" href="{{route('home')}}">Liste des clients</a>
+                        <a class="dropdown-item" href="{{route('listTaxi')}}">Liste des taxis</a>
+                        <a class="dropdown-item" href="{{route('home')}}">Liste des tarifs fixes</a>
                     </div>
                 </li>
             @endguest
@@ -89,15 +96,15 @@
                     <button type="button" class="navigation-text dropdown-item" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="changeAutomaticColor()">Couleurs automatique</button>
                 </div>
             </li>
-            @guest
+            @if(Auth::guest() || !isset(Auth::user()->email_verified_at))
                 <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('login')}}">Connexion</a></li>
                 @if (Route::has('register'))
                     <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('register')}}">Inscription</a></li>
                 @endif
             @else
                 <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Déconnexion</a></li>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST"  hidden>@csrf</form>
-            @endguest
+                <form id="logout-form" action="{{ route('logout') }}" method="post" hidden>@csrf</form>
+            @endif
         </ul>
     </div>
 </nav>
