@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="{{ asset('css/-Login-form-Page-BS4-.css')}}">
     <link rel="stylesheet" href="{{ asset('css/Responsive-Form.css')}}">
     <style>
-        #contact {
+        #section-contactUs {
             background-image: url("{{asset("img/map-image.png")}}");
         }
     </style>
@@ -32,16 +32,16 @@
 
 </head>
 <body id="base-body">
-<nav class="navbar navbar-dark navbar-expand-lg bg-dark" id="mainNav">
+<nav id="navigation-bar" class="navbar navbar-dark navbar-expand-lg bg-dark">
     <a class="navbar-brand" href="{{route('home')}}">7-Taxi</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" data-toogle="collapse" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             @guest
-                <li class="nav-item" role="presentation"><a class="nav-link" href="/homeNo#services">SERVICES</a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="/homeNo#portfolio">L'ENTREPRISE</a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="/homeNo#about">À PROPOS</a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="/homeNo#contact">CONTACT</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('homeNoVerification')}}#services">SERVICES</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('homeNoVerification')}}#portfolio">L'ENTREPRISE</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="{{route('homeNoVerification')}}#aboutUs">À PROPOS</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="{{route('homeNoVerification')}}#section-contactUs">CONTACT</a></li>
             @else
                 <li class="nav-item dropdown font-weight-bold">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulaires de chauffeur</a>
@@ -66,7 +66,6 @@
                         <a class="dropdown-item" href="{{route('createClient')}}">Création de client</a>
                         <a class="dropdown-item" href="{{route('getTaxi')}}">Création de taxi</a>
                         <a class="dropdown-item" href="{{route('createFixTarif')}}">Création de tarif fixe</a>
-
                     </div>
                 </li>
                 <li class="nav-item dropdown font-weight-bold">
@@ -105,7 +104,7 @@
         <h1 class="mx-auto"><u>@yield('title')</u></h1>
     </div>
 @show
-<section id="contact" class="mt-1">
+<section id="section-contactUs" class="mt-1">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">

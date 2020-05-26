@@ -49,11 +49,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="text-uppercase section-heading">L'entreprise</h2>
-<<<<<<< HEAD
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-=======
                     <h3 class="section-subheading text-muted"></h3>
->>>>>>> 80352b97926de2ffac5516f4d5a46c0ccabcab54
                 </div>
             </div>
             <div class="row">
@@ -91,7 +87,7 @@
             </div>
         </div>
     </section>
-    <section id="about">
+    <section id="aboutUs">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
