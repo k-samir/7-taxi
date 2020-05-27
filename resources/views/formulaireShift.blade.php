@@ -16,28 +16,18 @@
         <!-- chauffeur & taxi-->
         <div class="row mb-4 justify-content-center">
             <div class="col input-group">
-                <label class="input-group-text font-weight-bold bg-transparent border-0" for="driverNo">Numéro de conducteur</label>
-                <input id="driverNo" class="form-control font-weight-bold bg-transparent border-0" value="{{\Illuminate\Support\Facades\Auth::id()}}" type="text" name="driverNo" minlength="1" readonly disabled>
+                    <!--Nom & prenom du chauffeur-->
+                    <label class="input-group-text" for="driverNo">Nom & prénom</label>
+                    <input id="driverNo" class="form-control mr-2" type="text" name="nom_chauffeur">
+                    <input id="driverNo" class="form-control" type="text" name="pn_chauffeur">
             </div>
-
             <div class="col input-group">
-            <label class="input-group-text" for="taxiNo">Numéro du taxi</label>
-    <select class="form-control" id="taxiNo">
-     
-
-      @foreach($taxis as $taxi)
-
-<option>{{ $taxi->no_taxi }}</option>
-      @endforeach
-     
-    </select>
-  </div>
-
-
-            <div class="col input-group">
-                <label class="input-group-text" for="taxiNo">Numéro du taxi</label>
-                <input id="taxiNo" class="form-control" value="{{old('taxiNo')}}" type="text" name="taxiNo" minlength="1" required>
-            </div>
+            <select class="form-control" name="taxiNo">
+            @foreach($taxis as $taxi)
+                <option>{{ $taxi->no_taxi }}</option>
+            @endforeach
+            </select>
+        </div>
 
 
             <div class="w-100"></div>
@@ -45,14 +35,14 @@
             <div class="col-5"><span class="text-danger text-sm-right">@error('taxiNo'){{$message}}@enderror</span></div>
         </div>
         <!--Date-->
-        <div class="row mb-4 justify-content-center">
-            <div class="col-5 input-group">
+        <div class="row mb-4">
+            <div class="col input-group">
                 <label class="input-group-text" for="dateStart">Date (Début)</label>
-                <input id="dateStart" class="form-control" value="{{old('dateStart', $todayDate)}}" type="datetime-local" name="dateStart" placeholder="jj/mm/aaaa hh:mm" required>
+                <input id="dateStart" class="form-control" value="{{old('dateStart', $todayDate)}}" type="datetime-local" name="dateStart" placeholder="jj/mm/aaaa hh:mm" onblur="dateVerification()" required>
             </div>
-            <div class="col-5 input-group">
+            <div class="col input-group">
                 <label class="input-group-text" for="dateEnd">Date (Fin)</label>
-                <input id="dateEnd" class="form-control" value="{{old('dateEnd', $todayDate)}}" type="datetime-local" name="dateEnd" placeholder="jj/mm/aaaa hh:mm" required>
+                <input id="dateEnd" class="form-control" value="{{old('dateEnd', $todayDate)}}" type="datetime-local" name="dateEnd" placeholder="jj/mm/aaaa hh:mm" onblur="dateVerification()" required>
             </div>
             <div class="w-100"></div>
             <div class="col-5"><span class="text-danger text-sm-right">@error('dateStart'){{$message}}@enderror</span></div>

@@ -1,6 +1,6 @@
 import {helper} from "./helper";
 import containInvalidClass = helper.containInvalidClass;
-
+import dateController = helper.dateController;
 export namespace src.form {
 
     function getID(id: string): HTMLInputElement {
@@ -47,6 +47,13 @@ export namespace src.form {
             btn.disabled = containInvalidClass();
         }
 
+        public dateVerification(dateStart:string , dateEnd:string){
+            let start = new Date(getID(dateStart).value);
+            let end = new Date(getID(dateEnd).value);
+            updateValidation((dateController(start) && dateController(end) && (end.getTime()-start.getTime() >0)),dateStart,dateEnd);
+            btn.disabled = containInvalidClass();
+        }
+
         public updateTotalDepense(): void {
             getID('totalExpenses').value = (convertToFloat('gaz') + convertToFloat('credit') + convertToFloat('various') + convertToFloat('salary')).toString();
             this.updateTotalNet();
@@ -88,4 +95,5 @@ import FormDriver = src.form.FormDriver;
     window['setDifferenceOnAmountOfPassengers'] = () => form.setDifference("startingAmountOfPassengers", "endingAmountOrPassengers", "totalAmountOfPassengers");
     window['setDifferenceOnMileageInVehicle'] = () => form.setDifference("startingMileageInVehicle", "endingMileageInVehicle", "totalMileageInVehicle");
     window['updateTotalDepense'] = () => form.updateTotalDepense();
+    window['dateVerification'] = () => form.dateVerification('dateStart','dateEnd');
 })();

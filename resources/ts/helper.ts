@@ -9,4 +9,11 @@ export module helper{
     }
     return false;
     }
+
+    export function dateController(date) : boolean{
+        let now = new Date().getTime();
+        let verified = new Date(date).getTime();
+        console.log((now-verified)>0)
+        return ((now-verified)>0)
+    }
 }
