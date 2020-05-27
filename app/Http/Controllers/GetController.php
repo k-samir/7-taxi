@@ -40,8 +40,9 @@ class GetController extends Controller
 
     public function addConductorShift(Request $request): Renderable
     {
+        date_default_timezone_set('America/New_York');
         return view("formulaireShift")->with([
-            'todayDate' => Carbon::now()->toDateString() . "T" . Carbon::now()->toTimeString("minute"),
+            'todayDate' => date('Y-m-d\TG:i'),
             'taxis' => Taxi::All(),
         ]);
     }
