@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes();
 Auth::routes(['verify' => true]);
 Route::pattern('id', '\d+');
 
@@ -25,37 +24,44 @@ Route::get('/', function () {
 Route::get('/homeNo', 'GetController@index')->name('homeNoVerification');
 Route::prefix('taxi')->middleware(['verified', 'auth'])->group(function () {
     Route::get('home', 'GetController@index')->name('home');
-    //shift
+
+    //Routes for the shift
     Route::get('form/create/shift', 'GetController@addConductorShift')->name('addConductorShift');
     Route::post('form/create/shift', 'FormDriverController@addConductorShift');
 
-    //chauffeur
+
+    //Routes for the conductor
     Route::get('form/create/conductor', 'GetController@createConductor')->name('createConductor');
     Route::post('form/create/conductor', 'ChauffeurController@createChauffeur');
     Route::get('form/modify/conductor_{id}', 'GetController@modifyConductor')->name('modifyConductor');
     Route::post('form/modify/conductor_{id}', 'ChauffeurController@modifyConductor');
-    
-    //client
+
+
+    //Routes for the client
     Route::get('form/create/client', 'GetController@createClient')->name("createClient");
     Route::post('form/create/client', 'ClientController@createClient');
     Route::get('form/modify/client_{id}', 'GetController@modifyClient')->name('modifyClient');
     Route::post('form/modify/client_{id}', 'ClientController@modifyClient');
 
 
-    //tarif fixe
+    //Routes for the fix tarif
     Route::get('form/create/fixTarif', 'GetController@createFixTarif')->name('createFixTarif');
     Route::post('form/create/fixTarif', 'FixTarifController@createFixTarif');
     Route::get('form/modify/fixTarif_{id}', 'GetController@modifyFixTarif')->name('modifyFixTarif');
     Route::post('form/modify/fixTarif_{id}', 'FixTarifController@modifyFixTarif');
 
-    //taxi
+
+    //Routes for the taxi
     Route::get('form/get/taxi', 'GetController@createTaxi')->name('getTaxi');
     Route::post('form/create/taxi', 'TaxiController@createTaxi')->name('createTaxi');
     Route::get('form/modify/taxi_{id}', 'GetController@modifyTaxi')->name('modifyTaxi');
     Route::post('form/modify/taxi_{id}', 'TaxiController@modifyTaxi');
 
-    //list
-    Route::get('form/list/taxi','TaxiController@getTaxis')->name('listTaxi');
-    Route::get('form/list/chauffeur','ChauffeurController@getChauffeur')->name('listChauffeur');
+
+    //Routes for the lists
+    Route::get('list/taxi', 'TaxiController@getTaxis')->name('listTaxi');
+    Route::get('list/chauffeur', 'ChauffeurController@getChauffeur')->name('listChauffeur');
+    Route::get('list/users', 'GetController@getListOfUsers')->name('listUsers');
+    Route::post('list/users', 'GetController@getListOfUsers');
 
 });

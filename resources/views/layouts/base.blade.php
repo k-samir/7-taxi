@@ -32,8 +32,8 @@
 
 </head>
 <body id="base-body">
-<nav class="navbar navbar-dark navbar-expand-lg bg-dark" id="mainNav">
-    <a class="navbar-brand" href="{{route('home')}}">7-Taxi</a>
+<nav id="navigation-bar" class="navbar navbar-dark navbar-expand-lg bg-dark">
+    <a class="navbar-brand text-warning" href="{{route('home')}}">7-Taxi</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" data-toogle="collapse" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
@@ -48,7 +48,6 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{route('addConductorShift')}}">Ajout de shift</a>
                         <a class="dropdown-item" href="{{route('createConductor')}}">Création de chauffeur</a>
-                        <div class="dropdown-divider"></div>
                     </div>
                 </li>
                 <li class="nav-item dropdown font-weight-bold">
@@ -63,6 +62,7 @@
                 <li class="nav-item dropdown font-weight-bold">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Liste des entités</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{route('listUsers')}}">Liste des utilisateurs</a>
                         <a class="dropdown-item" href="{{route('listChauffeur')}}">Liste des chauffeurs</a>
                         <a class="dropdown-item" href="{{route('home')}}">Liste des clients</a>
                         <a class="dropdown-item" href="{{route('listTaxi')}}">Liste des taxis</a>
@@ -96,7 +96,7 @@
         <h1 class="mx-auto"><u>@yield('title')</u></h1>
     </div>
 @show
-<section id="contact" style="background-image:url('img/map-image.png');margin-top:2rem">
+<section id="section-contactUs" class="mt-1">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -148,7 +148,7 @@
 </footer>
 <scripts>
     <script src="{{asset('js/agency.js')}}"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="{{asset('js/base.js')}}" defer></script>

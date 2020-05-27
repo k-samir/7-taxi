@@ -18,4 +18,5 @@ mix
 
     .ts('resources/ts/base.ts', 'public/js')
     .ts('resources/ts/formDriver.ts', 'public/js')
+    .ts('resources/ts/listUsers.ts', 'public/js')
 ;
