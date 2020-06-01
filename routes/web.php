@@ -21,6 +21,12 @@ Route::get('/', function () {
     return redirect()->route('homeNoVerification');
 });
 
+Route::get('/test', function () {
+    return view('datagrid');
+});
+
+
+
 Route::get('/homeNo', 'GetController@index')->name('homeNoVerification');
 Route::prefix('taxi')->middleware(['verified', 'auth'])->group(function () {
     Route::get('home', 'GetController@index')->name('home');
