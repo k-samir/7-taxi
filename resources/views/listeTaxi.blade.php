@@ -5,8 +5,8 @@
         <tr>
             <th>Numéro</th>
             <th>Immatriculation</th>
-            <th>assurance</th>
-            <th>date de circulation</th>
+            <th>Assurance</th>
+            <th>Date de circulation</th>
             <th></th>
         </tr>
         @foreach ($taxis as $taxi)

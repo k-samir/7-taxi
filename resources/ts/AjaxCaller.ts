@@ -2,23 +2,24 @@ export module ajax {
     const $ = window['$'];
 
     export abstract class Method {
-        private readonly __method:string;
-        private constructor(method:string) {
-            this.__method=method;
+        private readonly __method: string;
+
+        private constructor(method: string) {
+            this.__method = method;
         }
 
-        public static readonly GET = new class extends Method{
+        public static readonly GET = new class extends Method {
             constructor() {
                 super("get");
             }
         };
-        public static readonly POST = new class extends Method{
+        public static readonly POST = new class extends Method {
             constructor() {
                 super("post");
             }
         };
 
-        public get method():string{
+        public get method(): string {
             return this.__method;
         }
     }
@@ -50,7 +51,7 @@ export module ajax {
         }
 
 
-        protected abstract ajaxData():object
+        protected abstract ajaxData(): object
 
 
         public newCall(): void {
@@ -100,9 +101,9 @@ export module ajax {
 
         protected ajaxData(): object {
             return {
-                method: this.form.attr('method'),
-                url: this.form.attr('action'),
-                data: this.form.serialize(undefined),
+                method: this.form.getAttribute('method'),
+                url: this.form.getAttribute('action'),
+                data: $(this.form).serialize(undefined),
             };
         }
 

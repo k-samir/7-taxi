@@ -16,23 +16,22 @@
         <!-- chauffeur & taxi-->
         <div class="row mb-4 justify-content-center">
             <div class="col input-group">
-                    <!--Nom & prenom du chauffeur-->
-                    <label class="input-group-text" for="driverNo">Nom & prénom</label>
-                    <input id="driverNo" class="form-control mr-2" type="text" name="nom_chauffeur">
-                    <input id="driverNo" class="form-control" type="text" name="pn_chauffeur">
+                <label class="input-group-text" for="driverNo">Chauffeur</label>
+                <select class="form-control" name="selectChauffeur" id="selectChauffeur" onchange="updateRealRecipe()">
+                    @foreach ($chauffeurs as $chauffeur)
+                        <option commission={{$chauffeur->commission}}> {{$chauffeur->prenom ." ".$chauffeur->nom}} </option>
+                    @endforeach
+                </select>
             </div>
             <div class="col input-group">
+                <label class="input-group-text" for="driverNo">Taxi</label>
             <select class="form-control" name="taxiNo">
-            @foreach($taxis as $taxi)
-                <option>{{ $taxi->no_taxi }}</option>
-            @endforeach
+                @foreach($taxis as $taxi)
+                    <option>{{ $taxi->no_taxi }}</option>
+                @endforeach
             </select>
-        </div>
-
-
+            </div>
             <div class="w-100"></div>
-            <div class="col"></div>
-            <div class="col-5"><span class="text-danger text-sm-right">@error('taxiNo'){{$message}}@enderror</span></div>
         </div>
         <!--Date-->
         <div class="row mb-4">
@@ -114,7 +113,7 @@
             <div class="col-3"></div>
             <div class="col-6 input-group">
                 <label class="input-group-text font-weight-bold bg-transparent border-0">Salaire</label>
-                <input id="salary" class="form-control font-weight-bold bg-transparent border-0" type="number" readonly disabled>
+                <input id="salary" class="form-control font-weight-bold bg-transparent border-0" type="number" step="0.01" readonly disabled>
             </div>
         </div>
         <!--Dépenses(gaz, credit, divers)-->
@@ -140,11 +139,11 @@
         <div class="row mb-4 justify-content-center">
             <div class="col input-group">
                 <label class="input-group-text font-weight-bold bg-transparent border-0" for="totalExpenses">Total des dépense</label>
-                <input id="totalExpenses" class="form-control font-weight-bold bg-transparent border-0" type="number" name="totalExpenses" readonly disabled>
+                <input id="totalExpenses" class="form-control font-weight-bold bg-transparent border-0" type="number" step="0.01" name="totalExpenses" readonly disabled>
             </div>
             <div class="col input-group">
                 <label class="input-group-text font-weight-bold bg-transparent border-0" for="totalNet">Total Net</label>
-                <input id="totalNet" class="form-control font-weight-bold bg-transparent border-0" type="number" name="totalNet" readonly disabled>
+                <input id="totalNet" class="form-control font-weight-bold bg-transparent border-0" type="number" step="0.01" name="totalNet" readonly disabled>
             </div>
         </div>
         <!--Envoyer-->
@@ -157,6 +156,5 @@
 @endsection
 
 @section('after-scripts')
-    <script>var commission = {{$commission??0.36}}</script>
     <script src="{{asset('js/formDriver.js')}}" defer></script>
 @endsection

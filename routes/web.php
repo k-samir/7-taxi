@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Formulaire;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,11 +22,9 @@ Route::get('/', function () {
     return redirect()->route('homeNoVerification');
 });
 
-Route::get('/test', function () {
-    return view('datagrid');
+Route::get('datagrid', function () {
+    return view('datagrid')->with('formulaires', Formulaire::all());//https://datatables.net/download/
 });
-
-
 
 Route::get('/homeNo', 'GetController@index')->name('homeNoVerification');
 Route::prefix('taxi')->middleware(['verified', 'auth'])->group(function () {
@@ -67,7 +66,8 @@ Route::prefix('taxi')->middleware(['verified', 'auth'])->group(function () {
     //Routes for the lists
     Route::get('list/taxi', 'TaxiController@getTaxis')->name('listTaxi');
     Route::get('list/chauffeur', 'ChauffeurController@getChauffeur')->name('listChauffeur');
+
     Route::get('list/users', 'GetController@getListOfUsers')->name('listUsers');
-    Route::post('list/users', 'GetController@getListOfUsers');
+    Route::post('list/modify/user_{id}', 'ChangeUserRoleController@changeRole')->name('changeUser');
 
 });

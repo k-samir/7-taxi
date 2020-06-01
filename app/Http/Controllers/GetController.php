@@ -6,7 +6,6 @@ use App\Chauffeur;
 use App\Client;
 use App\Taxi;
 use App\User;
-use Carbon\Carbon;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 
@@ -44,6 +43,7 @@ class GetController extends Controller
         return view("formulaireShift")->with([
             'todayDate' => date('Y-m-d\TG:i'),
             'taxis' => Taxi::All(),
+            'chauffeurs' => Chauffeur::all()
         ]);
     }
 
