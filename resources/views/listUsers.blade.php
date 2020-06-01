@@ -2,13 +2,8 @@
 
 @section('title',"Liste des rôles des utilisateurs")
 
-@section('after-script')
-    <script>
-        function changeRole(id) {
-            let form = document.getElementById("changeForm-"+id);
-            $.ajax()
-        }
-    </script>
+@section('after-scripts')
+    <script src="{{asset('js/listUsers.js')}}"></script>
 @endsection
 
 
@@ -30,11 +25,10 @@
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
                 <td>
-                    <form id="changeForm-{{$user->id}}" type="post" action="{{route('listUsers')}}">
-                        <label for="role" hidden></label>@php($currentRole = $user->role??'none')
-                        <select id="role" class="form-control" name="role">
-                            <option value="none" disabled{{$currentRole=='none'?" selected":""}}>Veuillez choisir un rôle
-                            </option>
+                    <form id="changeForm-{{$user->id}}" type="post" action="{{route('listUsers')}}" class="changeForm">
+                        <label for="role-{{$user->id}}" hidden></label>@php($currentRole = $user->role??'none')
+                        <select id="role-{{$user->id}}" class="form-control" name="role-{{$user->id}}" class="role">
+                            <option value="none" disabled{{$currentRole=='none'?" selected":""}}>Veuillez choisir un rôle</option>
                             <option value="client"{{$currentRole=='client'?" selected":""}}>Client</option>
                             <option value="conductor"{{$currentRole=='conductor'?" selected":""}}>Conducteur</option>
                             <option value="admin"{{$currentRole=='admin'?" selected":""}}>Administrateur</option>

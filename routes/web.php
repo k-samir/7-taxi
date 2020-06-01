@@ -23,7 +23,7 @@ Route::get('/', function () {
 });
 
 Route::get('datagrid', function () {
-    return view('datagrid')->with('formulaires', Formulaire::all());
+    return view('datagrid')->with('formulaires', Formulaire::all());//https://datatables.net/download/
 });
 
 Route::get('/homeNo', 'GetController@index')->name('homeNoVerification');
@@ -66,6 +66,7 @@ Route::prefix('taxi')->middleware(['verified', 'auth'])->group(function () {
     //Routes for the lists
     Route::get('list/taxi', 'TaxiController@getTaxis')->name('listTaxi');
     Route::get('list/chauffeur', 'ChauffeurController@getChauffeur')->name('listChauffeur');
+
     Route::get('list/users', 'GetController@getListOfUsers')->name('listUsers');
     Route::post('list/users', 'GetController@getListOfUsers');
 
