@@ -28,15 +28,15 @@ export namespace src.form {
     export const btn = document.forms['form_shift'].getElementsByTagName('button')[0];
     export class FormDriver {
 
-        private readonly commission = window['commission'];
-
-
         /**
          * Update the value of the element by id 'salary'
          * to the value 'realRecipe' multiplied by the commission receive.
          */
         public updateSalary(): void {
-            getID("salary").value = String(convertToFloat("realRecipe") * this.commission);
+            //recupration de la commission
+            const comm = <HTMLSelectElement>document.getElementById('selectChauffeur');
+            const commission = parseFloat(comm.options[comm.selectedIndex].getAttribute('commission'));
+            getID("salary").value = String(convertToFloat("realRecipe") * commission);
             this.updateTotalDepense();
         }
         
@@ -71,7 +71,6 @@ export namespace src.form {
             let startingRecipe = convertToFloat('startRecipe');
             let endingRecipe = convertToFloat('finalRecipe');
             let fixPrice = convertToFloat('fixPrice');
-
             let realRecipe = endingRecipe - startingRecipe + fixPrice;
             getID('realRecipe').value = String(realRecipe);
             this.updateSalary();
