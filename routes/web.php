@@ -68,6 +68,6 @@ Route::prefix('taxi')->middleware(['verified', 'auth'])->group(function () {
     Route::get('list/chauffeur', 'ChauffeurController@getChauffeur')->name('listChauffeur');
 
     Route::get('list/users', 'GetController@getListOfUsers')->name('listUsers');
-    Route::post('list/users', 'GetController@getListOfUsers');
+    Route::post('list/modify/user_{id}', 'ChangeUserRoleController@changeRole')->name('changeUser');
 
 });
