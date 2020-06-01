@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Formulaire;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,7 @@ Route::get('/', function () {
 });
 
 Route::get('datagrid', function () {
-    return view('datagrid');
+    return view('datagrid')->with('formulaires', Formulaire::all());
 });
 
 Route::get('/homeNo', 'GetController@index')->name('homeNoVerification');
