@@ -5,7 +5,7 @@ export namespace src.form {
 
     export class ListUsers {
 
-        public changeRole(id: number): void {
+        public static changeRole(id: number): void {
             new FormAjaxCaller(<HTMLFormElement>document.getElementById("changeForm-" + id)).newCall();
         }
 
@@ -14,7 +14,7 @@ export namespace src.form {
 }
 
 import ListUsers = src.form.ListUsers;
+
 (() => {
-    let listUsers = new ListUsers();
-    window['changeRole'] = (id) => listUsers.changeRole(id);
+    window['changeRole'] = (id: number) => ListUsers.changeRole(id);
 })();
