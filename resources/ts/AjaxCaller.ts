@@ -35,16 +35,25 @@ export module ajax {
         }
 
 
+        public setActionOnSuccess(callback: (success: object) => void): this
+        public setActionOnSuccess(callback: (success: object, textStatus: string) => void): this
+        public setActionOnSuccess(callback: (success: object, textStatus: string, jQueryXMLHTTPRequest) => void): this
         public setActionOnSuccess(callback: (success: object, textStatus?: string, jQueryXMLHTTPRequest?) => void): this {
             this.__callbackActionOnSuccess = callback;
             return this;
         }
 
+        public setActionOnError(callback: (error: object) => void): this
+        public setActionOnError(callback: (error: object, textStatus: string) => void): this
+        public setActionOnError(callback: (error: object, textStatus: string, jQueryXMLHTTPRequest) => void): this
         public setActionOnError(callback: (error: object, textStatus?: string, jQueryXMLHTTPRequest?) => void): this {
             this.__callbackActionOnError = callback;
             return this;
         }
 
+        public setOnError(callback: (jQueryXMLHTTPRequest) => void): this
+        public setOnError(callback: (jQueryXMLHTTPRequest, textStatus: string) => void): this
+        public setOnError(callback: (jQueryXMLHTTPRequest, textStatus: string, errorThrown) => void): this
         public setOnError(callback: (jQueryXMLHTTPRequest, textStatus?: string, errorThrown?) => void): this {
             this.__callbackOnError = callback;
             return this;
