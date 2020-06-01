@@ -2,13 +2,8 @@
 
 @section('title',"Liste des rôles des utilisateurs")
 
-@section('after-script')
-    <script>
-        function changeRole(id) {
-            let form = document.getElementById("changeForm-"+id);
-            $.ajax()
-        }
-    </script>
+@section('after-scripts')
+    <script src="{{asset('js/listUsers.js')}}"></script>
 @endsection
 
 
