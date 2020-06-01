@@ -23,12 +23,10 @@
     </tbody>
 </table>
 
+@endsection
 
-<script>
-$(document).ready( function () {
-    $('#myTable').DataTable();
-} );
-
-</script>
-
+@section('after-scripts')
+    <script>
+        $(document).ready( () => $('#myTable').DataTable());
+    </script>
 @endsection
