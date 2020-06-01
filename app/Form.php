@@ -6,6 +6,7 @@ use App\Http\Requests\FormRequest;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Chauffeur;
 
 class Form extends Model
 {
@@ -13,8 +14,10 @@ class Form extends Model
 
     public function addForm(FormRequest $request)
     {
+        $chauffeur = explode(" ",$request->input('selectChauffeur'));
+        $id_chauffeur = Chauffeur::where('prenom','=',$chauffeur[0])->where('nom','=',$chauffeur[1])->first()->id_chauffeur;
         DB::table("formulaire")->insert([
-            "id_chauffeur" => Auth::id(),
+            "id_chauffeur" => $id_chauffeur,
             "id_taxi" => $request['taxiNo'],
             "date_debut" => $request['dateStart'],
             "date_fin" => $request['dateEnd'],
