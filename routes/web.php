@@ -23,7 +23,7 @@ Route::get('/', function () {
 });
 
 Route::get('datagrid', function () {
-    return view('datagrid')->with('formulaires', Formulaire::all());
+    return view('datagrid')->with('formulaires', Formulaire::all());//https://datatables.net/download/
 });
 
 Route::get('/homeNo', 'GetController@index')->name('homeNoVerification');
