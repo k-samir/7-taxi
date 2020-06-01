@@ -41,6 +41,6 @@
 
 @section('after-scripts')
     <script>
-        $(document).ready( () => $('#myTable').DataTable());
+        $(document).ready(() => $('#myTable').DataTable());
     </script>
 @endsection
