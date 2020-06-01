@@ -101,9 +101,9 @@ export module ajax {
 
         protected ajaxData(): object {
             return {
-                method: this.form.attr('method'),
-                url: this.form.attr('action'),
-                data: this.form.serialize(undefined),
+                method: this.form.getAttribute('method'),
+                url: this.form.getAttribute('action'),
+                data: $(this.form).serialize(undefined),
             };
         }
 
