@@ -16,5 +16,9 @@ export namespace src.form {
 import ListUsers = src.form.ListUsers;
 
 (() => {
+    let $ = window['$'];
+
     window['changeRole'] = (id: number) => ListUsers.changeRole(id);
+
+    $(document).ready(() => $('#listUsers').DataTable());
 })();
