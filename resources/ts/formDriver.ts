@@ -39,6 +39,14 @@ export namespace src.form {
             getID("salary").value = String(convertToFloat("realRecipe") * commission);
             this.updateTotalDepense();
         }
+        public updateTaximetreSpecs() : void{
+            const taxi = <HTMLSelectElement>document.getElementById('taxiNo');
+            getID('startingMillage').value= taxi.options[taxi.selectedIndex].getAttribute('millage');
+            getID('startingMileageLaden').value= taxi.options[taxi.selectedIndex].getAttribute('millage_charge');
+            getID('startingAmountOfPassengers').value= taxi.options[taxi.selectedIndex].getAttribute('prise_en_charge');
+            getID('startingMileageInVehicle').value= taxi.options[taxi.selectedIndex].getAttribute('millage_auto');
+            getID('startRecipe').value= taxi.options[taxi.selectedIndex].getAttribute('recette');  
+        }
         
         public setDifference(startingID: string, endingID: string, elementToSetID: string): void {
             let diff = convertToFloat(endingID) - convertToFloat(startingID);
@@ -95,4 +103,5 @@ import FormDriver = src.form.FormDriver;
     window['setDifferenceOnMileageInVehicle'] = () => form.setDifference("startingMileageInVehicle", "endingMileageInVehicle", "totalMileageInVehicle");
     window['updateTotalDepense'] = () => form.updateTotalDepense();
     window['dateVerification'] = () => form.dateVerification('dateStart','dateEnd');
+    window['updateTaximetreSpecs'] = () =>form.updateTaximetreSpecs();
 })();
