@@ -23,7 +23,7 @@ Route::get('/', function () {
 });
 
 Route::get('datagrid', function () {
-    return view('datagrid')->with('formulaires', Formulaire::all());//https://datatables.net/download/
+    return view('datagrid')->with('formulaires', Formulaire::all()); //https://datatables.net/download/
 });
 
 Route::get('/homeNo', 'GetController@index')->name('homeNoVerification');
@@ -32,7 +32,7 @@ Route::prefix('taxi')->middleware(['verified', 'auth'])->group(function () {
 
     //Routes for the shift
     Route::get('form/create/shift', 'GetController@addConductorShift')->name('addConductorShift');
-    Route::post('form/create/shift', 'FormDriverController@addConductorShift');
+    Route::post('form/create/shift', 'FormShiftController@addShift');
 
 
     //Routes for the conductor
