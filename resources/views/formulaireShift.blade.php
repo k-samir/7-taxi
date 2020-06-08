@@ -120,20 +120,30 @@
         <div class="row mb-4 justify-content-center">
             <div class="col input-group">
                 <label class="input-group-text" for="gaz">Gaz</label>
-                <input id="gaz" class="form-control" value="{{old('gaz')}}" type="number" name="gaz" min="0" oninput="updateTotalDepense()">
+                <input id="gaz" class="form-control" value="0" type="number" name="gaz" min="0" oninput="updateTotalDepense()">
             </div>
             <div class="col input-group">
                 <label class="input-group-text" for="credit">Crédit</label>
-                <input id="credit" class="form-control" value="{{old('credit')}}" type="number" name="credit" min="0" oninput="updateTotalDepense()">
+                <input id="somme_credit" class="form-control" value="0" type="number" name="somme_credit"  min="0" oninput="updateTotalDepense()" readonly>
             </div>
             <div class="col input-group">
                 <label class="input-group-text" for="various">Divers</label>
-                <input id="various" class="form-control" value="{{old('various')}}" type="number" name="various" min="0" oninput="updateTotalDepense()">
+                <input id="various" class="form-control" value="0" type="number" name="various" min="0" oninput="updateTotalDepense()">
             </div>
             <div class="w-100"></div>
             <div class="col"><span class="text-danger text-sm-right">@error('gaz'){{$message}}@enderror</span></div>
             <div class="col"><span class="text-danger text-sm-right">@error('credit'){{$message}}@enderror</span></div>
             <div class="col"><span class="text-danger text-sm-right">@error('various'){{$message}}@enderror</span></div>
+        </div>
+
+        <div class="row mb-4 justify-content-center">
+            <div class="input-group">
+                <label class="input-group-text">Crédits</label>
+                <div class="input-group-prepend" id="credits">
+                    <input type="number" id="credit" name="credit[]" class="form-control" oninput="addCredits()"> 
+                </div>
+                <button class="ml-3" onclick="addInputCredit()" type="button">+</button>
+              </div>
         </div>
         <!--Totaux (dépense/net)-->
         <div class="row mb-4 justify-content-center">
