@@ -25,9 +25,9 @@
             </div>
             <div class="col input-group">
                 <label class="input-group-text" for="driverNo">Taxi</label>
-            <select class="form-control" name="taxiNo">
+            <select class="form-control" name="taxiNo" id="taxiNo" oninput ="updateTaximetreSpecs()">
                 @foreach($taxis as $taxi)
-                    <option>{{ $taxi->no_taxi }}</option>
+            <option millage={{$taxi->kilometrage_taximetre}} millage_charge={{$taxi->kilometrage_en_charge_taximetre}} prise_en_charge={{$taxi->prise_en_charge_taximetre}} millage_auto={{$taxi->kilometrage_taxi}} recette={{$taxi->recette_taximetre}} >{{ $taxi->no_taxi }}</option>
                 @endforeach
             </select>
             </div>
@@ -51,7 +51,7 @@
         <div class="row mb-4 justify-content-center">
             <div class="col-9 input-group">
                 <label class="input-group-text" for="startRecipe">Recette</label>
-                <input id="startRecipe" class="form-control" value="{{old('startRecipe')}}" type="number" name="startRecipe" min="0" placeholder="Initiale" required oninput="updateRealRecipe()">
+                <input id="startRecipe" class="form-control" value="{{$taxis[0]->recette_taximetre}}" type="number" name="startRecipe" min="0" placeholder="Initiale" required oninput="updateRealRecipe()">
                 <label class="input-group-text" for="finalRecipe" hidden></label>
                 <input id="finalRecipe" class="form-control" value="{{old('finalRecipe')}}" type="number" name="finalRecipe" min="0" placeholder="Finale" required oninput="updateRealRecipe()">
             </div>
@@ -84,25 +84,25 @@
             <tbody>
                 <tr>
                     <th scope="row">Millage</th>
-                    <td><input id="startingMillage" class="form-control w-75" type="number" name="startingMillage" oninput="setDifferenceOnMillage()" required></td>
+                <td><input id="startingMillage" class="form-control w-75" type="number" value = "{{$taxis[0]->kilometrage_taximetre}}" name="startingMillage" oninput="setDifferenceOnMillage()" required></td>
                     <td><input id="endingMillage" class="form-control w-75" type="number" name="endingMillage" oninput="setDifferenceOnMillage()" required></td>
                     <td><label id="totalMillage" type="number"></label></td>
                 </tr>
                 <tr>
                     <th scope="row">Millage en charge</th>
-                    <td><input id="startingMileageLaden" class="form-control w-75" type="number" name="startingMileageLaden" oninput="setDifferenceOnMillageLaden()" required></td>
+                    <td><input id="startingMileageLaden" class="form-control w-75" type="number" value="{{$taxis[0]->kilometrage_en_charge_taximetre}}" name="startingMileageLaden" oninput="setDifferenceOnMillageLaden()" required></td>
                     <td><input id="endingMileageLaden" class="form-control w-75" type="number" name="endingMileageLaden" oninput="setDifferenceOnMillageLaden()" required></td>
                     <td><label id="totalMileageLaden" type="number"></label></td>
                 </tr>
                 <tr>
                     <th scope="row">Prise en charge</th>
-                    <td><input id="startingAmountOfPassengers" class="form-control w-75" type="number" name="startingAmountOfPassengers" oninput="setDifferenceOnAmountOfPassengers()" required></td>
+                    <td><input id="startingAmountOfPassengers" class="form-control w-75" type="number" value="{{$taxis[0]->prise_en_charge_taximetre}}" name="startingAmountOfPassengers" oninput="setDifferenceOnAmountOfPassengers()" required></td>
                     <td><input id="endingAmountOrPassengers" class="form-control w-75" type="number" name="endingAmountOrPassengers" oninput="setDifferenceOnAmountOfPassengers()" required></td>
                     <td><label id="totalAmountOfPassengers" type="number"></label></td>
                 </tr>
                 <tr>
                     <th scope="row">Millage auto</th>
-                    <td><input id="startingMileageInVehicle" class="form-control w-75" type="number" name="startingMileageInVehicle" oninput="setDifferenceOnMileageInVehicle()" required></td>
+                    <td><input id="startingMileageInVehicle" class="form-control w-75" type="number" value="{{$taxis[0]->kilometrage_taxi}}" name="startingMileageInVehicle" oninput="setDifferenceOnMileageInVehicle()" required></td>
                     <td><input id="endingMileageInVehicle" class="form-control w-75" type="number" name="endingMileageInVehicle" oninput="setDifferenceOnMileageInVehicle()" required></td>
                     <td><label id="totalMileageInVehicle" type="number"></label></td>
                 </tr>
@@ -120,20 +120,30 @@
         <div class="row mb-4 justify-content-center">
             <div class="col input-group">
                 <label class="input-group-text" for="gaz">Gaz</label>
-                <input id="gaz" class="form-control" value="{{old('gaz')}}" type="number" name="gaz" min="0" oninput="updateTotalDepense()">
+                <input id="gaz" class="form-control" value="0" type="number" name="gaz" min="0" oninput="updateTotalDepense()">
             </div>
             <div class="col input-group">
                 <label class="input-group-text" for="credit">Crédit</label>
-                <input id="credit" class="form-control" value="{{old('credit')}}" type="number" name="credit" min="0" oninput="updateTotalDepense()">
+                <input id="somme_credit" class="form-control" value="0" type="number" name="somme_credit"  min="0" oninput="updateTotalDepense()" readonly>
             </div>
             <div class="col input-group">
                 <label class="input-group-text" for="various">Divers</label>
-                <input id="various" class="form-control" value="{{old('various')}}" type="number" name="various" min="0" oninput="updateTotalDepense()">
+                <input id="various" class="form-control" value="0" type="number" name="various" min="0" oninput="updateTotalDepense()">
             </div>
             <div class="w-100"></div>
             <div class="col"><span class="text-danger text-sm-right">@error('gaz'){{$message}}@enderror</span></div>
             <div class="col"><span class="text-danger text-sm-right">@error('credit'){{$message}}@enderror</span></div>
             <div class="col"><span class="text-danger text-sm-right">@error('various'){{$message}}@enderror</span></div>
+        </div>
+
+        <div class="row mb-4 justify-content-center">
+            <div class="input-group">
+                <label class="input-group-text">Crédits</label>
+                <div class="input-group-prepend" id="credits">
+                    <input type="number" id="credit" name="credit[]" class="form-control" oninput="addCredits()"> 
+                </div>
+                <button class="ml-3" onclick="addInputCredit()" type="button">+</button>
+              </div>
         </div>
         <!--Totaux (dépense/net)-->
         <div class="row mb-4 justify-content-center">

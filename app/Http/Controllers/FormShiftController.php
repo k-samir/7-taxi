@@ -1,18 +1,16 @@
 <?php
 
-namespace App;
+namespace App\Http\Controllers;
 
-use App\Http\Requests\FormRequest;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use App\Chauffeur;
+use App\Http\Requests\FormRequest;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use App\Taxi;
 
-class Form extends Model
+class FormShiftController extends Controller
 {
-
-
-    public function addForm(FormRequest $request)
+    public function addShift(Request $request)
     {
         $chauffeur = explode(" ",$request->input('selectChauffeur'));
         $id_chauffeur = Chauffeur::where('prenom','=',$chauffeur[0])->where('nom','=',$chauffeur[1])->first()->id_chauffeur;
@@ -36,10 +34,17 @@ class Form extends Model
             "kilometrage_auto_arrivee" => $request['endingMileageInVehicle'],
 
             "depense_gaz" => $request['gaz'],
-            "depense_credit" => $request['credit'],
+            "depense_credit" => $request['somme_credit'],
             "depense_divers" => $request['various'],
         ]);
+        
+        $taxi = Taxi::where('no_taxi',$request['taxiNo'])->first();
+        $taxi->recette_taximetre < $request['finalRecipe'] ? $taxi->recette_taximetre = $request['finalRecipe']:'';
+        $taxi->kilometrage_taximetre < $request['endingMillage'] ? $taxi->kilometrage_taximetre = $request['endingMillage']:'';
+        $taxi->kilometrage_en_charge_taximetre < $request['endingMileageLaden'] ? $taxi->kilometrage_en_charge_taximetre = $request['endingMileageLaden']:'';
+        $taxi->prise_en_charge_taximetre < $request['endingAmountOrPassengers'] ? $taxi->prise_en_charge_taximetre = $request['endingAmountOrPassengers']:'';
+        $taxi->kilometrage_taxi < $request['endingMileageInVehicle'] ? $taxi->kilometrage_taxi = $request['endingMileageInVehicle']:'';
+        $taxi->save();
+        return view('home')->with(['message' => "Le conducteur a bien été ajouté"]);
     }
-
-
 }

@@ -2,7 +2,7 @@
 @section('title',"DATAGRID TEST")
 
 @section('body-content')
-<table id="myTable" class="display table table-bordered table-striped">
+<table id="myTable" class="display">
     <thead>
         <tr>
             <th>id_taxi</th>
@@ -41,6 +41,31 @@
 
 @section('after-scripts')
     <script>
-        $(document).ready(() => $('#myTable').DataTable());
+        
+
+        $(document).ready(function() {
+    // Setup - add a text input to each footer cell
+    $('#myTable thead tr').clone(true).appendTo( '#myTable thead' );
+    $('#myTable thead tr:eq(1) th').each( function (i) {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+ 
+        $( 'input', this ).on( 'keyup change', function () {
+            if ( table.column(i).search() !== this.value ) {
+                table
+                    .column(i)
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );
+ 
+    var table = $('#myTable').DataTable( {
+        orderCellsTop: true,
+        fixedHeader: true
+    } );
+} );
+
+
     </script>
 @endsection

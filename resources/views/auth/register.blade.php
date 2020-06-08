@@ -42,7 +42,8 @@
                     <span class="text-danger text-sm-right">@error('password-confirm'){{$message}}@enderror</span>
                 </div>
 
-                          
+
+
 <button class="btn btn-info mt-2" type="submit">S'inscrire</button>
 
 </form>
@@ -54,5 +55,7 @@
                 </div>
             </div>
         </div>
+
+       
         @endsection
  
