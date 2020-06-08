@@ -34,7 +34,7 @@ class FormShiftController extends Controller
             "kilometrage_auto_arrivee" => $request['endingMileageInVehicle'],
 
             "depense_gaz" => $request['gaz'],
-            "depense_credit" => $request['credit'],
+            "depense_credit" => $request['somme_credit'],
             "depense_divers" => $request['various'],
         ]);
         

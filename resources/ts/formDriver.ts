@@ -63,7 +63,7 @@ export namespace src.form {
         }
 
         public updateTotalDepense(): void {
-            getID('totalExpenses').value = (convertToFloat('gaz') + convertToFloat('credit') + convertToFloat('various') + convertToFloat('salary')).toString();
+            getID('totalExpenses').value = (convertToFloat('gaz') + convertToFloat('somme_credit') + convertToFloat('various') + convertToFloat('salary')).toString();
             this.updateTotalNet();
         }
 
@@ -85,6 +85,26 @@ export namespace src.form {
             updateValidation(parseFloat(getID("salary").value) > 0, 'startRecipe', 'finalRecipe','fixPrice');
             btn.disabled = helper.containInvalidClass();
         }
+
+        public addInputCredit() :void{
+           let credits = getID('credits')
+           var newcredit = document.createElement('input');
+           newcredit.setAttribute('type','number');
+           newcredit.setAttribute('name','credit[]');
+           newcredit.setAttribute('class','form-control ml-3');
+           newcredit.setAttribute('oninput','addCredits()');
+           credits.appendChild(newcredit);
+        }
+
+        public addCredits():void{
+            var Sommecredit = 0;
+            var credits = document.getElementsByName('credit[]');
+            credits.forEach((credit)=>{
+                console.log((<HTMLInputElement>credit).value =="" ? 0 : (<HTMLInputElement>credit).value)
+                 Sommecredit += parseFloat((<HTMLInputElement>credit).value =="" ? "0" : (<HTMLInputElement>credit).value);
+            })
+            getID('somme_credit').value=Sommecredit.toString();
+        }
     }
 }
 
@@ -104,4 +124,6 @@ import FormDriver = src.form.FormDriver;
     window['updateTotalDepense'] = () => form.updateTotalDepense();
     window['dateVerification'] = () => form.dateVerification('dateStart','dateEnd');
     window['updateTaximetreSpecs'] = () =>form.updateTaximetreSpecs();
+    window['addInputCredit'] = () =>form.addInputCredit();
+    window['addCredits'] = () =>form.addCredits();
 })();

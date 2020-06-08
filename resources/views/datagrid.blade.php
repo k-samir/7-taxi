@@ -2,7 +2,7 @@
 @section('title',"DATAGRID TEST")
 
 @section('body-content')
-<table id="myTable" class="display table table-bordered table-striped">
+<table id="myTable" class="display">
     <thead>
         <tr>
             <th>id_taxi</th>
