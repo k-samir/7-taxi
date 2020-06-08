@@ -42,33 +42,6 @@
                     <span class="text-danger text-sm-right">@error('password-confirm'){{$message}}@enderror</span>
                 </div>
 
-                <style>
-                #radioBtn .notActive{
-    color: #3276b1;
-    background-color: #fff;
-}</style>
-
-
-<fieldset>
-   
-    <div class="toggle">
-    
-    <div id="radioBtn" class="btn-group">
-     <h4>Vous êtes : </h4>
-
-    <div style="margin-left:5px">
-
-    <a class="btn btn-primary btn-sm active" data-toggle="type" data-title="CLIENT">CLIENT</a>
-    					<a class="btn btn-primary btn-sm notActive" data-toggle="type" data-title="CHAUFFEUR">CHAUFFEUR</a>
-                        
-                        </div>
-    				</div>
-
-                        	<input type="hidden" name="type" id="type">
-
-    </div>
-</fieldset>
-
 
 
 <button class="btn btn-info mt-2" type="submit">S'inscrire</button>
@@ -83,14 +56,6 @@
             </div>
         </div>
 
-        <script>
-        $('#radioBtn a').on('click', function(){
-    var sel = $(this).data('title');
-    var tog = $(this).data('toggle');
-    $('#'+tog).prop('value', sel);
-    
-    $('a[data-toggle="'+tog+'"]').not('[data-title="'+sel+'"]').removeClass('active').addClass('notActive');
-    $('a[data-toggle="'+tog+'"][data-title="'+sel+'"]').removeClass('notActive').addClass('active');
-})</script>
+       
         @endsection
  
