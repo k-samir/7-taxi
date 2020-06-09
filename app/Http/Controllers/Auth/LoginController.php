@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use \Illuminate\Auth\Middleware\EnsureEmailIsVerified;
-
+use App\User;
+use Illuminate\Support\Facades\Auth;
+use PhpOption\None;
+use Symfony\Component\HttpFoundation\Request;
 class LoginController extends Controller
 {
     /*
@@ -34,8 +37,16 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Request $request)
     {
-        //$this->middleware('guest')->except(['logout','verified']);
+        if(explode("/",url()->current())[3] == "logout"){
+            session()->flush();
+        }elseif(explode("/",url()->current())[3] == "login"){
+            $role = User::firstWhere('email',$request->email);
+            if(!empty($role)){
+                session(['role'=>$role->role]);
+                //dd(session('role'));
+            }  
+        }
     }
 }

@@ -22,15 +22,15 @@ Route::get('/', function () {
     return redirect()->route('homeNoVerification');
 });
 
-Route::get('datagrid', function () {
-    return view('datagrid')->with('formulaires', Formulaire::all()); //https://datatables.net/download/
-});
 
 Route::get('/homeNo', 'GetController@index')->name('homeNoVerification');
 Route::prefix('taxi')->middleware(['verified', 'auth'])->group(function () {
     Route::get('home', 'GetController@index')->name('home');
+    
+    Route::get('list/forms', function () {
+        return view('datagrid')->with('formulaires', Formulaire::all()); 
+    })->name('listFormulaires');
 
-    //Routes for the shift
     Route::get('form/create/shift', 'GetController@addConductorShift')->name('addConductorShift');
     Route::post('form/create/shift', 'FormShiftController@addShift');
 
