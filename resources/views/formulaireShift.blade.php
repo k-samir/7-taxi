@@ -51,7 +51,7 @@
         <div class="row mb-4 justify-content-center">
             <div class="col-9 input-group">
                 <label class="input-group-text" for="startRecipe">Recette</label>
-                <input id="startRecipe" class="form-control" value="{{$taxis[0]->recette_taximetre}}" type="number" name="startRecipe" min="0" placeholder="Initiale" required oninput="updateRealRecipe()">
+                <input id="startRecipe" class="form-control" value="{{$taxis[0]->recette_taximetre ?? ""}}" type="number" name="startRecipe" min="0" placeholder="Initiale" required oninput="updateRealRecipe()">
                 <label class="input-group-text" for="finalRecipe" hidden></label>
                 <input id="finalRecipe" class="form-control" value="{{old('finalRecipe')}}" type="number" name="finalRecipe" min="0" placeholder="Finale" required oninput="updateRealRecipe()">
             </div>
@@ -84,25 +84,25 @@
             <tbody>
                 <tr>
                     <th scope="row">Millage</th>
-                <td><input id="startingMillage" class="form-control w-75" type="number" value = "{{$taxis[0]->kilometrage_taximetre}}" name="startingMillage" oninput="setDifferenceOnMillage()" required></td>
+                <td><input id="startingMillage" class="form-control w-75" type="number" value = "{{$taxis[0]->kilometrage_taximetre ?? ""}}" name="startingMillage" oninput="setDifferenceOnMillage()" required></td>
                     <td><input id="endingMillage" class="form-control w-75" type="number" name="endingMillage" oninput="setDifferenceOnMillage()" required></td>
                     <td><label id="totalMillage" type="number"></label></td>
                 </tr>
                 <tr>
                     <th scope="row">Millage en charge</th>
-                    <td><input id="startingMileageLaden" class="form-control w-75" type="number" value="{{$taxis[0]->kilometrage_en_charge_taximetre}}" name="startingMileageLaden" oninput="setDifferenceOnMillageLaden()" required></td>
+                    <td><input id="startingMileageLaden" class="form-control w-75" type="number" value="{{$taxis[0]->kilometrage_en_charge_taximetre ??""}}" name="startingMileageLaden" oninput="setDifferenceOnMillageLaden()" required></td>
                     <td><input id="endingMileageLaden" class="form-control w-75" type="number" name="endingMileageLaden" oninput="setDifferenceOnMillageLaden()" required></td>
                     <td><label id="totalMileageLaden" type="number"></label></td>
                 </tr>
                 <tr>
                     <th scope="row">Prise en charge</th>
-                    <td><input id="startingAmountOfPassengers" class="form-control w-75" type="number" value="{{$taxis[0]->prise_en_charge_taximetre}}" name="startingAmountOfPassengers" oninput="setDifferenceOnAmountOfPassengers()" required></td>
+                    <td><input id="startingAmountOfPassengers" class="form-control w-75" type="number" value="{{$taxis[0]->prise_en_charge_taximetre ??""}}" name="startingAmountOfPassengers" oninput="setDifferenceOnAmountOfPassengers()" required></td>
                     <td><input id="endingAmountOrPassengers" class="form-control w-75" type="number" name="endingAmountOrPassengers" oninput="setDifferenceOnAmountOfPassengers()" required></td>
                     <td><label id="totalAmountOfPassengers" type="number"></label></td>
                 </tr>
                 <tr>
                     <th scope="row">Millage auto</th>
-                    <td><input id="startingMileageInVehicle" class="form-control w-75" type="number" value="{{$taxis[0]->kilometrage_taxi}}" name="startingMileageInVehicle" oninput="setDifferenceOnMileageInVehicle()" required></td>
+                    <td><input id="startingMileageInVehicle" class="form-control w-75" type="number" value="{{$taxis[0]->kilometrage_taxi ?? ""}}" name="startingMileageInVehicle" oninput="setDifferenceOnMileageInVehicle()" required></td>
                     <td><input id="endingMileageInVehicle" class="form-control w-75" type="number" name="endingMileageInVehicle" oninput="setDifferenceOnMileageInVehicle()" required></td>
                     <td><label id="totalMileageInVehicle" type="number"></label></td>
                 </tr>

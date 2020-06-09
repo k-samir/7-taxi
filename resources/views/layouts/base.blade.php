@@ -49,43 +49,43 @@
                 <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger text-uppercase" href="{{route('homeNoVerification')}}#aboutUs">À propos</a></li>
                 <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger text-uppercase" href="{{route('homeNoVerification')}}#section-contactUs">Contact</a></li>
             @else
-                @switch($role)
-                    @case('admin')
-                <li class="nav-item dropdown font-weight-bold">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulaires de chauffeur</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{route('addConductorShift')}}">Ajout de shift</a>
-                        <a class="dropdown-item" href="{{route('createConductor')}}">Création de chauffeur</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown font-weight-bold">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulaires de créations</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{route('createConductor')}}">Création de chauffeur</a>
-                        <a class="dropdown-item" href="{{route('createClient')}}">Création de client</a>
-                        <a class="dropdown-item" href="{{route('getTaxi')}}">Création de taxi</a>
-                        <a class="dropdown-item" href="{{route('createFixTarif')}}">Création de tarif fixe</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown font-weight-bold">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Liste des entités</a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{route('listUsers')}}">Liste des utilisateurs</a>
-                        <a class="dropdown-item" href="{{route('listFormulaires')}}">Liste des formulaires</a>
-                        <a class="dropdown-item" href="{{route('listChauffeur')}}">Liste des chauffeurs</a>
-                        <!--a class="dropdown-item" href="{{route('home')}}">Liste des clients</a-->
-                        <a class="dropdown-item" href="{{route('listTaxi')}}">Liste des taxis</a>
-                        <!--a class="dropdown-item" href="{{route('home')}}">Liste des tarifs fixes</a-->
-                    </div>
-                </li>
+                @switch(session('role'))
+                @case('admin')
+                    <li class="nav-item dropdown font-weight-bold">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulaires de chauffeur</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{route('addConductorShift')}}">Ajout de shift</a>
+                            <a class="dropdown-item" href="{{route('createConductor')}}">Création de chauffeur</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown font-weight-bold">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulaires de créations</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{route('createConductor')}}">Création de chauffeur</a>
+                            <a class="dropdown-item" href="{{route('createClient')}}">Création de client</a>
+                            <a class="dropdown-item" href="{{route('getTaxi')}}">Création de taxi</a>
+                            <a class="dropdown-item" href="{{route('createFixTarif')}}">Création de tarif fixe</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown font-weight-bold">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Liste des entités</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{route('listUsers')}}">Liste des utilisateurs</a>
+                            <a class="dropdown-item" href="{{route('listFormulaires')}}">Liste des formulaires</a>
+                            <a class="dropdown-item" href="{{route('listChauffeur')}}">Liste des chauffeurs</a>
+                            <!--a class="dropdown-item" href="{{route('home')}}">Liste des clients</a-->
+                            <a class="dropdown-item" href="{{route('listTaxi')}}">Liste des taxis</a>
+                            <!--a class="dropdown-item" href="{{route('home')}}">Liste des tarifs fixes</a-->
+                        </div>
+                    </li>
                     @break
-                    @case('conductor')
-                <li class="nav-item"><a class="nav-link" href="{{route('addConductorShift')}}">Ajout de shift</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">{{route('modifyConductor',['id'=>\Illuminate\Support\Facades\Auth::id()])}}}}">Modification du chauffeur</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{route('listFormulaires')}}">Liste des formulaires</a></li>
+                @case('conductor')
+                    <li class="nav-item"><a class="nav-link" href="{{route('addConductorShift')}}">Ajout de shift</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('modifyConductor',['id'=>\Illuminate\Support\Facades\Auth::id()])}}">Modification du chauffeur</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('listFormulaires')}}">Liste des formulaires</a></li>
                     @break
-                    @case('client')
-                <li class="nav-item"><a class="nav-link" href="{{route('modifyClient',['id'=>\Illuminate\Support\Facades\Auth::id()])}}">Modification du client</a></li>
+                @case('client')
+                    <li class="nav-item"><a class="nav-link" href="{{route('modifyClient',['id'=>\Illuminate\Support\Facades\Auth::id()])}}">Modification du client</a></li>
                     @break
                 @endswitch
             @endguest

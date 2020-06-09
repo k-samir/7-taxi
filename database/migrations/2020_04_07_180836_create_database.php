@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class CreateDatabase extends Migration
 {
@@ -37,7 +38,8 @@ class CreateDatabase extends Migration
             $table->integer("nb_place")->nullable(true);
             $table->timestamps();
         });
-
+        DB::statement('ALTER TABLE type_voiture AUTO_INCREMENT = 1;');
+        
         Schema::create('taxi', function (Blueprint $table) {
             $table->integer("id_taxi", true);
             $table->string("no_taxi", 255);
@@ -52,7 +54,6 @@ class CreateDatabase extends Migration
             $table->integer("prise_en_charge_taximetre");
             $table->integer("no_type_voiture");
             $table->timestamps();
-
             $table->foreign("no_type_voiture", "no_type_voiture")->references("no_type_voiture")->on("type_voiture");
         });
 
