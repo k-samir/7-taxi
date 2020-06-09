@@ -6,8 +6,18 @@
     <script src="{{asset('js/listUsers.js')}}"></script>
 @endsection
 
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('css/messageContainer.css') }}">
+@endsection
+
 
 @section('body-content')
+
+    <div id="messageContainer">
+        <!--<label class="success">Test</label>
+        <label class="error">Test</label>
+        <label class="warning">Test</label>-->
+    </div>
 
     <div class="row pb-3">
         <h1 class="mx-auto"><u>Liste des rôles des utilisateurs</u></h1>
@@ -25,11 +35,12 @@
             </thead>
             <tbody>@foreach($users as $user)
                 <tr>
-                    <td>{{$user->id}}</td>
+                    <td>{{$user->id}}@if(\Illuminate\Support\Facades\Auth::id() == $user->id) <b>(C'est vous)</b>@endif</td>
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
                     <td>
-                        <form id="changeForm-{{$user->id}}" type="post" action="{{route('changeUser',['id', $user->id])}}">
+                        <form id="changeForm-{{$user->id}}" type="post" action="{{route('changeUser',['id'=>$user->id])}}">
+                            @csrf
                             <label for="role-{{$user->id}}" hidden></label>@php($currentRole = $user->role??'none')
                             <select id="role-{{$user->id}}" class="form-control" name="role-{{$user->id}}">
                                 <option value="none" disabled{{$currentRole=='none'?" selected":""}}>Veuillez choisir un rôle</option>
@@ -55,7 +66,4 @@
             </tfoot>
         </table>
     </div>
-
-
-
 @endsection

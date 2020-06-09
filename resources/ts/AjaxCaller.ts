@@ -35,16 +35,25 @@ export module ajax {
         }
 
 
+        public setActionOnSuccess(callback: (success: object) => void): this
+        public setActionOnSuccess(callback: (success: object, textStatus: string) => void): this
+        public setActionOnSuccess(callback: (success: object, textStatus: string, jQueryXMLHTTPRequest) => void): this
         public setActionOnSuccess(callback: (success: object, textStatus?: string, jQueryXMLHTTPRequest?) => void): this {
             this.__callbackActionOnSuccess = callback;
             return this;
         }
 
+        public setActionOnError(callback: (error: object) => void): this
+        public setActionOnError(callback: (error: object, textStatus: string) => void): this
+        public setActionOnError(callback: (error: object, textStatus: string, jQueryXMLHTTPRequest) => void): this
         public setActionOnError(callback: (error: object, textStatus?: string, jQueryXMLHTTPRequest?) => void): this {
             this.__callbackActionOnError = callback;
             return this;
         }
 
+        public setOnError(callback: (jQueryXMLHTTPRequest) => void): this
+        public setOnError(callback: (jQueryXMLHTTPRequest, textStatus: string) => void): this
+        public setOnError(callback: (jQueryXMLHTTPRequest, textStatus: string, errorThrown) => void): this
         public setOnError(callback: (jQueryXMLHTTPRequest, textStatus?: string, errorThrown?) => void): this {
             this.__callbackOnError = callback;
             return this;
@@ -62,9 +71,9 @@ export module ajax {
 
         private __onSuccess(data: { error: object, success: object }, textStatus: string, jQueryXMLHTTPRequest): void {
             if (data.error == null) {
-                if (this.callbackActionOnSuccess != null) this.callbackActionOnSuccess(data, textStatus, jQueryXMLHTTPRequest);
+                if (this.callbackActionOnSuccess != null) this.callbackActionOnSuccess(data.success, textStatus, jQueryXMLHTTPRequest);
             } else {
-                if (this.callbackActionOnError != null) this.callbackActionOnError(data, textStatus, jQueryXMLHTTPRequest);
+                if (this.callbackActionOnError != null) this.callbackActionOnError(data.error, textStatus, jQueryXMLHTTPRequest);
             }
         }
 
@@ -101,7 +110,7 @@ export module ajax {
 
         protected ajaxData(): object {
             return {
-                method: this.form.getAttribute('method'),
+                method: this.form.getAttribute('type'),
                 url: this.form.getAttribute('action'),
                 data: $(this.form).serialize(undefined),
             };
