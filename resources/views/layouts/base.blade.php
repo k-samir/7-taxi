@@ -102,7 +102,7 @@
         <h1 class="mx-auto"><u>@yield('title')</u></h1>
     </div>
 @show
-<section id="section-contactUs" class="mt-1">
+<section id="section-contactUs" class="mt-1 bg-dark">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">

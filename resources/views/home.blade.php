@@ -98,7 +98,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <ul class="list-group timeline">
-                        <li class="list-group-item">
+                        <li class="list-group-item bg-transparent border-0">
                             <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{asset("img/about/1.jpg")}}"></div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
@@ -110,7 +110,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="list-group-item timeline-inverted">
+                        <li class="list-group-item timeline-inverted bg-transparent border-0">
                             <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{asset("img/rsz_code-editoren-t.jpg")}}"></div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
@@ -122,7 +122,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="list-group-item">
+                        <li class="list-group-item bg-transparent border-0">
                             <div class="timeline-image"><img class="rounded-circle img-fluid" src="{{asset("img/rsz_lancement-site-web_1212-24.jpg")}}"></div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">

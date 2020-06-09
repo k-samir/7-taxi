@@ -19,8 +19,6 @@ class ChangeUserRoleController extends Controller
                 'message' => $attributes['message'],
                 "type" => $attributes['type'],
             ]]);
-
-
     }
 
     private function __roleModificationAttributes(Request $request, int $idToModify): array
