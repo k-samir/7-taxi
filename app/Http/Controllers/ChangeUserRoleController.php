@@ -38,7 +38,7 @@ class ChangeUserRoleController extends Controller
                     case 'client':
                     case 'conductor':
                         $userToModify = User::all()->firstWhere('id', $idToModify);
-                        if ($userToModify == $roleOnRequest) {
+                        if ($userToModify->role == $roleOnRequest) {
                             $typeThrown = 'warning';
                             $message = "Le rôle sélectionné est le même que celui de l'utilisateur!";
                         } else {
