@@ -49,6 +49,8 @@
                 <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="{{route('homeNoVerification')}}#aboutUs">À PROPOS</a></li>
                 <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="{{route('homeNoVerification')}}#section-contactUs">CONTACT</a></li>
             @else
+                @switch($role)
+                    @case('admin')
                 <li class="nav-item dropdown font-weight-bold">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulaires de chauffeur</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -69,12 +71,23 @@
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Liste des entités</a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{route('listUsers')}}">Liste des utilisateurs</a>
+                        <a class="dropdown-item" href="{{route('listFormulaires')}}">Liste des formulaires</a>
                         <a class="dropdown-item" href="{{route('listChauffeur')}}">Liste des chauffeurs</a>
-                        <a class="dropdown-item" href="{{route('home')}}">Liste des clients</a>
+                        <!--a class="dropdown-item" href="{{route('home')}}">Liste des clients</a-->
                         <a class="dropdown-item" href="{{route('listTaxi')}}">Liste des taxis</a>
-                        <a class="dropdown-item" href="{{route('home')}}">Liste des tarifs fixes</a>
+                        <!--a class="dropdown-item" href="{{route('home')}}">Liste des tarifs fixes</a-->
                     </div>
                 </li>
+                    @break
+                    @case('conductor')
+                <li class="nav-item"><a class="nav-link" href="{{route('addConductorShift')}}">Ajout de shift</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">{{route('modifyConductor',['id'=>\Illuminate\Support\Facades\Auth::id()])}}}}">Modification du chauffeur</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('listFormulaires')}}">Liste des formulaires</a></li>
+                    @break
+                    @case('client')
+                <li class="nav-item"><a class="nav-link" href="{{route('modifyClient',['id'=>\Illuminate\Support\Facades\Auth::id()])}}">Modification du client</a></li>
+                    @break
+                @endswitch
             @endguest
         </ul>
         <ul class="navbar-nav ml-auto">
@@ -85,7 +98,7 @@
                     <button type="button" class="navigation-text dropdown-item" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="changeAutomaticColor()">Couleurs automatique</button>
                 </div>
             </li>
-            @if(Auth::guest() || !isset(Auth::user()->email_verified_at))
+            @if(\Illuminate\Support\Facades\Auth::guest() || !isset(\Illuminate\Support\Facades\Auth::user()->email_verified_at))
                 <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('login')}}">Connexion</a></li>
                 @if (Route::has('register'))
                     <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('register')}}">Inscription</a></li>
@@ -102,7 +115,7 @@
         <h1 class="mx-auto"><u>@yield('title')</u></h1>
     </div>
 @show
-<section id="section-contactUs" class="mt-1">
+<section id="section-contactUs" class="mt-1 bg-dark">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
