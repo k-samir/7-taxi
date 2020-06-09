@@ -24,8 +24,8 @@ export namespace src.form {
     function convertToFloat(elementID: string): number {
         return getID(elementID).value == "" ? 0 : parseFloat(getID(elementID).value);
     }
-    
-    export const btn = document.forms['form_shift'].getElementsByTagName('button')[0];
+    const taille = document.forms['form_shift'].getElementsByTagName('button').length;
+    export const btn = document.forms['form_shift'].getElementsByTagName('button')[(taille-1)];
     export class FormDriver {
 
         /**
@@ -83,7 +83,8 @@ export namespace src.form {
             getID('realRecipe').value = String(realRecipe);
             this.updateSalary();
             updateValidation(parseFloat(getID("salary").value) > 0, 'startRecipe', 'finalRecipe','fixPrice');
-            btn.disabled = helper.containInvalidClass();
+            console.log(containInvalidClass());
+            btn.disabled = containInvalidClass();
         }
 
         public addInputCredit() :void{
