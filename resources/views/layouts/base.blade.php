@@ -81,11 +81,11 @@
                     @break
                     @case('conductor')
                 <li class="nav-item"><a class="nav-link" href="{{route('addConductorShift')}}">Ajout de shift</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">{{route('modifyClient',['id'=>\Illuminate\Support\Facades\Auth::id()])}}}}">Modification du chauffeur</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">{{route('modifyConductor',['id'=>\Illuminate\Support\Facades\Auth::id()])}}}}">Modification du chauffeur</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{route('listFormulaires')}}">Liste des formulaires</a></li>
                     @break
                     @case('client')
-                <li class="nav-item"><a class="nav-link" href="{{route('modifyConductor',['id'=>\Illuminate\Support\Facades\Auth::id()])}}">Modification du client</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route('modifyClient',['id'=>\Illuminate\Support\Facades\Auth::id()])}}">Modification du client</a></li>
                     @break
                 @endswitch
             @endguest
