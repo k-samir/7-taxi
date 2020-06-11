@@ -38,7 +38,6 @@
                 <div class="col-5 form-check-inline pl-3">
                     <div class="form-check">
                         <input id="smallCarSize" class="form-check-input" type="radio" name="carSize" value="1" @if (($value->no_type_voiture ?? '') == 1 ) checked @endif>
-                        
                         <label class="form-check-label" for="smallCarSize">Petite voiture</label>
                     </div>
                     <div class="form-check">

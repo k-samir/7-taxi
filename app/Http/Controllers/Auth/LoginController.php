@@ -39,14 +39,16 @@ class LoginController extends Controller
      */
     public function __construct(Request $request)
     {
-        if(explode("/",url()->current())[3] == "logout"){
-            session()->flush();
-        }elseif(explode("/",url()->current())[3] == "login"){
-            $role = User::firstWhere('email',$request->email);
-            if(!empty($role)){
-                session(['role'=>$role->role]);
-                //dd(session('role'));
-            }  
+        $urlsplit = explode('/',url()->current());
+        if(count($urlsplit)==4){
+            if($urlsplit[3] == "logout"){
+                session()->flush();
+            }elseif($urlsplit[3] == "login"){
+                $role = User::firstWhere('email',$request->email);
+                if(!empty($role)){
+                    session(['role'=>$role->role]);
+                }  
+            }
         }
     }
 }

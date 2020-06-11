@@ -8,6 +8,8 @@ use App\Taxi;
 use App\User;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\passwordCreation;
 
 /**
  * A class that only send views from a get.
@@ -35,7 +37,13 @@ class GetController extends Controller
     {
         return view('home');
     }
-
+    public function sendMail(Request $request, $token){
+        echo $token .'<br/>';
+        $email = User::where('remember_token',$token)->first()->email;
+        echo $email;
+        Mail::to($email)->send(new passwordCreation($token));
+        return redirect()->route('home');
+    }
 
     public function addConductorShift(Request $request): Renderable
     {
@@ -99,7 +107,7 @@ class GetController extends Controller
         $taxi = Taxi::where('id_taxi', $id)->first();
         return $this->sendToView("formulaireAjoutTaxi", self::MODIFY_TAG, route("modifyTaxi", ["id" => $id]), $taxi);
     }
-
+    
     private function sendToView(string $view, array $tag, string $route, $value = null): Renderable
     {
         $variables = [
@@ -108,10 +116,8 @@ class GetController extends Controller
             'messageOnAction' => $tag["messageOnAction"],
         ];
         if ($value != null)
-            $variables['value'] = $value;
-
-
+        $variables['value'] = $value; 
         return view($view, $variables);
-    }
+    } 
 
 }

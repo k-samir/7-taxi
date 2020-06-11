@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Chauffeur;
+use App\User;
 use Illuminate\Http\Request;
 use Symfony\Component\Console\Output\ConsoleOutput;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class ChauffeurController extends Controller
 {
@@ -33,7 +36,16 @@ class ChauffeurController extends Controller
         $chauffeur->solde = $request->input('balance');
         $chauffeur->save();
 
-        return redirect()->route('home');
+        $token = Hash::make(Str::random(60));
+        $user = new User();
+        $user->name = substr($request->input('firstName'),0,1) . $request->input('lastName');
+        $user->email = $request->input('email');
+        $user->password = Hash::make('pass');
+        $user->remember_token = $token;
+        $user->role = 'conductor';
+        $user->save();
+
+        return redirect()->route("sendMail",['token'=>$token]);
     }
 
     public function getChauffeur(){

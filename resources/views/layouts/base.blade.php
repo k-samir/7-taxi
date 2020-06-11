@@ -101,12 +101,13 @@
             @if(\Illuminate\Support\Facades\Auth::guest() || !isset(\Illuminate\Support\Facades\Auth::user()->email_verified_at))
                 <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('login')}}">Connexion</a></li>
                 @if (Route::has('register'))
-                    <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('register')}}">Inscription</a></li>
+                    <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('password.reset',['token'=>'15151'])}}">Inscription</a></li>
                 @endif
             @else
+                <li class="nav-item font-weight-bold ml-auto"> <a class="nav-link" href="{{route('changePassword',['token'=>Auth::user()->remember_token])}}">Changement du mot de passe</a> </li> 
                 <li class="nav-item font-weight-bold ml-auto"><a class="nav-link" href="{{route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Déconnexion</a></li>
                 <form id="logout-form" action="{{ route('logout') }}" method="post" hidden>@csrf</form>
-            @endif
+                @endif
         </ul>
     </div>
 </nav>
