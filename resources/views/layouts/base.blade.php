@@ -44,10 +44,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             @guest
-                <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('homeNoVerification')}}#services">SERVICES</a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="{{route('homeNoVerification')}}#portfolio">L'ENTREPRISE</a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="{{route('homeNoVerification')}}#aboutUs">À PROPOS</a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="{{route('homeNoVerification')}}#section-contactUs">CONTACT</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link text-uppercase" href="{{route('homeNoVerification')}}#services">Services</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link text-uppercase" href="{{route('homeNoVerification')}}#portfolio">L'entreprise</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger text-uppercase" href="{{route('homeNoVerification')}}#aboutUs">À propos</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger text-uppercase" href="{{route('homeNoVerification')}}#section-contactUs">Contact</a></li>
             @else
                 @switch(session('role'))
                 @case('admin')
