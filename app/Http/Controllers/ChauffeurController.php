@@ -37,6 +37,7 @@ class ChauffeurController extends Controller
         $chauffeur->save();
 
         $token = Hash::make(Str::random(60));
+        $token = str_replace("/","~",$token);
         $user = new User();
         $user->name = substr($request->input('firstName'),0,1) . $request->input('lastName');
         $user->email = $request->input('email');
@@ -44,7 +45,8 @@ class ChauffeurController extends Controller
         $user->remember_token = $token;
         $user->role = 'conductor';
         $user->save();
-
+        $console= new ConsoleOutput();
+        $console->writeln($token);
         return redirect()->route("sendMail",['token'=>$token]);
     }
 

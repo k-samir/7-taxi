@@ -10,6 +10,8 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\passwordCreation;
+use Illuminate\Support\Facades\Auth;
+use Symfony\Component\Console\Output\ConsoleOutput;
 
 /**
  * A class that only send views from a get.
@@ -39,6 +41,8 @@ class GetController extends Controller
     }
     public function sendMail(Request $request, $token){
         echo $token .'<br/>';
+        $cons = new ConsoleOutput(); 
+        $cons->writeln($token);
         $email = User::where('remember_token',$token)->first()->email;
         echo $email;
         Mail::to($email)->send(new passwordCreation($token));
@@ -47,11 +51,12 @@ class GetController extends Controller
 
     public function addConductorShift(Request $request): Renderable
     {
+        $chauffeur = Auth::user()->role == 'admin'? Chauffeur::all() : Chauffeur::where('email',Auth::user()->email)->get();
         date_default_timezone_set('America/New_York');
         return view("formulaireShift")->with([
             'todayDate' => date('Y-m-d\TG:i'),
             'taxis' => Taxi::All(),
-            'chauffeurs' => Chauffeur::all()
+            'chauffeurs' => $chauffeur
         ]);
     }
 

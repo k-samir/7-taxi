@@ -51,6 +51,7 @@
             @else
                 @switch(session('role'))
                 @case('admin')
+                <!--Menu pour le l'admin qui a tout les droits-->
                     <li class="nav-item dropdown font-weight-bold">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Formulaires de chauffeur</a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -80,11 +81,13 @@
                     </li>
                     @break
                 @case('conductor')
+                <!--Menu pour le chauffeur-->
                     <li class="nav-item"><a class="nav-link" href="{{route('addConductorShift')}}">Ajout de shift</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('modifyConductor',['id'=>\Illuminate\Support\Facades\Auth::id()])}}">Modification du chauffeur</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{route('listFormulaires')}}">Liste des formulaires</a></li>
                     @break
                 @case('client')
+                    <!--Menu pour le client-->
                     <li class="nav-item"><a class="nav-link" href="{{route('modifyClient',['id'=>\Illuminate\Support\Facades\Auth::id()])}}">Modification du client</a></li>
                     @break
                 @endswitch
