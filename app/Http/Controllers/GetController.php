@@ -39,13 +39,9 @@ class GetController extends Controller
     {
         return view('home');
     }
-    public function sendMail(Request $request, $token){
-        echo $token .'<br/>';
-        $cons = new ConsoleOutput(); 
-        $cons->writeln($token);
+    public function sendMail(Request $request, $token,$mdp){ 
         $email = User::where('remember_token',$token)->first()->email;
-        echo $email;
-        Mail::to($email)->send(new passwordCreation($token));
+        Mail::to($email)->send(new passwordCreation($token,$mdp));
         return redirect()->route('home');
     }
 

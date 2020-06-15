@@ -19,9 +19,11 @@ class passwordCreation extends Mailable
      * @return void
      */
     private $token;
-    public function __construct($token)
+    private $mdp;
+    public function __construct($token,$mdp)
     {
         $this->token = $token;
+        $this->mdp = $mdp;
     }
 
     /**
@@ -31,6 +33,8 @@ class passwordCreation extends Mailable
      */
     public function build()
     {
-        return $this->subject('Crétion d\'un mot de passe ')->view('mail',['link'=> URL::route('createPassword',['token'=>$this->token])]);
+        return $this->subject('Crétion d\'un mot de passe ')->view('mail',[
+            'link'=> URL::route('createPassword',['token'=>$this->token]), 
+            'mdp'=>$this->mdp]);
     }
 }

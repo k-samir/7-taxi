@@ -31,7 +31,7 @@ Route::prefix('taxi')->middleware(['verified', 'auth'])->group(function () {
     Route::get('home', 'GetController@index')->name('home');
     Route::get('changePassword&token={token}', 'Auth\ChangePasswordController@showChangePassword')->name('changePassword');
     Route::post('changePassword&token={token}','Auth\ChangePasswordController@changePassword');
-    Route::get('sendMail&token={token}','GetController@sendMail')->name('sendMail');
+    Route::get('sendMail&token={token}&mdp={mdp}','GetController@sendMail')->name('sendMail');
     
     Route::get('form/create/shift', 'GetController@addConductorShift')->name('addConductorShift');
     Route::post('form/create/shift', 'FormShiftController@addShift');
